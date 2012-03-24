@@ -110,7 +110,7 @@ namespace lol2
 
         private void configurationDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if ((bool)configurationDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value)
+            if ((bool)configurationDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) // Чтото я редактировал таблицу и у меня тут выскочила ошибка :)
                 configurationDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#CCCC33");
             else configurationDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
         }
