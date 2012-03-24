@@ -16,6 +16,9 @@ namespace lol2
         public AddDevice()
         {
             InitializeComponent();
+            purchaseDateTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            placementDateTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            serviceEndTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
         }
 
         /// <summary>
@@ -129,8 +132,6 @@ namespace lol2
             AddingString childFormAddingParameterType = new AddingString("Введіть назву нового параметру");
             childFormAddingParameterType.ShowDialog();
             addAttrToGrid(childFormAddingParameterType.parameterName);
-            childFormAddingParameterType.Dispose();
-
         }
 
         private void addParameterButton_Click(object sender, EventArgs e)
@@ -162,6 +163,66 @@ namespace lol2
         private void редагуватиТипиОбладнанняToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new DeviceTemplateEditor().ShowDialog();
+        }
+
+        private string EmptyFields()
+        {
+            string result = "\n";
+            if (deviceNumberTextBox.Text == "") result += "  Інвентарний номер\n";
+            if (priceTextBox.Text == "") result += "  Ціна\n";
+            if (locationComboBox.Text == "") result += "  Розташування\n";
+            if (purchaseDateTextBox.Text == "") result += "  Дата покупки\n";
+            if (placementDateTextBox.Text == "") result += "  Дата розміщення\n";
+            if (serviceEndTextBox.Text == "") result += "  Кінець гарантії обслуговування\n";
+            return result;
+        }
+
+        private void saveChangesButton_Click(object sender, EventArgs e)
+        {
+            string emptyFields = EmptyFields();
+            if (emptyFields.Length>2)
+                MessageBox.Show("Наступні обов'язкові поля не були заповнені :"+emptyFields, "Помилка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else 
+            {
+                //TODO: Save item to DB
+            }
+        }
+
+        private string GetSelectedRowNames()
+        {
+            string result = "\n";
+            for (int i = 0; i < configurationDataGridView.SelectedRows.Count; i++)
+            {
+                for (int j = 0; j < configurationDataGridView.SelectedRows[i].Cells.Count; j++)
+                {
+                    result += configurationDataGridView.SelectedRows[i].Cells[j].Value.ToString();
+                    result += "  ";
+                }
+                result += "\n";
+            }
+            return result;
+        }
+
+        private void removeSelectedAttrButton_Click(object sender, EventArgs e)
+        {
+            if (configurationDataGridView.SelectedRows.Count == 0)
+                MessageBox.Show("Не вибрано жодного рядку", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                if (configurationDataGridView.SelectedRows.Count > 1)
+                    if (MessageBox.Show("Ви дійсно бажаєте видалити наступний набір рядків?" + GetSelectedRowNames(), "Попередження",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                        return;
+                string removeErrors = "\n";
+                for (int i = configurationDataGridView.SelectedRows.Count - 1; i >= 0; i--)
+                    //if (//TODO: check if element is required)
+                        configurationDataGridView.Rows.Remove(configurationDataGridView.SelectedRows[i]);
+                    //else removeErrors += configurationDataGridView.SelectedRows[i].Cells[0].Value+"\n";
+                if (removeErrors.Length > 2)
+                    MessageBox.Show("Наступні рядки не були видалені, оскільки вони є обов'язковими :"+
+                        removeErrors,"Увага",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+            }
         }
     }
 }

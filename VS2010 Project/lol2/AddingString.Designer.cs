@@ -52,6 +52,7 @@
             // 
             // cancelOperationButton
             // 
+            this.cancelOperationButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelOperationButton.Location = new System.Drawing.Point(335, 6);
             this.cancelOperationButton.Name = "cancelOperationButton";
             this.cancelOperationButton.Size = new System.Drawing.Size(75, 23);
@@ -62,9 +63,11 @@
             // 
             // AddingString
             // 
+            this.AcceptButton = this.addParameterButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSalmon;
+            this.CancelButton = this.cancelOperationButton;
             this.ClientSize = new System.Drawing.Size(422, 36);
             this.Controls.Add(this.cancelOperationButton);
             this.Controls.Add(this.addParameterButton);

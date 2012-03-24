@@ -9,9 +9,15 @@ namespace lol2
 {
     public static class DatabaseManager
     {
+        #region Declarations
+        
         static MongoServer server;
         static MongoDatabase database;
         public static MongoCollection EquipmentTypes { get; private set; }
+
+        #endregion
+        #region Public Methods
+        
         public static void Initialize(string db_name)
         {
             server = MongoServer.Create(); // connect to localhost
@@ -22,5 +28,7 @@ namespace lol2
         {
             return database.GetCollection<BsonDocument>(colection_name);
         }
+
+        #endregion
     }
 }

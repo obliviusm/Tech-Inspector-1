@@ -27,7 +27,7 @@ namespace lol2
 
         private void addParameterButton_Click(object sender, EventArgs e)
         {
-            parameterName = parameterTextBox.Text;
+            parameterName = (parameterTextBox.Text == "" ? null : parameterTextBox.Text);
             Close();
         }
     }
