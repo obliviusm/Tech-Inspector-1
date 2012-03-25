@@ -74,7 +74,7 @@ namespace lol2
             // Initialize DB
             DatabaseManager.Initialize("tech_inspector");
             // Fill DB with sample types of equipment
-            #region FillDatabase
+            #region FillDatabaseWithTypesOfEquipment
 
             //DatabaseManager.GetDataCollection("equipment_types").RemoveAll();
 
@@ -117,9 +117,32 @@ namespace lol2
             {
                 typeSelectionComboBox.Items.Add(item["name"]);
             }
+            // Fill DB with sample locations
+            #region FillDatabaseWithLocations
+
+            //DatabaseManager.GetDataCollection("locations").RemoveAll();
+
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "430"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "433"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "429/1"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "429/2"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "428"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "426"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "416/1"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "416/2"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "417"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "229/1"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "229/2"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "229/3"));
+            //DatabaseManager.GetDataCollection("locations").Insert(new BsonDocument("name", "323"));
+
+            #endregion
+            // Load locations from DB to ComboBox
+            foreach (BsonDocument item in DatabaseManager.GetDataCollection("locations").Find(new QueryDocument()))
+            {
+                locationComboBox.Items.Add(item["name"]);
+            }
             configurationGroupBox.Enabled = false;
-            //if (typeSelectionComboBox.Items.Count != 0)
-            //    typeSelectionComboBox.SelectedIndex = 0;
         }
 
         private void вихідToolStripMenuItem_Click(object sender, EventArgs e)
@@ -168,12 +191,18 @@ namespace lol2
         private string EmptyFields()
         {
             string result = "\n";
-            if (deviceNumberTextBox.Text == "") result += "  Інвентарний номер\n";
-            if (priceTextBox.Text == "") result += "  Ціна\n";
-            if (locationComboBox.Text == "") result += "  Розташування\n";
-            if (purchaseDateTextBox.Text == "") result += "  Дата покупки\n";
-            if (placementDateTextBox.Text == "") result += "  Дата розміщення\n";
-            if (serviceEndTextBox.Text == "") result += "  Кінець гарантії обслуговування\n";
+            if (deviceNumberTextBox.Text == "") result += "\tІнвентарний номер\n";
+            if (locationComboBox.Text == "") result += "\tРозташування\n";
+            if (typeSelectionComboBox.Text == "") 
+                result += "\tТип обладнання\n";
+            else
+                for(int i = 0; i < configurationDataGridView.Rows.Count; ++i)
+                    if ((string)configurationDataGridView.Rows[i].Cells[1].Value == "")
+                        result += "\t" + (string)configurationDataGridView.Rows[i].Cells[0].Value + "\n";
+            //if (priceTextBox.Text == "") result += "  Ціна\n";
+            //if (purchaseDateTextBox.Text == "") result += "  Дата покупки\n";
+            //if (placementDateTextBox.Text == "") result += "  Дата розміщення\n";
+            //if (serviceEndTextBox.Text == "") result += "  Кінець гарантії обслуговування\n";
             return result;
         }
 
@@ -210,15 +239,18 @@ namespace lol2
                 MessageBox.Show("Не вибрано жодного рядку", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                if (configurationDataGridView.SelectedRows.Count > 1)
+                if (configurationDataGridView.SelectedRows.Count > 0)
                     if (MessageBox.Show("Ви дійсно бажаєте видалити наступний набір рядків?" + GetSelectedRowNames(), "Попередження",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                         return;
                 string removeErrors = "\n";
                 for (int i = configurationDataGridView.SelectedRows.Count - 1; i >= 0; i--)
-                    //if (//TODO: check if element is required)
+                {
+                    string type = (string)configurationDataGridView.SelectedRows[i].Cells[0].Value;
+                    if (type[type.Length - 1] != '*') // It's not compulsory?
                         configurationDataGridView.Rows.Remove(configurationDataGridView.SelectedRows[i]);
-                    //else removeErrors += configurationDataGridView.SelectedRows[i].Cells[0].Value+"\n";
+                    else removeErrors += configurationDataGridView.SelectedRows[i].Cells[0].Value+"\n";
+                }
                 if (removeErrors.Length > 2)
                     MessageBox.Show("Наступні рядки не були видалені, оскільки вони є обов'язковими :"+
                         removeErrors,"Увага",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);

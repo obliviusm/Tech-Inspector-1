@@ -178,9 +178,9 @@
             this.deviceNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deviceNumberLabel.Location = new System.Drawing.Point(11, 22);
             this.deviceNumberLabel.Name = "deviceNumberLabel";
-            this.deviceNumberLabel.Size = new System.Drawing.Size(110, 13);
+            this.deviceNumberLabel.Size = new System.Drawing.Size(114, 13);
             this.deviceNumberLabel.TabIndex = 2;
-            this.deviceNumberLabel.Text = "Інвентарний номер :";
+            this.deviceNumberLabel.Text = "Інвентарний номер* :";
             // 
             // deviceNumberTextBox
             // 
@@ -194,9 +194,9 @@
             this.deviceTypeLabel.AutoSize = true;
             this.deviceTypeLabel.Location = new System.Drawing.Point(11, 51);
             this.deviceTypeLabel.Name = "deviceTypeLabel";
-            this.deviceTypeLabel.Size = new System.Drawing.Size(95, 13);
+            this.deviceTypeLabel.Size = new System.Drawing.Size(99, 13);
             this.deviceTypeLabel.TabIndex = 4;
-            this.deviceTypeLabel.Text = "Тип обладнання :";
+            this.deviceTypeLabel.Text = "Тип обладнання* :";
             // 
             // typeSelectionComboBox
             // 
@@ -210,9 +210,9 @@
             // 
             // configurationGroupBox
             // 
-            this.configurationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.configurationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.configurationGroupBox.Controls.Add(this.removeSelectedAttrButton);
             this.configurationGroupBox.Controls.Add(this.addNewParameterButton);
             this.configurationGroupBox.Controls.Add(this.addParameterButton);
@@ -283,9 +283,9 @@
             // 
             this.configurationDataGridView.AllowUserToAddRows = false;
             this.configurationDataGridView.AllowUserToDeleteRows = false;
-            this.configurationDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.configurationDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.configurationDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.configurationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.configurationDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -325,12 +325,13 @@
             this.locationLabel.AutoSize = true;
             this.locationLabel.Location = new System.Drawing.Point(11, 94);
             this.locationLabel.Name = "locationLabel";
-            this.locationLabel.Size = new System.Drawing.Size(86, 13);
+            this.locationLabel.Size = new System.Drawing.Size(90, 13);
             this.locationLabel.TabIndex = 18;
-            this.locationLabel.Text = "Розташування :";
+            this.locationLabel.Text = "Розташування *:";
             // 
             // locationComboBox
             // 
+            this.locationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.locationComboBox.FormattingEnabled = true;
             this.locationComboBox.Location = new System.Drawing.Point(127, 91);
             this.locationComboBox.Name = "locationComboBox";
