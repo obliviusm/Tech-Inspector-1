@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace lol2
 {
@@ -31,14 +33,55 @@ namespace lol2
         {
             InitializeComponent();
             TypeEditingActive = false;
+            chooseTypeButton.Enabled = false;
             configurationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //TODO: Load list of templates to typeSelectionComboBox   
+            // Load types of equipment from DB to ComboBox
+            foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipment_types").Find(new QueryDocument()))
+            {
+                typeSelectionComboBox.Items.Add((string)item["name"]);
+            } 
         }
 
         public DeviceTemplateEditor(string editType)
         {
             InitializeComponent();
-            //TODO: if type exists open it for editing
+            TypeEditingActive = false;
+            chooseTypeButton.Enabled = false;
+            configurationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            // Load types of equipment from DB to ComboBox
+            foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipment_types").Find(new QueryDocument()))
+            {
+                typeSelectionComboBox.Items.Add((string)item["name"]);
+            }
+            if (typeSelectionComboBox.Items.IndexOf(editType) > -1)
+            {
+                typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.IndexOf(editType);
+                TypeEditingActive = true;
+                chooseTypeButton.Enabled = true;
+                LoadAttrToDataGrid(editType);
+                typeNameTextBox.Text = editType;
+            }
+        }
+
+        private void LoadAttrToDataGrid(string type)
+        {
+            // Clear available data
+            configurationDataGridView.Rows.Clear();
+            // Get elements of Array with attributes for current type of equipment
+            var attr_arr = DatabaseManager.GetDataCollection("equipment_types").FindOne(new QueryDocument { { "name", type } })["attr"];
+            if (attr_arr.IsBsonArray)
+            {
+                foreach (BsonDocument item in attr_arr.AsBsonArray)
+                {
+                    if (item["compulsory"].AsBoolean)
+                        configurationDataGridView.Rows.Add((string)item["attr_name"], true);
+                    else
+                    {
+                        //if not compulsory
+                        configurationDataGridView.Rows.Add((string)item["attr_name"], false);
+                    }
+                }
+            }
         }
 
         private string GetSelectedRowNames()
@@ -62,7 +105,7 @@ namespace lol2
                 MessageBox.Show("Не вибрано жодного рядку", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                if (configurationDataGridView.SelectedRows.Count > 1)
+                if (configurationDataGridView.SelectedRows.Count > 0)
                     if (MessageBox.Show("Ви дійсно бажаєте видалити наступний набір рядків?" + GetSelectedRowNames(), "Попередження",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                         return;
@@ -81,7 +124,16 @@ namespace lol2
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                //TODO: Save template data to DB
+                initialTemplateName = typeNameTextBox.Text;
+                BsonDocument type = new BsonDocument("name", typeNameTextBox.Text);
+                BsonArray attr = new BsonArray();
+                for(int i=0; i< configurationDataGridView.Rows.Count; ++i)
+                {
+                    attr.Add(new BsonDocument{ {"attr_name", (string)configurationDataGridView.Rows[i].Cells[0].Value},
+                        {"compulsory",(bool)configurationDataGridView.Rows[i].Cells[1].Value}});
+                }
+                type.Add("attr", attr);
+                DatabaseManager.GetDataCollection("equipment_types").Update(new QueryDocument(new BsonDocument("name", initialTemplateName)), new UpdateDocument(type));
             }
         }
 
@@ -100,7 +152,7 @@ namespace lol2
 
         private void typeSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            configurationGroupBox.Enabled = (typeSelectionComboBox.SelectedIndex > -1);
+            chooseTypeButton.Enabled = true;
         }
 
         private void вихідToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,15 +162,24 @@ namespace lol2
 
         private void configurationDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if ((bool)configurationDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) // Чтото я редактировал таблицу и у меня тут выскочила ошибка :)
+            if ((bool)configurationDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) // Чтото я редактировал ячейку таблицы, нажал ентер и у меня тут выскочила ошибка :)
                 configurationDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#CCCC33");
             else configurationDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
         }
 
         private void newTypeButton_Click(object sender, EventArgs e)
         {
-            TypeEditingActive = true;
-            configurationDataGridView.Rows.Clear();
+            AddingString childFormAddingParameterType = new AddingString("Введіть назву нового типу обладнання");
+            childFormAddingParameterType.ShowDialog();
+            if (childFormAddingParameterType.parameterName != null)
+            {
+                initialTemplateName = childFormAddingParameterType.parameterName;
+                typeNameTextBox.Text = initialTemplateName;
+                TypeEditingActive = true;
+                configurationDataGridView.Rows.Clear();
+                typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.Add(initialTemplateName);
+                DatabaseManager.GetDataCollection("equipment_types").Insert(new BsonDocument { { "name", initialTemplateName }, { "attr", new BsonArray() } });
+            }
         }
 
         private void chooseTypeButton_Click(object sender, EventArgs e)
@@ -128,9 +189,7 @@ namespace lol2
                 initialTemplateName = typeSelectionComboBox.Text;
                 typeNameTextBox.Text = initialTemplateName;
                 TypeEditingActive = true;
-                //TODO: Load template data from DB
-                //dataGrid example
-                //configurationDataGridView.Rows.Add("Процесор",true);
+                LoadAttrToDataGrid(initialTemplateName);
             }
         }
 
@@ -139,7 +198,12 @@ namespace lol2
             if (MessageBox.Show("Ви дійсно бажаєте видалити вибраний шаблон з бази даних ?", "Попередження",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                //TODO: Remove template from DB
+                DatabaseManager.GetDataCollection("equipment_types").Remove(new QueryDocument(new BsonDocument("name", initialTemplateName)));
+                typeNameTextBox.Text = "";
+                configurationDataGridView.Rows.Clear();
+                TypeEditingActive = false;
+                typeSelectionComboBox.Items.Remove(initialTemplateName);
+                typeSelectionComboBox.SelectedIndex = -1;
             }
         }
 
@@ -152,7 +216,7 @@ namespace lol2
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 typeNameTextBox.Text = initialTemplateName;
-                //TODO : Reload template from database
+                LoadAttrToDataGrid(initialTemplateName);
             }
         }
     }

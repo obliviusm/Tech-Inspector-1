@@ -71,8 +71,6 @@ namespace lol2
 
         private void AddDevice_Load(object sender, EventArgs e)
         {
-            // Initialize DB
-            DatabaseManager.Initialize("tech_inspector");
             // Fill DB with sample types of equipment
             #region FillDatabaseWithTypesOfEquipment
 
@@ -115,7 +113,7 @@ namespace lol2
             // Load types of equipment from DB to ComboBox
             foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipment_types").Find(new QueryDocument()))
             {
-                typeSelectionComboBox.Items.Add(item["name"]);
+                typeSelectionComboBox.Items.Add((string)item["name"]);
             }
             // Fill DB with sample locations
             #region FillDatabaseWithLocations
@@ -140,7 +138,7 @@ namespace lol2
             // Load locations from DB to ComboBox
             foreach (BsonDocument item in DatabaseManager.GetDataCollection("locations").Find(new QueryDocument()))
             {
-                locationComboBox.Items.Add(item["name"]);
+                locationComboBox.Items.Add((string)item["name"]);
             }
             configurationGroupBox.Enabled = false;
         }
@@ -185,7 +183,7 @@ namespace lol2
 
         private void редагуватиТипиОбладнанняToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new DeviceTemplateEditor().ShowDialog();
+            new DeviceTemplateEditor(typeSelectionComboBox.Text).ShowDialog();
         }
 
         private string EmptyFields()
