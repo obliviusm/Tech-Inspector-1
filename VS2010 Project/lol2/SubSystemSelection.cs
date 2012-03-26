@@ -25,7 +25,8 @@ namespace lol2
 
         private void accountingButton_Click(object sender, EventArgs e)
         {
-            Form1 childFormForm1 = new Form1();
+            //Form1 childFormForm1 = new Form1();
+            InfoViewer childFormForm1 = new InfoViewer();
             childFormForm1.FormClosed += new FormClosedEventHandler(childForm_FormClosed);
             childFormForm1.Show();
             Hide();

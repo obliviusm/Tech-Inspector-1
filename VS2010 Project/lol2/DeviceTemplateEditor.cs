@@ -160,13 +160,6 @@ namespace lol2
             Application.Exit();
         }
 
-        private void configurationDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if ((bool)configurationDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) // Чтото я редактировал ячейку таблицы, нажал ентер и у меня тут выскочила ошибка :)
-                configurationDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#CCCC33");
-            else configurationDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
-        }
-
         private void newTypeButton_Click(object sender, EventArgs e)
         {
             AddingString childFormAddingParameterType = new AddingString("Введіть назву нового типу обладнання");
