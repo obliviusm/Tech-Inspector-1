@@ -83,8 +83,17 @@
             this.deleteDeviceButton = new System.Windows.Forms.Button();
             this.editInfoButton = new System.Windows.Forms.Button();
             this.detailedInfoButton = new System.Windows.Forms.Button();
+            this.refreshButton = new System.Windows.Forms.Button();
+            this.deviceNumberLabel = new System.Windows.Forms.Label();
+            this.deviceNumberTextBox = new System.Windows.Forms.TextBox();
+            this.deviceTypeLabel = new System.Windows.Forms.Label();
+            this.locationComboBox = new System.Windows.Forms.ComboBox();
+            this.typeSelectionComboBox = new System.Windows.Forms.ComboBox();
+            this.locationLabel = new System.Windows.Forms.Label();
+            this.filterGroupBox = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).BeginInit();
+            this.filterGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -97,7 +106,7 @@
             this.проПрограмуToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(605, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(613, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -411,23 +420,26 @@
             // версіяToolStripMenuItem
             // 
             this.версіяToolStripMenuItem.Name = "версіяToolStripMenuItem";
-            this.версіяToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.версіяToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.версіяToolStripMenuItem.Text = "&Версія";
             // 
             // розробникиToolStripMenuItem
             // 
             this.розробникиToolStripMenuItem.Name = "розробникиToolStripMenuItem";
-            this.розробникиToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.розробникиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.розробникиToolStripMenuItem.Text = "&Розробники";
             // 
             // ліцензіяToolStripMenuItem
             // 
             this.ліцензіяToolStripMenuItem.Name = "ліцензіяToolStripMenuItem";
-            this.ліцензіяToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.ліцензіяToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ліцензіяToolStripMenuItem.Text = "&Ліцензія";
             // 
             // infosDataGridView
             // 
+            this.infosDataGridView.AllowUserToAddRows = false;
+            this.infosDataGridView.AllowUserToDeleteRows = false;
+            this.infosDataGridView.AllowUserToOrderColumns = true;
             this.infosDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
@@ -437,9 +449,9 @@
             this.ID,
             this.type,
             this.location});
-            this.infosDataGridView.Location = new System.Drawing.Point(9, 78);
+            this.infosDataGridView.Location = new System.Drawing.Point(12, 99);
             this.infosDataGridView.Name = "infosDataGridView";
-            this.infosDataGridView.Size = new System.Drawing.Size(590, 386);
+            this.infosDataGridView.Size = new System.Drawing.Size(590, 360);
             this.infosDataGridView.TabIndex = 2;
             // 
             // ID
@@ -462,7 +474,8 @@
             // 
             // addDeviceButton
             // 
-            this.addDeviceButton.Location = new System.Drawing.Point(9, 39);
+            this.addDeviceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addDeviceButton.Location = new System.Drawing.Point(310, 465);
             this.addDeviceButton.Name = "addDeviceButton";
             this.addDeviceButton.Size = new System.Drawing.Size(143, 33);
             this.addDeviceButton.TabIndex = 3;
@@ -472,7 +485,8 @@
             // 
             // deleteDeviceButton
             // 
-            this.deleteDeviceButton.Location = new System.Drawing.Point(158, 39);
+            this.deleteDeviceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.deleteDeviceButton.Location = new System.Drawing.Point(459, 465);
             this.deleteDeviceButton.Name = "deleteDeviceButton";
             this.deleteDeviceButton.Size = new System.Drawing.Size(143, 33);
             this.deleteDeviceButton.TabIndex = 4;
@@ -482,27 +496,112 @@
             // 
             // editInfoButton
             // 
-            this.editInfoButton.Location = new System.Drawing.Point(307, 39);
+            this.editInfoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.editInfoButton.Enabled = false;
+            this.editInfoButton.Location = new System.Drawing.Point(161, 465);
             this.editInfoButton.Name = "editInfoButton";
             this.editInfoButton.Size = new System.Drawing.Size(143, 33);
             this.editInfoButton.TabIndex = 5;
             this.editInfoButton.Text = "Редагувати інформацію";
             this.editInfoButton.UseVisualStyleBackColor = true;
+            this.editInfoButton.Click += new System.EventHandler(this.editInfoButton_Click);
             // 
             // detailedInfoButton
             // 
-            this.detailedInfoButton.Location = new System.Drawing.Point(456, 39);
+            this.detailedInfoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.detailedInfoButton.Location = new System.Drawing.Point(12, 465);
             this.detailedInfoButton.Name = "detailedInfoButton";
             this.detailedInfoButton.Size = new System.Drawing.Size(143, 33);
             this.detailedInfoButton.TabIndex = 6;
             this.detailedInfoButton.Text = "Детальна інформація";
             this.detailedInfoButton.UseVisualStyleBackColor = true;
+            this.detailedInfoButton.Click += new System.EventHandler(this.detailedInfoButton_Click);
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.Location = new System.Drawing.Point(456, 32);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(128, 21);
+            this.refreshButton.TabIndex = 7;
+            this.refreshButton.Text = "Обновити";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // deviceNumberLabel
+            // 
+            this.deviceNumberLabel.AutoSize = true;
+            this.deviceNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deviceNumberLabel.Location = new System.Drawing.Point(6, 16);
+            this.deviceNumberLabel.Name = "deviceNumberLabel";
+            this.deviceNumberLabel.Size = new System.Drawing.Size(110, 13);
+            this.deviceNumberLabel.TabIndex = 20;
+            this.deviceNumberLabel.Text = "Інвентарний номер :";
+            // 
+            // deviceNumberTextBox
+            // 
+            this.deviceNumberTextBox.Location = new System.Drawing.Point(6, 32);
+            this.deviceNumberTextBox.Name = "deviceNumberTextBox";
+            this.deviceNumberTextBox.Size = new System.Drawing.Size(140, 20);
+            this.deviceNumberTextBox.TabIndex = 21;
+            // 
+            // deviceTypeLabel
+            // 
+            this.deviceTypeLabel.AutoSize = true;
+            this.deviceTypeLabel.Location = new System.Drawing.Point(149, 16);
+            this.deviceTypeLabel.Name = "deviceTypeLabel";
+            this.deviceTypeLabel.Size = new System.Drawing.Size(95, 13);
+            this.deviceTypeLabel.TabIndex = 22;
+            this.deviceTypeLabel.Text = "Тип обладнання :";
+            // 
+            // locationComboBox
+            // 
+            this.locationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.locationComboBox.FormattingEnabled = true;
+            this.locationComboBox.Location = new System.Drawing.Point(310, 32);
+            this.locationComboBox.Name = "locationComboBox";
+            this.locationComboBox.Size = new System.Drawing.Size(140, 21);
+            this.locationComboBox.TabIndex = 25;
+            // 
+            // typeSelectionComboBox
+            // 
+            this.typeSelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeSelectionComboBox.FormattingEnabled = true;
+            this.typeSelectionComboBox.Location = new System.Drawing.Point(152, 31);
+            this.typeSelectionComboBox.Name = "typeSelectionComboBox";
+            this.typeSelectionComboBox.Size = new System.Drawing.Size(152, 21);
+            this.typeSelectionComboBox.TabIndex = 23;
+            // 
+            // locationLabel
+            // 
+            this.locationLabel.AutoSize = true;
+            this.locationLabel.Location = new System.Drawing.Point(310, 16);
+            this.locationLabel.Name = "locationLabel";
+            this.locationLabel.Size = new System.Drawing.Size(86, 13);
+            this.locationLabel.TabIndex = 24;
+            this.locationLabel.Text = "Розташування :";
+            // 
+            // filterGroupBox
+            // 
+            this.filterGroupBox.Controls.Add(this.deviceNumberTextBox);
+            this.filterGroupBox.Controls.Add(this.refreshButton);
+            this.filterGroupBox.Controls.Add(this.locationLabel);
+            this.filterGroupBox.Controls.Add(this.locationComboBox);
+            this.filterGroupBox.Controls.Add(this.deviceTypeLabel);
+            this.filterGroupBox.Controls.Add(this.deviceNumberLabel);
+            this.filterGroupBox.Controls.Add(this.typeSelectionComboBox);
+            this.filterGroupBox.Location = new System.Drawing.Point(12, 27);
+            this.filterGroupBox.Name = "filterGroupBox";
+            this.filterGroupBox.Size = new System.Drawing.Size(590, 66);
+            this.filterGroupBox.TabIndex = 26;
+            this.filterGroupBox.TabStop = false;
+            this.filterGroupBox.Text = "Фільтри";
             // 
             // InfoViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 489);
+            this.ClientSize = new System.Drawing.Size(613, 509);
+            this.Controls.Add(this.filterGroupBox);
             this.Controls.Add(this.detailedInfoButton);
             this.Controls.Add(this.editInfoButton);
             this.Controls.Add(this.deleteDeviceButton);
@@ -514,6 +613,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).EndInit();
+            this.filterGroupBox.ResumeLayout(false);
+            this.filterGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -576,5 +677,13 @@
         private System.Windows.Forms.Button deleteDeviceButton;
         private System.Windows.Forms.Button editInfoButton;
         private System.Windows.Forms.Button detailedInfoButton;
+        private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.Label deviceNumberLabel;
+        private System.Windows.Forms.TextBox deviceNumberTextBox;
+        private System.Windows.Forms.Label deviceTypeLabel;
+        private System.Windows.Forms.ComboBox locationComboBox;
+        private System.Windows.Forms.ComboBox typeSelectionComboBox;
+        private System.Windows.Forms.Label locationLabel;
+        private System.Windows.Forms.GroupBox filterGroupBox;
     }
 }

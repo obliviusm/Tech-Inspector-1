@@ -57,7 +57,7 @@ namespace lol2
                 if (row.Cells[0].Value.ToString() == attrName)
                     noContains = false;
             }
-            if (attrName != null && attrName != "" && noContains)
+            if (!String.IsNullOrWhiteSpace(attrName) && noContains)
                 configurationDataGridView.Rows.Add(attrName, "");
             else if (noContains == false)
             {
@@ -65,7 +65,7 @@ namespace lol2
             }
             else if (attrName != null)
             {
-                MessageBox.Show("Оберіть атрибут або додавйте новий", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Оберіть атрибут або додайте новий", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -197,10 +197,6 @@ namespace lol2
                 for(int i = 0; i < configurationDataGridView.Rows.Count; ++i)
                     if ((string)configurationDataGridView.Rows[i].Cells[1].Value == "")
                         result += "\t" + (string)configurationDataGridView.Rows[i].Cells[0].Value + "\n";
-            //if (priceTextBox.Text == "") result += "  Ціна\n";
-            //if (purchaseDateTextBox.Text == "") result += "  Дата покупки\n";
-            //if (placementDateTextBox.Text == "") result += "  Дата розміщення\n";
-            //if (serviceEndTextBox.Text == "") result += "  Кінець гарантії обслуговування\n";
             return result;
         }
 
@@ -212,7 +208,43 @@ namespace lol2
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             else 
             {
-                //TODO: Save item to DB
+                BsonDocument item = new BsonDocument();
+                item.Add("inventory_number", deviceNumberTextBox.Text);
+                item.Add("type", typeSelectionComboBox.Text);
+                item.Add("location", locationComboBox.Text);
+                float price;
+                if (!String.IsNullOrWhiteSpace(priceTextBox.Text) && float.TryParse("1", out price))
+                {
+                    item.Add("price", price);
+                }
+                if (!String.IsNullOrWhiteSpace(purchaseDateTextBox.Text))
+                {
+                    item.Add("purchase_date", purchaseDateTextBox.Text);
+                }
+                if (!String.IsNullOrWhiteSpace(placementDateTextBox.Text))
+                {
+                    item.Add("placement_date", placementDateTextBox.Text);
+                }
+                if (!String.IsNullOrWhiteSpace(serviceEndTextBox.Text))
+                {
+                    item.Add("servise_end_date", serviceEndTextBox.Text);
+                }
+                BsonArray attr = new BsonArray();
+                for (int i = 0; i < configurationDataGridView.Rows.Count; ++i)
+                {
+                    bool compulsory = false;
+                    string atr = (string)configurationDataGridView.Rows[i].Cells[0].Value;
+                    if (atr.LastIndexOf('*') == (atr.Length - 1))
+                    {
+                        compulsory = true;
+                        atr.Remove(atr.Length - 2);
+                    }
+                    attr.Add(new BsonDocument{ { "attr_name", atr},{"value", (string)configurationDataGridView.Rows[i].Cells[1].Value}, {"compulsory",compulsory}});
+                }
+                item.Add("attr", attr);
+                DatabaseManager.GetDataCollection("equipments").Insert(item);
+                MessageBox.Show("Обладнання успішно додане до бази даних!", "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
             }
         }
 

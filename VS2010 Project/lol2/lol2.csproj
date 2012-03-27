@@ -74,6 +74,12 @@
       <DependentUpon>CalendarPlan.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseManager.cs" />
+    <Compile Include="DetailedInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedInfo.Designer.cs">
+      <DependentUpon>DetailedInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeviceTemplateEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CalendarPlan.resx">
       <DependentUpon>CalendarPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedInfo.resx">
+      <DependentUpon>DetailedInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeviceTemplateEditor.resx">
       <DependentUpon>DeviceTemplateEditor.cs</DependentUpon>

@@ -146,8 +146,27 @@ namespace lol2
         {
             AddingString childFormAddingParameterType = new AddingString("Введіть назву нового параметру");
             childFormAddingParameterType.ShowDialog();
-            if (childFormAddingParameterType.parameterName != null)
+            bool noContains = true;
+            for (int i = 0; i < configurationDataGridView.Rows.Count; ++i)
+            {
+                if ((string)configurationDataGridView.Rows[i].Cells[0].Value == childFormAddingParameterType.parameterName)
+                {
+                    noContains = false;
+                }
+            }
+            if (!String.IsNullOrWhiteSpace(childFormAddingParameterType.parameterName) && noContains)
+            {
                 configurationDataGridView.Rows.Add(childFormAddingParameterType.parameterName, false);
+            }
+            else if (noContains == false)
+            {
+                MessageBox.Show("Атрибут " + childFormAddingParameterType.parameterName + " уже присутній", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (childFormAddingParameterType.parameterName != null)
+            {
+                MessageBox.Show("Оберіть атрибут або додайте новий", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void typeSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -164,14 +183,21 @@ namespace lol2
         {
             AddingString childFormAddingParameterType = new AddingString("Введіть назву нового типу обладнання");
             childFormAddingParameterType.ShowDialog();
-            if (childFormAddingParameterType.parameterName != null)
+            if ( !String.IsNullOrWhiteSpace( childFormAddingParameterType.parameterName ))
             {
-                initialTemplateName = childFormAddingParameterType.parameterName;
-                typeNameTextBox.Text = initialTemplateName;
-                TypeEditingActive = true;
-                configurationDataGridView.Rows.Clear();
-                typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.Add(initialTemplateName);
-                DatabaseManager.GetDataCollection("equipment_types").Insert(new BsonDocument { { "name", initialTemplateName }, { "attr", new BsonArray() } });
+                if (typeSelectionComboBox.Items.Contains(childFormAddingParameterType.parameterName))
+                {
+                    MessageBox.Show("Тип з таким ім'ям уже існує!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    initialTemplateName = childFormAddingParameterType.parameterName;
+                    typeNameTextBox.Text = initialTemplateName;
+                    TypeEditingActive = true;
+                    configurationDataGridView.Rows.Clear();
+                    typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.Add(initialTemplateName);
+                    DatabaseManager.GetDataCollection("equipment_types").Insert(new BsonDocument { { "name", initialTemplateName }, { "attr", new BsonArray() } });
+                }
             }
         }
 
