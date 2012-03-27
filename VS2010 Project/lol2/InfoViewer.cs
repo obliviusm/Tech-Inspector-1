@@ -115,7 +115,7 @@ namespace lol2
             }
             for (int i = 0; i < showrows.Count; ++i)
             {
-                string inventory_number = (string)infosDataGridView.Rows[i].Cells[0].Value;
+                string inventory_number = (string)infosDataGridView.Rows[showrows[i]].Cells[0].Value;
                 DetailedInfo det_info = new DetailedInfo(inventory_number);
                 det_info.Show();
             }

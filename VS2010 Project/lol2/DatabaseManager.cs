@@ -13,7 +13,6 @@ namespace lol2
         
         static MongoServer server;
         static MongoDatabase database;
-        public static MongoCollection EquipmentTypes { get; private set; }
 
         #endregion
         #region Public Methods
@@ -22,7 +21,6 @@ namespace lol2
         {
             server = MongoServer.Create(); // connect to localhost
             database = server[db_name];
-            EquipmentTypes = DatabaseManager.GetDataCollection("equipment_types");
         }
         public static MongoCollection<BsonDocument> GetDataCollection(string colection_name)
         {
