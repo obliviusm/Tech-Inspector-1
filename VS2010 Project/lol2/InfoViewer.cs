@@ -120,5 +120,15 @@ namespace lol2
                 det_info.Show();
             }
         }
+
+        private void InfoViewer_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void typeSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

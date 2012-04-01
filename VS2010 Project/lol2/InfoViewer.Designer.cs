@@ -420,19 +420,19 @@
             // версіяToolStripMenuItem
             // 
             this.версіяToolStripMenuItem.Name = "версіяToolStripMenuItem";
-            this.версіяToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.версіяToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.версіяToolStripMenuItem.Text = "&Версія";
             // 
             // розробникиToolStripMenuItem
             // 
             this.розробникиToolStripMenuItem.Name = "розробникиToolStripMenuItem";
-            this.розробникиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.розробникиToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.розробникиToolStripMenuItem.Text = "&Розробники";
             // 
             // ліцензіяToolStripMenuItem
             // 
             this.ліцензіяToolStripMenuItem.Name = "ліцензіяToolStripMenuItem";
-            this.ліцензіяToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ліцензіяToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.ліцензіяToolStripMenuItem.Text = "&Ліцензія";
             // 
             // infosDataGridView
@@ -570,6 +570,7 @@
             this.typeSelectionComboBox.Name = "typeSelectionComboBox";
             this.typeSelectionComboBox.Size = new System.Drawing.Size(152, 21);
             this.typeSelectionComboBox.TabIndex = 23;
+            this.typeSelectionComboBox.SelectedIndexChanged += new System.EventHandler(this.typeSelectionComboBox_SelectedIndexChanged);
             // 
             // locationLabel
             // 
@@ -610,6 +611,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "InfoViewer";
             this.Text = "Інформація про наявне обладнання";
+            this.Load += new System.EventHandler(this.InfoViewer_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).EndInit();

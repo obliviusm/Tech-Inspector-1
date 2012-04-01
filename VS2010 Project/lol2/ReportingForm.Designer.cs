@@ -53,10 +53,10 @@
             this.розробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ліцензіяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportSettings = new System.Windows.Forms.GroupBox();
+            this.saveDocButton = new System.Windows.Forms.Button();
             this.documentTypeLabel = new System.Windows.Forms.Label();
             this.docTypesComboBox = new System.Windows.Forms.ComboBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.saveDocButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.reportSettings.SuspendLayout();
             this.SuspendLayout();
@@ -242,10 +242,21 @@
             this.reportSettings.Controls.Add(this.docTypesComboBox);
             this.reportSettings.Location = new System.Drawing.Point(13, 28);
             this.reportSettings.Name = "reportSettings";
-            this.reportSettings.Size = new System.Drawing.Size(186, 112);
+            this.reportSettings.Size = new System.Drawing.Size(796, 112);
             this.reportSettings.TabIndex = 2;
             this.reportSettings.TabStop = false;
             this.reportSettings.Text = "Налаштування документу";
+            // 
+            // saveDocButton
+            // 
+            this.saveDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveDocButton.Location = new System.Drawing.Point(6, 69);
+            this.saveDocButton.Name = "saveDocButton";
+            this.saveDocButton.Size = new System.Drawing.Size(173, 34);
+            this.saveDocButton.TabIndex = 2;
+            this.saveDocButton.Text = "Зберегти";
+            this.saveDocButton.UseVisualStyleBackColor = true;
+            this.saveDocButton.Click += new System.EventHandler(this.saveDocButton_Click);
             // 
             // documentTypeLabel
             // 
@@ -267,30 +278,20 @@
             "Прийомні акти"});
             this.docTypesComboBox.Location = new System.Drawing.Point(6, 41);
             this.docTypesComboBox.Name = "docTypesComboBox";
-            this.docTypesComboBox.Size = new System.Drawing.Size(173, 21);
+            this.docTypesComboBox.Size = new System.Drawing.Size(769, 21);
             this.docTypesComboBox.TabIndex = 0;
             this.docTypesComboBox.SelectedIndexChanged += new System.EventHandler(this.docTypesComboBox_SelectedIndexChanged);
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(206, 37);
+            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser1.Location = new System.Drawing.Point(205, 132);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(626, 436);
+            this.webBrowser1.Size = new System.Drawing.Size(627, 341);
             this.webBrowser1.TabIndex = 3;
-            // 
-            // saveDocButton
-            // 
-            this.saveDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveDocButton.Location = new System.Drawing.Point(6, 69);
-            this.saveDocButton.Name = "saveDocButton";
-            this.saveDocButton.Size = new System.Drawing.Size(173, 34);
-            this.saveDocButton.TabIndex = 2;
-            this.saveDocButton.Text = "Зберегти";
-            this.saveDocButton.UseVisualStyleBackColor = true;
             // 
             // ReportingForm
             // 
@@ -341,7 +342,7 @@
         private System.Windows.Forms.GroupBox reportSettings;
         private System.Windows.Forms.ComboBox docTypesComboBox;
         private System.Windows.Forms.Label documentTypeLabel;
-        private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button saveDocButton;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }

@@ -8,12 +8,15 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection; 
 
 namespace lol2
 {
     public partial class ReportingForm : Form
     {
-        private Object oDocument; 
 
         public ReportingForm()
         {
@@ -29,6 +32,68 @@ namespace lol2
         private void docTypesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             webBrowser1.Navigate(Path.GetFullPath("DATA\\samples\\"+docTypesComboBox.Text+".mht"));
+        }
+
+        private void saveDocButton_Click(object sender, EventArgs e)
+        {
+            GeneralReport();
+        }
+        public void GeneralReport()
+        {
+            Excel.Application oXL;
+            Excel._Workbook oWB;
+            Excel._Worksheet oSheet;
+            Excel.Range oRng;
+
+            try
+            {
+                oXL = new Excel.Application();
+                //Get a new workbook.
+                oWB = (Excel._Workbook)(oXL.Workbooks.Open(Path.GetFullPath("DATA\\samples\\Savs.xlsx"), 0, true, 5,
+                    "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, 
+                    false, 0, true, 1, 0));
+                oSheet = (Excel._Worksheet)oWB.Worksheets.get_Item(1);
+                //take computers from DB
+                QueryDocument query = new QueryDocument();
+                query.Add("type", "Комп'ютер");
+                int i = 0;
+                foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipments").Find(query))
+                {
+                    String location = (string)item["location"],
+                        processor = "", 
+                            RAM = "", 
+                            HDD = "";
+                    BsonArray attr = item["attr"].AsBsonArray;
+                    foreach (BsonDocument j in attr)
+                        if ((string)j["attr_name"] == "Процесор*") processor = (string)j["value"];
+                        else if ((string)j["attr_name"] == "RAM*") RAM = (string)j["value"];
+                        else if ((string)j["attr_name"] == "HDD*") HDD = (string)j["value"];
+                    //write computers to Excel
+                    oSheet.Cells[15 + i, 5] = processor + " \\ " + RAM + " \\ " + HDD;
+                    oSheet.Cells[15 + i, 7] = location;
+
+                    ++i;
+                }
+                //save xls and quit
+                String path = Path.GetFullPath("DATA\\docs") + "\\Savs" + DateTime.Now.ToLongTimeString().Replace(":","") + ".xls";
+                oWB.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, 
+                    Missing.Value, Missing.Value, Missing.Value, Missing.Value, 
+                    Excel.XlSaveAsAccessMode.xlExclusive, Missing.Value, Missing.Value, 
+                    Missing.Value, Missing.Value, Missing.Value);
+                oWB.Close(true, Missing.Value, Missing.Value);
+                oXL.Quit();
+                MessageBox.Show("Document Savs" + DateTime.Now + " has been saved to " + path);
+            }
+            catch (Exception theException)
+            {
+                String errorMessage;
+                errorMessage = "Error: ";
+                errorMessage = String.Concat(errorMessage, theException.Message);
+                errorMessage = String.Concat(errorMessage, " Line: ");
+                errorMessage = String.Concat(errorMessage, theException.Source);
+
+                MessageBox.Show(errorMessage, "Error");
+            }
         }
     }
 }
