@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 using System.IO;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using Excel = Microsoft.Office.Interop.Excel;
+using MyExcel = Microsoft.Office.Interop.Excel;
 using System.Reflection; 
 
 namespace lol2
@@ -40,19 +40,19 @@ namespace lol2
         }
         public void GeneralReport()
         {
-            Excel.Application oXL;
-            Excel._Workbook oWB;
-            Excel._Worksheet oSheet;
-            Excel.Range oRng;
+            MyExcel.Application oXL;
+            MyExcel._Workbook oWB;
+            MyExcel._Worksheet oSheet;
+            MyExcel.Range oRng;
 
             try
             {
-                oXL = new Excel.Application();
+                oXL = new MyExcel.Application();
                 //Get a new workbook.
-                oWB = (Excel._Workbook)(oXL.Workbooks.Open(Path.GetFullPath("DATA\\samples\\Savs.xlsx"), 0, true, 5,
+                oWB = (MyExcel._Workbook)(oXL.Workbooks.Open(Path.GetFullPath("DATA\\samples\\Savs.xlsx"), 0, true, 5,
                     "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, 
                     false, 0, true, 1, 0));
-                oSheet = (Excel._Worksheet)oWB.Worksheets.get_Item(1);
+                oSheet = (MyExcel._Worksheet)oWB.Worksheets.get_Item(1);
                 //take computers from DB
                 QueryDocument query = new QueryDocument();
                 query.Add("type", "Комп'ютер");
@@ -76,9 +76,9 @@ namespace lol2
                 }
                 //save xls and quit
                 String path = Path.GetFullPath("DATA\\docs") + "\\Savs" + DateTime.Now.ToLongTimeString().Replace(":","") + ".xls";
-                oWB.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, 
+                oWB.SaveAs(path, MyExcel.XlFileFormat.xlWorkbookNormal, 
                     Missing.Value, Missing.Value, Missing.Value, Missing.Value, 
-                    Excel.XlSaveAsAccessMode.xlExclusive, Missing.Value, Missing.Value, 
+                    MyExcel.XlSaveAsAccessMode.xlExclusive, Missing.Value, Missing.Value, 
                     Missing.Value, Missing.Value, Missing.Value);
                 oWB.Close(true, Missing.Value, Missing.Value);
                 oXL.Quit();
