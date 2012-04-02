@@ -244,7 +244,7 @@ namespace lol2
                 item.Add("attr", attr);
                 DatabaseManager.GetDataCollection("equipments").Insert(item);
                 MessageBox.Show("Обладнання успішно додане до бази даних!", "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Close();
+                //Close();
             }
         }
 
