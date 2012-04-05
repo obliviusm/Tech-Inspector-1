@@ -22,7 +22,7 @@ namespace lol2
         public ReportingForm()
         {
             InitializeComponent();
-            
+            webBrowser1.Navigate(Path.GetFullPath("DATA\\samples\\Savs.mht"));
         }
 
         private void ReportingForm_Load(object sender, EventArgs e)
@@ -32,14 +32,20 @@ namespace lol2
 
         private void docTypesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            webBrowser1.Navigate(Path.GetFullPath("DATA\\samples\\"+docTypesComboBox.Text+".mht"));
+            //webBrowser1.Navigate(Path.GetFullPath("DATA\\samples\\"+docTypesComboBox.Text+".mht"));
         }
 
         private void saveDocButton_Click(object sender, EventArgs e)
         {
-            GeneralReport();
+            SaveFileDialog file = new SaveFileDialog();
+            file.InitialDirectory = Path.GetFullPath("DATA\\docs");
+            file.Filter = "Excel File (*.xls)|*.xls|Все файлы (*.*)|*.*";
+            file.FileName = "Savchenko.xls";
+            file.ShowDialog();
+            if( file.FileName != "" )
+                GeneralReport( file.FileName );
         }
-        public void GeneralReport()
+        public void GeneralReport( String filename)
         {
             MyExcel.Application oXL;
             MyExcel._Workbook oWB;
@@ -75,16 +81,12 @@ namespace lol2
                             else if ((string)j["attr_name"] == "RAM*") RAM = (string)j["value"];
                             else if ((string)j["attr_name"] == "HDD*") HDD = (string)j["value"];
                         //write computers to Excel
-                        //oSheet.Cells[15 + i, 5] = processor + " / " + RAM + " / " + HDD;
-                        //oSheet.Cells[15 + i, 7] = location;
                         cells[i] = processor + " / " + RAM + " / " + HDD;
                         ++i;
                     }
                     if (i != 0)
                     {
                         String[] cells2 = cells.Distinct().ToArray();
-                        //int[] size = new int[cells2.Length];
-                        //if()
                         for (int k = 0; k < cells2.Length - 1; ++k )
                         {
                             int size = 0;
@@ -101,19 +103,13 @@ namespace lol2
                         sheet_num += cells2.Length - 1;
                     }
                 }
-                ////Apply borders to the Sales data and headers.
-                //oResizeRange = oWS.get_Range("E1", "E6").get_Resize(Missing.Value, iNumQtrs);
-                //oResizeRange.Borders.Weight = Excel.XlBorderWeight.xlThin;
-
-                //save xls and quit
-                String path = Path.GetFullPath("DATA\\docs") + "\\Savs" + DateTime.Now.ToLongTimeString().Replace(":","") + ".xls";
-                oWB.SaveAs(path, MyExcel.XlFileFormat.xlWorkbookNormal, 
+                oWB.SaveAs(filename, MyExcel.XlFileFormat.xlWorkbookNormal, 
                     Missing.Value, Missing.Value, Missing.Value, Missing.Value, 
                     MyExcel.XlSaveAsAccessMode.xlExclusive, Missing.Value, Missing.Value, 
                     Missing.Value, Missing.Value, Missing.Value);
                 oWB.Close(true, Missing.Value, Missing.Value);
                 oXL.Quit();
-                MessageBox.Show("Document Savs" + DateTime.Now + " has been saved to " + path);
+                MessageBox.Show("Document " + Path.GetFileName(filename) + " has been saved to " + filename);
             }
             catch (Exception theException)
             {

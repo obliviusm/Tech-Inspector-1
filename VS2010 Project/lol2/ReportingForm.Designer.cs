@@ -250,7 +250,7 @@
             // saveDocButton
             // 
             this.saveDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveDocButton.Location = new System.Drawing.Point(6, 69);
+            this.saveDocButton.Location = new System.Drawing.Point(602, 68);
             this.saveDocButton.Name = "saveDocButton";
             this.saveDocButton.Size = new System.Drawing.Size(173, 34);
             this.saveDocButton.TabIndex = 2;
@@ -271,11 +271,7 @@
             // 
             this.docTypesComboBox.FormattingEnabled = true;
             this.docTypesComboBox.Items.AddRange(new object[] {
-            "Акт списання",
-            "Акт прийняття-передачі",
-            "Заявка на довіреність",
-            "Заявка на оплату",
-            "Прийомні акти"});
+            "Звіт по обладнанню"});
             this.docTypesComboBox.Location = new System.Drawing.Point(6, 41);
             this.docTypesComboBox.Name = "docTypesComboBox";
             this.docTypesComboBox.Size = new System.Drawing.Size(769, 21);
@@ -287,10 +283,10 @@
             this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(205, 132);
+            this.webBrowser1.Location = new System.Drawing.Point(13, 147);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(627, 341);
+            this.webBrowser1.Size = new System.Drawing.Size(819, 333);
             this.webBrowser1.TabIndex = 3;
             // 
             // ReportingForm
