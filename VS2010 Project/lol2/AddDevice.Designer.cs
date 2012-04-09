@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.новийФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,18 +46,14 @@
             this.deviceNumberTextBox = new System.Windows.Forms.TextBox();
             this.deviceTypeLabel = new System.Windows.Forms.Label();
             this.typeSelectionComboBox = new System.Windows.Forms.ComboBox();
+            this.typesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
             this.configurationGroupBox = new System.Windows.Forms.GroupBox();
-            this.removeSelectedAttrButton = new System.Windows.Forms.Button();
-            this.addNewParameterButton = new System.Windows.Forms.Button();
-            this.addParameterButton = new System.Windows.Forms.Button();
-            this.addParameterComboBox = new System.Windows.Forms.ComboBox();
-            this.addParameterLabel = new System.Windows.Forms.Label();
             this.configurationDataGridView = new System.Windows.Forms.DataGridView();
-            this.parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saveChangesButton = new System.Windows.Forms.Button();
             this.locationLabel = new System.Windows.Forms.Label();
             this.locationComboBox = new System.Windows.Forms.ComboBox();
+            this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.priceLabel = new System.Windows.Forms.Label();
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.dateGroupBox = new System.Windows.Forms.GroupBox();
@@ -67,11 +64,25 @@
             this.placementDateLabel = new System.Windows.Forms.Label();
             this.purchaseDateLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.typesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.typesTableAdapter();
+            this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
+            this.attributesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.attributesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.attributesTableAdapter();
+            this.equipmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.equipmentsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipmentsTableAdapter();
+            this.equipmentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.equipments_has_attributesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipments_has_attributesTableAdapter();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
             this.configurationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurationDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
             this.dateGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.attributesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -200,84 +211,40 @@
             // 
             // typeSelectionComboBox
             // 
+            this.typeSelectionComboBox.DataSource = this.typesBindingSource;
+            this.typeSelectionComboBox.DisplayMember = "type_name";
             this.typeSelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeSelectionComboBox.FormattingEnabled = true;
-            this.typeSelectionComboBox.Location = new System.Drawing.Point(127, 48);
+            this.typeSelectionComboBox.Location = new System.Drawing.Point(127, 51);
             this.typeSelectionComboBox.Name = "typeSelectionComboBox";
             this.typeSelectionComboBox.Size = new System.Drawing.Size(152, 21);
             this.typeSelectionComboBox.TabIndex = 5;
-            this.typeSelectionComboBox.TextChanged += new System.EventHandler(this.typeSelectionComboBox_TextChanged);
+            this.typeSelectionComboBox.ValueMember = "type_id";
+            this.typeSelectionComboBox.SelectedIndexChanged += new System.EventHandler(this.typeSelectionComboBox_SelectedIndexChanged);
+            // 
+            // typesBindingSource
+            // 
+            this.typesBindingSource.DataMember = "types";
+            this.typesBindingSource.DataSource = this.tech_inspectorDataSet;
+            this.typesBindingSource.Sort = "type_id";
+            // 
+            // tech_inspectorDataSet
+            // 
+            this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
+            this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // configurationGroupBox
             // 
             this.configurationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.configurationGroupBox.Controls.Add(this.removeSelectedAttrButton);
-            this.configurationGroupBox.Controls.Add(this.addNewParameterButton);
-            this.configurationGroupBox.Controls.Add(this.addParameterButton);
-            this.configurationGroupBox.Controls.Add(this.addParameterComboBox);
-            this.configurationGroupBox.Controls.Add(this.addParameterLabel);
             this.configurationGroupBox.Controls.Add(this.configurationDataGridView);
-            this.configurationGroupBox.Location = new System.Drawing.Point(6, 237);
+            this.configurationGroupBox.Location = new System.Drawing.Point(6, 199);
             this.configurationGroupBox.Name = "configurationGroupBox";
             this.configurationGroupBox.Size = new System.Drawing.Size(674, 285);
             this.configurationGroupBox.TabIndex = 7;
             this.configurationGroupBox.TabStop = false;
             this.configurationGroupBox.Text = "Конфігурація обладнання";
-            // 
-            // removeSelectedAttrButton
-            // 
-            this.removeSelectedAttrButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.removeSelectedAttrButton.Location = new System.Drawing.Point(215, 240);
-            this.removeSelectedAttrButton.Name = "removeSelectedAttrButton";
-            this.removeSelectedAttrButton.Size = new System.Drawing.Size(193, 23);
-            this.removeSelectedAttrButton.TabIndex = 5;
-            this.removeSelectedAttrButton.Text = "Видалити виділений атрибут";
-            this.removeSelectedAttrButton.UseVisualStyleBackColor = true;
-            this.removeSelectedAttrButton.Click += new System.EventHandler(this.removeSelectedAttrButton_Click);
-            // 
-            // addNewParameterButton
-            // 
-            this.addNewParameterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addNewParameterButton.Location = new System.Drawing.Point(215, 213);
-            this.addNewParameterButton.Name = "addNewParameterButton";
-            this.addNewParameterButton.Size = new System.Drawing.Size(193, 23);
-            this.addNewParameterButton.TabIndex = 4;
-            this.addNewParameterButton.Text = "Додати новий атрибут";
-            this.addNewParameterButton.UseVisualStyleBackColor = true;
-            this.addNewParameterButton.Click += new System.EventHandler(this.addNewParameterButton_Click);
-            // 
-            // addParameterButton
-            // 
-            this.addParameterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addParameterButton.Location = new System.Drawing.Point(20, 240);
-            this.addParameterButton.Name = "addParameterButton";
-            this.addParameterButton.Size = new System.Drawing.Size(189, 23);
-            this.addParameterButton.TabIndex = 3;
-            this.addParameterButton.Text = "Додати вибраний атрибут";
-            this.addParameterButton.UseVisualStyleBackColor = true;
-            this.addParameterButton.Click += new System.EventHandler(this.addParameterButton_Click);
-            // 
-            // addParameterComboBox
-            // 
-            this.addParameterComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addParameterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.addParameterComboBox.FormattingEnabled = true;
-            this.addParameterComboBox.Location = new System.Drawing.Point(20, 213);
-            this.addParameterComboBox.Name = "addParameterComboBox";
-            this.addParameterComboBox.Size = new System.Drawing.Size(189, 21);
-            this.addParameterComboBox.TabIndex = 2;
-            // 
-            // addParameterLabel
-            // 
-            this.addParameterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addParameterLabel.AutoSize = true;
-            this.addParameterLabel.Location = new System.Drawing.Point(17, 196);
-            this.addParameterLabel.Name = "addParameterLabel";
-            this.addParameterLabel.Size = new System.Drawing.Size(93, 13);
-            this.addParameterLabel.TabIndex = 1;
-            this.addParameterLabel.Text = "Додати атрибут :";
             // 
             // configurationDataGridView
             // 
@@ -288,31 +255,17 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.configurationDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.configurationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.configurationDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.parameter,
-            this.value});
             this.configurationDataGridView.Location = new System.Drawing.Point(7, 19);
             this.configurationDataGridView.Name = "configurationDataGridView";
-            this.configurationDataGridView.Size = new System.Drawing.Size(661, 165);
+            this.configurationDataGridView.Size = new System.Drawing.Size(661, 260);
             this.configurationDataGridView.TabIndex = 0;
-            // 
-            // parameter
-            // 
-            this.parameter.HeaderText = "Атрибут";
-            this.parameter.Name = "parameter";
-            this.parameter.ReadOnly = true;
-            this.parameter.ToolTipText = "Атрибути притаманні поточному типу обладнання";
-            // 
-            // value
-            // 
-            this.value.HeaderText = "Значення";
-            this.value.Name = "value";
             // 
             // saveChangesButton
             // 
-            this.saveChangesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.saveChangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveChangesButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.saveChangesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveChangesButton.Location = new System.Drawing.Point(6, 194);
+            this.saveChangesButton.Location = new System.Drawing.Point(543, 490);
             this.saveChangesButton.Name = "saveChangesButton";
             this.saveChangesButton.Size = new System.Drawing.Size(132, 32);
             this.saveChangesButton.TabIndex = 17;
@@ -331,12 +284,20 @@
             // 
             // locationComboBox
             // 
+            this.locationComboBox.DataSource = this.locationsBindingSource;
+            this.locationComboBox.DisplayMember = "location_name";
             this.locationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.locationComboBox.FormattingEnabled = true;
             this.locationComboBox.Location = new System.Drawing.Point(127, 91);
             this.locationComboBox.Name = "locationComboBox";
             this.locationComboBox.Size = new System.Drawing.Size(152, 21);
             this.locationComboBox.TabIndex = 19;
+            this.locationComboBox.ValueMember = "location_id";
+            // 
+            // locationsBindingSource
+            // 
+            this.locationsBindingSource.DataMember = "locations";
+            this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
             // 
             // priceLabel
             // 
@@ -431,15 +392,50 @@
             this.groupBox1.Controls.Add(this.deviceNumberTextBox);
             this.groupBox1.Controls.Add(this.priceLabel);
             this.groupBox1.Controls.Add(this.deviceTypeLabel);
-            this.groupBox1.Controls.Add(this.locationComboBox);
             this.groupBox1.Controls.Add(this.typeSelectionComboBox);
+            this.groupBox1.Controls.Add(this.locationComboBox);
             this.groupBox1.Controls.Add(this.locationLabel);
             this.groupBox1.Location = new System.Drawing.Point(6, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 155);
+            this.groupBox1.Size = new System.Drawing.Size(299, 160);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Загальна інформація";
+            // 
+            // typesTableAdapter
+            // 
+            this.typesTableAdapter.ClearBeforeFill = true;
+            // 
+            // locationsTableAdapter
+            // 
+            this.locationsTableAdapter.ClearBeforeFill = true;
+            // 
+            // attributesBindingSource
+            // 
+            this.attributesBindingSource.DataMember = "attributes";
+            this.attributesBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // attributesTableAdapter
+            // 
+            this.attributesTableAdapter.ClearBeforeFill = true;
+            // 
+            // equipmentsBindingSource
+            // 
+            this.equipmentsBindingSource.DataMember = "equipments";
+            this.equipmentsBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // equipmentsTableAdapter
+            // 
+            this.equipmentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // equipmentsBindingSource1
+            // 
+            this.equipmentsBindingSource1.DataMember = "equipments";
+            this.equipmentsBindingSource1.DataSource = this.tech_inspectorDataSet;
+            // 
+            // equipments_has_attributesTableAdapter
+            // 
+            this.equipments_has_attributesTableAdapter.ClearBeforeFill = true;
             // 
             // AddDevice
             // 
@@ -456,13 +452,18 @@
             this.Load += new System.EventHandler(this.AddDevice_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();
             this.configurationGroupBox.ResumeLayout(false);
-            this.configurationGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurationDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).EndInit();
             this.dateGroupBox.ResumeLayout(false);
             this.dateGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.attributesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,15 +489,8 @@
         private System.Windows.Forms.ComboBox typeSelectionComboBox;
         private System.Windows.Forms.GroupBox configurationGroupBox;
         private System.Windows.Forms.DataGridView configurationDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn parameter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn value;
-        private System.Windows.Forms.Button addParameterButton;
-        private System.Windows.Forms.ComboBox addParameterComboBox;
-        private System.Windows.Forms.Label addParameterLabel;
-        private System.Windows.Forms.Button addNewParameterButton;
         private System.Windows.Forms.Button saveChangesButton;
         private System.Windows.Forms.ToolStripMenuItem редагуватиТипиОбладнанняToolStripMenuItem;
-        private System.Windows.Forms.Button removeSelectedAttrButton;
         private System.Windows.Forms.Label locationLabel;
         private System.Windows.Forms.ComboBox locationComboBox;
         private System.Windows.Forms.Label priceLabel;
@@ -509,5 +503,19 @@
         private System.Windows.Forms.MaskedTextBox placementDateTextBox;
         private System.Windows.Forms.MaskedTextBox purchaseDateTextBox;
         private System.Windows.Forms.GroupBox groupBox1;
+        private tech_inspectorDataSet tech_inspectorDataSet;
+        private System.Windows.Forms.BindingSource typesBindingSource;
+        private tech_inspectorDataSetTableAdapters.typesTableAdapter typesTableAdapter;
+        private System.Windows.Forms.BindingSource locationsBindingSource;
+        private tech_inspectorDataSetTableAdapters.locationsTableAdapter locationsTableAdapter;
+        private System.Windows.Forms.BindingSource attributesBindingSource;
+        private tech_inspectorDataSetTableAdapters.attributesTableAdapter attributesTableAdapter;
+        private System.Windows.Forms.BindingSource equipmentsBindingSource;
+        private tech_inspectorDataSetTableAdapters.equipmentsTableAdapter equipmentsTableAdapter;
+        private System.Windows.Forms.BindingSource equipmentsBindingSource1;
+        /// <summary>
+        /// /////////////////
+        /// </summary>
+        private tech_inspectorDataSetTableAdapters.equipments_has_attributesTableAdapter equipments_has_attributesTableAdapter;
     }
 }

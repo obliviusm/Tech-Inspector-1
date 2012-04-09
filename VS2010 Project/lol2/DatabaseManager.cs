@@ -2,29 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MongoDB.Bson;
-using MongoDB.Driver;
+
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace lol2
 {
     public static class DatabaseManager
     {
         #region Declarations
-        
-        static MongoServer server;
-        static MongoDatabase database;
+
+        static MySqlConnection Connection;
 
         #endregion
+
         #region Public Methods
         
         public static void Initialize(string db_name)
         {
-            server = MongoServer.Create(); // connect to localhost
-            database = server[db_name];
-        }
-        public static MongoCollection<BsonDocument> GetDataCollection(string colection_name)
-        {
-            return database.GetCollection<BsonDocument>(colection_name);
+            string connStr = "server=localhost;user=root;database="+db_name+";port=3306;password=1111;";
+            Connection = new MySqlConnection(connStr);
+            Connection.Open();
         }
 
         #endregion

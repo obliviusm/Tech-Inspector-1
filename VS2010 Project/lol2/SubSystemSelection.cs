@@ -14,8 +14,6 @@ namespace lol2
         public SubSystemSelection()
         {
             InitializeComponent();
-            // Initialize DB
-            DatabaseManager.Initialize("tech_inspector");
         }
 
         private void button1_Click(object sender, EventArgs e)

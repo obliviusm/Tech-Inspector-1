@@ -6,8 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using MongoDB.Bson;
-using MongoDB.Driver;
+
+using MySql.Data;
+using MySql.Data.MySqlClient;
+
 
 namespace lol2
 {
@@ -32,56 +34,56 @@ namespace lol2
         public DeviceTemplateEditor()
         {
             InitializeComponent();
-            TypeEditingActive = false;
-            chooseTypeButton.Enabled = false;
-            configurationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            // Load types of equipment from DB to ComboBox
-            foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipment_types").Find(new QueryDocument()))
-            {
-                typeSelectionComboBox.Items.Add((string)item["name"]);
-            } 
+            //TypeEditingActive = false;
+            //chooseTypeButton.Enabled = false;
+            //configurationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //// Load types of equipment from DB to ComboBox
+            //foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipment_types").Find(new QueryDocument()))
+            //{
+            //    typeSelectionComboBox.Items.Add((string)item["name"]);
+            //} 
         }
 
         public DeviceTemplateEditor(string editType)
         {
             InitializeComponent();
-            TypeEditingActive = false;
-            chooseTypeButton.Enabled = false;
-            configurationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            // Load types of equipment from DB to ComboBox
-            foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipment_types").Find(new QueryDocument()))
-            {
-                typeSelectionComboBox.Items.Add((string)item["name"]);
-            }
-            if (typeSelectionComboBox.Items.IndexOf(editType) > -1)
-            {
-                typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.IndexOf(editType);
-                TypeEditingActive = true;
-                chooseTypeButton.Enabled = true;
-                LoadAttrToDataGrid(editType);
-                typeNameTextBox.Text = editType;
-            }
+            //TypeEditingActive = false;
+            //chooseTypeButton.Enabled = false;
+            //configurationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //// Load types of equipment from DB to ComboBox
+            //foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipment_types").Find(new QueryDocument()))
+            //{
+            //    typeSelectionComboBox.Items.Add((string)item["name"]);
+            //}
+            //if (typeSelectionComboBox.Items.IndexOf(editType) > -1)
+            //{
+            //    typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.IndexOf(editType);
+            //    TypeEditingActive = true;
+            //    chooseTypeButton.Enabled = true;
+            //    LoadAttrToDataGrid(editType);
+            //    typeNameTextBox.Text = editType;
+            //}
         }
 
         private void LoadAttrToDataGrid(string type)
         {
-            // Clear available data
-            configurationDataGridView.Rows.Clear();
-            // Get elements of Array with attributes for current type of equipment
-            var attr_arr = DatabaseManager.GetDataCollection("equipment_types").FindOne(new QueryDocument { { "name", type } })["attr"];
-            if (attr_arr.IsBsonArray)
-            {
-                foreach (BsonDocument item in attr_arr.AsBsonArray)
-                {
-                    if (item["compulsory"].AsBoolean)
-                        configurationDataGridView.Rows.Add((string)item["attr_name"], true);
-                    else
-                    {
-                        //if not compulsory
-                        configurationDataGridView.Rows.Add((string)item["attr_name"], false);
-                    }
-                }
-            }
+            //// Clear available data
+            //configurationDataGridView.Rows.Clear();
+            //// Get elements of Array with attributes for current type of equipment
+            //var attr_arr = DatabaseManager.GetDataCollection("equipment_types").FindOne(new QueryDocument { { "name", type } })["attr"];
+            //if (attr_arr.IsBsonArray)
+            //{
+            //    foreach (BsonDocument item in attr_arr.AsBsonArray)
+            //    {
+            //        if (item["compulsory"].AsBoolean)
+            //            configurationDataGridView.Rows.Add((string)item["attr_name"], true);
+            //        else
+            //        {
+            //            //if not compulsory
+            //            configurationDataGridView.Rows.Add((string)item["attr_name"], false);
+            //        }
+            //    }
+            //}
         }
 
         private string GetSelectedRowNames()
@@ -116,25 +118,25 @@ namespace lol2
 
         private void saveChangesButton_Click(object sender, EventArgs e)
         {
-            if (typeNameTextBox.Text == "")
-                MessageBox.Show("Поле назви типу не заповнене", "Помилка", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if (configurationDataGridView.Rows.Count < 1)
-                MessageBox.Show("Таблиця атрибутів не може бути пустою", "Помилка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-            {
-                initialTemplateName = typeNameTextBox.Text;
-                BsonDocument type = new BsonDocument("name", typeNameTextBox.Text);
-                BsonArray attr = new BsonArray();
-                for(int i=0; i< configurationDataGridView.Rows.Count; ++i)
-                {
-                    attr.Add(new BsonDocument{ {"attr_name", (string)configurationDataGridView.Rows[i].Cells[0].Value},
-                        {"compulsory",(bool)configurationDataGridView.Rows[i].Cells[1].Value}});
-                }
-                type.Add("attr", attr);
-                DatabaseManager.GetDataCollection("equipment_types").Update(new QueryDocument(new BsonDocument("name", initialTemplateName)), new UpdateDocument(type));
-            }
+            //if (typeNameTextBox.Text == "")
+            //    MessageBox.Show("Поле назви типу не заповнене", "Помилка", 
+            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //else if (configurationDataGridView.Rows.Count < 1)
+            //    MessageBox.Show("Таблиця атрибутів не може бути пустою", "Помилка",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //else
+            //{
+            //    initialTemplateName = typeNameTextBox.Text;
+            //    BsonDocument type = new BsonDocument("name", typeNameTextBox.Text);
+            //    BsonArray attr = new BsonArray();
+            //    for(int i=0; i< configurationDataGridView.Rows.Count; ++i)
+            //    {
+            //        attr.Add(new BsonDocument{ {"attr_name", (string)configurationDataGridView.Rows[i].Cells[0].Value},
+            //            {"compulsory",(bool)configurationDataGridView.Rows[i].Cells[1].Value}});
+            //    }
+            //    type.Add("attr", attr);
+            //    DatabaseManager.GetDataCollection("equipment_types").Update(new QueryDocument(new BsonDocument("name", initialTemplateName)), new UpdateDocument(type));
+            //}
         }
 
         private void configurationDataGridView_SelectionChanged(object sender, EventArgs e)
@@ -181,24 +183,24 @@ namespace lol2
 
         private void newTypeButton_Click(object sender, EventArgs e)
         {
-            AddingString childFormAddingParameterType = new AddingString("Введіть назву нового типу обладнання");
-            childFormAddingParameterType.ShowDialog();
-            if ( !String.IsNullOrWhiteSpace( childFormAddingParameterType.parameterName ))
-            {
-                if (typeSelectionComboBox.Items.Contains(childFormAddingParameterType.parameterName))
-                {
-                    MessageBox.Show("Тип з таким ім'ям уже існує!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    initialTemplateName = childFormAddingParameterType.parameterName;
-                    typeNameTextBox.Text = initialTemplateName;
-                    TypeEditingActive = true;
-                    configurationDataGridView.Rows.Clear();
-                    typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.Add(initialTemplateName);
-                    DatabaseManager.GetDataCollection("equipment_types").Insert(new BsonDocument { { "name", initialTemplateName }, { "attr", new BsonArray() } });
-                }
-            }
+            //AddingString childFormAddingParameterType = new AddingString("Введіть назву нового типу обладнання");
+            //childFormAddingParameterType.ShowDialog();
+            //if ( !String.IsNullOrWhiteSpace( childFormAddingParameterType.parameterName ))
+            //{
+            //    if (typeSelectionComboBox.Items.Contains(childFormAddingParameterType.parameterName))
+            //    {
+            //        MessageBox.Show("Тип з таким ім'ям уже існує!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //    else
+            //    {
+            //        initialTemplateName = childFormAddingParameterType.parameterName;
+            //        typeNameTextBox.Text = initialTemplateName;
+            //        TypeEditingActive = true;
+            //        configurationDataGridView.Rows.Clear();
+            //        typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.Add(initialTemplateName);
+            //        DatabaseManager.GetDataCollection("equipment_types").Insert(new BsonDocument { { "name", initialTemplateName }, { "attr", new BsonArray() } });
+            //    }
+            //}
         }
 
         private void chooseTypeButton_Click(object sender, EventArgs e)
@@ -214,16 +216,16 @@ namespace lol2
 
         private void removeTypeButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Ви дійсно бажаєте видалити вибраний шаблон з бази даних ?", "Попередження",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                DatabaseManager.GetDataCollection("equipment_types").Remove(new QueryDocument(new BsonDocument("name", initialTemplateName)));
-                typeNameTextBox.Text = "";
-                configurationDataGridView.Rows.Clear();
-                TypeEditingActive = false;
-                typeSelectionComboBox.Items.Remove(initialTemplateName);
-                typeSelectionComboBox.SelectedIndex = -1;
-            }
+            //if (MessageBox.Show("Ви дійсно бажаєте видалити вибраний шаблон з бази даних ?", "Попередження",
+            //    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            //{
+            //    DatabaseManager.GetDataCollection("equipment_types").Remove(new QueryDocument(new BsonDocument("name", initialTemplateName)));
+            //    typeNameTextBox.Text = "";
+            //    configurationDataGridView.Rows.Clear();
+            //    TypeEditingActive = false;
+            //    typeSelectionComboBox.Items.Remove(initialTemplateName);
+            //    typeSelectionComboBox.SelectedIndex = -1;
+            //}
         }
 
         private void abortChangesButton_Click(object sender, EventArgs e)
