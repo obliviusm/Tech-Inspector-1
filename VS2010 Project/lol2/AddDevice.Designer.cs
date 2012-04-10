@@ -57,10 +57,7 @@
             this.priceLabel = new System.Windows.Forms.Label();
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.dateGroupBox = new System.Windows.Forms.GroupBox();
-            this.serviceEndTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.placementDateTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.purchaseDateTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.warrantyEndLabel = new System.Windows.Forms.Label();
+            this.warrantyEndDateLabel = new System.Windows.Forms.Label();
             this.placementDateLabel = new System.Windows.Forms.Label();
             this.purchaseDateLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -70,8 +67,14 @@
             this.attributesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.attributesTableAdapter();
             this.equipmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.equipmentsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipmentsTableAdapter();
-            this.equipmentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.equipments_has_attributesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipments_has_attributesTableAdapter();
+            this.purchaseDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.placementDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.warrantyEndDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.stateSelectComboBox = new System.Windows.Forms.ComboBox();
+            this.stateSelectLabel = new System.Windows.Forms.Label();
+            this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.statesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.statesTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
@@ -82,7 +85,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.attributesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -187,7 +190,7 @@
             // 
             this.deviceNumberLabel.AutoSize = true;
             this.deviceNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deviceNumberLabel.Location = new System.Drawing.Point(11, 22);
+            this.deviceNumberLabel.Location = new System.Drawing.Point(14, 22);
             this.deviceNumberLabel.Name = "deviceNumberLabel";
             this.deviceNumberLabel.Size = new System.Drawing.Size(114, 13);
             this.deviceNumberLabel.TabIndex = 2;
@@ -203,7 +206,7 @@
             // deviceTypeLabel
             // 
             this.deviceTypeLabel.AutoSize = true;
-            this.deviceTypeLabel.Location = new System.Drawing.Point(11, 51);
+            this.deviceTypeLabel.Location = new System.Drawing.Point(14, 48);
             this.deviceTypeLabel.Name = "deviceTypeLabel";
             this.deviceTypeLabel.Size = new System.Drawing.Size(99, 13);
             this.deviceTypeLabel.TabIndex = 4;
@@ -215,7 +218,7 @@
             this.typeSelectionComboBox.DisplayMember = "type_name";
             this.typeSelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeSelectionComboBox.FormattingEnabled = true;
-            this.typeSelectionComboBox.Location = new System.Drawing.Point(127, 51);
+            this.typeSelectionComboBox.Location = new System.Drawing.Point(127, 45);
             this.typeSelectionComboBox.Name = "typeSelectionComboBox";
             this.typeSelectionComboBox.Size = new System.Drawing.Size(152, 21);
             this.typeSelectionComboBox.TabIndex = 5;
@@ -239,9 +242,9 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.configurationGroupBox.Controls.Add(this.configurationDataGridView);
-            this.configurationGroupBox.Location = new System.Drawing.Point(6, 199);
+            this.configurationGroupBox.Location = new System.Drawing.Point(6, 192);
             this.configurationGroupBox.Name = "configurationGroupBox";
-            this.configurationGroupBox.Size = new System.Drawing.Size(674, 285);
+            this.configurationGroupBox.Size = new System.Drawing.Size(674, 292);
             this.configurationGroupBox.TabIndex = 7;
             this.configurationGroupBox.TabStop = false;
             this.configurationGroupBox.Text = "Конфігурація обладнання";
@@ -257,7 +260,7 @@
             this.configurationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.configurationDataGridView.Location = new System.Drawing.Point(7, 19);
             this.configurationDataGridView.Name = "configurationDataGridView";
-            this.configurationDataGridView.Size = new System.Drawing.Size(661, 260);
+            this.configurationDataGridView.Size = new System.Drawing.Size(661, 267);
             this.configurationDataGridView.TabIndex = 0;
             // 
             // saveChangesButton
@@ -276,7 +279,7 @@
             // locationLabel
             // 
             this.locationLabel.AutoSize = true;
-            this.locationLabel.Location = new System.Drawing.Point(11, 94);
+            this.locationLabel.Location = new System.Drawing.Point(14, 75);
             this.locationLabel.Name = "locationLabel";
             this.locationLabel.Size = new System.Drawing.Size(90, 13);
             this.locationLabel.TabIndex = 18;
@@ -288,7 +291,7 @@
             this.locationComboBox.DisplayMember = "location_name";
             this.locationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.locationComboBox.FormattingEnabled = true;
-            this.locationComboBox.Location = new System.Drawing.Point(127, 91);
+            this.locationComboBox.Location = new System.Drawing.Point(127, 72);
             this.locationComboBox.Name = "locationComboBox";
             this.locationComboBox.Size = new System.Drawing.Size(152, 21);
             this.locationComboBox.TabIndex = 19;
@@ -302,7 +305,7 @@
             // priceLabel
             // 
             this.priceLabel.AutoSize = true;
-            this.priceLabel.Location = new System.Drawing.Point(11, 123);
+            this.priceLabel.Location = new System.Drawing.Point(14, 129);
             this.priceLabel.Name = "priceLabel";
             this.priceLabel.Size = new System.Drawing.Size(35, 13);
             this.priceLabel.TabIndex = 20;
@@ -310,67 +313,40 @@
             // 
             // priceTextBox
             // 
-            this.priceTextBox.Location = new System.Drawing.Point(127, 120);
+            this.priceTextBox.Location = new System.Drawing.Point(127, 126);
             this.priceTextBox.Name = "priceTextBox";
             this.priceTextBox.Size = new System.Drawing.Size(152, 20);
             this.priceTextBox.TabIndex = 21;
             // 
             // dateGroupBox
             // 
-            this.dateGroupBox.Controls.Add(this.serviceEndTextBox);
-            this.dateGroupBox.Controls.Add(this.placementDateTextBox);
-            this.dateGroupBox.Controls.Add(this.purchaseDateTextBox);
-            this.dateGroupBox.Controls.Add(this.warrantyEndLabel);
+            this.dateGroupBox.Controls.Add(this.warrantyEndDateTimePicker);
+            this.dateGroupBox.Controls.Add(this.placementDateTimePicker);
+            this.dateGroupBox.Controls.Add(this.purchaseDateTimePicker);
+            this.dateGroupBox.Controls.Add(this.warrantyEndDateLabel);
             this.dateGroupBox.Controls.Add(this.placementDateLabel);
             this.dateGroupBox.Controls.Add(this.purchaseDateLabel);
             this.dateGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateGroupBox.Location = new System.Drawing.Point(308, 33);
             this.dateGroupBox.Name = "dateGroupBox";
-            this.dateGroupBox.Size = new System.Drawing.Size(302, 101);
+            this.dateGroupBox.Size = new System.Drawing.Size(366, 101);
             this.dateGroupBox.TabIndex = 22;
             this.dateGroupBox.TabStop = false;
             this.dateGroupBox.Text = "Дата";
             // 
-            // serviceEndTextBox
+            // warrantyEndDateLabel
             // 
-            this.serviceEndTextBox.Location = new System.Drawing.Point(197, 66);
-            this.serviceEndTextBox.Mask = "00/00/0000";
-            this.serviceEndTextBox.Name = "serviceEndTextBox";
-            this.serviceEndTextBox.Size = new System.Drawing.Size(88, 20);
-            this.serviceEndTextBox.TabIndex = 5;
-            this.serviceEndTextBox.ValidatingType = typeof(System.DateTime);
-            // 
-            // placementDateTextBox
-            // 
-            this.placementDateTextBox.Location = new System.Drawing.Point(197, 44);
-            this.placementDateTextBox.Mask = "00/00/0000";
-            this.placementDateTextBox.Name = "placementDateTextBox";
-            this.placementDateTextBox.Size = new System.Drawing.Size(88, 20);
-            this.placementDateTextBox.TabIndex = 4;
-            this.placementDateTextBox.ValidatingType = typeof(System.DateTime);
-            // 
-            // purchaseDateTextBox
-            // 
-            this.purchaseDateTextBox.Location = new System.Drawing.Point(197, 22);
-            this.purchaseDateTextBox.Mask = "00/00/0000";
-            this.purchaseDateTextBox.Name = "purchaseDateTextBox";
-            this.purchaseDateTextBox.Size = new System.Drawing.Size(88, 20);
-            this.purchaseDateTextBox.TabIndex = 3;
-            this.purchaseDateTextBox.ValidatingType = typeof(System.DateTime);
-            // 
-            // warrantyEndLabel
-            // 
-            this.warrantyEndLabel.AutoSize = true;
-            this.warrantyEndLabel.Location = new System.Drawing.Point(17, 69);
-            this.warrantyEndLabel.Name = "warrantyEndLabel";
-            this.warrantyEndLabel.Size = new System.Drawing.Size(172, 13);
-            this.warrantyEndLabel.TabIndex = 2;
-            this.warrantyEndLabel.Text = "Кінець гарантії обслуговування :";
+            this.warrantyEndDateLabel.AutoSize = true;
+            this.warrantyEndDateLabel.Location = new System.Drawing.Point(16, 75);
+            this.warrantyEndDateLabel.Name = "warrantyEndDateLabel";
+            this.warrantyEndDateLabel.Size = new System.Drawing.Size(172, 13);
+            this.warrantyEndDateLabel.TabIndex = 2;
+            this.warrantyEndDateLabel.Text = "Кінець гарантії обслуговування :";
             // 
             // placementDateLabel
             // 
             this.placementDateLabel.AutoSize = true;
-            this.placementDateLabel.Location = new System.Drawing.Point(17, 47);
+            this.placementDateLabel.Location = new System.Drawing.Point(16, 48);
             this.placementDateLabel.Name = "placementDateLabel";
             this.placementDateLabel.Size = new System.Drawing.Size(103, 13);
             this.placementDateLabel.TabIndex = 1;
@@ -379,7 +355,7 @@
             // purchaseDateLabel
             // 
             this.purchaseDateLabel.AutoSize = true;
-            this.purchaseDateLabel.Location = new System.Drawing.Point(17, 25);
+            this.purchaseDateLabel.Location = new System.Drawing.Point(16, 22);
             this.purchaseDateLabel.Name = "purchaseDateLabel";
             this.purchaseDateLabel.Size = new System.Drawing.Size(83, 13);
             this.purchaseDateLabel.TabIndex = 0;
@@ -387,6 +363,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.stateSelectLabel);
+            this.groupBox1.Controls.Add(this.stateSelectComboBox);
             this.groupBox1.Controls.Add(this.priceTextBox);
             this.groupBox1.Controls.Add(this.deviceNumberLabel);
             this.groupBox1.Controls.Add(this.deviceNumberTextBox);
@@ -397,7 +375,7 @@
             this.groupBox1.Controls.Add(this.locationLabel);
             this.groupBox1.Location = new System.Drawing.Point(6, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(299, 160);
+            this.groupBox1.Size = new System.Drawing.Size(299, 153);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Загальна інформація";
@@ -428,14 +406,72 @@
             // 
             this.equipmentsTableAdapter.ClearBeforeFill = true;
             // 
-            // equipmentsBindingSource1
-            // 
-            this.equipmentsBindingSource1.DataMember = "equipments";
-            this.equipmentsBindingSource1.DataSource = this.tech_inspectorDataSet;
-            // 
             // equipments_has_attributesTableAdapter
             // 
             this.equipments_has_attributesTableAdapter.ClearBeforeFill = true;
+            // 
+            // purchaseDateTimePicker
+            // 
+            this.purchaseDateTimePicker.Checked = false;
+            this.purchaseDateTimePicker.CustomFormat = "";
+            this.purchaseDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.purchaseDateTimePicker.Location = new System.Drawing.Point(197, 19);
+            this.purchaseDateTimePicker.Name = "purchaseDateTimePicker";
+            this.purchaseDateTimePicker.ShowCheckBox = true;
+            this.purchaseDateTimePicker.Size = new System.Drawing.Size(163, 20);
+            this.purchaseDateTimePicker.TabIndex = 25;
+            // 
+            // placementDateTimePicker
+            // 
+            this.placementDateTimePicker.Checked = false;
+            this.placementDateTimePicker.CustomFormat = "";
+            this.placementDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.placementDateTimePicker.Location = new System.Drawing.Point(197, 46);
+            this.placementDateTimePicker.Name = "placementDateTimePicker";
+            this.placementDateTimePicker.ShowCheckBox = true;
+            this.placementDateTimePicker.Size = new System.Drawing.Size(163, 20);
+            this.placementDateTimePicker.TabIndex = 26;
+            // 
+            // warrantyEndDateTimePicker
+            // 
+            this.warrantyEndDateTimePicker.Checked = false;
+            this.warrantyEndDateTimePicker.CustomFormat = "";
+            this.warrantyEndDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.warrantyEndDateTimePicker.Location = new System.Drawing.Point(197, 72);
+            this.warrantyEndDateTimePicker.Name = "warrantyEndDateTimePicker";
+            this.warrantyEndDateTimePicker.ShowCheckBox = true;
+            this.warrantyEndDateTimePicker.Size = new System.Drawing.Size(163, 20);
+            this.warrantyEndDateTimePicker.TabIndex = 27;
+            // 
+            // stateSelectComboBox
+            // 
+            this.stateSelectComboBox.DataSource = this.statesBindingSource;
+            this.stateSelectComboBox.DisplayMember = "state_name";
+            this.stateSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stateSelectComboBox.FormattingEnabled = true;
+            this.stateSelectComboBox.Location = new System.Drawing.Point(127, 99);
+            this.stateSelectComboBox.Name = "stateSelectComboBox";
+            this.stateSelectComboBox.Size = new System.Drawing.Size(152, 21);
+            this.stateSelectComboBox.TabIndex = 22;
+            this.stateSelectComboBox.ValueMember = "state_id";
+            // 
+            // stateSelectLabel
+            // 
+            this.stateSelectLabel.AutoSize = true;
+            this.stateSelectLabel.Location = new System.Drawing.Point(14, 102);
+            this.stateSelectLabel.Name = "stateSelectLabel";
+            this.stateSelectLabel.Size = new System.Drawing.Size(92, 13);
+            this.stateSelectLabel.TabIndex = 23;
+            this.stateSelectLabel.Text = "Технічний стан* :";
+            // 
+            // statesBindingSource
+            // 
+            this.statesBindingSource.DataMember = "states";
+            this.statesBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // statesTableAdapter
+            // 
+            this.statesTableAdapter.ClearBeforeFill = true;
             // 
             // AddDevice
             // 
@@ -463,7 +499,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.attributesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,12 +532,9 @@
         private System.Windows.Forms.Label priceLabel;
         private System.Windows.Forms.TextBox priceTextBox;
         private System.Windows.Forms.GroupBox dateGroupBox;
-        private System.Windows.Forms.Label warrantyEndLabel;
+        private System.Windows.Forms.Label warrantyEndDateLabel;
         private System.Windows.Forms.Label placementDateLabel;
         private System.Windows.Forms.Label purchaseDateLabel;
-        private System.Windows.Forms.MaskedTextBox serviceEndTextBox;
-        private System.Windows.Forms.MaskedTextBox placementDateTextBox;
-        private System.Windows.Forms.MaskedTextBox purchaseDateTextBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private tech_inspectorDataSet tech_inspectorDataSet;
         private System.Windows.Forms.BindingSource typesBindingSource;
@@ -512,10 +545,16 @@
         private tech_inspectorDataSetTableAdapters.attributesTableAdapter attributesTableAdapter;
         private System.Windows.Forms.BindingSource equipmentsBindingSource;
         private tech_inspectorDataSetTableAdapters.equipmentsTableAdapter equipmentsTableAdapter;
-        private System.Windows.Forms.BindingSource equipmentsBindingSource1;
         /// <summary>
         /// /////////////////
         /// </summary>
         private tech_inspectorDataSetTableAdapters.equipments_has_attributesTableAdapter equipments_has_attributesTableAdapter;
+        private System.Windows.Forms.DateTimePicker purchaseDateTimePicker;
+        private System.Windows.Forms.DateTimePicker warrantyEndDateTimePicker;
+        private System.Windows.Forms.DateTimePicker placementDateTimePicker;
+        private System.Windows.Forms.Label stateSelectLabel;
+        private System.Windows.Forms.ComboBox stateSelectComboBox;
+        private System.Windows.Forms.BindingSource statesBindingSource;
+        private tech_inspectorDataSetTableAdapters.statesTableAdapter statesTableAdapter;
     }
 }

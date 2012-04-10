@@ -16,41 +16,26 @@ namespace lol2
     {
         public InfoViewer()
         {
-            InitializeComponent();
-            FillDataGrid();
-            //foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipment_types").Find(new QueryDocument()))
-            //{
-            //    typeSelectionComboBox.Items.Add((string)item["name"]);
-            //}
+            InitializeComponent();           
+            string connStr = "server=localhost;user=root;database=tech_inspector;port=3306;password=1111;";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            string sql = "SELECT equipments.equipment_id, types.type_name, locations.location_name, states.state_name, equipments.price, equipments.purchase_date,"
+             + " equipments.placement_date, equipments.warranty_end_date"
+             + " FROM equipments INNER JOIN"
+             + " locations ON equipments.location_id = locations.location_id INNER JOIN"
+             + " states ON equipments.state_id = states.state_id INNER JOIN"
+             + " types ON equipments.type_id = types.type_id";
+            MySqlDataAdapter equipmentListAdapter = new MySqlDataAdapter(sql, conn);
+            //DataSet equipmentListDataSet = new DataSet();
+            //equipmentListAdapter.Fill(equipmentListDataSet, "EquipmentList");
+            DataTable equipmentListDataTable = new DataTable("EquipmentList");
+            equipmentListAdapter.Fill(equipmentListDataTable);
+            DataView equipmentListViewTable = equipmentListDataTable.DefaultView;
+            infosDataGridView.DataSource = equipmentListViewTable;
             //typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.Add("Всі");
-            //foreach (BsonDocument item in DatabaseManager.GetDataCollection("locations").Find(new QueryDocument()))
-            //{
-            //    locationComboBox.Items.Add((string)item["name"]);
-            //}
             //locationComboBox.SelectedIndex = locationComboBox.Items.Add("Всі");
         }
-
-        public void FillDataGrid()
-        {
-            //infosDataGridView.Rows.Clear();
-            //QueryDocument query = new QueryDocument();
-            //if (!String.IsNullOrWhiteSpace(deviceNumberTextBox.Text))
-            //{
-            //    query.Add("inventory_number", deviceNumberTextBox.Text);
-            //}
-            //if (!String.IsNullOrWhiteSpace(typeSelectionComboBox.Text) && typeSelectionComboBox.Text != "Всі")
-            //{
-            //    query.Add("type", typeSelectionComboBox.Text);
-            //}
-            //if (!String.IsNullOrWhiteSpace(locationComboBox.Text) && locationComboBox.Text != "Всі")
-            //{
-            //    query.Add("location", locationComboBox.Text);
-            //}
-            //foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipments").Find(query))
-            //{
-            //    infosDataGridView.Rows.Add((string)item["inventory_number"], (string)item["type"], (string)item["location"]);
-            //}
-        }
+     
         private void новийФайлToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddDevice childFormAddDevice = new AddDevice();
@@ -95,11 +80,6 @@ namespace lol2
             childFormAddDevice.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FillDataGrid();
-        }
-
         private void editInfoButton_Click(object sender, EventArgs e)
         {
 
@@ -124,7 +104,15 @@ namespace lol2
 
         private void InfoViewer_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'tech_inspectorDataSet.locations' table. You can move, or remove it, as needed.
+            this.locationsTableAdapter.Fill(this.tech_inspectorDataSet.locations);
+            // TODO: This line of code loads data into the 'tech_inspectorDataSet.types' table. You can move, or remove it, as needed.
+            this.typesTableAdapter.Fill(this.tech_inspectorDataSet.types);
 
+            //foreach (var tec in collection)
+            //{
+                
+            //}
         }
 
         private void typeSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)

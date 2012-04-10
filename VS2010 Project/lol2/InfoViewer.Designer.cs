@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.новийФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,9 +77,6 @@
             this.розробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ліцензіяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infosDataGridView = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.location = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addDeviceButton = new System.Windows.Forms.Button();
             this.deleteDeviceButton = new System.Windows.Forms.Button();
             this.editInfoButton = new System.Windows.Forms.Button();
@@ -91,9 +89,15 @@
             this.typeSelectionComboBox = new System.Windows.Forms.ComboBox();
             this.locationLabel = new System.Windows.Forms.Label();
             this.filterGroupBox = new System.Windows.Forms.GroupBox();
+            this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
+            this.typesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.typesTableAdapter();
+            this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).BeginInit();
             this.filterGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -445,32 +449,11 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.infosDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.infosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.infosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.type,
-            this.location});
             this.infosDataGridView.Location = new System.Drawing.Point(12, 99);
             this.infosDataGridView.Name = "infosDataGridView";
+            this.infosDataGridView.ReadOnly = true;
             this.infosDataGridView.Size = new System.Drawing.Size(590, 360);
             this.infosDataGridView.TabIndex = 2;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // type
-            // 
-            this.type.HeaderText = "Тип";
-            this.type.Name = "type";
-            this.type.ReadOnly = true;
-            // 
-            // location
-            // 
-            this.location.HeaderText = "Розташування";
-            this.location.Name = "location";
-            this.location.ReadOnly = true;
             // 
             // addDeviceButton
             // 
@@ -525,7 +508,6 @@
             this.refreshButton.TabIndex = 7;
             this.refreshButton.Text = "Обновити";
             this.refreshButton.UseVisualStyleBackColor = true;
-            this.refreshButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // deviceNumberLabel
             // 
@@ -555,12 +537,15 @@
             // 
             // locationComboBox
             // 
+            this.locationComboBox.DataSource = this.locationsBindingSource;
+            this.locationComboBox.DisplayMember = "location_name";
             this.locationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.locationComboBox.FormattingEnabled = true;
             this.locationComboBox.Location = new System.Drawing.Point(310, 32);
             this.locationComboBox.Name = "locationComboBox";
             this.locationComboBox.Size = new System.Drawing.Size(140, 21);
             this.locationComboBox.TabIndex = 25;
+            this.locationComboBox.ValueMember = "location_id";
             // 
             // typeSelectionComboBox
             // 
@@ -570,6 +555,7 @@
             this.typeSelectionComboBox.Name = "typeSelectionComboBox";
             this.typeSelectionComboBox.Size = new System.Drawing.Size(152, 21);
             this.typeSelectionComboBox.TabIndex = 23;
+            this.typeSelectionComboBox.ValueMember = "type_id";
             this.typeSelectionComboBox.SelectedIndexChanged += new System.EventHandler(this.typeSelectionComboBox_SelectedIndexChanged);
             // 
             // locationLabel
@@ -597,6 +583,24 @@
             this.filterGroupBox.TabStop = false;
             this.filterGroupBox.Text = "Фільтри";
             // 
+            // tech_inspectorDataSet
+            // 
+            this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
+            this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // typesTableAdapter
+            // 
+            this.typesTableAdapter.ClearBeforeFill = true;
+            // 
+            // locationsBindingSource
+            // 
+            this.locationsBindingSource.DataMember = "locations";
+            this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // locationsTableAdapter
+            // 
+            this.locationsTableAdapter.ClearBeforeFill = true;
+            // 
             // InfoViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -617,6 +621,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).EndInit();
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -672,9 +678,6 @@
         private System.Windows.Forms.ToolStripMenuItem розробникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ліцензіяToolStripMenuItem;
         private System.Windows.Forms.DataGridView infosDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn location;
         private System.Windows.Forms.Button addDeviceButton;
         private System.Windows.Forms.Button deleteDeviceButton;
         private System.Windows.Forms.Button editInfoButton;
@@ -687,5 +690,9 @@
         private System.Windows.Forms.ComboBox typeSelectionComboBox;
         private System.Windows.Forms.Label locationLabel;
         private System.Windows.Forms.GroupBox filterGroupBox;
+        private tech_inspectorDataSet tech_inspectorDataSet;
+        private tech_inspectorDataSetTableAdapters.typesTableAdapter typesTableAdapter;
+        private System.Windows.Forms.BindingSource locationsBindingSource;
+        private tech_inspectorDataSetTableAdapters.locationsTableAdapter locationsTableAdapter;
     }
 }

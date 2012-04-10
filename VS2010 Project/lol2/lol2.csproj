@@ -68,7 +68,6 @@
     <Compile Include="CalendarPlan.Designer.cs">
       <DependentUpon>CalendarPlan.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseManager.cs" />
     <Compile Include="DetailedInfo.cs">
       <SubType>Form</SubType>
     </Compile>
