@@ -23,12 +23,12 @@ namespace lol2
         public ReportingForm()
         {
             InitializeComponent();
-            webBrowser1.Navigate(Path.GetFullPath("DATA\\samples\\Savs.mht"));
+            //webBrowser1.Navigate(Path.GetFullPath("DATA\\samples\\Savs.mht"));
         }
 
         private void ReportingForm_Load(object sender, EventArgs e)
         {
-            docTypesComboBox.SelectedIndex = 0;
+           // docTypesComboBox.SelectedIndex = 0;
         }
 
         private void docTypesComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -122,6 +122,26 @@ namespace lol2
 
         //        MessageBox.Show(errorMessage, "Error");
         //    }
+        }
+
+        private void splitter1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
