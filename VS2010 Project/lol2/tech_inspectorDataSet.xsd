@@ -314,6 +314,32 @@
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="equipment_shortinfoTableAdapter" GeneratorDataComponentClassName="equipment_shortinfoTableAdapter" Name="equipment_shortinfo" UserDataComponentName="equipment_shortinfoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="tech_inspectorConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        equipments.equipment_id, types.type_name, locations.location_name, states.state_name, locations.location_id, states.state_id, types.type_id
+FROM            equipments INNER JOIN
+                         locations ON equipments.location_id = locations.location_id INNER JOIN
+                         states ON equipments.state_id = states.state_id INNER JOIN
+                         types ON equipments.type_id = types.type_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="equipment_id" DataSetColumn="equipment_id" />
+              <Mapping SourceColumn="type_name" DataSetColumn="type_name" />
+              <Mapping SourceColumn="location_name" DataSetColumn="location_name" />
+              <Mapping SourceColumn="state_name" DataSetColumn="state_name" />
+              <Mapping SourceColumn="location_id" DataSetColumn="location_id" />
+              <Mapping SourceColumn="state_id" DataSetColumn="state_id" />
+              <Mapping SourceColumn="type_id" DataSetColumn="type_id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -409,6 +435,37 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="equipment_shortinfo" msprop:Generator_TableClassName="equipment_shortinfoDataTable" msprop:Generator_TableVarName="tableequipment_shortinfo" msprop:Generator_TablePropName="equipment_shortinfo" msprop:Generator_RowDeletingName="equipment_shortinfoRowDeleting" msprop:Generator_UserTableName="equipment_shortinfo" msprop:Generator_RowChangingName="equipment_shortinfoRowChanging" msprop:Generator_RowEvHandlerName="equipment_shortinfoRowChangeEventHandler" msprop:Generator_RowDeletedName="equipment_shortinfoRowDeleted" msprop:Generator_RowEvArgName="equipment_shortinfoRowChangeEvent" msprop:Generator_RowChangedName="equipment_shortinfoRowChanged" msprop:Generator_RowClassName="equipment_shortinfoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="equipment_id" msprop:Generator_ColumnVarNameInTable="columnequipment_id" msprop:Generator_ColumnPropNameInRow="equipment_id" msprop:Generator_ColumnPropNameInTable="equipment_idColumn" msprop:Generator_UserColumnName="equipment_id" type="xs:int" />
+              <xs:element name="type_name" msprop:Generator_ColumnVarNameInTable="columntype_name" msprop:Generator_ColumnPropNameInRow="type_name" msprop:Generator_ColumnPropNameInTable="type_nameColumn" msprop:Generator_UserColumnName="type_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="location_name" msprop:Generator_ColumnVarNameInTable="columnlocation_name" msprop:Generator_ColumnPropNameInRow="location_name" msprop:Generator_ColumnPropNameInTable="location_nameColumn" msprop:Generator_UserColumnName="location_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="state_name" msprop:Generator_ColumnVarNameInTable="columnstate_name" msprop:Generator_ColumnPropNameInRow="state_name" msprop:Generator_ColumnPropNameInTable="state_nameColumn" msprop:Generator_UserColumnName="state_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="location_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnlocation_id" msprop:Generator_ColumnPropNameInRow="location_id" msprop:Generator_ColumnPropNameInTable="location_idColumn" msprop:Generator_UserColumnName="location_id" type="xs:int" />
+              <xs:element name="state_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnstate_id" msprop:Generator_ColumnPropNameInRow="state_id" msprop:Generator_ColumnPropNameInTable="state_idColumn" msprop:Generator_UserColumnName="state_id" type="xs:int" />
+              <xs:element name="type_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columntype_id" msprop:Generator_ColumnPropNameInRow="type_id" msprop:Generator_ColumnPropNameInTable="type_idColumn" msprop:Generator_UserColumnName="type_id" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -438,6 +495,18 @@
     <xs:unique name="types_Constraint2" msdata:ConstraintName="Constraint2" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:types" />
       <xs:field xpath="mstns:type_id" />
+    </xs:unique>
+    <xs:unique name="equipment_shortinfo_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:equipment_shortinfo" />
+      <xs:field xpath="mstns:equipment_id" />
+    </xs:unique>
+    <xs:unique name="equipment_shortinfo_Constraint2" msdata:ConstraintName="Constraint2">
+      <xs:selector xpath=".//mstns:equipment_shortinfo" />
+      <xs:field xpath="mstns:type_name" />
+    </xs:unique>
+    <xs:unique name="Constraint3">
+      <xs:selector xpath=".//mstns:equipment_shortinfo" />
+      <xs:field xpath="mstns:location_name" />
     </xs:unique>
   </xs:element>
   <xs:annotation>

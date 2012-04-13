@@ -77,6 +77,15 @@
             this.розробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ліцензіяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infosDataGridView = new System.Windows.Forms.DataGridView();
+            this.equipmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equipmentshortinfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
             this.addDeviceButton = new System.Windows.Forms.Button();
             this.deleteDeviceButton = new System.Windows.Forms.Button();
             this.editInfoButton = new System.Windows.Forms.Button();
@@ -87,17 +96,25 @@
             this.deviceTypeLabel = new System.Windows.Forms.Label();
             this.locationComboBox = new System.Windows.Forms.ComboBox();
             this.typeSelectionComboBox = new System.Windows.Forms.ComboBox();
+            this.typesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.locationLabel = new System.Windows.Forms.Label();
             this.filterGroupBox = new System.Windows.Forms.GroupBox();
-            this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
             this.typesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.typesTableAdapter();
+            this.equipment_shortinfoTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipment_shortinfoTableAdapter();
+            this.stateComboBox = new System.Windows.Forms.ComboBox();
+            this.stateLabel = new System.Windows.Forms.Label();
             this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
+            this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.statesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.statesTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).BeginInit();
-            this.filterGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentshortinfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).BeginInit();
+            this.filterGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -447,13 +464,82 @@
             this.infosDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.infosDataGridView.AutoGenerateColumns = false;
             this.infosDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.infosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.infosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.equipmentidDataGridViewTextBoxColumn,
+            this.typenameDataGridViewTextBoxColumn,
+            this.locationnameDataGridViewTextBoxColumn,
+            this.statenameDataGridViewTextBoxColumn,
+            this.locationidDataGridViewTextBoxColumn,
+            this.stateidDataGridViewTextBoxColumn,
+            this.typeidDataGridViewTextBoxColumn});
+            this.infosDataGridView.DataSource = this.equipmentshortinfoBindingSource;
             this.infosDataGridView.Location = new System.Drawing.Point(12, 99);
             this.infosDataGridView.Name = "infosDataGridView";
             this.infosDataGridView.ReadOnly = true;
             this.infosDataGridView.Size = new System.Drawing.Size(590, 360);
             this.infosDataGridView.TabIndex = 2;
+            // 
+            // equipmentidDataGridViewTextBoxColumn
+            // 
+            this.equipmentidDataGridViewTextBoxColumn.DataPropertyName = "equipment_id";
+            this.equipmentidDataGridViewTextBoxColumn.HeaderText = "equipment_id";
+            this.equipmentidDataGridViewTextBoxColumn.Name = "equipmentidDataGridViewTextBoxColumn";
+            this.equipmentidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typenameDataGridViewTextBoxColumn
+            // 
+            this.typenameDataGridViewTextBoxColumn.DataPropertyName = "type_name";
+            this.typenameDataGridViewTextBoxColumn.HeaderText = "type_name";
+            this.typenameDataGridViewTextBoxColumn.Name = "typenameDataGridViewTextBoxColumn";
+            this.typenameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // locationnameDataGridViewTextBoxColumn
+            // 
+            this.locationnameDataGridViewTextBoxColumn.DataPropertyName = "location_name";
+            this.locationnameDataGridViewTextBoxColumn.HeaderText = "location_name";
+            this.locationnameDataGridViewTextBoxColumn.Name = "locationnameDataGridViewTextBoxColumn";
+            this.locationnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statenameDataGridViewTextBoxColumn
+            // 
+            this.statenameDataGridViewTextBoxColumn.DataPropertyName = "state_name";
+            this.statenameDataGridViewTextBoxColumn.HeaderText = "state_name";
+            this.statenameDataGridViewTextBoxColumn.Name = "statenameDataGridViewTextBoxColumn";
+            this.statenameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // locationidDataGridViewTextBoxColumn
+            // 
+            this.locationidDataGridViewTextBoxColumn.DataPropertyName = "location_id";
+            this.locationidDataGridViewTextBoxColumn.HeaderText = "location_id";
+            this.locationidDataGridViewTextBoxColumn.Name = "locationidDataGridViewTextBoxColumn";
+            this.locationidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stateidDataGridViewTextBoxColumn
+            // 
+            this.stateidDataGridViewTextBoxColumn.DataPropertyName = "state_id";
+            this.stateidDataGridViewTextBoxColumn.HeaderText = "state_id";
+            this.stateidDataGridViewTextBoxColumn.Name = "stateidDataGridViewTextBoxColumn";
+            this.stateidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typeidDataGridViewTextBoxColumn
+            // 
+            this.typeidDataGridViewTextBoxColumn.DataPropertyName = "type_id";
+            this.typeidDataGridViewTextBoxColumn.HeaderText = "type_id";
+            this.typeidDataGridViewTextBoxColumn.Name = "typeidDataGridViewTextBoxColumn";
+            this.typeidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // equipmentshortinfoBindingSource
+            // 
+            this.equipmentshortinfoBindingSource.DataMember = "equipment_shortinfo";
+            this.equipmentshortinfoBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // tech_inspectorDataSet
+            // 
+            this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
+            this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // addDeviceButton
             // 
@@ -502,18 +588,19 @@
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(456, 32);
+            this.refreshButton.Location = new System.Drawing.Point(470, 32);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(128, 21);
+            this.refreshButton.Size = new System.Drawing.Size(110, 22);
             this.refreshButton.TabIndex = 7;
             this.refreshButton.Text = "Обновити";
             this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // deviceNumberLabel
             // 
             this.deviceNumberLabel.AutoSize = true;
             this.deviceNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deviceNumberLabel.Location = new System.Drawing.Point(6, 16);
+            this.deviceNumberLabel.Location = new System.Drawing.Point(3, 16);
             this.deviceNumberLabel.Name = "deviceNumberLabel";
             this.deviceNumberLabel.Size = new System.Drawing.Size(110, 13);
             this.deviceNumberLabel.TabIndex = 20;
@@ -523,13 +610,13 @@
             // 
             this.deviceNumberTextBox.Location = new System.Drawing.Point(6, 32);
             this.deviceNumberTextBox.Name = "deviceNumberTextBox";
-            this.deviceNumberTextBox.Size = new System.Drawing.Size(140, 20);
+            this.deviceNumberTextBox.Size = new System.Drawing.Size(110, 20);
             this.deviceNumberTextBox.TabIndex = 21;
             // 
             // deviceTypeLabel
             // 
             this.deviceTypeLabel.AutoSize = true;
-            this.deviceTypeLabel.Location = new System.Drawing.Point(149, 16);
+            this.deviceTypeLabel.Location = new System.Drawing.Point(119, 16);
             this.deviceTypeLabel.Name = "deviceTypeLabel";
             this.deviceTypeLabel.Size = new System.Drawing.Size(95, 13);
             this.deviceTypeLabel.TabIndex = 22;
@@ -541,27 +628,33 @@
             this.locationComboBox.DisplayMember = "location_name";
             this.locationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.locationComboBox.FormattingEnabled = true;
-            this.locationComboBox.Location = new System.Drawing.Point(310, 32);
+            this.locationComboBox.Location = new System.Drawing.Point(238, 32);
             this.locationComboBox.Name = "locationComboBox";
-            this.locationComboBox.Size = new System.Drawing.Size(140, 21);
+            this.locationComboBox.Size = new System.Drawing.Size(110, 21);
             this.locationComboBox.TabIndex = 25;
             this.locationComboBox.ValueMember = "location_id";
             // 
             // typeSelectionComboBox
             // 
+            this.typeSelectionComboBox.DataSource = this.typesBindingSource;
+            this.typeSelectionComboBox.DisplayMember = "type_name";
             this.typeSelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeSelectionComboBox.FormattingEnabled = true;
-            this.typeSelectionComboBox.Location = new System.Drawing.Point(152, 31);
+            this.typeSelectionComboBox.Location = new System.Drawing.Point(122, 31);
             this.typeSelectionComboBox.Name = "typeSelectionComboBox";
-            this.typeSelectionComboBox.Size = new System.Drawing.Size(152, 21);
+            this.typeSelectionComboBox.Size = new System.Drawing.Size(110, 21);
             this.typeSelectionComboBox.TabIndex = 23;
             this.typeSelectionComboBox.ValueMember = "type_id";
-            this.typeSelectionComboBox.SelectedIndexChanged += new System.EventHandler(this.typeSelectionComboBox_SelectedIndexChanged);
+            // 
+            // typesBindingSource
+            // 
+            this.typesBindingSource.DataMember = "types";
+            this.typesBindingSource.DataSource = this.tech_inspectorDataSet;
             // 
             // locationLabel
             // 
             this.locationLabel.AutoSize = true;
-            this.locationLabel.Location = new System.Drawing.Point(310, 16);
+            this.locationLabel.Location = new System.Drawing.Point(235, 16);
             this.locationLabel.Name = "locationLabel";
             this.locationLabel.Size = new System.Drawing.Size(86, 13);
             this.locationLabel.TabIndex = 24;
@@ -569,6 +662,8 @@
             // 
             // filterGroupBox
             // 
+            this.filterGroupBox.Controls.Add(this.stateLabel);
+            this.filterGroupBox.Controls.Add(this.stateComboBox);
             this.filterGroupBox.Controls.Add(this.deviceNumberTextBox);
             this.filterGroupBox.Controls.Add(this.refreshButton);
             this.filterGroupBox.Controls.Add(this.locationLabel);
@@ -583,14 +678,34 @@
             this.filterGroupBox.TabStop = false;
             this.filterGroupBox.Text = "Фільтри";
             // 
-            // tech_inspectorDataSet
-            // 
-            this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
-            this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // typesTableAdapter
             // 
             this.typesTableAdapter.ClearBeforeFill = true;
+            // 
+            // equipment_shortinfoTableAdapter
+            // 
+            this.equipment_shortinfoTableAdapter.ClearBeforeFill = true;
+            // 
+            // stateComboBox
+            // 
+            this.stateComboBox.DataSource = this.statesBindingSource;
+            this.stateComboBox.DisplayMember = "state_name";
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stateComboBox.FormattingEnabled = true;
+            this.stateComboBox.Location = new System.Drawing.Point(354, 32);
+            this.stateComboBox.Name = "stateComboBox";
+            this.stateComboBox.Size = new System.Drawing.Size(110, 21);
+            this.stateComboBox.TabIndex = 26;
+            this.stateComboBox.ValueMember = "state_id";
+            // 
+            // stateLabel
+            // 
+            this.stateLabel.AutoSize = true;
+            this.stateLabel.Location = new System.Drawing.Point(351, 16);
+            this.stateLabel.Name = "stateLabel";
+            this.stateLabel.Size = new System.Drawing.Size(85, 13);
+            this.stateLabel.TabIndex = 27;
+            this.stateLabel.Text = "Технічний стан:";
             // 
             // locationsBindingSource
             // 
@@ -600,6 +715,15 @@
             // locationsTableAdapter
             // 
             this.locationsTableAdapter.ClearBeforeFill = true;
+            // 
+            // statesBindingSource
+            // 
+            this.statesBindingSource.DataMember = "states";
+            this.statesBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // statesTableAdapter
+            // 
+            this.statesTableAdapter.ClearBeforeFill = true;
             // 
             // InfoViewer
             // 
@@ -619,10 +743,13 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentshortinfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).EndInit();
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -690,9 +817,27 @@
         private System.Windows.Forms.ComboBox typeSelectionComboBox;
         private System.Windows.Forms.Label locationLabel;
         private System.Windows.Forms.GroupBox filterGroupBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn purchasedateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn placementdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn warrantyenddateDataGridViewTextBoxColumn;
         private tech_inspectorDataSet tech_inspectorDataSet;
+        private System.Windows.Forms.BindingSource typesBindingSource;
         private tech_inspectorDataSetTableAdapters.typesTableAdapter typesTableAdapter;
+        private System.Windows.Forms.BindingSource equipmentshortinfoBindingSource;
+        private tech_inspectorDataSetTableAdapters.equipment_shortinfoTableAdapter equipment_shortinfoTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn equipmentidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typenameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn locationnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statenameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn locationidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stateidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label stateLabel;
+        private System.Windows.Forms.ComboBox stateComboBox;
         private System.Windows.Forms.BindingSource locationsBindingSource;
         private tech_inspectorDataSetTableAdapters.locationsTableAdapter locationsTableAdapter;
+        private System.Windows.Forms.BindingSource statesBindingSource;
+        private tech_inspectorDataSetTableAdapters.statesTableAdapter statesTableAdapter;
     }
 }

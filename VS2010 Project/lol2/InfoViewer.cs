@@ -16,24 +16,7 @@ namespace lol2
     {
         public InfoViewer()
         {
-            InitializeComponent();           
-            string connStr = "server=localhost;user=root;database=tech_inspector;port=3306;password=1111;";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            string sql = "SELECT equipments.equipment_id, types.type_name, locations.location_name, states.state_name, equipments.price, equipments.purchase_date,"
-             + " equipments.placement_date, equipments.warranty_end_date"
-             + " FROM equipments INNER JOIN"
-             + " locations ON equipments.location_id = locations.location_id INNER JOIN"
-             + " states ON equipments.state_id = states.state_id INNER JOIN"
-             + " types ON equipments.type_id = types.type_id";
-            MySqlDataAdapter equipmentListAdapter = new MySqlDataAdapter(sql, conn);
-            //DataSet equipmentListDataSet = new DataSet();
-            //equipmentListAdapter.Fill(equipmentListDataSet, "EquipmentList");
-            DataTable equipmentListDataTable = new DataTable("EquipmentList");
-            equipmentListAdapter.Fill(equipmentListDataTable);
-            DataView equipmentListViewTable = equipmentListDataTable.DefaultView;
-            infosDataGridView.DataSource = equipmentListViewTable;
-            //typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.Add("Всі");
-            //locationComboBox.SelectedIndex = locationComboBox.Items.Add("Всі");
+            InitializeComponent();
         }
      
         private void новийФайлToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,20 +87,60 @@ namespace lol2
 
         private void InfoViewer_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'tech_inspectorDataSet.locations' table. You can move, or remove it, as needed.
+            this.statesTableAdapter.Fill(this.tech_inspectorDataSet.states);
             this.locationsTableAdapter.Fill(this.tech_inspectorDataSet.locations);
-            // TODO: This line of code loads data into the 'tech_inspectorDataSet.types' table. You can move, or remove it, as needed.
             this.typesTableAdapter.Fill(this.tech_inspectorDataSet.types);
 
-            //foreach (var tec in collection)
-            //{
-                
-            //}
+            tech_inspectorDataSet.EnforceConstraints = false;
+            this.equipment_shortinfoTableAdapter.Fill(this.tech_inspectorDataSet.equipment_shortinfo);
+
+            infosDataGridView.Columns[tech_inspectorDataSet.equipment_shortinfo.Columns.IndexOf(tech_inspectorDataSet.equipment_shortinfo.state_idColumn)].Visible = false;
+            infosDataGridView.Columns[tech_inspectorDataSet.equipment_shortinfo.Columns.IndexOf(tech_inspectorDataSet.equipment_shortinfo.location_idColumn)].Visible = false;
+            infosDataGridView.Columns[tech_inspectorDataSet.equipment_shortinfo.Columns.IndexOf(tech_inspectorDataSet.equipment_shortinfo.type_idColumn)].Visible = false;
+
+            tech_inspectorDataSet.states.Rows.Add(new object[]{0, "Всі"});
+            statesBindingSource.Sort = tech_inspectorDataSet.states.state_idColumn.ColumnName;
+
+            tech_inspectorDataSet.locations.Rows.Add(new object[] { 0, "Всі" });
+            locationsBindingSource.Sort = tech_inspectorDataSet.locations.location_idColumn.ColumnName;
+
+            tech_inspectorDataSet.types.Rows.Add(new object[] { 0, "Всі" });
+            typesBindingSource.Sort = tech_inspectorDataSet.types.type_idColumn.ColumnName;
         }
 
-        private void typeSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void refreshButton_Click(object sender, EventArgs e)
         {
-
+            string filter_str = "";
+            if ((int)locationComboBox.SelectedValue != 0)
+            {
+                filter_str += "location_id = " + locationComboBox.SelectedValue + " AND ";
+            }
+            if ((int)typeSelectionComboBox.SelectedValue != 0)
+            {
+                filter_str += "type_id = " + typeSelectionComboBox.SelectedValue + " AND ";
+            }
+            if ((int)stateComboBox.SelectedValue != 0)
+            {
+                filter_str += "state_id = " + stateComboBox.SelectedValue + " AND ";
+            }
+            if (String.IsNullOrWhiteSpace(deviceNumberTextBox.Text))
+            {
+                filter_str += "true";
+            }
+            else
+            {
+                int id;
+                if (int.TryParse(deviceNumberTextBox.Text, out id))
+                {
+                    filter_str += "equipment_id = " + id;
+                }
+                else
+                {
+                    MessageBox.Show("Невірний формат інвентарного номеру", "Помилка вводу", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    filter_str += "true";
+                }
+            }
+            equipmentshortinfoBindingSource.Filter = filter_str;
         }
     }
 }

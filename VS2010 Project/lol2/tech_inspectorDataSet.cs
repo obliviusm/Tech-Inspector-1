@@ -2,6 +2,9 @@
     
     
     public partial class tech_inspectorDataSet {
+        partial class equipment_shortinfoDataTable
+        {
+        }
     }
 }
 
