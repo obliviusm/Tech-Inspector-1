@@ -77,7 +77,7 @@ CREATE TABLE `equipments` (
 
 LOCK TABLES `equipments` WRITE;
 /*!40000 ALTER TABLE `equipments` DISABLE KEYS */;
-INSERT INTO `equipments` VALUES (1,1,1,1,1000,'2010-03-20 07:00:00',NULL,NULL),(2,9,10,1,0,'2012-04-09 00:00:00','2012-04-09 00:00:00','2012-04-09 00:00:00'),(3,9,10,1,0,NULL,NULL,NULL),(45,9,10,1,0,NULL,NULL,NULL),(110535,3,8,2,100,'2012-04-10 11:21:24',NULL,NULL),(124667,2,10,1,0,NULL,NULL,NULL),(10400001,2,9,1,10000,'2012-04-10 10:03:04','2012-04-10 10:03:04','2012-04-10 10:03:04'),(13053453,9,7,1,100.56,'2012-04-09 00:00:00','2012-04-09 00:00:00','2012-04-09 00:00:00'),(14534535,2,10,1,0,NULL,NULL,NULL),(111111111,9,10,1,0,'2012-04-10 10:17:21','0001-01-01 00:00:00','0001-01-01 00:00:00'),(123456789,9,10,3,56.45,NULL,'2012-04-10 10:36:25',NULL);
+INSERT INTO `equipments` VALUES (110535,3,8,2,100,'2012-04-10 11:21:24',NULL,NULL),(13053453,9,7,1,100.56,'2012-04-09 00:00:00','2012-04-09 00:00:00','2012-04-09 00:00:00'),(14534535,2,10,1,0,NULL,NULL,NULL),(123456789,9,10,3,56.45,NULL,'2012-04-10 10:36:25',NULL);
 /*!40000 ALTER TABLE `equipments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,7 +94,7 @@ CREATE TABLE `equipments_has_attributes` (
   `attribute_value` varchar(45) DEFAULT NULL,
   KEY `fk_Equipments_has_Attributes_Attributes1` (`attribute_id`),
   KEY `fk_Equipments_has_Attributes_Equipments1` (`equipment_id`),
-  CONSTRAINT `fk_Equipments_has_Attributes_Equipments1` FOREIGN KEY (`equipment_id`) REFERENCES `equipments` (`equipment_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Equipments_has_Attributes_Equipments1` FOREIGN KEY (`equipment_id`) REFERENCES `equipments` (`equipment_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_Equipments_has_Attributes_Attributes1` FOREIGN KEY (`attribute_id`) REFERENCES `attributes` (`attribute_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -105,7 +105,7 @@ CREATE TABLE `equipments_has_attributes` (
 
 LOCK TABLES `equipments_has_attributes` WRITE;
 /*!40000 ALTER TABLE `equipments_has_attributes` DISABLE KEYS */;
-INSERT INTO `equipments_has_attributes` VALUES (1,1,'1'),(1,18,'Тип'),(13053453,18,'test'),(2,18,'фыафыа'),(3,18,'вапвап'),(45,18,'апркввекр44'),(124667,12,'Проектор'),(124667,13,'Модель'),(124667,14,''),(10400001,12,'Toshiba'),(10400001,13,'IC0111'),(10400001,14,''),(111111111,18,'тест4'),(123456789,18,'ываыва'),(14534535,14,''),(14534535,13,'ыв'),(14534535,12,'ыфв'),(110535,15,'Панасони'),(110535,16,'СТОДЕ120ЕМ'),(110535,17,'1');
+INSERT INTO `equipments_has_attributes` VALUES (13053453,18,'test'),(123456789,18,'ываыва'),(14534535,14,''),(14534535,13,'ыв'),(14534535,12,'ыфв'),(110535,15,'Панасони'),(110535,16,'СТОДЕ120ЕМ'),(110535,17,'1');
 /*!40000 ALTER TABLE `equipments_has_attributes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -194,4 +194,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-04-10 21:19:52
+-- Dump completed on 2012-04-13 22:15:09

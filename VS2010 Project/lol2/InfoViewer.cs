@@ -14,9 +14,12 @@ namespace lol2
 {
     public partial class InfoViewer : Form
     {
+        private tech_inspectorDataSetTableAdapters.equipmentsTableAdapter equipmentsTableAdapter { get; set; }
+
         public InfoViewer()
         {
             InitializeComponent();
+            equipmentsTableAdapter = new tech_inspectorDataSetTableAdapters.equipmentsTableAdapter();
         }
      
         private void новийФайлToolStripMenuItem_Click(object sender, EventArgs e)
@@ -38,23 +41,30 @@ namespace lol2
 
         private void deleteDeviceButton_Click(object sender, EventArgs e)
         {
-            //if (MessageBox.Show("Ви дійсно бажаєте видалити виділене обладнання з БД ?", "Увага",
-            //    MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
-            //    DialogResult.Yes)
-            //{
-            //    List<int> delrows = new List<int>();
-            //    for (int i = 0; i < infosDataGridView.SelectedCells.Count; ++i)
-            //    {
-            //        int index = infosDataGridView.SelectedCells[i].RowIndex;
-            //        if (!delrows.Contains(index))
-            //            delrows.Add(index);
-            //    }
-            //    for (int i = 0; i < delrows.Count; ++i)
-            //    {
-            //        DatabaseManager.GetDataCollection("equipments").Remove(new QueryDocument("inventory_number", (string)infosDataGridView.Rows[i].Cells[0].Value));
-            //    }
-            //    FillDataGrid();
-            //}
+            if (MessageBox.Show("Ви дійсно бажаєте видалити виділене обладнання з БД ?", "Увага",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                DialogResult.Yes)
+            {
+                List<int> delrows = new List<int>();
+                for (int i = 0; i < infosDataGridView.SelectedCells.Count; ++i)
+                {
+                    int index = infosDataGridView.SelectedCells[i].RowIndex;
+                    if (!delrows.Contains(index))
+                        delrows.Add(index);
+                }
+                for (int i = 0; i < delrows.Count; ++i)
+                {
+                    int id = (int)infosDataGridView.Rows[delrows[i]].Cells[0].Value;
+                    tech_inspectorDataSet.equipments.FindByequipment_id(id).Delete();
+                    tech_inspectorDataSet.equipment_shortinfo.FindByequipment_id(id).Delete();
+
+                    int q = equipmentsTableAdapter.Update(tech_inspectorDataSet.equipments);
+                    MessageBox.Show("Видалено записів: "+q, "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    tech_inspectorDataSet.equipment_shortinfo.AcceptChanges();
+                    tech_inspectorDataSet.equipments.AcceptChanges();
+                }
+            }
         }
 
         private void addDeviceButton_Click(object sender, EventArgs e)
@@ -90,6 +100,8 @@ namespace lol2
             this.statesTableAdapter.Fill(this.tech_inspectorDataSet.states);
             this.locationsTableAdapter.Fill(this.tech_inspectorDataSet.locations);
             this.typesTableAdapter.Fill(this.tech_inspectorDataSet.types);
+            this.equipmentsTableAdapter.Fill(this.tech_inspectorDataSet.equipments);
+
 
             tech_inspectorDataSet.EnforceConstraints = false;
             this.equipment_shortinfoTableAdapter.Fill(this.tech_inspectorDataSet.equipment_shortinfo);

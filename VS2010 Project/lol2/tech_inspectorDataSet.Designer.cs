@@ -48,8 +48,6 @@ namespace lol2 {
         
         private global::System.Data.DataRelation relationfk_Equipments_has_Attributes_Attributes1;
         
-        private global::System.Data.DataRelation relationfk_Equipments_has_Attributes_Equipments1;
-        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -355,7 +353,6 @@ namespace lol2 {
             this.relationfk_Equipments_States1 = this.Relations["fk_Equipments_States1"];
             this.relationfk_Equipments_Types = this.Relations["fk_Equipments_Types"];
             this.relationfk_Equipments_has_Attributes_Attributes1 = this.Relations["fk_Equipments_has_Attributes_Attributes1"];
-            this.relationfk_Equipments_has_Attributes_Equipments1 = this.Relations["fk_Equipments_has_Attributes_Equipments1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -380,6 +377,14 @@ namespace lol2 {
             base.Tables.Add(this.tabletypes);
             this.tableequipment_shortinfo = new equipment_shortinfoDataTable();
             base.Tables.Add(this.tableequipment_shortinfo);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("fk_Equipments_has_Attributes_Equipments1", new global::System.Data.DataColumn[] {
+                        this.tableequipments.equipment_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableequipments_has_attributes.equipment_idColumn});
+            this.tableequipments_has_attributes.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationfk_Attributes_Types1 = new global::System.Data.DataRelation("fk_Attributes_Types1", new global::System.Data.DataColumn[] {
                         this.tabletypes.type_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableattributes.type_idColumn}, false);
@@ -400,10 +405,6 @@ namespace lol2 {
                         this.tableattributes.attribute_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableequipments_has_attributes.attribute_idColumn}, false);
             this.Relations.Add(this.relationfk_Equipments_has_Attributes_Attributes1);
-            this.relationfk_Equipments_has_Attributes_Equipments1 = new global::System.Data.DataRelation("fk_Equipments_has_Attributes_Equipments1", new global::System.Data.DataColumn[] {
-                        this.tableequipments.equipment_idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableequipments_has_attributes.equipment_idColumn}, false);
-            this.Relations.Add(this.relationfk_Equipments_has_Attributes_Equipments1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1309,15 +1310,12 @@ namespace lol2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public equipments_has_attributesRow Addequipments_has_attributesRow(equipmentsRow parentequipmentsRowByfk_Equipments_has_Attributes_Equipments1, attributesRow parentattributesRowByfk_Equipments_has_Attributes_Attributes1, string attribute_value) {
+            public equipments_has_attributesRow Addequipments_has_attributesRow(int equipment_id, attributesRow parentattributesRowByfk_Equipments_has_Attributes_Attributes1, string attribute_value) {
                 equipments_has_attributesRow rowequipments_has_attributesRow = ((equipments_has_attributesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        equipment_id,
                         null,
                         attribute_value};
-                if ((parentequipmentsRowByfk_Equipments_has_Attributes_Equipments1 != null)) {
-                    columnValuesArray[0] = parentequipmentsRowByfk_Equipments_has_Attributes_Equipments1[0];
-                }
                 if ((parentattributesRowByfk_Equipments_has_Attributes_Attributes1 != null)) {
                     columnValuesArray[1] = parentattributesRowByfk_Equipments_has_Attributes_Attributes1[0];
                 }
@@ -2972,17 +2970,6 @@ namespace lol2 {
             public void Setwarranty_end_dateNull() {
                 this[this.tableequipments.warranty_end_dateColumn] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public equipments_has_attributesRow[] Getequipments_has_attributesRows() {
-                if ((this.Table.ChildRelations["fk_Equipments_has_Attributes_Equipments1"] == null)) {
-                    return new equipments_has_attributesRow[0];
-                }
-                else {
-                    return ((equipments_has_attributesRow[])(base.GetChildRows(this.Table.ChildRelations["fk_Equipments_has_Attributes_Equipments1"])));
-                }
-            }
         }
         
         /// <summary>
@@ -3046,17 +3033,6 @@ namespace lol2 {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["fk_Equipments_has_Attributes_Attributes1"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public equipmentsRow equipmentsRow {
-                get {
-                    return ((equipmentsRow)(this.GetParentRow(this.Table.ParentRelations["fk_Equipments_has_Attributes_Equipments1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["fk_Equipments_has_Attributes_Equipments1"]);
                 }
             }
             
