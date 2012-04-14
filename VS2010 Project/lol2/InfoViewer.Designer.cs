@@ -95,25 +95,25 @@
             this.deviceNumberTextBox = new System.Windows.Forms.TextBox();
             this.deviceTypeLabel = new System.Windows.Forms.Label();
             this.locationComboBox = new System.Windows.Forms.ComboBox();
+            this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.typeSelectionComboBox = new System.Windows.Forms.ComboBox();
             this.typesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.locationLabel = new System.Windows.Forms.Label();
             this.filterGroupBox = new System.Windows.Forms.GroupBox();
+            this.stateLabel = new System.Windows.Forms.Label();
+            this.stateComboBox = new System.Windows.Forms.ComboBox();
+            this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.typesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.typesTableAdapter();
             this.equipment_shortinfoTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipment_shortinfoTableAdapter();
-            this.stateComboBox = new System.Windows.Forms.ComboBox();
-            this.stateLabel = new System.Windows.Forms.Label();
-            this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
-            this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.statesTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentshortinfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).BeginInit();
             this.filterGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -634,6 +634,11 @@
             this.locationComboBox.TabIndex = 25;
             this.locationComboBox.ValueMember = "location_id";
             // 
+            // locationsBindingSource
+            // 
+            this.locationsBindingSource.DataMember = "locations";
+            this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
             // typeSelectionComboBox
             // 
             this.typeSelectionComboBox.DataSource = this.typesBindingSource;
@@ -678,13 +683,14 @@
             this.filterGroupBox.TabStop = false;
             this.filterGroupBox.Text = "Фільтри";
             // 
-            // typesTableAdapter
+            // stateLabel
             // 
-            this.typesTableAdapter.ClearBeforeFill = true;
-            // 
-            // equipment_shortinfoTableAdapter
-            // 
-            this.equipment_shortinfoTableAdapter.ClearBeforeFill = true;
+            this.stateLabel.AutoSize = true;
+            this.stateLabel.Location = new System.Drawing.Point(351, 16);
+            this.stateLabel.Name = "stateLabel";
+            this.stateLabel.Size = new System.Drawing.Size(85, 13);
+            this.stateLabel.TabIndex = 27;
+            this.stateLabel.Text = "Технічний стан:";
             // 
             // stateComboBox
             // 
@@ -698,28 +704,22 @@
             this.stateComboBox.TabIndex = 26;
             this.stateComboBox.ValueMember = "state_id";
             // 
-            // stateLabel
-            // 
-            this.stateLabel.AutoSize = true;
-            this.stateLabel.Location = new System.Drawing.Point(351, 16);
-            this.stateLabel.Name = "stateLabel";
-            this.stateLabel.Size = new System.Drawing.Size(85, 13);
-            this.stateLabel.TabIndex = 27;
-            this.stateLabel.Text = "Технічний стан:";
-            // 
-            // locationsBindingSource
-            // 
-            this.locationsBindingSource.DataMember = "locations";
-            this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
-            // 
-            // locationsTableAdapter
-            // 
-            this.locationsTableAdapter.ClearBeforeFill = true;
-            // 
             // statesBindingSource
             // 
             this.statesBindingSource.DataMember = "states";
             this.statesBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // typesTableAdapter
+            // 
+            this.typesTableAdapter.ClearBeforeFill = true;
+            // 
+            // equipment_shortinfoTableAdapter
+            // 
+            this.equipment_shortinfoTableAdapter.ClearBeforeFill = true;
+            // 
+            // locationsTableAdapter
+            // 
+            this.locationsTableAdapter.ClearBeforeFill = true;
             // 
             // statesTableAdapter
             // 
@@ -745,10 +745,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentshortinfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).EndInit();
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

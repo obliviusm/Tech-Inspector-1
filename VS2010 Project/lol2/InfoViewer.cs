@@ -14,12 +14,9 @@ namespace lol2
 {
     public partial class InfoViewer : Form
     {
-        private tech_inspectorDataSetTableAdapters.equipmentsTableAdapter equipmentsTableAdapter { get; set; }
-
         public InfoViewer()
         {
             InitializeComponent();
-            equipmentsTableAdapter = new tech_inspectorDataSetTableAdapters.equipmentsTableAdapter();
         }
      
         private void новийФайлToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,14 +52,10 @@ namespace lol2
                 for (int i = 0; i < delrows.Count; ++i)
                 {
                     int id = (int)infosDataGridView.Rows[delrows[i]].Cells[0].Value;
-                    tech_inspectorDataSet.equipments.FindByequipment_id(id).Delete();
                     tech_inspectorDataSet.equipment_shortinfo.FindByequipment_id(id).Delete();
-
-                    int q = equipmentsTableAdapter.Update(tech_inspectorDataSet.equipments);
+                    int q = equipment_shortinfoTableAdapter.Update(tech_inspectorDataSet.equipment_shortinfo);
                     MessageBox.Show("Видалено записів: "+q, "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     tech_inspectorDataSet.equipment_shortinfo.AcceptChanges();
-                    tech_inspectorDataSet.equipments.AcceptChanges();
                 }
             }
         }
@@ -89,8 +82,8 @@ namespace lol2
             }
             for (int i = 0; i < showrows.Count; ++i)
             {
-                string inventory_number = (string)infosDataGridView.Rows[showrows[i]].Cells[0].Value;
-                DetailedInfo det_info = new DetailedInfo(inventory_number);
+                int id = (int)infosDataGridView.Rows[showrows[i]].Cells[0].Value;
+                DetailedInfo det_info = new DetailedInfo(id);
                 det_info.Show();
             }
         }
@@ -100,7 +93,6 @@ namespace lol2
             this.statesTableAdapter.Fill(this.tech_inspectorDataSet.states);
             this.locationsTableAdapter.Fill(this.tech_inspectorDataSet.locations);
             this.typesTableAdapter.Fill(this.tech_inspectorDataSet.types);
-            this.equipmentsTableAdapter.Fill(this.tech_inspectorDataSet.equipments);
 
 
             tech_inspectorDataSet.EnforceConstraints = false;
