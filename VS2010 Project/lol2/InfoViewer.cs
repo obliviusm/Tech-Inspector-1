@@ -68,6 +68,19 @@ namespace lol2
 
         private void editInfoButton_Click(object sender, EventArgs e)
         {
+            List<int> showrows = new List<int>();
+            for (int i = 0; i < infosDataGridView.SelectedCells.Count; ++i)
+            {
+                int index = infosDataGridView.SelectedCells[i].RowIndex;
+                if (!showrows.Contains(index))
+                    showrows.Add(index);
+            }
+            for (int i = 0; i < showrows.Count; ++i)
+            {
+                int id = (int)infosDataGridView.Rows[showrows[i]].Cells[0].Value;
+                EditEquipment edit_form = new EditEquipment(id);
+                edit_form.Show();
+            }
 
         }
 

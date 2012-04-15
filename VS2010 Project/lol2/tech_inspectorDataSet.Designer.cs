@@ -4728,7 +4728,10 @@ namespace lol2.tech_inspectorDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `equipments` SET `equipment_id` = @equipment_id, `type_id` = @type_id, `location_id` = @location_id, `state_id` = @state_id, `price` = @price, `purchase_date` = @purchase_date, `placement_date` = @placement_date, `warranty_end_date` = @warranty_end_date WHERE ((`equipment_id` = @Original_equipment_id) AND (`type_id` = @Original_type_id) AND (`location_id` = @Original_location_id) AND (`state_id` = @Original_state_id) AND ((@IsNull_price = 1 AND `price` IS NULL) OR (`price` = @Original_price)) AND ((@IsNull_purchase_date = 1 AND `purchase_date` IS NULL) OR (`purchase_date` = @Original_purchase_date)) AND ((@IsNull_placement_date = 1 AND `placement_date` IS NULL) OR (`placement_date` = @Original_placement_date)) AND ((@IsNull_warranty_end_date = 1 AND `warranty_end_date` IS NULL) OR (`warranty_end_date` = @Original_warranty_end_date)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE       equipments
+SET                equipment_id = @equipment_id, type_id = @type_id, location_id = @location_id, state_id = @state_id, price = @price, purchase_date = @purchase_date, 
+                         placement_date = @placement_date, warranty_end_date = @warranty_end_date
+WHERE        (equipment_id = @Original_equipment_id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@equipment_id";
@@ -4760,7 +4763,7 @@ namespace lol2.tech_inspectorDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@price";
-            param.DbType = global::System.Data.DbType.Single;
+            param.DbType = global::System.Data.DbType.Decimal;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Float;
             param.IsNullable = true;
             param.SourceColumn = "price";
@@ -4792,98 +4795,6 @@ namespace lol2.tech_inspectorDataSetTableAdapters {
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "equipment_id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@Original_type_id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "type_id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@Original_location_id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "location_id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@Original_state_id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "state_id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@IsNull_price";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "price";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@Original_price";
-            param.DbType = global::System.Data.DbType.Single;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Float;
-            param.IsNullable = true;
-            param.SourceColumn = "price";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@IsNull_purchase_date";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "purchase_date";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@Original_purchase_date";
-            param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
-            param.IsNullable = true;
-            param.SourceColumn = "purchase_date";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@IsNull_placement_date";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "placement_date";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@Original_placement_date";
-            param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
-            param.IsNullable = true;
-            param.SourceColumn = "placement_date";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@IsNull_warranty_end_date";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "warranty_end_date";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@Original_warranty_end_date";
-            param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
-            param.IsNullable = true;
-            param.SourceColumn = "warranty_end_date";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -5096,29 +5007,13 @@ namespace lol2.tech_inspectorDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    int equipment_id, 
-                    int type_id, 
-                    int location_id, 
-                    int state_id, 
-                    global::System.Nullable<float> price, 
-                    global::System.Nullable<global::System.DateTime> purchase_date, 
-                    global::System.Nullable<global::System.DateTime> placement_date, 
-                    global::System.Nullable<global::System.DateTime> warranty_end_date, 
-                    int Original_equipment_id, 
-                    int Original_type_id, 
-                    int Original_location_id, 
-                    int Original_state_id, 
-                    global::System.Nullable<float> Original_price, 
-                    global::System.Nullable<global::System.DateTime> Original_purchase_date, 
-                    global::System.Nullable<global::System.DateTime> Original_placement_date, 
-                    global::System.Nullable<global::System.DateTime> Original_warranty_end_date) {
+        public virtual int Update(int equipment_id, int type_id, int location_id, int state_id, global::System.Nullable<decimal> price, global::System.Nullable<global::System.DateTime> purchase_date, global::System.Nullable<global::System.DateTime> placement_date, global::System.Nullable<global::System.DateTime> warranty_end_date, int Original_equipment_id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(equipment_id));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(type_id));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(location_id));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(state_id));
             if ((price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((float)(price.Value));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(price.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -5142,41 +5037,6 @@ namespace lol2.tech_inspectorDataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_equipment_id));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_type_id));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_location_id));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_state_id));
-            if ((Original_price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((float)(Original_price.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            if ((Original_purchase_date.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_purchase_date.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            if ((Original_placement_date.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_placement_date.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
-            }
-            if ((Original_warranty_end_date.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((System.DateTime)(Original_warranty_end_date.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5197,8 +5057,8 @@ namespace lol2.tech_inspectorDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int type_id, int location_id, int state_id, global::System.Nullable<float> price, global::System.Nullable<global::System.DateTime> purchase_date, global::System.Nullable<global::System.DateTime> placement_date, global::System.Nullable<global::System.DateTime> warranty_end_date, int Original_equipment_id, int Original_type_id, int Original_location_id, int Original_state_id, global::System.Nullable<float> Original_price, global::System.Nullable<global::System.DateTime> Original_purchase_date, global::System.Nullable<global::System.DateTime> Original_placement_date, global::System.Nullable<global::System.DateTime> Original_warranty_end_date) {
-            return this.Update(Original_equipment_id, type_id, location_id, state_id, price, purchase_date, placement_date, warranty_end_date, Original_equipment_id, Original_type_id, Original_location_id, Original_state_id, Original_price, Original_purchase_date, Original_placement_date, Original_warranty_end_date);
+        public virtual int Update(int type_id, int location_id, int state_id, global::System.Nullable<decimal> price, global::System.Nullable<global::System.DateTime> purchase_date, global::System.Nullable<global::System.DateTime> placement_date, global::System.Nullable<global::System.DateTime> warranty_end_date, int Original_equipment_id) {
+            return this.Update(Original_equipment_id, type_id, location_id, state_id, price, purchase_date, placement_date, warranty_end_date, Original_equipment_id);
         }
     }
     
@@ -6855,6 +6715,36 @@ FROM            equipments INNER JOIN
             tableMapping.ColumnMappings.Add("attribute_name", "attribute_name");
             tableMapping.ColumnMappings.Add("attribute_value", "attribute_value");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE       equipments_has_attributes\r\nSET                attribute_value = @att" +
+                "ribute_value\r\nWHERE        (equipment_id = @Original_equipment_id) AND (attribut" +
+                "e_id = @Original_attribute_id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@attribute_value";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "attribute_value";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_equipment_id";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "equipment_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_attribute_id";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "attribute_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6909,6 +6799,35 @@ WHERE        (equipments_has_attributes.equipment_id = @id)";
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(tech_inspectorDataSet.attributes_listDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(tech_inspectorDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "attributes_list");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
     }
     
     /// <summary>
@@ -6936,6 +6855,8 @@ WHERE        (equipments_has_attributes.equipment_id = @id)";
         private typesTableAdapter _typesTableAdapter;
         
         private equipment_shortinfoTableAdapter _equipment_shortinfoTableAdapter;
+        
+        private attributes_listTableAdapter _attributes_listTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -7052,6 +6973,20 @@ WHERE        (equipments_has_attributes.equipment_id = @id)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public attributes_listTableAdapter attributes_listTableAdapter {
+            get {
+                return this._attributes_listTableAdapter;
+            }
+            set {
+                this._attributes_listTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -7097,6 +7032,10 @@ WHERE        (equipments_has_attributes.equipment_id = @id)";
                             && (this._equipment_shortinfoTableAdapter.Connection != null))) {
                     return this._equipment_shortinfoTableAdapter.Connection;
                 }
+                if (((this._attributes_listTableAdapter != null) 
+                            && (this._attributes_listTableAdapter.Connection != null))) {
+                    return this._attributes_listTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -7129,6 +7068,9 @@ WHERE        (equipments_has_attributes.equipment_id = @id)";
                     count = (count + 1);
                 }
                 if ((this._equipment_shortinfoTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._attributes_listTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -7184,6 +7126,15 @@ WHERE        (equipments_has_attributes.equipment_id = @id)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._equipmentsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._attributes_listTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.attributes_list.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._attributes_listTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -7255,6 +7206,14 @@ WHERE        (equipments_has_attributes.equipment_id = @id)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._attributes_listTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.attributes_list.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._attributes_listTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._equipment_shortinfoTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.equipment_shortinfo.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -7294,6 +7253,14 @@ WHERE        (equipments_has_attributes.equipment_id = @id)";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._equipment_shortinfoTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._attributes_listTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.attributes_list.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._attributes_listTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -7411,6 +7378,11 @@ WHERE        (equipments_has_attributes.equipment_id = @id)";
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._attributes_listTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._attributes_listTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -7506,6 +7478,15 @@ WHERE        (equipments_has_attributes.equipment_id = @id)";
                         adaptersWithAcceptChangesDuringUpdate.Add(this._equipment_shortinfoTableAdapter.Adapter);
                     }
                 }
+                if ((this._attributes_listTableAdapter != null)) {
+                    revertConnections.Add(this._attributes_listTableAdapter, this._attributes_listTableAdapter.Connection);
+                    this._attributes_listTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(workConnection));
+                    this._attributes_listTableAdapter.Transaction = ((global::MySql.Data.MySqlClient.MySqlTransaction)(workTransaction));
+                    if (this._attributes_listTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._attributes_listTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._attributes_listTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -7591,6 +7572,10 @@ WHERE        (equipments_has_attributes.equipment_id = @id)";
                 if ((this._equipment_shortinfoTableAdapter != null)) {
                     this._equipment_shortinfoTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._equipment_shortinfoTableAdapter]));
                     this._equipment_shortinfoTableAdapter.Transaction = null;
+                }
+                if ((this._attributes_listTableAdapter != null)) {
+                    this._attributes_listTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._attributes_listTableAdapter]));
+                    this._attributes_listTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

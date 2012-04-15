@@ -57,10 +57,16 @@
             this.priceLabel = new System.Windows.Forms.Label();
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.dateGroupBox = new System.Windows.Forms.GroupBox();
+            this.warrantyEndDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.placementDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.purchaseDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.warrantyEndDateLabel = new System.Windows.Forms.Label();
             this.placementDateLabel = new System.Windows.Forms.Label();
             this.purchaseDateLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.stateSelectLabel = new System.Windows.Forms.Label();
+            this.stateSelectComboBox = new System.Windows.Forms.ComboBox();
+            this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.typesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.typesTableAdapter();
             this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             this.attributesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -68,12 +74,6 @@
             this.equipmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.equipmentsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipmentsTableAdapter();
             this.equipments_has_attributesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipments_has_attributesTableAdapter();
-            this.purchaseDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.placementDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.warrantyEndDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.stateSelectComboBox = new System.Windows.Forms.ComboBox();
-            this.stateSelectLabel = new System.Windows.Forms.Label();
-            this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.statesTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).BeginInit();
@@ -83,9 +83,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
             this.dateGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.attributesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -268,11 +268,11 @@
             this.saveChangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveChangesButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.saveChangesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveChangesButton.Location = new System.Drawing.Point(543, 490);
+            this.saveChangesButton.Location = new System.Drawing.Point(538, 490);
             this.saveChangesButton.Name = "saveChangesButton";
-            this.saveChangesButton.Size = new System.Drawing.Size(132, 32);
+            this.saveChangesButton.Size = new System.Drawing.Size(137, 32);
             this.saveChangesButton.TabIndex = 17;
-            this.saveChangesButton.Text = "Зберегти зміни";
+            this.saveChangesButton.Text = "Додати обладнання";
             this.saveChangesButton.UseVisualStyleBackColor = false;
             this.saveChangesButton.Click += new System.EventHandler(this.saveChangesButton_Click);
             // 
@@ -334,6 +334,39 @@
             this.dateGroupBox.TabStop = false;
             this.dateGroupBox.Text = "Дата";
             // 
+            // warrantyEndDateTimePicker
+            // 
+            this.warrantyEndDateTimePicker.Checked = false;
+            this.warrantyEndDateTimePicker.CustomFormat = "";
+            this.warrantyEndDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.warrantyEndDateTimePicker.Location = new System.Drawing.Point(197, 72);
+            this.warrantyEndDateTimePicker.Name = "warrantyEndDateTimePicker";
+            this.warrantyEndDateTimePicker.ShowCheckBox = true;
+            this.warrantyEndDateTimePicker.Size = new System.Drawing.Size(163, 20);
+            this.warrantyEndDateTimePicker.TabIndex = 27;
+            // 
+            // placementDateTimePicker
+            // 
+            this.placementDateTimePicker.Checked = false;
+            this.placementDateTimePicker.CustomFormat = "";
+            this.placementDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.placementDateTimePicker.Location = new System.Drawing.Point(197, 46);
+            this.placementDateTimePicker.Name = "placementDateTimePicker";
+            this.placementDateTimePicker.ShowCheckBox = true;
+            this.placementDateTimePicker.Size = new System.Drawing.Size(163, 20);
+            this.placementDateTimePicker.TabIndex = 26;
+            // 
+            // purchaseDateTimePicker
+            // 
+            this.purchaseDateTimePicker.Checked = false;
+            this.purchaseDateTimePicker.CustomFormat = "";
+            this.purchaseDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.purchaseDateTimePicker.Location = new System.Drawing.Point(197, 19);
+            this.purchaseDateTimePicker.Name = "purchaseDateTimePicker";
+            this.purchaseDateTimePicker.ShowCheckBox = true;
+            this.purchaseDateTimePicker.Size = new System.Drawing.Size(163, 20);
+            this.purchaseDateTimePicker.TabIndex = 25;
+            // 
             // warrantyEndDateLabel
             // 
             this.warrantyEndDateLabel.AutoSize = true;
@@ -380,6 +413,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Загальна інформація";
             // 
+            // stateSelectLabel
+            // 
+            this.stateSelectLabel.AutoSize = true;
+            this.stateSelectLabel.Location = new System.Drawing.Point(14, 102);
+            this.stateSelectLabel.Name = "stateSelectLabel";
+            this.stateSelectLabel.Size = new System.Drawing.Size(92, 13);
+            this.stateSelectLabel.TabIndex = 23;
+            this.stateSelectLabel.Text = "Технічний стан* :";
+            // 
+            // stateSelectComboBox
+            // 
+            this.stateSelectComboBox.DataSource = this.statesBindingSource;
+            this.stateSelectComboBox.DisplayMember = "state_name";
+            this.stateSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stateSelectComboBox.FormattingEnabled = true;
+            this.stateSelectComboBox.Location = new System.Drawing.Point(127, 99);
+            this.stateSelectComboBox.Name = "stateSelectComboBox";
+            this.stateSelectComboBox.Size = new System.Drawing.Size(152, 21);
+            this.stateSelectComboBox.TabIndex = 22;
+            this.stateSelectComboBox.ValueMember = "state_id";
+            // 
+            // statesBindingSource
+            // 
+            this.statesBindingSource.DataMember = "states";
+            this.statesBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
             // typesTableAdapter
             // 
             this.typesTableAdapter.ClearBeforeFill = true;
@@ -410,65 +469,6 @@
             // 
             this.equipments_has_attributesTableAdapter.ClearBeforeFill = true;
             // 
-            // purchaseDateTimePicker
-            // 
-            this.purchaseDateTimePicker.Checked = false;
-            this.purchaseDateTimePicker.CustomFormat = "";
-            this.purchaseDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.purchaseDateTimePicker.Location = new System.Drawing.Point(197, 19);
-            this.purchaseDateTimePicker.Name = "purchaseDateTimePicker";
-            this.purchaseDateTimePicker.ShowCheckBox = true;
-            this.purchaseDateTimePicker.Size = new System.Drawing.Size(163, 20);
-            this.purchaseDateTimePicker.TabIndex = 25;
-            // 
-            // placementDateTimePicker
-            // 
-            this.placementDateTimePicker.Checked = false;
-            this.placementDateTimePicker.CustomFormat = "";
-            this.placementDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.placementDateTimePicker.Location = new System.Drawing.Point(197, 46);
-            this.placementDateTimePicker.Name = "placementDateTimePicker";
-            this.placementDateTimePicker.ShowCheckBox = true;
-            this.placementDateTimePicker.Size = new System.Drawing.Size(163, 20);
-            this.placementDateTimePicker.TabIndex = 26;
-            // 
-            // warrantyEndDateTimePicker
-            // 
-            this.warrantyEndDateTimePicker.Checked = false;
-            this.warrantyEndDateTimePicker.CustomFormat = "";
-            this.warrantyEndDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.warrantyEndDateTimePicker.Location = new System.Drawing.Point(197, 72);
-            this.warrantyEndDateTimePicker.Name = "warrantyEndDateTimePicker";
-            this.warrantyEndDateTimePicker.ShowCheckBox = true;
-            this.warrantyEndDateTimePicker.Size = new System.Drawing.Size(163, 20);
-            this.warrantyEndDateTimePicker.TabIndex = 27;
-            // 
-            // stateSelectComboBox
-            // 
-            this.stateSelectComboBox.DataSource = this.statesBindingSource;
-            this.stateSelectComboBox.DisplayMember = "state_name";
-            this.stateSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.stateSelectComboBox.FormattingEnabled = true;
-            this.stateSelectComboBox.Location = new System.Drawing.Point(127, 99);
-            this.stateSelectComboBox.Name = "stateSelectComboBox";
-            this.stateSelectComboBox.Size = new System.Drawing.Size(152, 21);
-            this.stateSelectComboBox.TabIndex = 22;
-            this.stateSelectComboBox.ValueMember = "state_id";
-            // 
-            // stateSelectLabel
-            // 
-            this.stateSelectLabel.AutoSize = true;
-            this.stateSelectLabel.Location = new System.Drawing.Point(14, 102);
-            this.stateSelectLabel.Name = "stateSelectLabel";
-            this.stateSelectLabel.Size = new System.Drawing.Size(92, 13);
-            this.stateSelectLabel.TabIndex = 23;
-            this.stateSelectLabel.Text = "Технічний стан* :";
-            // 
-            // statesBindingSource
-            // 
-            this.statesBindingSource.DataMember = "states";
-            this.statesBindingSource.DataSource = this.tech_inspectorDataSet;
-            // 
             // statesTableAdapter
             // 
             this.statesTableAdapter.ClearBeforeFill = true;
@@ -497,9 +497,9 @@
             this.dateGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.attributesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
