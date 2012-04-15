@@ -46,17 +46,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.subsystemsGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -170,10 +170,10 @@
             this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Location = new System.Drawing.Point(12, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(148, 215);
+            this.groupBox1.Size = new System.Drawing.Size(148, 161);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Документообіг";
             // 
             // linkLabel5
             // 
@@ -227,18 +227,18 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.linkLabel7);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.linkLabel6);
             this.groupBox2.Location = new System.Drawing.Point(178, 20);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(758, 320);
+            this.groupBox2.Size = new System.Drawing.Size(758, 363);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Бізнес-процеси";
@@ -246,7 +246,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(80, 264);
+            this.label7.Location = new System.Drawing.Point(192, 290);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 13);
             this.label7.TabIndex = 8;
@@ -255,7 +255,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(80, 239);
+            this.label6.Location = new System.Drawing.Point(192, 265);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(131, 13);
             this.label6.TabIndex = 7;
@@ -264,26 +264,16 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(80, 211);
+            this.label5.Location = new System.Drawing.Point(192, 237);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 13);
             this.label5.TabIndex = 6;
             this.label5.Text = "1. Поламка обладнання";
             // 
-            // linkLabel7
-            // 
-            this.linkLabel7.AutoSize = true;
-            this.linkLabel7.Location = new System.Drawing.Point(30, 181);
-            this.linkLabel7.Name = "linkLabel7";
-            this.linkLabel7.Size = new System.Drawing.Size(131, 13);
-            this.linkLabel7.TabIndex = 5;
-            this.linkLabel7.TabStop = true;
-            this.linkLabel7.Text = "Вихід обладнання з ладу";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(74, 148);
+            this.label4.Location = new System.Drawing.Point(192, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(139, 13);
             this.label4.TabIndex = 4;
@@ -292,7 +282,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(74, 121);
+            this.label3.Location = new System.Drawing.Point(192, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 3;
@@ -301,7 +291,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 92);
+            this.label2.Location = new System.Drawing.Point(192, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 13);
             this.label2.TabIndex = 2;
@@ -310,53 +300,42 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 64);
+            this.label1.Location = new System.Drawing.Point(192, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "1. План закупівель";
             // 
-            // linkLabel6
-            // 
-            this.linkLabel6.AutoSize = true;
-            this.linkLabel6.Location = new System.Drawing.Point(30, 39);
-            this.linkLabel6.Name = "linkLabel6";
-            this.linkLabel6.Size = new System.Drawing.Size(113, 13);
-            this.linkLabel6.TabIndex = 0;
-            this.linkLabel6.TabStop = true;
-            this.linkLabel6.Text = "Покупка обладнання";
-            // 
             // tabControl1
             // 
-            this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(4, 228);
+            this.tabControl1.Location = new System.Drawing.Point(4, 198);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(972, 350);
+            this.tabControl1.Size = new System.Drawing.Size(972, 423);
             this.tabControl1.TabIndex = 9;
             // 
             // tabPage1
             // 
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Location = new System.Drawing.Point(23, 4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(945, 342);
+            this.tabPage1.Size = new System.Drawing.Size(964, 324);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Облік";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(23, 4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(945, 373);
+            this.tabPage2.Size = new System.Drawing.Size(964, 324);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Планові задачі";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -365,9 +344,9 @@
             // 
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Location = new System.Drawing.Point(23, 4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(945, 373);
+            this.tabPage3.Size = new System.Drawing.Size(964, 397);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Документообіг";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -381,11 +360,37 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
             // 
+            // button2
+            // 
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(17, 20);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(155, 164);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Покупка обладнання";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(17, 190);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(155, 164);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Вихід обладнання з ладу";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // SubSystemSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(979, 590);
+            this.ClientSize = new System.Drawing.Size(979, 624);
             this.Controls.Add(this.subsystemsGroupBox);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -424,17 +429,17 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.LinkLabel linkLabel7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linkLabel6;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
 
     }
 }
