@@ -15,165 +15,34 @@ namespace lol2
 {
     public partial class DeviceTemplateEditor : Form
     {
-        #region Declarations
-
-        private string initialTemplateName = "";
-        private bool TypeEditingActive
-        {
-            set
-            {
-                configurationGroupBox.Enabled = value;
-                saveChangesButton.Enabled = value;
-                abortChangesButton.Enabled = value;
-                removeTypeButton.Enabled = value;
-            }
-        }
-
-        #endregion
+        private int type_id { get; set; }
 
         public DeviceTemplateEditor()
         {
             InitializeComponent();
-            //TypeEditingActive = false;
-            //chooseTypeButton.Enabled = false;
-            //configurationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //// Load types of equipment from DB to ComboBox
-            //foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipment_types").Find(new QueryDocument()))
-            //{
-            //    typeSelectionComboBox.Items.Add((string)item["name"]);
-            //} 
-        }
-
-        public DeviceTemplateEditor(string editType)
-        {
-            InitializeComponent();
-            //TypeEditingActive = false;
-            //chooseTypeButton.Enabled = false;
-            //configurationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //// Load types of equipment from DB to ComboBox
-            //foreach (BsonDocument item in DatabaseManager.GetDataCollection("equipment_types").Find(new QueryDocument()))
-            //{
-            //    typeSelectionComboBox.Items.Add((string)item["name"]);
-            //}
-            //if (typeSelectionComboBox.Items.IndexOf(editType) > -1)
-            //{
-            //    typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.IndexOf(editType);
-            //    TypeEditingActive = true;
-            //    chooseTypeButton.Enabled = true;
-            //    LoadAttrToDataGrid(editType);
-            //    typeNameTextBox.Text = editType;
-            //}
-        }
-
-        private void LoadAttrToDataGrid(string type)
-        {
-            //// Clear available data
-            //configurationDataGridView.Rows.Clear();
-            //// Get elements of Array with attributes for current type of equipment
-            //var attr_arr = DatabaseManager.GetDataCollection("equipment_types").FindOne(new QueryDocument { { "name", type } })["attr"];
-            //if (attr_arr.IsBsonArray)
-            //{
-            //    foreach (BsonDocument item in attr_arr.AsBsonArray)
-            //    {
-            //        if (item["compulsory"].AsBoolean)
-            //            configurationDataGridView.Rows.Add((string)item["attr_name"], true);
-            //        else
-            //        {
-            //            //if not compulsory
-            //            configurationDataGridView.Rows.Add((string)item["attr_name"], false);
-            //        }
-            //    }
-            //}
-        }
-
-        private string GetSelectedRowNames()
-        {
-            string result = "\n";
-            for (int i = 0; i < configurationDataGridView.SelectedRows.Count; i++)
-            {
-                for (int j = 0; j < configurationDataGridView.SelectedRows[i].Cells.Count; j++)
-                {
-                    result += configurationDataGridView.SelectedRows[i].Cells[j].Value.ToString();
-                    result += "  ";
-                }
-                result += "\n";
-            }
-            return result;
-        }
-
-        private void deleteParameterButton_Click(object sender, EventArgs e)
-        {
-            if (configurationDataGridView.SelectedRows.Count == 0)
-                MessageBox.Show("Не вибрано жодного рядку", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-            {
-                if (configurationDataGridView.SelectedRows.Count > 0)
-                    if (MessageBox.Show("Ви дійсно бажаєте видалити наступний набір рядків?" + GetSelectedRowNames(), "Попередження",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-                        return;
-                for (int i = configurationDataGridView.SelectedRows.Count - 1; i >= 0; i--)
-                    configurationDataGridView.Rows.Remove(configurationDataGridView.SelectedRows[i]);
-            }
+            configurationGroupBox.Enabled = false;
         }
 
         private void saveChangesButton_Click(object sender, EventArgs e)
         {
-            //if (typeNameTextBox.Text == "")
-            //    MessageBox.Show("Поле назви типу не заповнене", "Помилка", 
-            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //else if (configurationDataGridView.Rows.Count < 1)
-            //    MessageBox.Show("Таблиця атрибутів не може бути пустою", "Помилка",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //else
-            //{
-            //    initialTemplateName = typeNameTextBox.Text;
-            //    BsonDocument type = new BsonDocument("name", typeNameTextBox.Text);
-            //    BsonArray attr = new BsonArray();
-            //    for(int i=0; i< configurationDataGridView.Rows.Count; ++i)
-            //    {
-            //        attr.Add(new BsonDocument{ {"attr_name", (string)configurationDataGridView.Rows[i].Cells[0].Value},
-            //            {"compulsory",(bool)configurationDataGridView.Rows[i].Cells[1].Value}});
-            //    }
-            //    type.Add("attr", attr);
-            //    DatabaseManager.GetDataCollection("equipment_types").Update(new QueryDocument(new BsonDocument("name", initialTemplateName)), new UpdateDocument(type));
-            //}
-        }
-
-        private void configurationDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            deleteParameterButton.Enabled = (configurationDataGridView.SelectedRows.Count > 0);
-        }
-
-        private void addParameterButton_Click(object sender, EventArgs e)
-        {
-            AddingString childFormAddingParameterType = new AddingString("Введіть назву нового параметру");
-            childFormAddingParameterType.ShowDialog();
-            bool noContains = true;
-            for (int i = 0; i < configurationDataGridView.Rows.Count; ++i)
+            if (String.IsNullOrWhiteSpace(typeNameTextBox.Text))
+                MessageBox.Show("Поле назви типу не заповнене", "Помилка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
             {
-                if ((string)configurationDataGridView.Rows[i].Cells[0].Value == childFormAddingParameterType.parameterName)
+                if (tech_inspectorDataSet.types.FindBytype_id(type_id).type_name != typeNameTextBox.Text || tech_inspectorDataSet.types.FindBytype_id(type_id).RowState == DataRowState.Added)
                 {
-                    noContains = false;
+                    tech_inspectorDataSet.types.FindBytype_id(type_id).type_name = typeNameTextBox.Text;
+                    typesTableAdapter.Update(tech_inspectorDataSet.types);
+                    tech_inspectorDataSet.types.AcceptChanges();
+                }
+                int q = attributesTableAdapter.Update(tech_inspectorDataSet.attributes);
+                tech_inspectorDataSet.attributes.AcceptChanges();
+                if (q > 0)
+                {
+                    MessageBox.Show("Зміни збережено", "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            if (!String.IsNullOrWhiteSpace(childFormAddingParameterType.parameterName) && noContains)
-            {
-                configurationDataGridView.Rows.Add(childFormAddingParameterType.parameterName, false);
-            }
-            else if (noContains == false)
-            {
-                MessageBox.Show("Атрибут " + childFormAddingParameterType.parameterName + " уже присутній", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (childFormAddingParameterType.parameterName != null)
-            {
-                MessageBox.Show("Оберіть атрибут або додайте новий", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private void typeSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            chooseTypeButton.Enabled = true;
         }
 
         private void вихідToolStripMenuItem_Click(object sender, EventArgs e)
@@ -183,62 +52,72 @@ namespace lol2
 
         private void newTypeButton_Click(object sender, EventArgs e)
         {
-            //AddingString childFormAddingParameterType = new AddingString("Введіть назву нового типу обладнання");
-            //childFormAddingParameterType.ShowDialog();
-            //if ( !String.IsNullOrWhiteSpace( childFormAddingParameterType.parameterName ))
-            //{
-            //    if (typeSelectionComboBox.Items.Contains(childFormAddingParameterType.parameterName))
-            //    {
-            //        MessageBox.Show("Тип з таким ім'ям уже існує!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //    else
-            //    {
-            //        initialTemplateName = childFormAddingParameterType.parameterName;
-            //        typeNameTextBox.Text = initialTemplateName;
-            //        TypeEditingActive = true;
-            //        configurationDataGridView.Rows.Clear();
-            //        typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.Add(initialTemplateName);
-            //        DatabaseManager.GetDataCollection("equipment_types").Insert(new BsonDocument { { "name", initialTemplateName }, { "attr", new BsonArray() } });
-            //    }
-            //}
+            AddingString childFormAddingParameterType = new AddingString("Введіть назву нового типу обладнання");
+            childFormAddingParameterType.ShowDialog();
+            if (!String.IsNullOrWhiteSpace(childFormAddingParameterType.parameterName))
+            {
+                if (typeSelectionComboBox.Items.Contains(childFormAddingParameterType.parameterName))
+                {
+                    MessageBox.Show("Тип з таким ім'ям уже існує!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    string new_type_name = childFormAddingParameterType.parameterName;
+                    DataRow new_type_row = tech_inspectorDataSet.types.NewRow();
+                    new_type_row.SetField<string>(tech_inspectorDataSet.types.type_nameColumn, new_type_name);
+                    tech_inspectorDataSet.types.Rows.Add(new_type_row);
+                    typeSelectionComboBox.SelectedValue = new_type_row.Field<int>(tech_inspectorDataSet.types.type_idColumn);
+                    chooseTypeButton_Click(typeSelectionComboBox, new EventArgs());
+                }
+            }
         }
 
         private void chooseTypeButton_Click(object sender, EventArgs e)
         {
             if (typeSelectionComboBox.SelectedIndex > -1)
             {
-                initialTemplateName = typeSelectionComboBox.Text;
-                typeNameTextBox.Text = initialTemplateName;
-                TypeEditingActive = true;
-                LoadAttrToDataGrid(initialTemplateName);
+                type_id = (int)typeSelectionComboBox.SelectedValue;
+                configurationGroupBox.Enabled = true;
+                attributesTableAdapter.FillByTypeID(tech_inspectorDataSet.attributes, type_id);
+                typeNameTextBox.Text = typeSelectionComboBox.Text;
+                tech_inspectorDataSet.attributes.type_idColumn.DefaultValue = type_id;
             }
         }
 
         private void removeTypeButton_Click(object sender, EventArgs e)
         {
-            //if (MessageBox.Show("Ви дійсно бажаєте видалити вибраний шаблон з бази даних ?", "Попередження",
-            //    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            //{
-            //    DatabaseManager.GetDataCollection("equipment_types").Remove(new QueryDocument(new BsonDocument("name", initialTemplateName)));
-            //    typeNameTextBox.Text = "";
-            //    configurationDataGridView.Rows.Clear();
-            //    TypeEditingActive = false;
-            //    typeSelectionComboBox.Items.Remove(initialTemplateName);
-            //    typeSelectionComboBox.SelectedIndex = -1;
-            //}
+            if (MessageBox.Show("Ви дійсно бажаєте видалити вибраний тип обладнання з бази даних? (Все обладнання даного типу буде видалено)", "Попередження",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                foreach (DataRow row in tech_inspectorDataSet.attributes.Rows)
+                {
+                    row.Delete();
+                }
+                attributesTableAdapter.Update(tech_inspectorDataSet.attributes);
+                tech_inspectorDataSet.attributes.AcceptChanges();
+                tech_inspectorDataSet.types.FindBytype_id(type_id).Delete();
+                typesTableAdapter.Update(tech_inspectorDataSet.types);
+                tech_inspectorDataSet.types.AcceptChanges();
+
+                typeNameTextBox.Text = String.Empty;
+                configurationGroupBox.Enabled = false;
+            }
         }
 
         private void abortChangesButton_Click(object sender, EventArgs e)
         {
-            if (initialTemplateName == "")
-                MessageBox.Show("Цей шаблон будувався 'з 0', тому відмінити зміни неможливо", "Помилка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if (MessageBox.Show("Ви дійсно бажаєте відхилити всі зміни застосовані до цього шаблону ?", "Попередження",
+            if (MessageBox.Show("Ви дійсно бажаєте відхилити зміни?", "Попередження",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                typeNameTextBox.Text = initialTemplateName;
-                LoadAttrToDataGrid(initialTemplateName);
+                tech_inspectorDataSet.attributes.RejectChanges();
+                typeNameTextBox.Text = tech_inspectorDataSet.types.FindBytype_id(type_id).type_name;
             }
+        }
+
+
+        private void DeviceTemplateEditor_Load(object sender, EventArgs e)
+        {
+            this.typesTableAdapter.Fill(this.tech_inspectorDataSet.types);
         }
     }
 }

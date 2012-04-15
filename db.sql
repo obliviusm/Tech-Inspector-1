@@ -31,7 +31,7 @@ CREATE TABLE `attributes` (
   UNIQUE KEY `attribute_id_UNIQUE` (`attribute_id`),
   KEY `fk_Attributes_Types1` (`type_id`),
   CONSTRAINT `fk_Attributes_Types1` FOREIGN KEY (`type_id`) REFERENCES `types` (`type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `attributes` (
 
 LOCK TABLES `attributes` WRITE;
 /*!40000 ALTER TABLE `attributes` DISABLE KEYS */;
-INSERT INTO `attributes` VALUES (1,1,'Монітор',1),(2,1,'Клавіатура',1),(3,1,'Миш',1),(4,1,'Процесор',1),(5,1,'Відеокарта',1),(6,1,'HDD',1),(7,1,'RAM',1),(8,1,'Привід',1),(9,1,'USB',0),(10,1,'Bluetooth',0),(11,1,'Wi-fi',0),(12,2,'Виробник',1),(13,2,'Модель',1),(14,2,'Срок експлуатації',0),(15,3,'Виробник',1),(16,3,'Модель',1),(17,3,'Тип (1 - струйний, 2 - лазерний)',0),(18,9,'Тип обладнання',1);
+INSERT INTO `attributes` VALUES (1,1,'Монітор',1),(2,1,'Клавіатура',1),(3,1,'Миш',1),(4,1,'Процесор',1),(5,1,'Відеокарта',1),(6,1,'HDD',1),(7,1,'RAM',1),(8,1,'Привід',1),(9,1,'USB',0),(10,1,'Bluetooth',0),(11,1,'Wi-fi',0),(12,2,'Виробник',1),(13,2,'Модель',1),(14,2,'Срок експлуатації',0),(15,3,'Виробник',1),(16,3,'Модель',1),(17,3,'Тип (1 - струйний, 2 - лазерний)',0),(18,9,'Тип обладнання',1),(19,6,'Виробник',1),(20,6,'Модель',1);
 /*!40000 ALTER TABLE `attributes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +65,7 @@ CREATE TABLE `equipments` (
   KEY `fk_Equipments_Types` (`type_id`),
   KEY `fk_Equipments_Locations1` (`location_id`),
   KEY `fk_Equipments_States1` (`state_id`),
-  CONSTRAINT `fk_Equipments_Types` FOREIGN KEY (`type_id`) REFERENCES `types` (`type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Equipments_Types` FOREIGN KEY (`type_id`) REFERENCES `types` (`type_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_Equipments_Locations1` FOREIGN KEY (`location_id`) REFERENCES `locations` (`location_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Equipments_States1` FOREIGN KEY (`state_id`) REFERENCES `states` (`state_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -95,7 +95,7 @@ CREATE TABLE `equipments_has_attributes` (
   KEY `fk_Equipments_has_Attributes_Attributes1` (`attribute_id`),
   KEY `fk_Equipments_has_Attributes_Equipments1` (`equipment_id`),
   CONSTRAINT `fk_Equipments_has_Attributes_Equipments1` FOREIGN KEY (`equipment_id`) REFERENCES `equipments` (`equipment_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_Equipments_has_Attributes_Attributes1` FOREIGN KEY (`attribute_id`) REFERENCES `attributes` (`attribute_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Equipments_has_Attributes_Attributes1` FOREIGN KEY (`attribute_id`) REFERENCES `attributes` (`attribute_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -172,7 +172,7 @@ CREATE TABLE `types` (
   PRIMARY KEY (`type_id`),
   UNIQUE KEY `type_id_UNIQUE` (`type_id`),
   UNIQUE KEY `type_name_UNIQUE` (`type_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,4 +194,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-04-14 21:57:12
+-- Dump completed on 2012-04-15 17:21:24

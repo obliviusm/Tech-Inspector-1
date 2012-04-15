@@ -77,13 +77,6 @@
             this.розробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ліцензіяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infosDataGridView = new System.Windows.Forms.DataGridView();
-            this.equipmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.equipmentshortinfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
             this.addDeviceButton = new System.Windows.Forms.Button();
@@ -107,6 +100,13 @@
             this.equipment_shortinfoTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipment_shortinfoTableAdapter();
             this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             this.statesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.statesTableAdapter();
+            this.equipmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentshortinfoBindingSource)).BeginInit();
@@ -482,55 +482,6 @@
             this.infosDataGridView.Size = new System.Drawing.Size(590, 360);
             this.infosDataGridView.TabIndex = 2;
             // 
-            // equipmentidDataGridViewTextBoxColumn
-            // 
-            this.equipmentidDataGridViewTextBoxColumn.DataPropertyName = "equipment_id";
-            this.equipmentidDataGridViewTextBoxColumn.HeaderText = "equipment_id";
-            this.equipmentidDataGridViewTextBoxColumn.Name = "equipmentidDataGridViewTextBoxColumn";
-            this.equipmentidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // typenameDataGridViewTextBoxColumn
-            // 
-            this.typenameDataGridViewTextBoxColumn.DataPropertyName = "type_name";
-            this.typenameDataGridViewTextBoxColumn.HeaderText = "type_name";
-            this.typenameDataGridViewTextBoxColumn.Name = "typenameDataGridViewTextBoxColumn";
-            this.typenameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // locationnameDataGridViewTextBoxColumn
-            // 
-            this.locationnameDataGridViewTextBoxColumn.DataPropertyName = "location_name";
-            this.locationnameDataGridViewTextBoxColumn.HeaderText = "location_name";
-            this.locationnameDataGridViewTextBoxColumn.Name = "locationnameDataGridViewTextBoxColumn";
-            this.locationnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statenameDataGridViewTextBoxColumn
-            // 
-            this.statenameDataGridViewTextBoxColumn.DataPropertyName = "state_name";
-            this.statenameDataGridViewTextBoxColumn.HeaderText = "state_name";
-            this.statenameDataGridViewTextBoxColumn.Name = "statenameDataGridViewTextBoxColumn";
-            this.statenameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // locationidDataGridViewTextBoxColumn
-            // 
-            this.locationidDataGridViewTextBoxColumn.DataPropertyName = "location_id";
-            this.locationidDataGridViewTextBoxColumn.HeaderText = "location_id";
-            this.locationidDataGridViewTextBoxColumn.Name = "locationidDataGridViewTextBoxColumn";
-            this.locationidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // stateidDataGridViewTextBoxColumn
-            // 
-            this.stateidDataGridViewTextBoxColumn.DataPropertyName = "state_id";
-            this.stateidDataGridViewTextBoxColumn.HeaderText = "state_id";
-            this.stateidDataGridViewTextBoxColumn.Name = "stateidDataGridViewTextBoxColumn";
-            this.stateidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // typeidDataGridViewTextBoxColumn
-            // 
-            this.typeidDataGridViewTextBoxColumn.DataPropertyName = "type_id";
-            this.typeidDataGridViewTextBoxColumn.HeaderText = "type_id";
-            this.typeidDataGridViewTextBoxColumn.Name = "typeidDataGridViewTextBoxColumn";
-            this.typeidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // equipmentshortinfoBindingSource
             // 
             this.equipmentshortinfoBindingSource.DataMember = "equipment_shortinfo";
@@ -638,6 +589,7 @@
             // 
             this.locationsBindingSource.DataMember = "locations";
             this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
+            this.locationsBindingSource.Sort = "location_id";
             // 
             // typeSelectionComboBox
             // 
@@ -655,6 +607,7 @@
             // 
             this.typesBindingSource.DataMember = "types";
             this.typesBindingSource.DataSource = this.tech_inspectorDataSet;
+            this.typesBindingSource.Sort = "type_id";
             // 
             // locationLabel
             // 
@@ -708,6 +661,7 @@
             // 
             this.statesBindingSource.DataMember = "states";
             this.statesBindingSource.DataSource = this.tech_inspectorDataSet;
+            this.statesBindingSource.Sort = "state_id";
             // 
             // typesTableAdapter
             // 
@@ -724,6 +678,58 @@
             // statesTableAdapter
             // 
             this.statesTableAdapter.ClearBeforeFill = true;
+            // 
+            // equipmentidDataGridViewTextBoxColumn
+            // 
+            this.equipmentidDataGridViewTextBoxColumn.DataPropertyName = "equipment_id";
+            this.equipmentidDataGridViewTextBoxColumn.HeaderText = "equipment_id";
+            this.equipmentidDataGridViewTextBoxColumn.Name = "equipmentidDataGridViewTextBoxColumn";
+            this.equipmentidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typenameDataGridViewTextBoxColumn
+            // 
+            this.typenameDataGridViewTextBoxColumn.DataPropertyName = "type_name";
+            this.typenameDataGridViewTextBoxColumn.HeaderText = "type_name";
+            this.typenameDataGridViewTextBoxColumn.Name = "typenameDataGridViewTextBoxColumn";
+            this.typenameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // locationnameDataGridViewTextBoxColumn
+            // 
+            this.locationnameDataGridViewTextBoxColumn.DataPropertyName = "location_name";
+            this.locationnameDataGridViewTextBoxColumn.HeaderText = "location_name";
+            this.locationnameDataGridViewTextBoxColumn.Name = "locationnameDataGridViewTextBoxColumn";
+            this.locationnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statenameDataGridViewTextBoxColumn
+            // 
+            this.statenameDataGridViewTextBoxColumn.DataPropertyName = "state_name";
+            this.statenameDataGridViewTextBoxColumn.HeaderText = "state_name";
+            this.statenameDataGridViewTextBoxColumn.Name = "statenameDataGridViewTextBoxColumn";
+            this.statenameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // locationidDataGridViewTextBoxColumn
+            // 
+            this.locationidDataGridViewTextBoxColumn.DataPropertyName = "location_id";
+            this.locationidDataGridViewTextBoxColumn.HeaderText = "location_id";
+            this.locationidDataGridViewTextBoxColumn.Name = "locationidDataGridViewTextBoxColumn";
+            this.locationidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.locationidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // stateidDataGridViewTextBoxColumn
+            // 
+            this.stateidDataGridViewTextBoxColumn.DataPropertyName = "state_id";
+            this.stateidDataGridViewTextBoxColumn.HeaderText = "state_id";
+            this.stateidDataGridViewTextBoxColumn.Name = "stateidDataGridViewTextBoxColumn";
+            this.stateidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.stateidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // typeidDataGridViewTextBoxColumn
+            // 
+            this.typeidDataGridViewTextBoxColumn.DataPropertyName = "type_id";
+            this.typeidDataGridViewTextBoxColumn.HeaderText = "type_id";
+            this.typeidDataGridViewTextBoxColumn.Name = "typeidDataGridViewTextBoxColumn";
+            this.typeidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.typeidDataGridViewTextBoxColumn.Visible = false;
             // 
             // InfoViewer
             // 
@@ -826,6 +832,12 @@
         private tech_inspectorDataSetTableAdapters.typesTableAdapter typesTableAdapter;
         private System.Windows.Forms.BindingSource equipmentshortinfoBindingSource;
         private tech_inspectorDataSetTableAdapters.equipment_shortinfoTableAdapter equipment_shortinfoTableAdapter;
+        private System.Windows.Forms.Label stateLabel;
+        private System.Windows.Forms.ComboBox stateComboBox;
+        private System.Windows.Forms.BindingSource locationsBindingSource;
+        private tech_inspectorDataSetTableAdapters.locationsTableAdapter locationsTableAdapter;
+        private System.Windows.Forms.BindingSource statesBindingSource;
+        private tech_inspectorDataSetTableAdapters.statesTableAdapter statesTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn equipmentidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn locationnameDataGridViewTextBoxColumn;
@@ -833,11 +845,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn locationidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stateidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label stateLabel;
-        private System.Windows.Forms.ComboBox stateComboBox;
-        private System.Windows.Forms.BindingSource locationsBindingSource;
-        private tech_inspectorDataSetTableAdapters.locationsTableAdapter locationsTableAdapter;
-        private System.Windows.Forms.BindingSource statesBindingSource;
-        private tech_inspectorDataSetTableAdapters.statesTableAdapter statesTableAdapter;
     }
 }

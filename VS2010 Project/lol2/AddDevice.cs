@@ -155,7 +155,7 @@ namespace lol2
 
         private void редагуватиТипиОбладнанняToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new DeviceTemplateEditor(typeSelectionComboBox.Text).ShowDialog();
+            new DeviceTemplateEditor().ShowDialog();
         }
 
         //private string GetSelectedRowNames()

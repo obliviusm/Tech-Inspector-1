@@ -98,18 +98,12 @@ namespace lol2
             tech_inspectorDataSet.EnforceConstraints = false;
             this.equipment_shortinfoTableAdapter.Fill(this.tech_inspectorDataSet.equipment_shortinfo);
 
-            infosDataGridView.Columns[tech_inspectorDataSet.equipment_shortinfo.Columns.IndexOf(tech_inspectorDataSet.equipment_shortinfo.state_idColumn)].Visible = false;
-            infosDataGridView.Columns[tech_inspectorDataSet.equipment_shortinfo.Columns.IndexOf(tech_inspectorDataSet.equipment_shortinfo.location_idColumn)].Visible = false;
-            infosDataGridView.Columns[tech_inspectorDataSet.equipment_shortinfo.Columns.IndexOf(tech_inspectorDataSet.equipment_shortinfo.type_idColumn)].Visible = false;
-
             tech_inspectorDataSet.states.Rows.Add(new object[]{0, "Всі"});
-            statesBindingSource.Sort = tech_inspectorDataSet.states.state_idColumn.ColumnName;
-
+            stateComboBox.SelectedValue = 0;
             tech_inspectorDataSet.locations.Rows.Add(new object[] { 0, "Всі" });
-            locationsBindingSource.Sort = tech_inspectorDataSet.locations.location_idColumn.ColumnName;
-
+            locationComboBox.SelectedValue = 0;
             tech_inspectorDataSet.types.Rows.Add(new object[] { 0, "Всі" });
-            typesBindingSource.Sort = tech_inspectorDataSet.types.type_idColumn.ColumnName;
+            typeSelectionComboBox.SelectedValue = 0;
         }
 
         private void refreshButton_Click(object sender, EventArgs e)

@@ -736,14 +736,15 @@ namespace lol2 {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnattribute_id}, true));
                 this.columnattribute_id.AutoIncrement = true;
-                this.columnattribute_id.AutoIncrementSeed = -1;
-                this.columnattribute_id.AutoIncrementStep = -1;
+                this.columnattribute_id.AutoIncrementSeed = 1;
                 this.columnattribute_id.AllowDBNull = false;
                 this.columnattribute_id.Unique = true;
                 this.columntype_id.AllowDBNull = false;
                 this.columnattribute_name.AllowDBNull = false;
+                this.columnattribute_name.DefaultValue = ((string)(""));
                 this.columnattribute_name.MaxLength = 45;
                 this.columnrequired.AllowDBNull = false;
+                this.columnrequired.DefaultValue = ((bool)(false));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2223,8 +2224,7 @@ namespace lol2 {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
                                 this.columntype_id}, true));
                 this.columntype_id.AutoIncrement = true;
-                this.columntype_id.AutoIncrementSeed = -1;
-                this.columntype_id.AutoIncrementStep = -1;
+                this.columntype_id.AutoIncrementSeed = 1;
                 this.columntype_id.AllowDBNull = false;
                 this.columntype_id.Unique = true;
                 this.columntype_name.AllowDBNull = false;
@@ -4236,11 +4236,23 @@ namespace lol2.tech_inspectorDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT `attribute_id`, `type_id`, `attribute_name`, `required` FROM `attributes`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        attribute_id, type_id, attribute_name, required\r\nFROM            at" +
+                "tributes\r\nWHERE        (type_id = @type_id)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@type_id";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "type_id";
+            this._commandCollection[1].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4262,6 +4274,32 @@ namespace lol2.tech_inspectorDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual tech_inspectorDataSet.attributesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            tech_inspectorDataSet.attributesDataTable dataTable = new tech_inspectorDataSet.attributesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByTypeID(tech_inspectorDataSet.attributesDataTable dataTable, int type_id) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(type_id));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual tech_inspectorDataSet.attributesDataTable GetDataByTypeID(int type_id) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(type_id));
             tech_inspectorDataSet.attributesDataTable dataTable = new tech_inspectorDataSet.attributesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
