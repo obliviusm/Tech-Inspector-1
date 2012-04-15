@@ -14,6 +14,7 @@ namespace lol2
         public SubSystemSelection()
         {
             InitializeComponent();
+            //tabControl1.SelectedTab = tabPage1;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,10 +46,11 @@ namespace lol2
 
         private void reportingButton_Click(object sender, EventArgs e)
         {
-            DocumentControl childFormReportingForm = new DocumentControl();
-            childFormReportingForm.FormClosed+=new FormClosedEventHandler(childForm_FormClosed);
-            childFormReportingForm.Show();
-            Hide();
+            tabControl1.SelectedTab = tabPage3;
+            //DocumentControl childFormReportingForm = new DocumentControl();
+            //childFormReportingForm.FormClosed+=new FormClosedEventHandler(childForm_FormClosed);
+            //childFormReportingForm.Show();
+            //Hide();
         }
 
         private void SubSystemSelection_Load(object sender, EventArgs e)
