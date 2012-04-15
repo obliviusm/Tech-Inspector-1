@@ -33,7 +33,11 @@ namespace lol2
         private void редагуванняШаблонівToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DeviceTemplateEditor childFormDeviceTemplateEditor = new DeviceTemplateEditor();
-            childFormDeviceTemplateEditor.Show();
+            childFormDeviceTemplateEditor.ShowDialog();
+            this.typesTableAdapter.Fill(this.tech_inspectorDataSet.types);
+            tech_inspectorDataSet.types.Rows.Add(new object[] { 0, "Всі" });
+            typeSelectionComboBox.SelectedValue = 0;
+            this.equipment_shortinfoTableAdapter.Fill(this.tech_inspectorDataSet.equipment_shortinfo);
         }
 
         private void deleteDeviceButton_Click(object sender, EventArgs e)
@@ -64,6 +68,7 @@ namespace lol2
         {
             AddDevice childFormAddDevice = new AddDevice();
             childFormAddDevice.ShowDialog();
+            this.equipment_shortinfoTableAdapter.Fill(this.tech_inspectorDataSet.equipment_shortinfo);
         }
 
         private void editInfoButton_Click(object sender, EventArgs e)
@@ -79,9 +84,9 @@ namespace lol2
             {
                 int id = (int)infosDataGridView.Rows[showrows[i]].Cells[0].Value;
                 EditEquipment edit_form = new EditEquipment(id);
-                edit_form.Show();
+                edit_form.ShowDialog();
             }
-
+            this.equipment_shortinfoTableAdapter.Fill(this.tech_inspectorDataSet.equipment_shortinfo);            
         }
 
         private void detailedInfoButton_Click(object sender, EventArgs e)
