@@ -45,10 +45,16 @@ namespace lol2
 
         private void reportingButton_Click(object sender, EventArgs e)
         {
-            ReportingForm childFormReportingForm = new ReportingForm();
+            DocumentControl childFormReportingForm = new DocumentControl();
             childFormReportingForm.FormClosed+=new FormClosedEventHandler(childForm_FormClosed);
             childFormReportingForm.Show();
             Hide();
+        }
+
+        private void SubSystemSelection_Load(object sender, EventArgs e)
+        {
+
+            //this.reportViewer1.RefreshReport();
         }
     }
 }
