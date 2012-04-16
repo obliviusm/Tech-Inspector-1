@@ -58,5 +58,13 @@ namespace lol2
 
             //this.reportViewer1.RefreshReport();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ReportingForm childFormReportingForm = new ReportingForm();
+            childFormReportingForm.FormClosed += new FormClosedEventHandler(childForm_FormClosed);
+            childFormReportingForm.Show();
+            Hide();
+        }
     }
 }
