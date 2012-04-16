@@ -35,13 +35,6 @@
             this.редагуванняШаблонівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вихідToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infosDataGridView = new System.Windows.Forms.DataGridView();
-            this.equipmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.equipmentshortinfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
             this.addDeviceButton = new System.Windows.Forms.Button();
@@ -58,6 +51,9 @@
             this.typesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.locationLabel = new System.Windows.Forms.Label();
             this.filterGroupBox = new System.Windows.Forms.GroupBox();
+            this.newCheckBox = new System.Windows.Forms.CheckBox();
+            this.movedCheckBox = new System.Windows.Forms.CheckBox();
+            this.repairingCheckBox = new System.Windows.Forms.CheckBox();
             this.stateLabel = new System.Windows.Forms.Label();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -65,6 +61,16 @@
             this.equipment_shortinfoTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipment_shortinfoTableAdapter();
             this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             this.statesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.statesTableAdapter();
+            this.equipmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moved = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.repairing = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.typenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchase_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentshortinfoBindingSource)).BeginInit();
@@ -81,7 +87,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(613, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(612, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -129,70 +135,21 @@
             this.infosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.infosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.equipmentidDataGridViewTextBoxColumn,
+            this.moved,
+            this.repairing,
             this.typenameDataGridViewTextBoxColumn,
             this.locationnameDataGridViewTextBoxColumn,
             this.statenameDataGridViewTextBoxColumn,
+            this.purchase_date,
             this.locationidDataGridViewTextBoxColumn,
             this.stateidDataGridViewTextBoxColumn,
             this.typeidDataGridViewTextBoxColumn});
             this.infosDataGridView.DataSource = this.equipmentshortinfoBindingSource;
-            this.infosDataGridView.Location = new System.Drawing.Point(12, 99);
+            this.infosDataGridView.Location = new System.Drawing.Point(12, 117);
             this.infosDataGridView.Name = "infosDataGridView";
             this.infosDataGridView.ReadOnly = true;
-            this.infosDataGridView.Size = new System.Drawing.Size(590, 360);
+            this.infosDataGridView.Size = new System.Drawing.Size(589, 342);
             this.infosDataGridView.TabIndex = 2;
-            // 
-            // equipmentidDataGridViewTextBoxColumn
-            // 
-            this.equipmentidDataGridViewTextBoxColumn.DataPropertyName = "equipment_id";
-            this.equipmentidDataGridViewTextBoxColumn.HeaderText = "Інвентарний номер";
-            this.equipmentidDataGridViewTextBoxColumn.Name = "equipmentidDataGridViewTextBoxColumn";
-            this.equipmentidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // typenameDataGridViewTextBoxColumn
-            // 
-            this.typenameDataGridViewTextBoxColumn.DataPropertyName = "type_name";
-            this.typenameDataGridViewTextBoxColumn.HeaderText = "Тип обладнання";
-            this.typenameDataGridViewTextBoxColumn.Name = "typenameDataGridViewTextBoxColumn";
-            this.typenameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // locationnameDataGridViewTextBoxColumn
-            // 
-            this.locationnameDataGridViewTextBoxColumn.DataPropertyName = "location_name";
-            this.locationnameDataGridViewTextBoxColumn.HeaderText = "Розташування";
-            this.locationnameDataGridViewTextBoxColumn.Name = "locationnameDataGridViewTextBoxColumn";
-            this.locationnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statenameDataGridViewTextBoxColumn
-            // 
-            this.statenameDataGridViewTextBoxColumn.DataPropertyName = "state_name";
-            this.statenameDataGridViewTextBoxColumn.HeaderText = "Технічний стан";
-            this.statenameDataGridViewTextBoxColumn.Name = "statenameDataGridViewTextBoxColumn";
-            this.statenameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // locationidDataGridViewTextBoxColumn
-            // 
-            this.locationidDataGridViewTextBoxColumn.DataPropertyName = "location_id";
-            this.locationidDataGridViewTextBoxColumn.HeaderText = "location_id";
-            this.locationidDataGridViewTextBoxColumn.Name = "locationidDataGridViewTextBoxColumn";
-            this.locationidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.locationidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // stateidDataGridViewTextBoxColumn
-            // 
-            this.stateidDataGridViewTextBoxColumn.DataPropertyName = "state_id";
-            this.stateidDataGridViewTextBoxColumn.HeaderText = "state_id";
-            this.stateidDataGridViewTextBoxColumn.Name = "stateidDataGridViewTextBoxColumn";
-            this.stateidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.stateidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // typeidDataGridViewTextBoxColumn
-            // 
-            this.typeidDataGridViewTextBoxColumn.DataPropertyName = "type_id";
-            this.typeidDataGridViewTextBoxColumn.HeaderText = "type_id";
-            this.typeidDataGridViewTextBoxColumn.Name = "typeidDataGridViewTextBoxColumn";
-            this.typeidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.typeidDataGridViewTextBoxColumn.Visible = false;
             // 
             // equipmentshortinfoBindingSource
             // 
@@ -252,7 +209,7 @@
             // 
             this.refreshButton.Location = new System.Drawing.Point(470, 32);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(110, 22);
+            this.refreshButton.Size = new System.Drawing.Size(110, 43);
             this.refreshButton.TabIndex = 7;
             this.refreshButton.Text = "Обновити";
             this.refreshButton.UseVisualStyleBackColor = true;
@@ -331,6 +288,9 @@
             // 
             // filterGroupBox
             // 
+            this.filterGroupBox.Controls.Add(this.newCheckBox);
+            this.filterGroupBox.Controls.Add(this.movedCheckBox);
+            this.filterGroupBox.Controls.Add(this.repairingCheckBox);
             this.filterGroupBox.Controls.Add(this.stateLabel);
             this.filterGroupBox.Controls.Add(this.stateComboBox);
             this.filterGroupBox.Controls.Add(this.deviceNumberTextBox);
@@ -342,10 +302,40 @@
             this.filterGroupBox.Controls.Add(this.typeSelectionComboBox);
             this.filterGroupBox.Location = new System.Drawing.Point(12, 27);
             this.filterGroupBox.Name = "filterGroupBox";
-            this.filterGroupBox.Size = new System.Drawing.Size(590, 66);
+            this.filterGroupBox.Size = new System.Drawing.Size(590, 84);
             this.filterGroupBox.TabIndex = 26;
             this.filterGroupBox.TabStop = false;
             this.filterGroupBox.Text = "Фільтри";
+            // 
+            // newCheckBox
+            // 
+            this.newCheckBox.AutoSize = true;
+            this.newCheckBox.Location = new System.Drawing.Point(122, 58);
+            this.newCheckBox.Name = "newCheckBox";
+            this.newCheckBox.Size = new System.Drawing.Size(115, 17);
+            this.newCheckBox.TabIndex = 32;
+            this.newCheckBox.Text = "Нове обладнання";
+            this.newCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // movedCheckBox
+            // 
+            this.movedCheckBox.AutoSize = true;
+            this.movedCheckBox.Location = new System.Drawing.Point(326, 58);
+            this.movedCheckBox.Name = "movedCheckBox";
+            this.movedCheckBox.Size = new System.Drawing.Size(145, 17);
+            this.movedCheckBox.TabIndex = 31;
+            this.movedCheckBox.Text = "Тимчасово перенесено";
+            this.movedCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // repairingCheckBox
+            // 
+            this.repairingCheckBox.AutoSize = true;
+            this.repairingCheckBox.Location = new System.Drawing.Point(238, 58);
+            this.repairingCheckBox.Name = "repairingCheckBox";
+            this.repairingCheckBox.Size = new System.Drawing.Size(82, 17);
+            this.repairingCheckBox.TabIndex = 30;
+            this.repairingCheckBox.Text = "На ремонті";
+            this.repairingCheckBox.UseVisualStyleBackColor = true;
             // 
             // stateLabel
             // 
@@ -390,11 +380,86 @@
             // 
             this.statesTableAdapter.ClearBeforeFill = true;
             // 
+            // equipmentidDataGridViewTextBoxColumn
+            // 
+            this.equipmentidDataGridViewTextBoxColumn.DataPropertyName = "equipment_id";
+            this.equipmentidDataGridViewTextBoxColumn.HeaderText = "Інвентарний номер";
+            this.equipmentidDataGridViewTextBoxColumn.Name = "equipmentidDataGridViewTextBoxColumn";
+            this.equipmentidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // moved
+            // 
+            this.moved.DataPropertyName = "moved";
+            this.moved.HeaderText = "moved";
+            this.moved.Name = "moved";
+            this.moved.ReadOnly = true;
+            this.moved.Visible = false;
+            // 
+            // repairing
+            // 
+            this.repairing.DataPropertyName = "repairing";
+            this.repairing.HeaderText = "repairing";
+            this.repairing.Name = "repairing";
+            this.repairing.ReadOnly = true;
+            this.repairing.Visible = false;
+            // 
+            // typenameDataGridViewTextBoxColumn
+            // 
+            this.typenameDataGridViewTextBoxColumn.DataPropertyName = "type_name";
+            this.typenameDataGridViewTextBoxColumn.HeaderText = "Тип обладнання";
+            this.typenameDataGridViewTextBoxColumn.Name = "typenameDataGridViewTextBoxColumn";
+            this.typenameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // locationnameDataGridViewTextBoxColumn
+            // 
+            this.locationnameDataGridViewTextBoxColumn.DataPropertyName = "location_name";
+            this.locationnameDataGridViewTextBoxColumn.HeaderText = "Розташування";
+            this.locationnameDataGridViewTextBoxColumn.Name = "locationnameDataGridViewTextBoxColumn";
+            this.locationnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statenameDataGridViewTextBoxColumn
+            // 
+            this.statenameDataGridViewTextBoxColumn.DataPropertyName = "state_name";
+            this.statenameDataGridViewTextBoxColumn.HeaderText = "Технічний стан";
+            this.statenameDataGridViewTextBoxColumn.Name = "statenameDataGridViewTextBoxColumn";
+            this.statenameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // purchase_date
+            // 
+            this.purchase_date.DataPropertyName = "purchase_date";
+            this.purchase_date.HeaderText = "Дата покупки";
+            this.purchase_date.Name = "purchase_date";
+            this.purchase_date.ReadOnly = true;
+            // 
+            // locationidDataGridViewTextBoxColumn
+            // 
+            this.locationidDataGridViewTextBoxColumn.DataPropertyName = "location_id";
+            this.locationidDataGridViewTextBoxColumn.HeaderText = "location_id";
+            this.locationidDataGridViewTextBoxColumn.Name = "locationidDataGridViewTextBoxColumn";
+            this.locationidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.locationidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // stateidDataGridViewTextBoxColumn
+            // 
+            this.stateidDataGridViewTextBoxColumn.DataPropertyName = "state_id";
+            this.stateidDataGridViewTextBoxColumn.HeaderText = "state_id";
+            this.stateidDataGridViewTextBoxColumn.Name = "stateidDataGridViewTextBoxColumn";
+            this.stateidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.stateidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // typeidDataGridViewTextBoxColumn
+            // 
+            this.typeidDataGridViewTextBoxColumn.DataPropertyName = "type_id";
+            this.typeidDataGridViewTextBoxColumn.HeaderText = "type_id";
+            this.typeidDataGridViewTextBoxColumn.Name = "typeidDataGridViewTextBoxColumn";
+            this.typeidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.typeidDataGridViewTextBoxColumn.Visible = false;
+            // 
             // InfoViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 509);
+            this.ClientSize = new System.Drawing.Size(612, 509);
             this.Controls.Add(this.filterGroupBox);
             this.Controls.Add(this.detailedInfoButton);
             this.Controls.Add(this.editInfoButton);
@@ -455,10 +520,16 @@
         private tech_inspectorDataSetTableAdapters.locationsTableAdapter locationsTableAdapter;
         private System.Windows.Forms.BindingSource statesBindingSource;
         private tech_inspectorDataSetTableAdapters.statesTableAdapter statesTableAdapter;
+        private System.Windows.Forms.CheckBox newCheckBox;
+        private System.Windows.Forms.CheckBox movedCheckBox;
+        private System.Windows.Forms.CheckBox repairingCheckBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn equipmentidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn moved;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn repairing;
         private System.Windows.Forms.DataGridViewTextBoxColumn typenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn locationnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statenameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn purchase_date;
         private System.Windows.Forms.DataGridViewTextBoxColumn locationidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stateidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeidDataGridViewTextBoxColumn;

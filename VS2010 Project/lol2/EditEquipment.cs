@@ -20,6 +20,9 @@ namespace lol2
 
         private void EditEquipment_Load(object sender, EventArgs e)
         {
+            addNewRowToHistory();
+
+            this.action_typesTableAdapter.Fill(this.tech_inspectorDataSet.action_types);
             this.attributes_listTableAdapter.FillByID(this.tech_inspectorDataSet.attributes_list, equipment_id);
             this.locationsTableAdapter.Fill(this.tech_inspectorDataSet.locations);
             this.statesTableAdapter.Fill(this.tech_inspectorDataSet.states);
@@ -41,6 +44,75 @@ namespace lol2
             tech_inspectorDataSet.equipments.AcceptChanges();
             MessageBox.Show("Зміни успішно внесено!", "Повідомлення", MessageBoxButtons.OK,MessageBoxIcon.Information);
             Close();
+        }
+
+        private void addLogButton_Click(object sender, EventArgs e)
+        {
+            historyBindingSource.EndEdit();
+            int q = historyTableAdapter.Update(tech_inspectorDataSet.history);
+            switch ((int)actionTypeComboBox.SelectedValue)
+            {
+                case 1: //Передача на ремонт
+                    {
+                        repairingCheckBox.Checked = true;
+                        break; 
+                    }
+                case 2: //Завершення ремонту
+                    {
+                        repairingCheckBox.Checked = false;
+                        break;
+                    }
+                case 3: //Вихід з ладу
+                    {
+                        stateSelectComboBox.SelectedValue = 3;
+                        break;
+                    }
+                case 4: //Часткова несправність
+                    {
+                        stateSelectComboBox.SelectedValue = 2;
+                        break;
+                    }
+                case 5: //Відновлення роботи
+                    {
+                        stateSelectComboBox.SelectedValue = 1;
+                        break;
+                    }
+                case 6: //Тимчасове перенесення
+                    {
+                        movedCheckBox.Checked = true;
+                        AddingString childFormAddingParameterType = new AddingString("Введіть тимчасове місце розташування");
+                        childFormAddingParameterType.ShowDialog();
+                        if (!String.IsNullOrWhiteSpace(childFormAddingParameterType.parameterName))
+                        {
+                            movedPlaceTextBox.Text = childFormAddingParameterType.parameterName;
+                        }
+                        break;
+                    }
+                case 7: //Повернення на постійне місце
+                    {
+                        movedCheckBox.Checked = false;
+                        movedPlaceTextBox.Text = String.Empty;
+                        break;
+                    }
+            }
+            equipmentsBindingSource.EndEdit();
+            equipmentsTableAdapter.Update(tech_inspectorDataSet.equipments);
+            tech_inspectorDataSet.equipments.AcceptChanges();
+            addNewRowToHistory();
+        }
+        private void addNewRowToHistory()
+        {
+            tech_inspectorDataSet.history.Rows.Clear();
+            DataRow row = tech_inspectorDataSet.history.NewRow();
+            row.SetField<int>(tech_inspectorDataSet.history.equipment_idColumn, equipment_id);
+            row.SetField<int>(tech_inspectorDataSet.history.action_type_idColumn, 1);
+            tech_inspectorDataSet.history.Rows.Add(row);
+        }
+
+        private void showHistoryButton_Click(object sender, EventArgs e)
+        {
+            History h = new History(equipment_id);
+            h.ShowDialog();
         }
     }
 }

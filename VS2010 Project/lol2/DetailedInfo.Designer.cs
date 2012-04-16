@@ -43,6 +43,10 @@
             this.deviceTypeLabel = new System.Windows.Forms.Label();
             this.locationLabel = new System.Windows.Forms.Label();
             this.dateGroupBox = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.movedPlaceLabel = new System.Windows.Forms.Label();
+            this.movedCheckBox = new System.Windows.Forms.CheckBox();
+            this.repairingCheckBox = new System.Windows.Forms.CheckBox();
             this.warrantyEndDateLabel = new System.Windows.Forms.Label();
             this.placementDateLabel = new System.Windows.Forms.Label();
             this.purchaseDateLabel = new System.Windows.Forms.Label();
@@ -51,6 +55,10 @@
             this.warranty_end_dateTextBox = new System.Windows.Forms.TextBox();
             this.configurationGroupBox = new System.Windows.Forms.GroupBox();
             this.configurationDataGridView = new System.Windows.Forms.DataGridView();
+            this.equipmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attributeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attributenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attributevalueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attributeslistBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.equipmentsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipmentsTableAdapter();
             this.tableAdapterManager = new lol2.tech_inspectorDataSetTableAdapters.TableAdapterManager();
@@ -58,10 +66,7 @@
             this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             this.statesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.statesTableAdapter();
             this.attributes_listTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.attributes_listTableAdapter();
-            this.equipmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.attributeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.attributenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.attributevalueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.histotyButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
@@ -85,7 +90,7 @@
             this.groupBox1.Controls.Add(this.locationLabel);
             this.groupBox1.Location = new System.Drawing.Point(1, 17);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 153);
+            this.groupBox1.Size = new System.Drawing.Size(296, 179);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Загальна інформація";
@@ -191,6 +196,11 @@
             // 
             // dateGroupBox
             // 
+            this.dateGroupBox.Controls.Add(this.histotyButton);
+            this.dateGroupBox.Controls.Add(this.textBox1);
+            this.dateGroupBox.Controls.Add(this.movedPlaceLabel);
+            this.dateGroupBox.Controls.Add(this.movedCheckBox);
+            this.dateGroupBox.Controls.Add(this.repairingCheckBox);
             this.dateGroupBox.Controls.Add(this.warrantyEndDateLabel);
             this.dateGroupBox.Controls.Add(this.placementDateLabel);
             this.dateGroupBox.Controls.Add(this.purchaseDateLabel);
@@ -200,10 +210,52 @@
             this.dateGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateGroupBox.Location = new System.Drawing.Point(303, 17);
             this.dateGroupBox.Name = "dateGroupBox";
-            this.dateGroupBox.Size = new System.Drawing.Size(439, 135);
+            this.dateGroupBox.Size = new System.Drawing.Size(376, 179);
             this.dateGroupBox.TabIndex = 25;
             this.dateGroupBox.TabStop = false;
-            this.dateGroupBox.Text = "Дата";
+            this.dateGroupBox.Text = "Додаткова інформація";
+            // 
+            // textBox1
+            // 
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentsBindingSource, "temp_location", true));
+            this.textBox1.Location = new System.Drawing.Point(207, 123);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(150, 20);
+            this.textBox1.TabIndex = 42;
+            // 
+            // movedPlaceLabel
+            // 
+            this.movedPlaceLabel.AutoSize = true;
+            this.movedPlaceLabel.Location = new System.Drawing.Point(16, 126);
+            this.movedPlaceLabel.Name = "movedPlaceLabel";
+            this.movedPlaceLabel.Size = new System.Drawing.Size(182, 13);
+            this.movedPlaceLabel.TabIndex = 41;
+            this.movedPlaceLabel.Text = "Місце тимчасового розташування:";
+            // 
+            // movedCheckBox
+            // 
+            this.movedCheckBox.AutoSize = true;
+            this.movedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.equipmentsBindingSource, "moved", true));
+            this.movedCheckBox.Enabled = false;
+            this.movedCheckBox.Location = new System.Drawing.Point(112, 98);
+            this.movedCheckBox.Name = "movedCheckBox";
+            this.movedCheckBox.Size = new System.Drawing.Size(151, 17);
+            this.movedCheckBox.TabIndex = 40;
+            this.movedCheckBox.Text = "Тимчасово перенесено?";
+            this.movedCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // repairingCheckBox
+            // 
+            this.repairingCheckBox.AutoSize = true;
+            this.repairingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.equipmentsBindingSource, "repairing", true));
+            this.repairingCheckBox.Enabled = false;
+            this.repairingCheckBox.Location = new System.Drawing.Point(18, 98);
+            this.repairingCheckBox.Name = "repairingCheckBox";
+            this.repairingCheckBox.Size = new System.Drawing.Size(88, 17);
+            this.repairingCheckBox.TabIndex = 39;
+            this.repairingCheckBox.Text = "На ремонті?";
+            this.repairingCheckBox.UseVisualStyleBackColor = true;
             // 
             // warrantyEndDateLabel
             // 
@@ -265,9 +317,9 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.configurationGroupBox.Controls.Add(this.configurationDataGridView);
-            this.configurationGroupBox.Location = new System.Drawing.Point(1, 176);
+            this.configurationGroupBox.Location = new System.Drawing.Point(1, 202);
             this.configurationGroupBox.Name = "configurationGroupBox";
-            this.configurationGroupBox.Size = new System.Drawing.Size(740, 292);
+            this.configurationGroupBox.Size = new System.Drawing.Size(679, 325);
             this.configurationGroupBox.TabIndex = 24;
             this.configurationGroupBox.TabStop = false;
             this.configurationGroupBox.Text = "Конфігурація обладнання";
@@ -292,46 +344,8 @@
             this.configurationDataGridView.Location = new System.Drawing.Point(7, 19);
             this.configurationDataGridView.Name = "configurationDataGridView";
             this.configurationDataGridView.ReadOnly = true;
-            this.configurationDataGridView.Size = new System.Drawing.Size(727, 267);
+            this.configurationDataGridView.Size = new System.Drawing.Size(666, 300);
             this.configurationDataGridView.TabIndex = 0;
-            // 
-            // attributeslistBindingSource
-            // 
-            this.attributeslistBindingSource.DataMember = "attributes_list";
-            this.attributeslistBindingSource.DataSource = this.tech_inspectorDataSet;
-            // 
-            // equipmentsTableAdapter
-            // 
-            this.equipmentsTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.attributes_listTableAdapter = null;
-            this.tableAdapterManager.attributesTableAdapter = null;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.equipment_shortinfoTableAdapter = null;
-            this.tableAdapterManager.equipments_has_attributesTableAdapter = null;
-            this.tableAdapterManager.equipmentsTableAdapter = this.equipmentsTableAdapter;
-            this.tableAdapterManager.locationsTableAdapter = null;
-            this.tableAdapterManager.statesTableAdapter = null;
-            this.tableAdapterManager.typesTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = lol2.tech_inspectorDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // typesTableAdapter
-            // 
-            this.typesTableAdapter.ClearBeforeFill = true;
-            // 
-            // locationsTableAdapter
-            // 
-            this.locationsTableAdapter.ClearBeforeFill = true;
-            // 
-            // statesTableAdapter
-            // 
-            this.statesTableAdapter.ClearBeforeFill = true;
-            // 
-            // attributes_listTableAdapter
-            // 
-            this.attributes_listTableAdapter.ClearBeforeFill = true;
             // 
             // equipmentidDataGridViewTextBoxColumn
             // 
@@ -363,11 +377,61 @@
             this.attributevalueDataGridViewTextBoxColumn.Name = "attributevalueDataGridViewTextBoxColumn";
             this.attributevalueDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // attributeslistBindingSource
+            // 
+            this.attributeslistBindingSource.DataMember = "attributes_list";
+            this.attributeslistBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // equipmentsTableAdapter
+            // 
+            this.equipmentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.action_typesTableAdapter = null;
+            this.tableAdapterManager.attributes_listTableAdapter = null;
+            this.tableAdapterManager.attributesTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.equipment_shortinfoTableAdapter = null;
+            this.tableAdapterManager.equipments_has_attributesTableAdapter = null;
+            this.tableAdapterManager.equipmentsTableAdapter = this.equipmentsTableAdapter;
+            this.tableAdapterManager.historyTableAdapter = null;
+            this.tableAdapterManager.locationsTableAdapter = null;
+            this.tableAdapterManager.statesTableAdapter = null;
+            this.tableAdapterManager.typesTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = lol2.tech_inspectorDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // typesTableAdapter
+            // 
+            this.typesTableAdapter.ClearBeforeFill = true;
+            // 
+            // locationsTableAdapter
+            // 
+            this.locationsTableAdapter.ClearBeforeFill = true;
+            // 
+            // statesTableAdapter
+            // 
+            this.statesTableAdapter.ClearBeforeFill = true;
+            // 
+            // attributes_listTableAdapter
+            // 
+            this.attributes_listTableAdapter.ClearBeforeFill = true;
+            // 
+            // histotyButton
+            // 
+            this.histotyButton.Location = new System.Drawing.Point(207, 150);
+            this.histotyButton.Name = "histotyButton";
+            this.histotyButton.Size = new System.Drawing.Size(150, 23);
+            this.histotyButton.TabIndex = 43;
+            this.histotyButton.Text = "Історія";
+            this.histotyButton.UseVisualStyleBackColor = true;
+            this.histotyButton.Click += new System.EventHandler(this.histotyButton_Click);
+            // 
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 484);
+            this.ClientSize = new System.Drawing.Size(687, 543);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dateGroupBox);
             this.Controls.Add(this.configurationGroupBox);
@@ -422,6 +486,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn attributeidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn attributenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn attributevalueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label movedPlaceLabel;
+        private System.Windows.Forms.CheckBox movedCheckBox;
+        private System.Windows.Forms.CheckBox repairingCheckBox;
+        private System.Windows.Forms.Button histotyButton;
 
     }
 }

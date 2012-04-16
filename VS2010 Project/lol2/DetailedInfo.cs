@@ -34,9 +34,10 @@ namespace lol2
             state_idTextBox.Text = equipment_info.GetParentRow(tech_inspectorDataSet.equipments.ParentRelations["fk_Equipments_States1"])[tech_inspectorDataSet.states.state_nameColumn].ToString();
         }
 
-        private void purchase_dateLabel1_Click(object sender, EventArgs e)
+        private void histotyButton_Click(object sender, EventArgs e)
         {
-
+            History h = new History(equipment_id);
+            h.ShowDialog();
         }
     }
 }

@@ -138,6 +138,18 @@ namespace lol2
             {
                 filter_str += "state_id = " + stateComboBox.SelectedValue + " AND ";
             }
+            if (newCheckBox.Checked)
+            {
+                filter_str += String.Format("purchase_date >= '{0:yyyy-mm-dd}' AND ", DateTime.Now.AddYears(-1));
+            }
+            if (movedCheckBox.Checked)
+            {
+                filter_str += "moved = true AND ";
+            }
+            if (repairingCheckBox.Checked)
+            {
+                filter_str += "repairing = true AND ";
+            }
             if (String.IsNullOrWhiteSpace(deviceNumberTextBox.Text))
             {
                 filter_str += "true";
