@@ -32,15 +32,18 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.stateSelectLabel = new System.Windows.Forms.Label();
             this.stateSelectComboBox = new System.Windows.Forms.ComboBox();
-            this.priceTextBox = new System.Windows.Forms.TextBox();
             this.equipmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
+            this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.priceTextBox = new System.Windows.Forms.TextBox();
             this.deviceNumberLabel = new System.Windows.Forms.Label();
             this.deviceNumberTextBox = new System.Windows.Forms.TextBox();
             this.priceLabel = new System.Windows.Forms.Label();
             this.deviceTypeLabel = new System.Windows.Forms.Label();
             this.typeSelectionComboBox = new System.Windows.Forms.ComboBox();
+            this.typesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.locationComboBox = new System.Windows.Forms.ComboBox();
+            this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.locationLabel = new System.Windows.Forms.Label();
             this.dateGroupBox = new System.Windows.Forms.GroupBox();
             this.warrantyEndDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -52,14 +55,11 @@
             this.saveChangesButton = new System.Windows.Forms.Button();
             this.configurationGroupBox = new System.Windows.Forms.GroupBox();
             this.configurationDataGridView = new System.Windows.Forms.DataGridView();
-            this.equipmentsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipmentsTableAdapter();
-            this.typesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.typesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.typesTableAdapter();
-            this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.statesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.statesTableAdapter();
-            this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             this.attributeslistBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.equipmentsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipmentsTableAdapter();
+            this.typesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.typesTableAdapter();
+            this.statesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.statesTableAdapter();
+            this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             this.attributes_listTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.attributes_listTableAdapter();
             this.equipmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attributeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,12 +68,12 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
             this.dateGroupBox.SuspendLayout();
             this.configurationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurationDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.attributeslistBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,14 +118,6 @@
             this.stateSelectComboBox.TabIndex = 22;
             this.stateSelectComboBox.ValueMember = "state_id";
             // 
-            // priceTextBox
-            // 
-            this.priceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentsBindingSource, "price", true));
-            this.priceTextBox.Location = new System.Drawing.Point(127, 126);
-            this.priceTextBox.Name = "priceTextBox";
-            this.priceTextBox.Size = new System.Drawing.Size(152, 20);
-            this.priceTextBox.TabIndex = 21;
-            // 
             // equipmentsBindingSource
             // 
             this.equipmentsBindingSource.DataMember = "equipments";
@@ -135,6 +127,19 @@
             // 
             this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
             this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // statesBindingSource
+            // 
+            this.statesBindingSource.DataMember = "states";
+            this.statesBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // priceTextBox
+            // 
+            this.priceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentsBindingSource, "price", true));
+            this.priceTextBox.Location = new System.Drawing.Point(127, 126);
+            this.priceTextBox.Name = "priceTextBox";
+            this.priceTextBox.Size = new System.Drawing.Size(152, 20);
+            this.priceTextBox.TabIndex = 21;
             // 
             // deviceNumberLabel
             // 
@@ -186,6 +191,11 @@
             this.typeSelectionComboBox.TabIndex = 5;
             this.typeSelectionComboBox.ValueMember = "type_id";
             // 
+            // typesBindingSource
+            // 
+            this.typesBindingSource.DataMember = "types";
+            this.typesBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
             // locationComboBox
             // 
             this.locationComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.equipmentsBindingSource, "location_id", true));
@@ -198,6 +208,11 @@
             this.locationComboBox.Size = new System.Drawing.Size(152, 21);
             this.locationComboBox.TabIndex = 19;
             this.locationComboBox.ValueMember = "location_id";
+            // 
+            // locationsBindingSource
+            // 
+            this.locationsBindingSource.DataMember = "locations";
+            this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
             // 
             // locationLabel
             // 
@@ -334,41 +349,26 @@
             this.configurationDataGridView.Size = new System.Drawing.Size(675, 291);
             this.configurationDataGridView.TabIndex = 0;
             // 
+            // attributeslistBindingSource
+            // 
+            this.attributeslistBindingSource.DataMember = "attributes_list";
+            this.attributeslistBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
             // equipmentsTableAdapter
             // 
             this.equipmentsTableAdapter.ClearBeforeFill = true;
-            // 
-            // typesBindingSource
-            // 
-            this.typesBindingSource.DataMember = "types";
-            this.typesBindingSource.DataSource = this.tech_inspectorDataSet;
             // 
             // typesTableAdapter
             // 
             this.typesTableAdapter.ClearBeforeFill = true;
             // 
-            // statesBindingSource
-            // 
-            this.statesBindingSource.DataMember = "states";
-            this.statesBindingSource.DataSource = this.tech_inspectorDataSet;
-            // 
             // statesTableAdapter
             // 
             this.statesTableAdapter.ClearBeforeFill = true;
             // 
-            // locationsBindingSource
-            // 
-            this.locationsBindingSource.DataMember = "locations";
-            this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
-            // 
             // locationsTableAdapter
             // 
             this.locationsTableAdapter.ClearBeforeFill = true;
-            // 
-            // attributeslistBindingSource
-            // 
-            this.attributeslistBindingSource.DataMember = "attributes_list";
-            this.attributeslistBindingSource.DataSource = this.tech_inspectorDataSet;
             // 
             // attributes_listTableAdapter
             // 
@@ -391,14 +391,14 @@
             // attributenameDataGridViewTextBoxColumn
             // 
             this.attributenameDataGridViewTextBoxColumn.DataPropertyName = "attribute_name";
-            this.attributenameDataGridViewTextBoxColumn.HeaderText = "attribute_name";
+            this.attributenameDataGridViewTextBoxColumn.HeaderText = "Назва";
             this.attributenameDataGridViewTextBoxColumn.Name = "attributenameDataGridViewTextBoxColumn";
             this.attributenameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // attributevalueDataGridViewTextBoxColumn
             // 
             this.attributevalueDataGridViewTextBoxColumn.DataPropertyName = "attribute_value";
-            this.attributevalueDataGridViewTextBoxColumn.HeaderText = "attribute_value";
+            this.attributevalueDataGridViewTextBoxColumn.HeaderText = "Значення";
             this.attributevalueDataGridViewTextBoxColumn.Name = "attributevalueDataGridViewTextBoxColumn";
             // 
             // EditEquipment
@@ -417,13 +417,13 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).EndInit();
             this.dateGroupBox.ResumeLayout(false);
             this.dateGroupBox.PerformLayout();
             this.configurationGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.configurationDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.attributeslistBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -461,11 +461,11 @@
         private tech_inspectorDataSetTableAdapters.statesTableAdapter statesTableAdapter;
         private System.Windows.Forms.BindingSource locationsBindingSource;
         private tech_inspectorDataSetTableAdapters.locationsTableAdapter locationsTableAdapter;
+        private System.Windows.Forms.BindingSource attributeslistBindingSource;
+        private tech_inspectorDataSetTableAdapters.attributes_listTableAdapter attributes_listTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn equipmentidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn attributeidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn attributenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn attributevalueDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource attributeslistBindingSource;
-        private tech_inspectorDataSetTableAdapters.attributes_listTableAdapter attributes_listTableAdapter;
     }
 }

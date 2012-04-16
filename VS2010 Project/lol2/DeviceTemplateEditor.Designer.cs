@@ -340,13 +340,13 @@
             // attributenameDataGridViewTextBoxColumn
             // 
             this.attributenameDataGridViewTextBoxColumn.DataPropertyName = "attribute_name";
-            this.attributenameDataGridViewTextBoxColumn.HeaderText = "attribute_name";
+            this.attributenameDataGridViewTextBoxColumn.HeaderText = "Назва";
             this.attributenameDataGridViewTextBoxColumn.Name = "attributenameDataGridViewTextBoxColumn";
             // 
             // requiredDataGridViewCheckBoxColumn
             // 
             this.requiredDataGridViewCheckBoxColumn.DataPropertyName = "required";
-            this.requiredDataGridViewCheckBoxColumn.HeaderText = "required";
+            this.requiredDataGridViewCheckBoxColumn.HeaderText = "Обовз\'язковий?";
             this.requiredDataGridViewCheckBoxColumn.Name = "requiredDataGridViewCheckBoxColumn";
             // 
             // DeviceTemplateEditor

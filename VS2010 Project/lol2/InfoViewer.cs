@@ -21,8 +21,7 @@ namespace lol2
      
         private void новийФайлToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddDevice childFormAddDevice = new AddDevice();
-            childFormAddDevice.ShowDialog();
+            addDeviceButton_Click(addDeviceButton, new EventArgs());
         }
 
         private void вихідToolStripMenuItem_Click(object sender, EventArgs e)

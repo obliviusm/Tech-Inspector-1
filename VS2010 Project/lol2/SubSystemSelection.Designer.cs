@@ -57,9 +57,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(386, 306);
+            this.button1.Location = new System.Drawing.Point(365, 194);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 52);
+            this.button1.Size = new System.Drawing.Size(155, 164);
             this.button1.TabIndex = 5;
             this.button1.Text = "Вихід до меню логіну";
             this.button1.UseVisualStyleBackColor = true;
@@ -97,6 +97,7 @@
             // 
             this.reportingButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("reportingButton.BackgroundImage")));
             this.reportingButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.reportingButton.Enabled = false;
             this.reportingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportingButton.Location = new System.Drawing.Point(365, 25);
             this.reportingButton.Name = "reportingButton";
@@ -111,6 +112,7 @@
             // 
             this.planningButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("planningButton.BackgroundImage")));
             this.planningButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.planningButton.Enabled = false;
             this.planningButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.planningButton.Location = new System.Drawing.Point(188, 26);
             this.planningButton.Name = "planningButton";

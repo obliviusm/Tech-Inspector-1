@@ -2576,6 +2576,7 @@ namespace lol2 {
                                 this.columnlocation_name}, false));
                 this.columnequipment_id.AllowDBNull = false;
                 this.columnequipment_id.Unique = true;
+                this.columnequipment_id.Caption = "Інвентарний номер";
                 this.columntype_name.AllowDBNull = false;
                 this.columntype_name.Unique = true;
                 this.columntype_name.MaxLength = 32;

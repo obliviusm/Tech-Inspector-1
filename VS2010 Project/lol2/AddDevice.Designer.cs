@@ -34,14 +34,6 @@
             this.новийФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.редагуватиТипиОбладнанняToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вихідToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.копіюватиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вставToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вирізатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.версіяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.розробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ліцензіяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deviceNumberLabel = new System.Windows.Forms.Label();
             this.deviceNumberTextBox = new System.Windows.Forms.TextBox();
             this.deviceTypeLabel = new System.Windows.Forms.Label();
@@ -91,9 +83,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.правкаToolStripMenuItem,
-            this.проПрограмуToolStripMenuItem});
+            this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(687, 24);
@@ -115,6 +105,7 @@
             this.новийФайлToolStripMenuItem.Name = "новийФайлToolStripMenuItem";
             this.новийФайлToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.новийФайлToolStripMenuItem.Text = "&Додати пристрій до бази";
+            this.новийФайлToolStripMenuItem.Click += new System.EventHandler(this.новийФайлToolStripMenuItem_Click);
             // 
             // редагуватиТипиОбладнанняToolStripMenuItem
             // 
@@ -129,62 +120,6 @@
             this.вихідToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.вихідToolStripMenuItem.Text = "&Вихід";
             this.вихідToolStripMenuItem.Click += new System.EventHandler(this.вихідToolStripMenuItem_Click);
-            // 
-            // правкаToolStripMenuItem
-            // 
-            this.правкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.копіюватиToolStripMenuItem,
-            this.вставToolStripMenuItem,
-            this.вирізатиToolStripMenuItem});
-            this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
-            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.правкаToolStripMenuItem.Text = "&Правка";
-            // 
-            // копіюватиToolStripMenuItem
-            // 
-            this.копіюватиToolStripMenuItem.Name = "копіюватиToolStripMenuItem";
-            this.копіюватиToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.копіюватиToolStripMenuItem.Text = "&Копіювати";
-            // 
-            // вставToolStripMenuItem
-            // 
-            this.вставToolStripMenuItem.Name = "вставToolStripMenuItem";
-            this.вставToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.вставToolStripMenuItem.Text = "&Вставити";
-            // 
-            // вирізатиToolStripMenuItem
-            // 
-            this.вирізатиToolStripMenuItem.Name = "вирізатиToolStripMenuItem";
-            this.вирізатиToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.вирізатиToolStripMenuItem.Text = "&Вирізати";
-            // 
-            // проПрограмуToolStripMenuItem
-            // 
-            this.проПрограмуToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.версіяToolStripMenuItem,
-            this.розробникиToolStripMenuItem,
-            this.ліцензіяToolStripMenuItem});
-            this.проПрограмуToolStripMenuItem.Name = "проПрограмуToolStripMenuItem";
-            this.проПрограмуToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.проПрограмуToolStripMenuItem.Text = "&Про програму";
-            // 
-            // версіяToolStripMenuItem
-            // 
-            this.версіяToolStripMenuItem.Name = "версіяToolStripMenuItem";
-            this.версіяToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.версіяToolStripMenuItem.Text = "&Версія";
-            // 
-            // розробникиToolStripMenuItem
-            // 
-            this.розробникиToolStripMenuItem.Name = "розробникиToolStripMenuItem";
-            this.розробникиToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.розробникиToolStripMenuItem.Text = "&Розробники";
-            // 
-            // ліцензіяToolStripMenuItem
-            // 
-            this.ліцензіяToolStripMenuItem.Name = "ліцензіяToolStripMenuItem";
-            this.ліцензіяToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.ліцензіяToolStripMenuItem.Text = "&Ліцензія";
             // 
             // deviceNumberLabel
             // 
@@ -511,14 +446,6 @@
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem новийФайлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вихідToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem правкаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem копіюватиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem вставToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem вирізатиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem версіяToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem розробникиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ліцензіяToolStripMenuItem;
         private System.Windows.Forms.Label deviceNumberLabel;
         private System.Windows.Forms.TextBox deviceNumberTextBox;
         private System.Windows.Forms.Label deviceTypeLabel;

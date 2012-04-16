@@ -14,8 +14,6 @@ namespace lol2
         public LoginForm()
         {
             InitializeComponent();
-            var foo = new InfoViewer();
-            foo.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
