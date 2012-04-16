@@ -200,5 +200,31 @@ namespace lol2
         {
             enableOpenDocInputButton();
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in inputDataGridView.SelectedRows)
+            {
+                //add selected rows from inputDataGridView to outputDataGridView
+                outputDataGridView.Rows.Add();      
+                for (int i = 0; i < row.Cells.Count; ++i)   
+                    outputDataGridView.Rows[outputDataGridView.Rows.Count - 2].Cells[i].Value = row.Cells[i].Value;
+                //delete selected rows in inputDataGridView
+                inputDataGridView.Rows.Remove(row);
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in outputDataGridView.SelectedRows)
+            {
+                //add selected rows from outputDataGridView to inputDataGridView
+                inputDataGridView.Rows.Add();
+                for (int i = 0; i < row.Cells.Count - 1; ++i)
+                    inputDataGridView.Rows[inputDataGridView.Rows.Count - 2].Cells[i].Value = row.Cells[i].Value;
+                //delete selected rows in outputDataGridView
+                outputDataGridView.Rows.Remove(row);   
+            }
+        }
     }
 }
