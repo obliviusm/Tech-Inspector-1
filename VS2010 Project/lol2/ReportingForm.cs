@@ -124,29 +124,81 @@ namespace lol2
         //    }
         }
 
-        private void splitter1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
+       
 
+        private void openDocInputButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog file = new OpenFileDialog();
+            file.InitialDirectory = "c:\\";
+            file.Filter = "Excel File (*.xlsx)|*.xlsx|Все файлы (*.*)|*.*";
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if (openDocInputComboBox.Text == "Прайс-лист")
+                        ReadPriceList(file.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            } 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void ReadPriceList(String filename)
         {
+            MyExcel.Application oXL;
+            MyExcel._Workbook oWB;
+            MyExcel._Worksheet oSheet;
+            MyExcel.Range oRng;
 
+            try
+            {
+                oXL = new MyExcel.Application();
+                //Open a workbook.
+                oWB = (MyExcel._Workbook)(oXL.Workbooks.Open(filename, 0, true, 5,
+                    "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false,
+                    false, 0, true, 1, 0));
+                //take a sheet
+                oSheet = (MyExcel._Worksheet)oWB.Worksheets.get_Item(1);
+                Object[,] oRow;     //object to take row
+                for (int i = 0; i < Convert.ToInt32(numberOfGoodsTextBox.Text); ++i)
+                {
+                    //take row from Excel file
+                    oRng = oSheet.get_Range("A" + (i + 2).ToString(), "D" + (i + 2).ToString());
+                    //and put it into DataGridView
+                    oRow = (System.Object[,])oRng.get_Value(Missing.Value);
+                    inputDataGridView.Rows.Add(oRow[1, 1], oRow[1, 2],
+                         oRow[1, 3], oRow[1, 4]);
+                }
+            }
+            catch (Exception theException)
+            {
+                String errorMessage;
+                errorMessage = "Error: ";
+                errorMessage = String.Concat(errorMessage, theException.Message);
+                errorMessage = String.Concat(errorMessage, " Line: ");
+                errorMessage = String.Concat(errorMessage, theException.Source);
+
+                MessageBox.Show(errorMessage, "Error");
+            }
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void numberOfGoodsTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            enableOpenDocInputButton();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void enableOpenDocInputButton()
         {
-
+            if (numberOfGoodsTextBox.Text != "" && openDocInputComboBox.SelectedIndex != -1)
+                openDocInputButton.Enabled = true;
+            else openDocInputButton.Enabled = false;
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void openDocInputComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            enableOpenDocInputButton();
         }
     }
 }
