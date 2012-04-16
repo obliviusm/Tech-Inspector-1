@@ -11,6 +11,8 @@ namespace lol2
 {
     public partial class SubSystemSelection : Form
     {
+        private List<string> runningSubForms = new List<string>();
+
         public SubSystemSelection()
         {
             InitializeComponent();
@@ -38,15 +40,16 @@ namespace lol2
 
         private void planningButton_Click(object sender, EventArgs e)
         {
-            CalendarPlan childFormCalendarPlan = new CalendarPlan();
-            childFormCalendarPlan.FormClosed+=new FormClosedEventHandler(childForm_FormClosed);
-            childFormCalendarPlan.Show();
-            Hide();
+            subSystemTabs.SelectedTab = scheduledTasksTab;
+            //CalendarPlan childFormCalendarPlan = new CalendarPlan();
+            //childFormCalendarPlan.FormClosed+=new FormClosedEventHandler(childForm_FormClosed);
+            //childFormCalendarPlan.Show();
+            //Hide();
         }
 
         private void reportingButton_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = tabPage3;
+            subSystemTabs.SelectedTab = documentsTab;
             //DocumentControl childFormReportingForm = new DocumentControl();
             //childFormReportingForm.FormClosed+=new FormClosedEventHandler(childForm_FormClosed);
             //childFormReportingForm.Show();
@@ -65,6 +68,27 @@ namespace lol2
             childFormReportingForm.FormClosed += new FormClosedEventHandler(childForm_FormClosed);
             childFormReportingForm.Show();
             Hide();
+        }
+
+        private void preventionCalendar_Click(object sender, EventArgs e)
+        {
+            PreventionCalendar childFormPreventionCalendar = new PreventionCalendar();
+            childFormPreventionCalendar.ShowDialog();
+        }
+
+        private void startCheckButton_Click(object sender, EventArgs e)
+        {
+            if (runningSubForms.Contains("CheckReport"))
+                return;
+            runningSubForms.Add("CheckReport");
+            CheckReport childFormCheckReport = new CheckReport();
+            childFormCheckReport.FormClosed += new FormClosedEventHandler(childFormCheckReport_FormClosed);
+            childFormCheckReport.Show();
+        }
+
+        void childFormCheckReport_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            runningSubForms.Remove("CheckReport");
         }
     }
 }

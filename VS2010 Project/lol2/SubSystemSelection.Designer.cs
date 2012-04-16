@@ -43,6 +43,8 @@
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,25 +52,33 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.subSystemTabs = new System.Windows.Forms.TabControl();
+            this.accountingTab = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.scheduledTasksTab = new System.Windows.Forms.TabPage();
+            this.startCheckButton = new System.Windows.Forms.Button();
+            this.adminRequiredLabel = new System.Windows.Forms.Label();
+            this.preventionCalendarInfoLabel = new System.Windows.Forms.Label();
+            this.preventionCalendar = new System.Windows.Forms.Button();
+            this.documentsTab = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.startCheckLabel = new System.Windows.Forms.Label();
+            this.startCheckLabelWarn = new System.Windows.Forms.Label();
+            this.upcomingChecks = new System.Windows.Forms.GroupBox();
+            this.upcomingChecksLabel = new System.Windows.Forms.Label();
             this.subsystemsGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.subSystemTabs.SuspendLayout();
+            this.accountingTab.SuspendLayout();
+            this.scheduledTasksTab.SuspendLayout();
+            this.documentsTab.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.upcomingChecks.SuspendLayout();
             this.SuspendLayout();
             // 
             // accountingButton
@@ -76,9 +86,9 @@
             this.accountingButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("accountingButton.BackgroundImage")));
             this.accountingButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.accountingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accountingButton.Location = new System.Drawing.Point(9, 25);
+            this.accountingButton.Location = new System.Drawing.Point(9, 26);
             this.accountingButton.Name = "accountingButton";
-            this.accountingButton.Size = new System.Drawing.Size(155, 163);
+            this.accountingButton.Size = new System.Drawing.Size(155, 162);
             this.accountingButton.TabIndex = 0;
             this.accountingButton.Text = "Облік";
             this.accountingButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -106,7 +116,7 @@
             this.reportingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportingButton.Location = new System.Drawing.Point(332, 26);
             this.reportingButton.Name = "reportingButton";
-            this.reportingButton.Size = new System.Drawing.Size(155, 164);
+            this.reportingButton.Size = new System.Drawing.Size(155, 162);
             this.reportingButton.TabIndex = 2;
             this.reportingButton.Text = "Документообіг";
             this.reportingButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -119,9 +129,9 @@
             this.diagnosticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.diagnosticsButton.Enabled = false;
             this.diagnosticsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diagnosticsButton.Location = new System.Drawing.Point(493, 25);
+            this.diagnosticsButton.Location = new System.Drawing.Point(493, 26);
             this.diagnosticsButton.Name = "diagnosticsButton";
-            this.diagnosticsButton.Size = new System.Drawing.Size(155, 164);
+            this.diagnosticsButton.Size = new System.Drawing.Size(155, 162);
             this.diagnosticsButton.TabIndex = 3;
             this.diagnosticsButton.Text = "Діагностика";
             this.diagnosticsButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -133,9 +143,9 @@
             this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.searchButton.Enabled = false;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(654, 25);
+            this.searchButton.Location = new System.Drawing.Point(654, 26);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(155, 164);
+            this.searchButton.Size = new System.Drawing.Size(155, 162);
             this.searchButton.TabIndex = 4;
             this.searchButton.Text = "Інф. пошук";
             this.searchButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -262,6 +272,33 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Бізнес-процеси";
             // 
+            // button3
+            // 
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(17, 190);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(155, 164);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Вихід з ладу обладнання ";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(17, 20);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(155, 164);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Покупка обладнання";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -332,51 +369,29 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "1. План закупівель";
             // 
-            // tabControl1
+            // subSystemTabs
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(4, 198);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(972, 423);
-            this.tabControl1.TabIndex = 9;
+            this.subSystemTabs.Controls.Add(this.accountingTab);
+            this.subSystemTabs.Controls.Add(this.scheduledTasksTab);
+            this.subSystemTabs.Controls.Add(this.documentsTab);
+            this.subSystemTabs.Location = new System.Drawing.Point(4, 198);
+            this.subSystemTabs.Multiline = true;
+            this.subSystemTabs.Name = "subSystemTabs";
+            this.subSystemTabs.SelectedIndex = 0;
+            this.subSystemTabs.Size = new System.Drawing.Size(972, 423);
+            this.subSystemTabs.TabIndex = 9;
             // 
-            // tabPage1
+            // accountingTab
             // 
-            this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(964, 324);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Облік";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(964, 324);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Планові задачі";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.groupBox4);
-            this.tabPage3.Controls.Add(this.groupBox2);
-            this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(964, 397);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Документообіг";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.accountingTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.accountingTab.Controls.Add(this.groupBox3);
+            this.accountingTab.Location = new System.Drawing.Point(4, 22);
+            this.accountingTab.Name = "accountingTab";
+            this.accountingTab.Padding = new System.Windows.Forms.Padding(3);
+            this.accountingTab.Size = new System.Drawing.Size(964, 397);
+            this.accountingTab.TabIndex = 0;
+            this.accountingTab.Text = "Облік";
+            this.accountingTab.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -387,32 +402,82 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
             // 
-            // button2
+            // scheduledTasksTab
             // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(17, 20);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 164);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Покупка обладнання";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.scheduledTasksTab.Controls.Add(this.upcomingChecks);
+            this.scheduledTasksTab.Controls.Add(this.startCheckLabelWarn);
+            this.scheduledTasksTab.Controls.Add(this.startCheckLabel);
+            this.scheduledTasksTab.Controls.Add(this.startCheckButton);
+            this.scheduledTasksTab.Controls.Add(this.adminRequiredLabel);
+            this.scheduledTasksTab.Controls.Add(this.preventionCalendarInfoLabel);
+            this.scheduledTasksTab.Controls.Add(this.preventionCalendar);
+            this.scheduledTasksTab.Location = new System.Drawing.Point(4, 22);
+            this.scheduledTasksTab.Name = "scheduledTasksTab";
+            this.scheduledTasksTab.Padding = new System.Windows.Forms.Padding(3);
+            this.scheduledTasksTab.Size = new System.Drawing.Size(964, 397);
+            this.scheduledTasksTab.TabIndex = 1;
+            this.scheduledTasksTab.Text = "Планові задачі";
+            this.scheduledTasksTab.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // startCheckButton
             // 
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(17, 190);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(155, 164);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Вихід з ладу обладнання ";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = true;
+            this.startCheckButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("startCheckButton.BackgroundImage")));
+            this.startCheckButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.startCheckButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startCheckButton.Location = new System.Drawing.Point(490, 22);
+            this.startCheckButton.Name = "startCheckButton";
+            this.startCheckButton.Size = new System.Drawing.Size(155, 162);
+            this.startCheckButton.TabIndex = 6;
+            this.startCheckButton.Text = "Розпочати перевірку";
+            this.startCheckButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.startCheckButton.UseVisualStyleBackColor = true;
+            this.startCheckButton.Click += new System.EventHandler(this.startCheckButton_Click);
+            // 
+            // adminRequiredLabel
+            // 
+            this.adminRequiredLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.adminRequiredLabel.ForeColor = System.Drawing.Color.Red;
+            this.adminRequiredLabel.Location = new System.Drawing.Point(329, 295);
+            this.adminRequiredLabel.Name = "adminRequiredLabel";
+            this.adminRequiredLabel.Size = new System.Drawing.Size(154, 55);
+            this.adminRequiredLabel.TabIndex = 8;
+            this.adminRequiredLabel.Text = "Для редагування інформації необхідні права адміністратора";
+            // 
+            // preventionCalendarInfoLabel
+            // 
+            this.preventionCalendarInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.preventionCalendarInfoLabel.Location = new System.Drawing.Point(329, 199);
+            this.preventionCalendarInfoLabel.Name = "preventionCalendarInfoLabel";
+            this.preventionCalendarInfoLabel.Size = new System.Drawing.Size(154, 96);
+            this.preventionCalendarInfoLabel.TabIndex = 7;
+            this.preventionCalendarInfoLabel.Text = "Тут можна переглянути час проведення профілактики для кожної аудиторії а також ві" +
+    "дповідального за профілактику. ";
+            // 
+            // preventionCalendar
+            // 
+            this.preventionCalendar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("preventionCalendar.BackgroundImage")));
+            this.preventionCalendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.preventionCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.preventionCalendar.Location = new System.Drawing.Point(328, 21);
+            this.preventionCalendar.Name = "preventionCalendar";
+            this.preventionCalendar.Size = new System.Drawing.Size(155, 163);
+            this.preventionCalendar.TabIndex = 6;
+            this.preventionCalendar.Text = "Розклад і відповідальні";
+            this.preventionCalendar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.preventionCalendar.UseVisualStyleBackColor = true;
+            this.preventionCalendar.Click += new System.EventHandler(this.preventionCalendar_Click);
+            // 
+            // documentsTab
+            // 
+            this.documentsTab.Controls.Add(this.groupBox4);
+            this.documentsTab.Controls.Add(this.groupBox2);
+            this.documentsTab.Controls.Add(this.groupBox1);
+            this.documentsTab.Location = new System.Drawing.Point(4, 22);
+            this.documentsTab.Name = "documentsTab";
+            this.documentsTab.Size = new System.Drawing.Size(964, 397);
+            this.documentsTab.TabIndex = 2;
+            this.documentsTab.Text = "Документообіг";
+            this.documentsTab.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -475,14 +540,55 @@
             this.label14.TabIndex = 1;
             this.label14.Text = "Звіт по Обліку";
             // 
+            // startCheckLabel
+            // 
+            this.startCheckLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.startCheckLabel.Location = new System.Drawing.Point(489, 201);
+            this.startCheckLabel.Name = "startCheckLabel";
+            this.startCheckLabel.Size = new System.Drawing.Size(156, 51);
+            this.startCheckLabel.TabIndex = 9;
+            this.startCheckLabel.Text = "Тут можна офрмити протокол при проведенні профілактики";
+            // 
+            // startCheckLabelWarn
+            // 
+            this.startCheckLabelWarn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.startCheckLabelWarn.ForeColor = System.Drawing.Color.Red;
+            this.startCheckLabelWarn.Location = new System.Drawing.Point(489, 295);
+            this.startCheckLabelWarn.Name = "startCheckLabelWarn";
+            this.startCheckLabelWarn.Size = new System.Drawing.Size(154, 55);
+            this.startCheckLabelWarn.TabIndex = 10;
+            this.startCheckLabelWarn.Text = "Для використання цієї опції необхідні права адміністратора";
+            // 
+            // upcomingChecks
+            // 
+            this.upcomingChecks.Controls.Add(this.upcomingChecksLabel);
+            this.upcomingChecks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.upcomingChecks.Location = new System.Drawing.Point(7, 21);
+            this.upcomingChecks.Name = "upcomingChecks";
+            this.upcomingChecks.Size = new System.Drawing.Size(315, 361);
+            this.upcomingChecks.TabIndex = 11;
+            this.upcomingChecks.TabStop = false;
+            this.upcomingChecks.Text = "Профілактики, що мають пройти найближчим часом";
+            // 
+            // upcomingChecksLabel
+            // 
+            this.upcomingChecksLabel.AutoSize = true;
+            this.upcomingChecksLabel.ForeColor = System.Drawing.Color.DarkGreen;
+            this.upcomingChecksLabel.Location = new System.Drawing.Point(7, 42);
+            this.upcomingChecksLabel.Name = "upcomingChecksLabel";
+            this.upcomingChecksLabel.Size = new System.Drawing.Size(294, 15);
+            this.upcomingChecksLabel.TabIndex = 0;
+            this.upcomingChecksLabel.Text = "Найближчим часом профілактики не плануються";
+            // 
             // SubSystemSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 624);
             this.Controls.Add(this.subsystemsGroupBox);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.subSystemTabs);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "SubSystemSelection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Вибір підсистеми";
@@ -492,11 +598,14 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
+            this.subSystemTabs.ResumeLayout(false);
+            this.accountingTab.ResumeLayout(false);
+            this.scheduledTasksTab.ResumeLayout(false);
+            this.documentsTab.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.upcomingChecks.ResumeLayout(false);
+            this.upcomingChecks.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -524,10 +633,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabControl subSystemTabs;
+        private System.Windows.Forms.TabPage accountingTab;
+        private System.Windows.Forms.TabPage scheduledTasksTab;
+        private System.Windows.Forms.TabPage documentsTab;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -536,6 +645,14 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button preventionCalendar;
+        private System.Windows.Forms.Label preventionCalendarInfoLabel;
+        private System.Windows.Forms.Label adminRequiredLabel;
+        private System.Windows.Forms.Button startCheckButton;
+        private System.Windows.Forms.Label startCheckLabelWarn;
+        private System.Windows.Forms.Label startCheckLabel;
+        private System.Windows.Forms.GroupBox upcomingChecks;
+        private System.Windows.Forms.Label upcomingChecksLabel;
 
     }
 }

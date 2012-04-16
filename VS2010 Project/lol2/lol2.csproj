@@ -74,6 +74,12 @@
     <Compile Include="CalendarPlan.Designer.cs">
       <DependentUpon>CalendarPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckReport.Designer.cs">
+      <DependentUpon>CheckReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailedInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,12 @@
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreventionCalendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreventionCalendar.designer.cs">
+      <DependentUpon>PreventionCalendar.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -148,6 +160,9 @@
     <EmbeddedResource Include="CalendarPlan.resx">
       <DependentUpon>CalendarPlan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CheckReport.resx">
+      <DependentUpon>CheckReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DetailedInfo.resx">
       <DependentUpon>DetailedInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreventionCalendar.resx">
+      <DependentUpon>PreventionCalendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
