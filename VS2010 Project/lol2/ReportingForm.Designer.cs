@@ -63,11 +63,11 @@
             this.openDocInputButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.guaranty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.planForBuyingTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.outputGroupBox.SuspendLayout();
@@ -147,17 +147,17 @@
             this.BalanceTextBox.Name = "BalanceTextBox";
             this.BalanceTextBox.Size = new System.Drawing.Size(58, 20);
             this.BalanceTextBox.TabIndex = 30;
+            this.BalanceTextBox.TextChanged += new System.EventHandler(this.BalanceTextBox_TextChanged);
             // 
             // saveDocOutputComboBox
             // 
             this.saveDocOutputComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.saveDocOutputComboBox.FormattingEnabled = true;
             this.saveDocOutputComboBox.Items.AddRange(new object[] {
-            "Прайс-лист",
-            "Тендерна пропозиція",
+            "План закупівель",
             "Рахунок-фактура",
-            "Заявка на оплату",
-            "Заявка на довіреність"});
+            "БД",
+            "Приймальний акт"});
             this.saveDocOutputComboBox.Location = new System.Drawing.Point(112, 94);
             this.saveDocOutputComboBox.Name = "saveDocOutputComboBox";
             this.saveDocOutputComboBox.Size = new System.Drawing.Size(211, 21);
@@ -214,9 +214,9 @@
             this.restLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.restLabel.Location = new System.Drawing.Point(583, 101);
             this.restLabel.Name = "restLabel";
-            this.restLabel.Size = new System.Drawing.Size(39, 13);
+            this.restLabel.Size = new System.Drawing.Size(13, 13);
             this.restLabel.TabIndex = 24;
-            this.restLabel.Text = "50 грн";
+            this.restLabel.Text = "0";
             // 
             // outputDataGridView
             // 
@@ -226,17 +226,19 @@
             this.outputDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.outputDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.outputDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn5,
-            this.Column7});
+            this.code,
+            this.name,
+            this.guaranty,
+            this.price,
+            this.number});
             this.outputDataGridView.Location = new System.Drawing.Point(9, 136);
             this.outputDataGridView.Name = "outputDataGridView";
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.outputDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.outputDataGridView.Size = new System.Drawing.Size(616, 458);
             this.outputDataGridView.TabIndex = 16;
+            this.outputDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.outputDataGridView_CellEndEdit);
+            this.outputDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.outputDataGridView_CellValueChanged);
             // 
             // costLabel
             // 
@@ -244,9 +246,9 @@
             this.costLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.costLabel.Location = new System.Drawing.Point(583, 75);
             this.costLabel.Name = "costLabel";
-            this.costLabel.Size = new System.Drawing.Size(39, 13);
+            this.costLabel.Size = new System.Drawing.Size(13, 13);
             this.costLabel.TabIndex = 23;
-            this.costLabel.Text = "50 грн";
+            this.costLabel.Text = "0";
             // 
             // planForBuyingLabel
             // 
@@ -267,6 +269,7 @@
             this.saveDocOutputButton.TabIndex = 18;
             this.saveDocOutputButton.Text = "Зберегти";
             this.saveDocOutputButton.UseVisualStyleBackColor = true;
+            this.saveDocOutputButton.Click += new System.EventHandler(this.saveDocOutputButton_Click);
             // 
             // restLabel2
             // 
@@ -445,34 +448,34 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn1
+            // code
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Код";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 50;
+            this.code.HeaderText = "Код";
+            this.code.Name = "code";
+            this.code.Width = 50;
             // 
-            // dataGridViewTextBoxColumn3
+            // name
             // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Назва товару";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 320;
+            this.name.HeaderText = "Назва товару";
+            this.name.Name = "name";
+            this.name.Width = 320;
             // 
-            // dataGridViewTextBoxColumn6
+            // guaranty
             // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Гарантія";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 60;
+            this.guaranty.HeaderText = "Гарантія";
+            this.guaranty.Name = "guaranty";
+            this.guaranty.Width = 60;
             // 
-            // dataGridViewTextBoxColumn5
+            // price
             // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Ціна";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 60;
+            this.price.HeaderText = "Ціна";
+            this.price.Name = "price";
+            this.price.Width = 60;
             // 
-            // Column7
+            // number
             // 
-            this.Column7.HeaderText = "Кількість";
-            this.Column7.Name = "Column7";
+            this.number.HeaderText = "Кількість";
+            this.number.Name = "number";
             // 
             // ReportingForm
             // 
@@ -529,11 +532,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn guaranty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number;
 
     }
 }

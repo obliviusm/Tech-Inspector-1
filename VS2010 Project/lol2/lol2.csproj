@@ -92,11 +92,11 @@
     <Compile Include="DeviceTemplateEditor.Designer.cs">
       <DependentUpon>DeviceTemplateEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="DocumentControl.cs">
+    <Compile Include="Invoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DocumentControl.Designer.cs">
-      <DependentUpon>DocumentControl.cs</DependentUpon>
+    <Compile Include="Invoice.Designer.cs">
+      <DependentUpon>Invoice.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -169,8 +169,8 @@
     <EmbeddedResource Include="DeviceTemplateEditor.resx">
       <DependentUpon>DeviceTemplateEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DocumentControl.resx">
-      <DependentUpon>DocumentControl.cs</DependentUpon>
+    <EmbeddedResource Include="Invoice.resx">
+      <DependentUpon>Invoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
