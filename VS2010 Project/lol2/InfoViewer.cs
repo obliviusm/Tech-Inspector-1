@@ -140,7 +140,7 @@ namespace lol2
             }
             if (newCheckBox.Checked)
             {
-                filter_str += String.Format("purchase_date >= '{0:yyyy-mm-dd}' AND ", DateTime.Now.AddYears(-1));
+                filter_str += "purchase_date > '" + DateTime.Now.AddYears(-1).ToShortDateString() +  "' AND ";
             }
             if (movedCheckBox.Checked)
             {

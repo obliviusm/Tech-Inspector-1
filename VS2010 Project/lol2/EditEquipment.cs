@@ -106,6 +106,7 @@ namespace lol2
             DataRow row = tech_inspectorDataSet.history.NewRow();
             row.SetField<int>(tech_inspectorDataSet.history.equipment_idColumn, equipment_id);
             row.SetField<int>(tech_inspectorDataSet.history.action_type_idColumn, 1);
+            row.SetField<DateTime>(tech_inspectorDataSet.history.dateColumn, DateTime.Now);
             tech_inspectorDataSet.history.Rows.Add(row);
         }
 
