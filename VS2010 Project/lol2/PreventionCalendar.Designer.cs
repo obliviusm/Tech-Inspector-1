@@ -31,12 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreventionCalendar));
             this.planTable = new System.Windows.Forms.DataGridView();
-            this.location_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.responsibleadminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prophylaxisdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.techinspectorDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
             this.blockInput = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,13 +48,18 @@
             this.розробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lockPictureBox = new System.Windows.Forms.PictureBox();
             this.saveChanges = new System.Windows.Forms.Button();
-            this.locationsTableAdapter1 = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
+            this.locationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.responsibleadminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prophylaxisdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
+            this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.planTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.techinspectorDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lockPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // planTable
@@ -74,7 +73,8 @@
             this.planTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.planTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.planTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.location_name,
+            this.locationidDataGridViewTextBoxColumn,
+            this.locationnameDataGridViewTextBoxColumn,
             this.responsibleadminDataGridViewTextBoxColumn,
             this.prophylaxisdateDataGridViewTextBoxColumn});
             this.planTable.DataSource = this.locationsBindingSource;
@@ -83,44 +83,7 @@
             this.planTable.ReadOnly = true;
             this.planTable.Size = new System.Drawing.Size(732, 397);
             this.planTable.TabIndex = 0;
-            this.planTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.planTable_CellBeginEdit);
             this.planTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.planTable_CellEndEdit);
-            // 
-            // location_name
-            // 
-            this.location_name.DataPropertyName = "location_name";
-            this.location_name.HeaderText = "Аудиторія";
-            this.location_name.Name = "location_name";
-            this.location_name.ReadOnly = true;
-            // 
-            // responsibleadminDataGridViewTextBoxColumn
-            // 
-            this.responsibleadminDataGridViewTextBoxColumn.DataPropertyName = "responsible_admin";
-            this.responsibleadminDataGridViewTextBoxColumn.HeaderText = "Відповідальний";
-            this.responsibleadminDataGridViewTextBoxColumn.Name = "responsibleadminDataGridViewTextBoxColumn";
-            this.responsibleadminDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // prophylaxisdateDataGridViewTextBoxColumn
-            // 
-            this.prophylaxisdateDataGridViewTextBoxColumn.DataPropertyName = "prophylaxis_date";
-            this.prophylaxisdateDataGridViewTextBoxColumn.HeaderText = "Дата профілактики";
-            this.prophylaxisdateDataGridViewTextBoxColumn.Name = "prophylaxisdateDataGridViewTextBoxColumn";
-            this.prophylaxisdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // locationsBindingSource
-            // 
-            this.locationsBindingSource.DataMember = "locations";
-            this.locationsBindingSource.DataSource = this.techinspectorDataSetBindingSource;
-            // 
-            // techinspectorDataSetBindingSource
-            // 
-            this.techinspectorDataSetBindingSource.DataSource = this.tech_inspectorDataSet;
-            this.techinspectorDataSetBindingSource.Position = 0;
-            // 
-            // tech_inspectorDataSet
-            // 
-            this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
-            this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // blockInput
             // 
@@ -270,15 +233,55 @@
             this.saveChanges.UseVisualStyleBackColor = true;
             this.saveChanges.Click += new System.EventHandler(this.saveChanges_Click);
             // 
-            // locationsTableAdapter1
+            // locationidDataGridViewTextBoxColumn
             // 
-            this.locationsTableAdapter1.ClearBeforeFill = true;
+            this.locationidDataGridViewTextBoxColumn.DataPropertyName = "location_id";
+            this.locationidDataGridViewTextBoxColumn.HeaderText = "location_id";
+            this.locationidDataGridViewTextBoxColumn.Name = "locationidDataGridViewTextBoxColumn";
+            this.locationidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.locationidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // locationnameDataGridViewTextBoxColumn
+            // 
+            this.locationnameDataGridViewTextBoxColumn.DataPropertyName = "location_name";
+            this.locationnameDataGridViewTextBoxColumn.HeaderText = "Аудиторія";
+            this.locationnameDataGridViewTextBoxColumn.Name = "locationnameDataGridViewTextBoxColumn";
+            this.locationnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // responsibleadminDataGridViewTextBoxColumn
+            // 
+            this.responsibleadminDataGridViewTextBoxColumn.DataPropertyName = "responsible_admin";
+            this.responsibleadminDataGridViewTextBoxColumn.HeaderText = "Відповідальний";
+            this.responsibleadminDataGridViewTextBoxColumn.Name = "responsibleadminDataGridViewTextBoxColumn";
+            this.responsibleadminDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // prophylaxisdateDataGridViewTextBoxColumn
+            // 
+            this.prophylaxisdateDataGridViewTextBoxColumn.DataPropertyName = "prophylaxis_date";
+            this.prophylaxisdateDataGridViewTextBoxColumn.HeaderText = "Дата профілактики";
+            this.prophylaxisdateDataGridViewTextBoxColumn.Name = "prophylaxisdateDataGridViewTextBoxColumn";
+            this.prophylaxisdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // locationsBindingSource
+            // 
+            this.locationsBindingSource.DataMember = "locations";
+            this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // tech_inspectorDataSet
+            // 
+            this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
+            this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // locationsTableAdapter
+            // 
+            this.locationsTableAdapter.ClearBeforeFill = true;
             // 
             // PreventionCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 461);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Controls.Add(this.saveChanges);
             this.Controls.Add(this.lockPictureBox);
             this.Controls.Add(this.blockInput);
@@ -290,13 +293,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Розклад профілактик";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PreventionCalendar_FormClosing);
+            this.Load += new System.EventHandler(this.PreventionCalendar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.planTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.techinspectorDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lockPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,13 +316,6 @@
         private System.Windows.Forms.ToolStripMenuItem версіяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem розробникиToolStripMenuItem;
         private System.Windows.Forms.PictureBox lockPictureBox;
-        private tech_inspectorDataSet tech_inspectorDataSet;
-        private System.Windows.Forms.BindingSource techinspectorDataSetBindingSource;
-        private tech_inspectorDataSetTableAdapters.locationsTableAdapter locationsTableAdapter1;
-        private System.Windows.Forms.BindingSource locationsBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn location_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn responsibleadminDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prophylaxisdateDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button saveChanges;
         private System.Windows.Forms.ToolStripMenuItem правкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
@@ -329,5 +325,12 @@
         private System.Windows.Forms.ToolStripMenuItem saveChangesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem closeWindowToolStripMenuItem;
+        private tech_inspectorDataSet tech_inspectorDataSet;
+        private System.Windows.Forms.BindingSource locationsBindingSource;
+        private tech_inspectorDataSetTableAdapters.locationsTableAdapter locationsTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn locationidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn locationnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn responsibleadminDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prophylaxisdateDataGridViewTextBoxColumn;
     }
 }

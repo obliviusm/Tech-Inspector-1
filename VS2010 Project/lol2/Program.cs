@@ -15,7 +15,7 @@ namespace lol2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new  SubSystemSelection());
+            Application.Run(new LoginForm());
         }
     }
 }

@@ -19,19 +19,16 @@ namespace lol2
 {
     public partial class ReportingForm : Form
     {
-        public double balance;
-        public double cost; //cost of goods
-        public double rest; // rest from balance - cost
 
         public ReportingForm()
         {
             InitializeComponent();
-            //webBrowser1.Navigate(Path.GetFullPath("DATA\\samples\\Savs.mht"));
+            webBrowser1.Navigate(Path.GetFullPath("DATA\\samples\\Savs.mht"));
         }
 
         private void ReportingForm_Load(object sender, EventArgs e)
         {
-           // docTypesComboBox.SelectedIndex = 0;
+            docTypesComboBox.SelectedIndex = 0;
         }
 
         private void docTypesComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,150 +123,5 @@ namespace lol2
         //        MessageBox.Show(errorMessage, "Error");
         //    }
         }
-
-       
-
-        private void openDocInputButton_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog file = new OpenFileDialog();
-            file.InitialDirectory = "c:\\";
-            file.Filter = "Excel File (*.xlsx)|*.xlsx|Все файлы (*.*)|*.*";
-            if (file.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    if (openDocInputComboBox.Text == "Прайс-лист")
-                        ReadPriceList(file.FileName);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                }
-            } 
-        }
-
-        public void ReadPriceList(String filename)
-        {
-            MyExcel.Application oXL;
-            MyExcel._Workbook oWB;
-            MyExcel._Worksheet oSheet;
-            MyExcel.Range oRng;
-
-            try
-            {
-                oXL = new MyExcel.Application();
-                //Open a workbook.
-                oWB = (MyExcel._Workbook)(oXL.Workbooks.Open(filename, 0, true, 5,
-                    "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false,
-                    false, 0, true, 1, 0));
-                //take a sheet
-                oSheet = (MyExcel._Worksheet)oWB.Worksheets.get_Item(1);
-                Object[,] oRow;     //object to take row
-                for (int i = 0; i < Convert.ToInt32(numberOfGoodsTextBox.Text); ++i)
-                {
-                    //take row from Excel file
-                    oRng = oSheet.get_Range("A" + (i + 2).ToString(), "D" + (i + 2).ToString());
-                    //and put it into DataGridView
-                    oRow = (System.Object[,])oRng.get_Value(Missing.Value);
-                    inputDataGridView.Rows.Add(oRow[1, 1], oRow[1, 2],
-                         oRow[1, 3], oRow[1, 4]);
-                }
-            }
-            catch (Exception theException)
-            {
-                String errorMessage;
-                errorMessage = "Error: ";
-                errorMessage = String.Concat(errorMessage, theException.Message);
-                errorMessage = String.Concat(errorMessage, " Line: ");
-                errorMessage = String.Concat(errorMessage, theException.Source);
-
-                MessageBox.Show(errorMessage, "Error");
-            }
-        }
-
-        private void numberOfGoodsTextBox_TextChanged(object sender, EventArgs e)
-        {
-            enableOpenDocInputButton();
-        }
-
-        private void enableOpenDocInputButton()
-        {
-            if (numberOfGoodsTextBox.Text != "" && openDocInputComboBox.SelectedIndex != -1)
-                openDocInputButton.Enabled = true;
-            else openDocInputButton.Enabled = false;
-        }
-
-        private void openDocInputComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            enableOpenDocInputButton();
-        }
-
-        private void addButton_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in inputDataGridView.SelectedRows)
-            {
-                //add selected rows from inputDataGridView to outputDataGridView
-                outputDataGridView.Rows.Add();      
-                for (int i = 0; i < row.Cells.Count; ++i)   
-                    outputDataGridView.Rows[outputDataGridView.Rows.Count - 2].Cells[i].Value = row.Cells[i].Value;
-                outputDataGridView.Rows[outputDataGridView.Rows.Count - 2].Cells[row.Cells.Count].Value = "1";
-                //delete selected rows in inputDataGridView
-                inputDataGridView.Rows.Remove(row);
-            }
-        }
-
-        private void deleteButton_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in outputDataGridView.SelectedRows)
-            {
-                //add selected rows from outputDataGridView to inputDataGridView
-                inputDataGridView.Rows.Add();
-                for (int i = 0; i < row.Cells.Count - 1; ++i)
-                    inputDataGridView.Rows[inputDataGridView.Rows.Count - 2].Cells[i].Value = row.Cells[i].Value;
-                //delete selected rows in outputDataGridView
-                outputDataGridView.Rows.Remove(row);   
-            }
-        }
-
-        private void BalanceTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (BalanceTextBox.Text == "") balance = 0;
-            else balance = Convert.ToDouble(BalanceTextBox.Text);
-            //object sender2;
-            DataGridViewCellEventArgs e2 = new DataGridViewCellEventArgs(0, 0);
-            outputDataGridView_CellEndEdit(sender, e2);
-        }
-
-        private void outputDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            cost = 0;
-            foreach (DataGridViewRow row in outputDataGridView.Rows)
-            {
-               if (row.Cells["price"].Value != null && row.Cells["number"].Value != null)
-                cost += Convert.ToDouble(row.Cells["price"].Value.ToString().Replace(".", ",").Trim())
-                    * Convert.ToInt16(row.Cells["number"].Value.ToString().Replace(".", ",").Trim());
-            }
-            costLabel.Text = cost.ToString();
-            rest = balance - cost;
-            restLabel.Text = rest.ToString();
-        }
-
-        private void outputDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if(outputDataGridView.Rows.Count > 1)
-                outputDataGridView_CellEndEdit(sender, e);
-        }
-
-        private void saveDocOutputButton_Click(object sender, EventArgs e)
-        {
-            if (saveDocOutputComboBox.Text == "Рахунок-фактура")
-            {
-                Invoice childFormReportingForm = new Invoice();
-                //childFormReportingForm.FormClosed += new FormClosedEventHandler();
-                childFormReportingForm.Show();
-            }
-        }
-
-
     }
 }

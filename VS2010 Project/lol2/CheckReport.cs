@@ -15,5 +15,26 @@ namespace lol2
         {
             InitializeComponent();
         }
+
+        private void CheckReport_Load(object sender, EventArgs e)
+        {
+            this.locationsTableAdapter.Fill(this.tech_inspectorDataSet.locations);
+
+        }
+
+        private void closeWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void locationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

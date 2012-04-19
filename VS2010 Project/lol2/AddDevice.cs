@@ -7,12 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using MySql.Data;
-using MySql.Data.MySqlClient;
-
-using System.Data.Common;
-
-
 namespace lol2
 {
     public partial class AddDevice : Form
@@ -65,7 +59,11 @@ namespace lol2
             configurationDataGridView.Columns[tech_inspectorDataSet.equipments_has_attributes.equipment_idColumn.ColumnName].Visible = false;
             configurationDataGridView.Columns[tech_inspectorDataSet.attributes.requiredColumn.ColumnName].ReadOnly = true;
             configurationDataGridView.Columns[tech_inspectorDataSet.attributes.attribute_nameColumn.ColumnName].ReadOnly = true;
-            configurationDataGridView.Columns[tech_inspectorDataSet.attributes.requiredColumn.ColumnName].Width = 55;            
+            configurationDataGridView.Columns[tech_inspectorDataSet.attributes.requiredColumn.ColumnName].Width = 100;
+
+            configurationDataGridView.Columns[tech_inspectorDataSet.attributes.attribute_nameColumn.ColumnName].HeaderText = "Назва";
+            configurationDataGridView.Columns[tech_inspectorDataSet.equipments_has_attributes.attribute_valueColumn.ColumnName].HeaderText = "Значення";
+            configurationDataGridView.Columns[tech_inspectorDataSet.attributes.requiredColumn.ColumnName].HeaderText = "Обов'язковий?";
         }
 
         private void typeSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -155,46 +153,12 @@ namespace lol2
 
         private void редагуватиТипиОбладнанняToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new DeviceTemplateEditor(typeSelectionComboBox.Text).ShowDialog();
+            new DeviceTemplateEditor().ShowDialog();
         }
 
-        //private string GetSelectedRowNames()
-        //{
-        //    string result = "\n";
-        //    for (int i = 0; i < configurationDataGridView.SelectedRows.Count; i++)
-        //    {
-        //        for (int j = 0; j < configurationDataGridView.SelectedRows[i].Cells.Count; j++)
-        //        {
-        //            result += configurationDataGridView.SelectedRows[i].Cells[j].Value.ToString();
-        //            result += "  ";
-        //        }
-        //        result += "\n";
-        //    }
-        //    return result;
-        //}
-
-        //private void removeSelectedAttrButton_Click(object sender, EventArgs e)
-        //{
-        //    if (configurationDataGridView.SelectedRows.Count == 0)
-        //        MessageBox.Show("Не вибрано жодного рядку", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    else
-        //    {
-        //        if (configurationDataGridView.SelectedRows.Count > 0)
-        //            if (MessageBox.Show("Ви дійсно бажаєте видалити наступний набір рядків?" + GetSelectedRowNames(), "Попередження",
-        //                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-        //                return;
-        //        string removeErrors = "\n";
-        //        for (int i = configurationDataGridView.SelectedRows.Count - 1; i >= 0; i--)
-        //        {
-        //            string type = (string)configurationDataGridView.SelectedRows[i].Cells[0].Value;
-        //            if (type[type.Length - 1] != '*') // It's not compulsory?
-        //                configurationDataGridView.Rows.Remove(configurationDataGridView.SelectedRows[i]);
-        //            else removeErrors += configurationDataGridView.SelectedRows[i].Cells[0].Value+"\n";
-        //        }
-        //        if (removeErrors.Length > 2)
-        //            MessageBox.Show("Наступні рядки не були видалені, оскільки вони є обов'язковими :"+
-        //                removeErrors,"Увага",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-        //    }
-        //}
+        private void новийФайлToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveChangesButton_Click(saveChangesButton, new EventArgs());
+        }
     }
 }
