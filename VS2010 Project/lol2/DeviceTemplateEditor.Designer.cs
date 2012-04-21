@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вихідToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,25 +41,33 @@
             this.розробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ліцензіяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationGroupBox = new System.Windows.Forms.GroupBox();
+            this.removeTypeButton = new System.Windows.Forms.Button();
+            this.attributesDataGridView = new System.Windows.Forms.DataGridView();
+            this.attributesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
+            this.abortChangesButton = new System.Windows.Forms.Button();
             this.typeNameTextBox = new System.Windows.Forms.TextBox();
             this.parametersLabel = new System.Windows.Forms.Label();
             this.typeNameLabel = new System.Windows.Forms.Label();
-            this.deleteParameterButton = new System.Windows.Forms.Button();
-            this.addParameterButton = new System.Windows.Forms.Button();
-            this.configurationDataGridView = new System.Windows.Forms.DataGridView();
-            this.parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.value = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.saveChangesButton = new System.Windows.Forms.Button();
             this.typeSelectionGroupBox = new System.Windows.Forms.GroupBox();
             this.newTypeButton = new System.Windows.Forms.Button();
             this.chooseTypeButton = new System.Windows.Forms.Button();
             this.typeSelectionComboBox = new System.Windows.Forms.ComboBox();
-            this.abortChangesButton = new System.Windows.Forms.Button();
-            this.removeTypeButton = new System.Windows.Forms.Button();
+            this.typesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.typesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.typesTableAdapter();
+            this.attributesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.attributesTableAdapter();
+            this.attributeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attributenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requiredDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.configurationGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.configurationDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attributesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attributesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
             this.typeSelectionGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -152,18 +158,74 @@
             this.configurationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.configurationGroupBox.Controls.Add(this.removeTypeButton);
+            this.configurationGroupBox.Controls.Add(this.attributesDataGridView);
+            this.configurationGroupBox.Controls.Add(this.abortChangesButton);
             this.configurationGroupBox.Controls.Add(this.typeNameTextBox);
             this.configurationGroupBox.Controls.Add(this.parametersLabel);
             this.configurationGroupBox.Controls.Add(this.typeNameLabel);
-            this.configurationGroupBox.Controls.Add(this.deleteParameterButton);
-            this.configurationGroupBox.Controls.Add(this.addParameterButton);
-            this.configurationGroupBox.Controls.Add(this.configurationDataGridView);
+            this.configurationGroupBox.Controls.Add(this.saveChangesButton);
             this.configurationGroupBox.Location = new System.Drawing.Point(6, 91);
             this.configurationGroupBox.Name = "configurationGroupBox";
-            this.configurationGroupBox.Size = new System.Drawing.Size(595, 376);
+            this.configurationGroupBox.Size = new System.Drawing.Size(595, 441);
             this.configurationGroupBox.TabIndex = 15;
             this.configurationGroupBox.TabStop = false;
             this.configurationGroupBox.Text = "Параметри типу";
+            // 
+            // removeTypeButton
+            // 
+            this.removeTypeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.removeTypeButton.BackColor = System.Drawing.Color.Coral;
+            this.removeTypeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeTypeButton.Location = new System.Drawing.Point(285, 403);
+            this.removeTypeButton.Name = "removeTypeButton";
+            this.removeTypeButton.Size = new System.Drawing.Size(135, 32);
+            this.removeTypeButton.TabIndex = 18;
+            this.removeTypeButton.Text = "Видалити тип";
+            this.removeTypeButton.UseVisualStyleBackColor = false;
+            this.removeTypeButton.Click += new System.EventHandler(this.removeTypeButton_Click);
+            // 
+            // attributesDataGridView
+            // 
+            this.attributesDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.attributesDataGridView.AutoGenerateColumns = false;
+            this.attributesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.attributesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.attributesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.attributeidDataGridViewTextBoxColumn,
+            this.typeidDataGridViewTextBoxColumn,
+            this.attributenameDataGridViewTextBoxColumn,
+            this.requiredDataGridViewCheckBoxColumn});
+            this.attributesDataGridView.DataSource = this.attributesBindingSource;
+            this.attributesDataGridView.Location = new System.Drawing.Point(8, 63);
+            this.attributesDataGridView.Name = "attributesDataGridView";
+            this.attributesDataGridView.Size = new System.Drawing.Size(582, 334);
+            this.attributesDataGridView.TabIndex = 20;
+            // 
+            // attributesBindingSource
+            // 
+            this.attributesBindingSource.DataMember = "attributes";
+            this.attributesBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // tech_inspectorDataSet
+            // 
+            this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
+            this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // abortChangesButton
+            // 
+            this.abortChangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.abortChangesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(210)))), ((int)(((byte)(192)))));
+            this.abortChangesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.abortChangesButton.Location = new System.Drawing.Point(144, 403);
+            this.abortChangesButton.Name = "abortChangesButton";
+            this.abortChangesButton.Size = new System.Drawing.Size(135, 32);
+            this.abortChangesButton.TabIndex = 17;
+            this.abortChangesButton.Text = "Відхилити зміни";
+            this.abortChangesButton.UseVisualStyleBackColor = false;
+            this.abortChangesButton.Click += new System.EventHandler(this.abortChangesButton_Click);
             // 
             // typeNameTextBox
             // 
@@ -190,88 +252,12 @@
             this.typeNameLabel.TabIndex = 17;
             this.typeNameLabel.Text = "Назва типу :";
             // 
-            // deleteParameterButton
-            // 
-            this.deleteParameterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.deleteParameterButton.Location = new System.Drawing.Point(159, 342);
-            this.deleteParameterButton.Name = "deleteParameterButton";
-            this.deleteParameterButton.Size = new System.Drawing.Size(135, 23);
-            this.deleteParameterButton.TabIndex = 4;
-            this.deleteParameterButton.Text = "Видалити виділений";
-            this.deleteParameterButton.UseVisualStyleBackColor = true;
-            this.deleteParameterButton.Click += new System.EventHandler(this.deleteParameterButton_Click);
-            // 
-            // addParameterButton
-            // 
-            this.addParameterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addParameterButton.Location = new System.Drawing.Point(7, 342);
-            this.addParameterButton.Name = "addParameterButton";
-            this.addParameterButton.Size = new System.Drawing.Size(132, 23);
-            this.addParameterButton.TabIndex = 3;
-            this.addParameterButton.Text = "Додати новий";
-            this.addParameterButton.UseVisualStyleBackColor = true;
-            this.addParameterButton.Click += new System.EventHandler(this.addParameterButton_Click);
-            // 
-            // configurationDataGridView
-            // 
-            this.configurationDataGridView.AllowUserToAddRows = false;
-            this.configurationDataGridView.AllowUserToDeleteRows = false;
-            this.configurationDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.configurationDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.configurationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.configurationDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.parameter,
-            this.value});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.configurationDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.configurationDataGridView.Location = new System.Drawing.Point(7, 75);
-            this.configurationDataGridView.Name = "configurationDataGridView";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.configurationDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.configurationDataGridView.Size = new System.Drawing.Size(582, 257);
-            this.configurationDataGridView.TabIndex = 0;
-            this.configurationDataGridView.SelectionChanged += new System.EventHandler(this.configurationDataGridView_SelectionChanged);
-            // 
-            // parameter
-            // 
-            this.parameter.HeaderText = "Атрибут";
-            this.parameter.Name = "parameter";
-            this.parameter.ToolTipText = "Атрибути притаманні поточному типу обладнання";
-            // 
-            // value
-            // 
-            this.value.HeaderText = "Обов\'язковий ?";
-            this.value.Name = "value";
-            this.value.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.value.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // saveChangesButton
             // 
             this.saveChangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.saveChangesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.saveChangesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveChangesButton.Location = new System.Drawing.Point(13, 480);
+            this.saveChangesButton.Location = new System.Drawing.Point(6, 403);
             this.saveChangesButton.Name = "saveChangesButton";
             this.saveChangesButton.Size = new System.Drawing.Size(132, 32);
             this.saveChangesButton.TabIndex = 16;
@@ -313,59 +299,76 @@
             // 
             // typeSelectionComboBox
             // 
+            this.typeSelectionComboBox.DataSource = this.typesBindingSource;
+            this.typeSelectionComboBox.DisplayMember = "type_name";
             this.typeSelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeSelectionComboBox.FormattingEnabled = true;
             this.typeSelectionComboBox.Location = new System.Drawing.Point(7, 20);
             this.typeSelectionComboBox.Name = "typeSelectionComboBox";
             this.typeSelectionComboBox.Size = new System.Drawing.Size(146, 21);
             this.typeSelectionComboBox.TabIndex = 0;
-            this.typeSelectionComboBox.SelectedIndexChanged += new System.EventHandler(this.typeSelectionComboBox_SelectedIndexChanged);
+            this.typeSelectionComboBox.ValueMember = "type_id";
             // 
-            // abortChangesButton
+            // typesBindingSource
             // 
-            this.abortChangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.abortChangesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(210)))), ((int)(((byte)(192)))));
-            this.abortChangesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.abortChangesButton.Location = new System.Drawing.Point(165, 480);
-            this.abortChangesButton.Name = "abortChangesButton";
-            this.abortChangesButton.Size = new System.Drawing.Size(135, 32);
-            this.abortChangesButton.TabIndex = 17;
-            this.abortChangesButton.Text = "Відхилити зміни";
-            this.abortChangesButton.UseVisualStyleBackColor = false;
-            this.abortChangesButton.Click += new System.EventHandler(this.abortChangesButton_Click);
+            this.typesBindingSource.DataMember = "types";
+            this.typesBindingSource.DataSource = this.tech_inspectorDataSet;
+            this.typesBindingSource.Sort = "type_id";
             // 
-            // removeTypeButton
+            // typesTableAdapter
             // 
-            this.removeTypeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.removeTypeButton.BackColor = System.Drawing.Color.Coral;
-            this.removeTypeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removeTypeButton.Location = new System.Drawing.Point(319, 480);
-            this.removeTypeButton.Name = "removeTypeButton";
-            this.removeTypeButton.Size = new System.Drawing.Size(135, 32);
-            this.removeTypeButton.TabIndex = 18;
-            this.removeTypeButton.Text = "Видалити тип";
-            this.removeTypeButton.UseVisualStyleBackColor = false;
-            this.removeTypeButton.Click += new System.EventHandler(this.removeTypeButton_Click);
+            this.typesTableAdapter.ClearBeforeFill = true;
+            // 
+            // attributesTableAdapter
+            // 
+            this.attributesTableAdapter.ClearBeforeFill = true;
+            // 
+            // attributeidDataGridViewTextBoxColumn
+            // 
+            this.attributeidDataGridViewTextBoxColumn.DataPropertyName = "attribute_id";
+            this.attributeidDataGridViewTextBoxColumn.HeaderText = "attribute_id";
+            this.attributeidDataGridViewTextBoxColumn.Name = "attributeidDataGridViewTextBoxColumn";
+            this.attributeidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // typeidDataGridViewTextBoxColumn
+            // 
+            this.typeidDataGridViewTextBoxColumn.DataPropertyName = "type_id";
+            this.typeidDataGridViewTextBoxColumn.HeaderText = "type_id";
+            this.typeidDataGridViewTextBoxColumn.Name = "typeidDataGridViewTextBoxColumn";
+            this.typeidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // attributenameDataGridViewTextBoxColumn
+            // 
+            this.attributenameDataGridViewTextBoxColumn.DataPropertyName = "attribute_name";
+            this.attributenameDataGridViewTextBoxColumn.HeaderText = "Назва";
+            this.attributenameDataGridViewTextBoxColumn.Name = "attributenameDataGridViewTextBoxColumn";
+            // 
+            // requiredDataGridViewCheckBoxColumn
+            // 
+            this.requiredDataGridViewCheckBoxColumn.DataPropertyName = "required";
+            this.requiredDataGridViewCheckBoxColumn.HeaderText = "Обовз\'язковий?";
+            this.requiredDataGridViewCheckBoxColumn.Name = "requiredDataGridViewCheckBoxColumn";
             // 
             // DeviceTemplateEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 524);
-            this.Controls.Add(this.removeTypeButton);
-            this.Controls.Add(this.abortChangesButton);
+            this.ClientSize = new System.Drawing.Size(608, 544);
             this.Controls.Add(this.typeSelectionGroupBox);
             this.Controls.Add(this.configurationGroupBox);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.saveChangesButton);
             this.Name = "DeviceTemplateEditor";
             this.Text = "Редактор шаблонів обладнання";
+            this.Load += new System.EventHandler(this.DeviceTemplateEditor_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.configurationGroupBox.ResumeLayout(false);
             this.configurationGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.configurationDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attributesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attributesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();
             this.typeSelectionGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,12 +388,7 @@
         private System.Windows.Forms.ToolStripMenuItem розробникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ліцензіяToolStripMenuItem;
         private System.Windows.Forms.GroupBox configurationGroupBox;
-        private System.Windows.Forms.Button deleteParameterButton;
-        private System.Windows.Forms.Button addParameterButton;
-        private System.Windows.Forms.DataGridView configurationDataGridView;
         private System.Windows.Forms.Button saveChangesButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn parameter;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn value;
         private System.Windows.Forms.GroupBox typeSelectionGroupBox;
         private System.Windows.Forms.Button newTypeButton;
         private System.Windows.Forms.Button chooseTypeButton;
@@ -400,5 +398,15 @@
         private System.Windows.Forms.Label parametersLabel;
         private System.Windows.Forms.Button abortChangesButton;
         private System.Windows.Forms.Button removeTypeButton;
+        private System.Windows.Forms.DataGridView attributesDataGridView;
+        private tech_inspectorDataSet tech_inspectorDataSet;
+        private System.Windows.Forms.BindingSource typesBindingSource;
+        private tech_inspectorDataSetTableAdapters.typesTableAdapter typesTableAdapter;
+        private System.Windows.Forms.BindingSource attributesBindingSource;
+        private tech_inspectorDataSetTableAdapters.attributesTableAdapter attributesTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn attributeidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn attributenameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn requiredDataGridViewCheckBoxColumn;
     }
 }

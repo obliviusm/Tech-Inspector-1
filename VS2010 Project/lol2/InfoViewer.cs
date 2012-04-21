@@ -16,30 +16,12 @@ namespace lol2
     {
         public InfoViewer()
         {
-            InitializeComponent();           
-            string connStr = "server=localhost;user=root;database=tech_inspector;port=3306;password=1111;";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            string sql = "SELECT equipments.equipment_id, types.type_name, locations.location_name, states.state_name, equipments.price, equipments.purchase_date,"
-             + " equipments.placement_date, equipments.warranty_end_date"
-             + " FROM equipments INNER JOIN"
-             + " locations ON equipments.location_id = locations.location_id INNER JOIN"
-             + " states ON equipments.state_id = states.state_id INNER JOIN"
-             + " types ON equipments.type_id = types.type_id";
-            MySqlDataAdapter equipmentListAdapter = new MySqlDataAdapter(sql, conn);
-            //DataSet equipmentListDataSet = new DataSet();
-            //equipmentListAdapter.Fill(equipmentListDataSet, "EquipmentList");
-            DataTable equipmentListDataTable = new DataTable("EquipmentList");
-            equipmentListAdapter.Fill(equipmentListDataTable);
-            DataView equipmentListViewTable = equipmentListDataTable.DefaultView;
-            infosDataGridView.DataSource = equipmentListViewTable;
-            //typeSelectionComboBox.SelectedIndex = typeSelectionComboBox.Items.Add("Всі");
-            //locationComboBox.SelectedIndex = locationComboBox.Items.Add("Всі");
+            InitializeComponent();
         }
      
         private void новийФайлToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddDevice childFormAddDevice = new AddDevice();
-            childFormAddDevice.ShowDialog();
+            addDeviceButton_Click(addDeviceButton, new EventArgs());
         }
 
         private void вихідToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,39 +32,60 @@ namespace lol2
         private void редагуванняШаблонівToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DeviceTemplateEditor childFormDeviceTemplateEditor = new DeviceTemplateEditor();
-            childFormDeviceTemplateEditor.Show();
+            childFormDeviceTemplateEditor.ShowDialog();
+            this.typesTableAdapter.Fill(this.tech_inspectorDataSet.types);
+            tech_inspectorDataSet.types.Rows.Add(new object[] { 0, "Всі" });
+            typeSelectionComboBox.SelectedValue = 0;
+            this.equipment_shortinfoTableAdapter.Fill(this.tech_inspectorDataSet.equipment_shortinfo);
         }
 
         private void deleteDeviceButton_Click(object sender, EventArgs e)
         {
-            //if (MessageBox.Show("Ви дійсно бажаєте видалити виділене обладнання з БД ?", "Увага",
-            //    MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
-            //    DialogResult.Yes)
-            //{
-            //    List<int> delrows = new List<int>();
-            //    for (int i = 0; i < infosDataGridView.SelectedCells.Count; ++i)
-            //    {
-            //        int index = infosDataGridView.SelectedCells[i].RowIndex;
-            //        if (!delrows.Contains(index))
-            //            delrows.Add(index);
-            //    }
-            //    for (int i = 0; i < delrows.Count; ++i)
-            //    {
-            //        DatabaseManager.GetDataCollection("equipments").Remove(new QueryDocument("inventory_number", (string)infosDataGridView.Rows[i].Cells[0].Value));
-            //    }
-            //    FillDataGrid();
-            //}
+            if (MessageBox.Show("Ви дійсно бажаєте видалити виділене обладнання з БД ?", "Увага",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                DialogResult.Yes)
+            {
+                List<int> delrows = new List<int>();
+                for (int i = 0; i < infosDataGridView.SelectedCells.Count; ++i)
+                {
+                    int index = infosDataGridView.SelectedCells[i].RowIndex;
+                    if (!delrows.Contains(index))
+                        delrows.Add(index);
+                }
+                for (int i = 0; i < delrows.Count; ++i)
+                {
+                    int id = (int)infosDataGridView.Rows[delrows[i]].Cells[0].Value;
+                    tech_inspectorDataSet.equipment_shortinfo.FindByequipment_id(id).Delete();
+                    int q = equipment_shortinfoTableAdapter.Update(tech_inspectorDataSet.equipment_shortinfo);
+                    MessageBox.Show("Видалено записів: "+q, "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tech_inspectorDataSet.equipment_shortinfo.AcceptChanges();
+                }
+            }
         }
 
         private void addDeviceButton_Click(object sender, EventArgs e)
         {
             AddDevice childFormAddDevice = new AddDevice();
             childFormAddDevice.ShowDialog();
+            this.equipment_shortinfoTableAdapter.Fill(this.tech_inspectorDataSet.equipment_shortinfo);
         }
 
         private void editInfoButton_Click(object sender, EventArgs e)
         {
-
+            List<int> showrows = new List<int>();
+            for (int i = 0; i < infosDataGridView.SelectedCells.Count; ++i)
+            {
+                int index = infosDataGridView.SelectedCells[i].RowIndex;
+                if (!showrows.Contains(index))
+                    showrows.Add(index);
+            }
+            for (int i = 0; i < showrows.Count; ++i)
+            {
+                int id = (int)infosDataGridView.Rows[showrows[i]].Cells[0].Value;
+                EditEquipment edit_form = new EditEquipment(id);
+                edit_form.ShowDialog();
+            }
+            this.equipment_shortinfoTableAdapter.Fill(this.tech_inspectorDataSet.equipment_shortinfo);            
         }
 
         private void detailedInfoButton_Click(object sender, EventArgs e)
@@ -96,28 +99,75 @@ namespace lol2
             }
             for (int i = 0; i < showrows.Count; ++i)
             {
-                string inventory_number = (string)infosDataGridView.Rows[showrows[i]].Cells[0].Value;
-                DetailedInfo det_info = new DetailedInfo(inventory_number);
+                int id = (int)infosDataGridView.Rows[showrows[i]].Cells[0].Value;
+                DetailedInfo det_info = new DetailedInfo(id);
                 det_info.Show();
             }
         }
 
         private void InfoViewer_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'tech_inspectorDataSet.locations' table. You can move, or remove it, as needed.
+            this.statesTableAdapter.Fill(this.tech_inspectorDataSet.states);
             this.locationsTableAdapter.Fill(this.tech_inspectorDataSet.locations);
-            // TODO: This line of code loads data into the 'tech_inspectorDataSet.types' table. You can move, or remove it, as needed.
             this.typesTableAdapter.Fill(this.tech_inspectorDataSet.types);
 
-            //foreach (var tec in collection)
-            //{
-                
-            //}
+
+            tech_inspectorDataSet.EnforceConstraints = false;
+            this.equipment_shortinfoTableAdapter.Fill(this.tech_inspectorDataSet.equipment_shortinfo);
+
+            tech_inspectorDataSet.states.Rows.Add(new object[]{0, "Всі"});
+            stateComboBox.SelectedValue = 0;
+            tech_inspectorDataSet.locations.Rows.Add(new object[] { 0, "Всі" });
+            locationComboBox.SelectedValue = 0;
+            tech_inspectorDataSet.types.Rows.Add(new object[] { 0, "Всі" });
+            typeSelectionComboBox.SelectedValue = 0;
         }
 
-        private void typeSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void refreshButton_Click(object sender, EventArgs e)
         {
-
+            string filter_str = "";
+            if ((int)locationComboBox.SelectedValue != 0)
+            {
+                filter_str += "location_id = " + locationComboBox.SelectedValue + " AND ";
+            }
+            if ((int)typeSelectionComboBox.SelectedValue != 0)
+            {
+                filter_str += "type_id = " + typeSelectionComboBox.SelectedValue + " AND ";
+            }
+            if ((int)stateComboBox.SelectedValue != 0)
+            {
+                filter_str += "state_id = " + stateComboBox.SelectedValue + " AND ";
+            }
+            if (newCheckBox.Checked)
+            {
+                filter_str += "purchase_date > '" + DateTime.Now.AddYears(-1).ToShortDateString() +  "' AND ";
+            }
+            if (movedCheckBox.Checked)
+            {
+                filter_str += "moved = true AND ";
+            }
+            if (repairingCheckBox.Checked)
+            {
+                filter_str += "repairing = true AND ";
+            }
+            if (String.IsNullOrWhiteSpace(deviceNumberTextBox.Text))
+            {
+                filter_str += "true";
+            }
+            else
+            {
+                int id;
+                if (int.TryParse(deviceNumberTextBox.Text, out id))
+                {
+                    filter_str += "equipment_id = " + id;
+                }
+                else
+                {
+                    MessageBox.Show("Невірний формат інвентарного номеру", "Помилка вводу", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    filter_str += "true";
+                }
+            }
+            equipmentshortinfoBindingSource.Filter = filter_str;
         }
     }
 }

@@ -4,4 +4,3 @@
     public partial class tech_inspectorDataSet {
     }
 }
-
