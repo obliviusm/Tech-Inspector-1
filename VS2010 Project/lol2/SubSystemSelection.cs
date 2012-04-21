@@ -90,5 +90,13 @@ namespace lol2
         {
             runningSubForms.Remove("CheckReport");
         }
+
+        private void adminButton_Click(object sender, EventArgs e)
+        {
+            AdminForm childFormAdminForm = new AdminForm();
+            childFormAdminForm.FormClosed += new FormClosedEventHandler(childForm_FormClosed);
+            childFormAdminForm.Show();
+            Hide();
+        }
     }
 }

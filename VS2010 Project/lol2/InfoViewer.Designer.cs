@@ -35,6 +35,16 @@
             this.редагуванняШаблонівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вихідToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infosDataGridView = new System.Windows.Forms.DataGridView();
+            this.equipmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moved = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.repairing = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.typenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchase_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.equipmentshortinfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
             this.addDeviceButton = new System.Windows.Forms.Button();
@@ -61,16 +71,6 @@
             this.equipment_shortinfoTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipment_shortinfoTableAdapter();
             this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             this.statesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.statesTableAdapter();
-            this.equipmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moved = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.repairing = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.typenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.purchase_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentshortinfoBindingSource)).BeginInit();
@@ -150,6 +150,81 @@
             this.infosDataGridView.ReadOnly = true;
             this.infosDataGridView.Size = new System.Drawing.Size(589, 342);
             this.infosDataGridView.TabIndex = 2;
+            // 
+            // equipmentidDataGridViewTextBoxColumn
+            // 
+            this.equipmentidDataGridViewTextBoxColumn.DataPropertyName = "equipment_id";
+            this.equipmentidDataGridViewTextBoxColumn.HeaderText = "Інвентарний номер";
+            this.equipmentidDataGridViewTextBoxColumn.Name = "equipmentidDataGridViewTextBoxColumn";
+            this.equipmentidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // moved
+            // 
+            this.moved.DataPropertyName = "moved";
+            this.moved.HeaderText = "moved";
+            this.moved.Name = "moved";
+            this.moved.ReadOnly = true;
+            this.moved.Visible = false;
+            // 
+            // repairing
+            // 
+            this.repairing.DataPropertyName = "repairing";
+            this.repairing.HeaderText = "repairing";
+            this.repairing.Name = "repairing";
+            this.repairing.ReadOnly = true;
+            this.repairing.Visible = false;
+            // 
+            // typenameDataGridViewTextBoxColumn
+            // 
+            this.typenameDataGridViewTextBoxColumn.DataPropertyName = "type_name";
+            this.typenameDataGridViewTextBoxColumn.HeaderText = "Тип обладнання";
+            this.typenameDataGridViewTextBoxColumn.Name = "typenameDataGridViewTextBoxColumn";
+            this.typenameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // locationnameDataGridViewTextBoxColumn
+            // 
+            this.locationnameDataGridViewTextBoxColumn.DataPropertyName = "location_name";
+            this.locationnameDataGridViewTextBoxColumn.HeaderText = "Розташування";
+            this.locationnameDataGridViewTextBoxColumn.Name = "locationnameDataGridViewTextBoxColumn";
+            this.locationnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statenameDataGridViewTextBoxColumn
+            // 
+            this.statenameDataGridViewTextBoxColumn.DataPropertyName = "state_name";
+            this.statenameDataGridViewTextBoxColumn.HeaderText = "Технічний стан";
+            this.statenameDataGridViewTextBoxColumn.Name = "statenameDataGridViewTextBoxColumn";
+            this.statenameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // purchase_date
+            // 
+            this.purchase_date.DataPropertyName = "purchase_date";
+            this.purchase_date.HeaderText = "Дата покупки";
+            this.purchase_date.Name = "purchase_date";
+            this.purchase_date.ReadOnly = true;
+            // 
+            // locationidDataGridViewTextBoxColumn
+            // 
+            this.locationidDataGridViewTextBoxColumn.DataPropertyName = "location_id";
+            this.locationidDataGridViewTextBoxColumn.HeaderText = "location_id";
+            this.locationidDataGridViewTextBoxColumn.Name = "locationidDataGridViewTextBoxColumn";
+            this.locationidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.locationidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // stateidDataGridViewTextBoxColumn
+            // 
+            this.stateidDataGridViewTextBoxColumn.DataPropertyName = "state_id";
+            this.stateidDataGridViewTextBoxColumn.HeaderText = "state_id";
+            this.stateidDataGridViewTextBoxColumn.Name = "stateidDataGridViewTextBoxColumn";
+            this.stateidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.stateidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // typeidDataGridViewTextBoxColumn
+            // 
+            this.typeidDataGridViewTextBoxColumn.DataPropertyName = "type_id";
+            this.typeidDataGridViewTextBoxColumn.HeaderText = "type_id";
+            this.typeidDataGridViewTextBoxColumn.Name = "typeidDataGridViewTextBoxColumn";
+            this.typeidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.typeidDataGridViewTextBoxColumn.Visible = false;
             // 
             // equipmentshortinfoBindingSource
             // 
@@ -379,81 +454,6 @@
             // statesTableAdapter
             // 
             this.statesTableAdapter.ClearBeforeFill = true;
-            // 
-            // equipmentidDataGridViewTextBoxColumn
-            // 
-            this.equipmentidDataGridViewTextBoxColumn.DataPropertyName = "equipment_id";
-            this.equipmentidDataGridViewTextBoxColumn.HeaderText = "Інвентарний номер";
-            this.equipmentidDataGridViewTextBoxColumn.Name = "equipmentidDataGridViewTextBoxColumn";
-            this.equipmentidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // moved
-            // 
-            this.moved.DataPropertyName = "moved";
-            this.moved.HeaderText = "moved";
-            this.moved.Name = "moved";
-            this.moved.ReadOnly = true;
-            this.moved.Visible = false;
-            // 
-            // repairing
-            // 
-            this.repairing.DataPropertyName = "repairing";
-            this.repairing.HeaderText = "repairing";
-            this.repairing.Name = "repairing";
-            this.repairing.ReadOnly = true;
-            this.repairing.Visible = false;
-            // 
-            // typenameDataGridViewTextBoxColumn
-            // 
-            this.typenameDataGridViewTextBoxColumn.DataPropertyName = "type_name";
-            this.typenameDataGridViewTextBoxColumn.HeaderText = "Тип обладнання";
-            this.typenameDataGridViewTextBoxColumn.Name = "typenameDataGridViewTextBoxColumn";
-            this.typenameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // locationnameDataGridViewTextBoxColumn
-            // 
-            this.locationnameDataGridViewTextBoxColumn.DataPropertyName = "location_name";
-            this.locationnameDataGridViewTextBoxColumn.HeaderText = "Розташування";
-            this.locationnameDataGridViewTextBoxColumn.Name = "locationnameDataGridViewTextBoxColumn";
-            this.locationnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statenameDataGridViewTextBoxColumn
-            // 
-            this.statenameDataGridViewTextBoxColumn.DataPropertyName = "state_name";
-            this.statenameDataGridViewTextBoxColumn.HeaderText = "Технічний стан";
-            this.statenameDataGridViewTextBoxColumn.Name = "statenameDataGridViewTextBoxColumn";
-            this.statenameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // purchase_date
-            // 
-            this.purchase_date.DataPropertyName = "purchase_date";
-            this.purchase_date.HeaderText = "Дата покупки";
-            this.purchase_date.Name = "purchase_date";
-            this.purchase_date.ReadOnly = true;
-            // 
-            // locationidDataGridViewTextBoxColumn
-            // 
-            this.locationidDataGridViewTextBoxColumn.DataPropertyName = "location_id";
-            this.locationidDataGridViewTextBoxColumn.HeaderText = "location_id";
-            this.locationidDataGridViewTextBoxColumn.Name = "locationidDataGridViewTextBoxColumn";
-            this.locationidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.locationidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // stateidDataGridViewTextBoxColumn
-            // 
-            this.stateidDataGridViewTextBoxColumn.DataPropertyName = "state_id";
-            this.stateidDataGridViewTextBoxColumn.HeaderText = "state_id";
-            this.stateidDataGridViewTextBoxColumn.Name = "stateidDataGridViewTextBoxColumn";
-            this.stateidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.stateidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // typeidDataGridViewTextBoxColumn
-            // 
-            this.typeidDataGridViewTextBoxColumn.DataPropertyName = "type_id";
-            this.typeidDataGridViewTextBoxColumn.HeaderText = "type_id";
-            this.typeidDataGridViewTextBoxColumn.Name = "typeidDataGridViewTextBoxColumn";
-            this.typeidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.typeidDataGridViewTextBoxColumn.Visible = false;
             // 
             // InfoViewer
             // 

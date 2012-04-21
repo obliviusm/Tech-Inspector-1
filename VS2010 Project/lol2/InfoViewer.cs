@@ -169,5 +169,7 @@ namespace lol2
             }
             equipmentshortinfoBindingSource.Filter = filter_str;
         }
+
+
     }
 }
