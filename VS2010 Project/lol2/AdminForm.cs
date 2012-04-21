@@ -45,5 +45,36 @@ namespace lol2
             userlistBindingSource.Filter = filter_str;
         }
 
+        private void addUserButton_Click(object sender, EventArgs e)
+        {
+            AddUser childFormAddUser = new AddUser();
+            childFormAddUser.ShowDialog();
+            this.user_listTableAdapter.Fill(this.tech_inspectorDataSet.user_list);
+        }
+
+        private void deleteUserButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Ви дійсно бажаєте видалити виділені профілі з БД ?", "Увага",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                DialogResult.Yes)
+            {
+                List<int> delrows = new List<int>();
+                for (int i = 0; i < userTable.SelectedCells.Count; ++i)
+                {
+                    int index = userTable.SelectedCells[i].RowIndex;
+                    if (!delrows.Contains(index))
+                        delrows.Add(index);
+                }
+                for (int i = 0; i < delrows.Count; ++i)
+                {
+                    int id = (int)userTable.Rows[delrows[i]].Cells[0].Value;
+                    tech_inspectorDataSet.user_list.FindByuser_id(id).Delete();
+                    int q = user_listTableAdapter.Update(tech_inspectorDataSet.user_list);
+                    MessageBox.Show("Видалено записів: " + q, "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tech_inspectorDataSet.equipment_shortinfo.AcceptChanges();
+                }
+            }
+        }
+
     }
 }

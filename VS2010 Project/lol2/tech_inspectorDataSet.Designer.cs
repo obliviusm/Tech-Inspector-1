@@ -68,7 +68,7 @@ namespace lol2 {
         
         private global::System.Data.DataRelation relationfk_history_Equipments1;
         
-        private global::System.Data.DataRelation relationusers_ibfk_1;
+        private global::System.Data.DataRelation relationroles_users;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -532,7 +532,7 @@ namespace lol2 {
             this.relationfk_Equipments_has_Attributes_Attributes1 = this.Relations["fk_Equipments_has_Attributes_Attributes1"];
             this.relationfk_history_action_types1 = this.Relations["fk_history_action_types1"];
             this.relationfk_history_Equipments1 = this.Relations["fk_history_Equipments1"];
-            this.relationusers_ibfk_1 = this.Relations["users_ibfk_1"];
+            this.relationroles_users = this.Relations["roles_users"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -611,10 +611,10 @@ namespace lol2 {
                         this.tableequipments.equipment_idColumn}, new global::System.Data.DataColumn[] {
                         this.tablehistory.equipment_idColumn}, false);
             this.Relations.Add(this.relationfk_history_Equipments1);
-            this.relationusers_ibfk_1 = new global::System.Data.DataRelation("users_ibfk_1", new global::System.Data.DataColumn[] {
+            this.relationroles_users = new global::System.Data.DataRelation("roles_users", new global::System.Data.DataColumn[] {
                         this.tableroles.role_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableusers.role_idColumn}, false);
-            this.Relations.Add(this.relationusers_ibfk_1);
+            this.Relations.Add(this.relationroles_users);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4384,15 +4384,15 @@ namespace lol2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public usersRow AddusersRow(int user_id, rolesRow parentrolesRowByusers_ibfk_1, string user_name, string password) {
+            public usersRow AddusersRow(rolesRow parentrolesRowByroles_users, string user_name, string password) {
                 usersRow rowusersRow = ((usersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        user_id,
+                        null,
                         null,
                         user_name,
                         password};
-                if ((parentrolesRowByusers_ibfk_1 != null)) {
-                    columnValuesArray[1] = parentrolesRowByusers_ibfk_1[0];
+                if ((parentrolesRowByroles_users != null)) {
+                    columnValuesArray[1] = parentrolesRowByroles_users[0];
                 }
                 rowusersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowusersRow);
@@ -4441,14 +4441,17 @@ namespace lol2 {
                 this.columnpassword = new global::System.Data.DataColumn("password", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpassword);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnrole_id}, false));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
                                 this.columnuser_id}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnuser_name}, false));
+                this.columnuser_id.AutoIncrement = true;
+                this.columnuser_id.AutoIncrementSeed = -1;
+                this.columnuser_id.AutoIncrementStep = -1;
                 this.columnuser_id.AllowDBNull = false;
                 this.columnuser_id.Unique = true;
                 this.columnrole_id.AllowDBNull = false;
-                this.columnrole_id.Unique = true;
                 this.columnuser_name.AllowDBNull = false;
+                this.columnuser_name.Unique = true;
                 this.columnuser_name.MaxLength = 45;
                 this.columnpassword.AllowDBNull = false;
                 this.columnpassword.MaxLength = 32;
@@ -4862,13 +4865,13 @@ namespace lol2 {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class user_listDataTable : global::System.Data.TypedTableBase<user_listRow> {
             
-            private global::System.Data.DataColumn columnuser_name;
-            
-            private global::System.Data.DataColumn columnrole_name;
+            private global::System.Data.DataColumn columnuser_id;
             
             private global::System.Data.DataColumn columnrole_id;
             
-            private global::System.Data.DataColumn columnuser_id;
+            private global::System.Data.DataColumn columnuser_name;
+            
+            private global::System.Data.DataColumn columnrole_name;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -4905,17 +4908,9 @@ namespace lol2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn user_nameColumn {
+            public global::System.Data.DataColumn user_idColumn {
                 get {
-                    return this.columnuser_name;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn role_nameColumn {
-                get {
-                    return this.columnrole_name;
+                    return this.columnuser_id;
                 }
             }
             
@@ -4929,9 +4924,17 @@ namespace lol2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn user_idColumn {
+            public global::System.Data.DataColumn user_nameColumn {
                 get {
-                    return this.columnuser_id;
+                    return this.columnuser_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn role_nameColumn {
+                get {
+                    return this.columnrole_name;
                 }
             }
             
@@ -4972,13 +4975,13 @@ namespace lol2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public user_listRow Adduser_listRow(string user_name, string role_name, int role_id, int user_id) {
+            public user_listRow Adduser_listRow(int role_id, string user_name, string role_name) {
                 user_listRow rowuser_listRow = ((user_listRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        user_name,
-                        role_name,
+                        null,
                         role_id,
-                        user_id};
+                        user_name,
+                        role_name};
                 rowuser_listRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowuser_listRow);
                 return rowuser_listRow;
@@ -5008,35 +5011,35 @@ namespace lol2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnuser_id = base.Columns["user_id"];
+                this.columnrole_id = base.Columns["role_id"];
                 this.columnuser_name = base.Columns["user_name"];
                 this.columnrole_name = base.Columns["role_name"];
-                this.columnrole_id = base.Columns["role_id"];
-                this.columnuser_id = base.Columns["user_id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnuser_id = new global::System.Data.DataColumn("user_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnuser_id);
+                this.columnrole_id = new global::System.Data.DataColumn("role_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrole_id);
                 this.columnuser_name = new global::System.Data.DataColumn("user_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuser_name);
                 this.columnrole_name = new global::System.Data.DataColumn("role_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrole_name);
-                this.columnrole_id = new global::System.Data.DataColumn("role_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrole_id);
-                this.columnuser_id = new global::System.Data.DataColumn("user_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnuser_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnrole_id}, false));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
                                 this.columnuser_id}, true));
+                this.columnuser_id.AutoIncrement = true;
+                this.columnuser_id.AutoIncrementSeed = -1;
+                this.columnuser_id.AutoIncrementStep = -1;
+                this.columnuser_id.AllowDBNull = false;
+                this.columnuser_id.Unique = true;
+                this.columnrole_id.AllowDBNull = false;
                 this.columnuser_name.AllowDBNull = false;
                 this.columnuser_name.MaxLength = 45;
                 this.columnrole_name.AllowDBNull = false;
                 this.columnrole_name.MaxLength = 32;
-                this.columnrole_id.AllowDBNull = false;
-                this.columnrole_id.Unique = true;
-                this.columnuser_id.AllowDBNull = false;
-                this.columnuser_id.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6453,10 +6456,10 @@ namespace lol2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public rolesRow rolesRow {
                 get {
-                    return ((rolesRow)(this.GetParentRow(this.Table.ParentRelations["users_ibfk_1"])));
+                    return ((rolesRow)(this.GetParentRow(this.Table.ParentRelations["roles_users"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["users_ibfk_1"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["roles_users"]);
                 }
             }
         }
@@ -6500,11 +6503,11 @@ namespace lol2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public usersRow[] GetusersRows() {
-                if ((this.Table.ChildRelations["users_ibfk_1"] == null)) {
+                if ((this.Table.ChildRelations["roles_users"] == null)) {
                     return new usersRow[0];
                 }
                 else {
-                    return ((usersRow[])(base.GetChildRows(this.Table.ChildRelations["users_ibfk_1"])));
+                    return ((usersRow[])(base.GetChildRows(this.Table.ChildRelations["roles_users"])));
                 }
             }
         }
@@ -6521,6 +6524,28 @@ namespace lol2 {
             internal user_listRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableuser_list = ((user_listDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int user_id {
+                get {
+                    return ((int)(this[this.tableuser_list.user_idColumn]));
+                }
+                set {
+                    this[this.tableuser_list.user_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int role_id {
+                get {
+                    return ((int)(this[this.tableuser_list.role_idColumn]));
+                }
+                set {
+                    this[this.tableuser_list.role_idColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6542,28 +6567,6 @@ namespace lol2 {
                 }
                 set {
                     this[this.tableuser_list.role_nameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int role_id {
-                get {
-                    return ((int)(this[this.tableuser_list.role_idColumn]));
-                }
-                set {
-                    this[this.tableuser_list.role_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int user_id {
-                get {
-                    return ((int)(this[this.tableuser_list.user_idColumn]));
-                }
-                set {
-                    this[this.tableuser_list.user_idColumn] = value;
                 }
             }
         }
@@ -11565,16 +11568,9 @@ WHERE        (history.equipment_id = @equipment_id)";
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `users` (`user_id`, `role_id`, `user_name`, `password`) VALUES (@user" +
-                "_id, @role_id, @user_name, @password)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `users` (`role_id`, `user_name`, `password`) VALUES (@role_id, @user_" +
+                "name, @password)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@user_id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "user_id";
-            this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@role_id";
             param.DbType = global::System.Data.DbType.Int32;
@@ -11598,15 +11594,11 @@ WHERE        (history.equipment_id = @equipment_id)";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `users` SET `user_id` = @user_id, `role_id` = @role_id, `user_name` = @user_name, `password` = @password WHERE ((`user_id` = @Original_user_id) AND (`role_id` = @Original_role_id) AND (`user_name` = @Original_user_name) AND (`password` = @Original_password))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `users` SET `role_id` = @role_id, `user_name` = @user_name, `password` = @" +
+                "password WHERE ((`user_id` = @Original_user_id) AND (`role_id` = @Original_role_" +
+                "id) AND (`user_name` = @Original_user_name) AND (`password` = @Original_password" +
+                "))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@user_id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "user_id";
-            this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@role_id";
             param.DbType = global::System.Data.DbType.Int32;
@@ -11675,7 +11667,7 @@ WHERE        (history.equipment_id = @equipment_id)";
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        user_id, role_id, user_name, password\r\nFROM            users";
+            this._commandCollection[0].CommandText = "SELECT `user_id`, `role_id`, `user_name`, `password` FROM `users`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11771,20 +11763,19 @@ WHERE        (history.equipment_id = @equipment_id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int user_id, int role_id, string user_name, string password) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(user_id));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(role_id));
+        public virtual int Insert(int role_id, string user_name, string password) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(role_id));
             if ((user_name == null)) {
                 throw new global::System.ArgumentNullException("user_name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(user_name));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(user_name));
             }
             if ((password == null)) {
                 throw new global::System.ArgumentNullException("password");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(password));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(password));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11806,34 +11797,33 @@ WHERE        (history.equipment_id = @equipment_id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int user_id, int role_id, string user_name, string password, int Original_user_id, int Original_role_id, string Original_user_name, string Original_password) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(user_id));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(role_id));
+        public virtual int Update(int role_id, string user_name, string password, int Original_user_id, int Original_role_id, string Original_user_name, string Original_password) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(role_id));
             if ((user_name == null)) {
                 throw new global::System.ArgumentNullException("user_name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(user_name));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(user_name));
             }
             if ((password == null)) {
                 throw new global::System.ArgumentNullException("password");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(password));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(password));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_user_id));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_role_id));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_user_id));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_role_id));
             if ((Original_user_name == null)) {
                 throw new global::System.ArgumentNullException("Original_user_name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_user_name));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_user_name));
             }
             if ((Original_password == null)) {
                 throw new global::System.ArgumentNullException("Original_password");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_password));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_password));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11849,14 +11839,6 @@ WHERE        (history.equipment_id = @equipment_id)";
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int role_id, string user_name, string password, int Original_user_id, int Original_role_id, string Original_user_name, string Original_password) {
-            return this.Update(Original_user_id, role_id, user_name, password, Original_user_id, Original_role_id, Original_user_name, Original_password);
         }
     }
     
@@ -12327,11 +12309,23 @@ WHERE        (history.equipment_id = @equipment_id)";
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "user_list";
+            tableMapping.ColumnMappings.Add("user_id", "user_id");
+            tableMapping.ColumnMappings.Add("role_id", "role_id");
             tableMapping.ColumnMappings.Add("user_name", "user_name");
             tableMapping.ColumnMappings.Add("role_name", "role_name");
-            tableMapping.ColumnMappings.Add("role_id", "role_id");
-            tableMapping.ColumnMappings.Add("user_id", "user_id");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12347,7 +12341,7 @@ WHERE        (history.equipment_id = @equipment_id)";
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        users.user_name, roles.role_name, users.role_id, users.user_id\r\nFRO" +
+            this._commandCollection[0].CommandText = "SELECT        users.user_id, users.role_id, users.user_name, roles.role_name\r\nFRO" +
                 "M            users INNER JOIN\r\n                         roles ON users.role_id =" +
                 " roles.role_id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
@@ -12375,6 +12369,35 @@ WHERE        (history.equipment_id = @equipment_id)";
             tech_inspectorDataSet.user_listDataTable dataTable = new tech_inspectorDataSet.user_listDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(tech_inspectorDataSet.user_listDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(tech_inspectorDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "user_list");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
         }
     }
     
@@ -12413,6 +12436,8 @@ WHERE        (history.equipment_id = @equipment_id)";
         private usersTableAdapter _usersTableAdapter;
         
         private rolesTableAdapter _rolesTableAdapter;
+        
+        private user_listTableAdapter _user_listTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -12599,6 +12624,20 @@ WHERE        (history.equipment_id = @equipment_id)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public user_listTableAdapter user_listTableAdapter {
+            get {
+                return this._user_listTableAdapter;
+            }
+            set {
+                this._user_listTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -12664,6 +12703,10 @@ WHERE        (history.equipment_id = @equipment_id)";
                             && (this._rolesTableAdapter.Connection != null))) {
                     return this._rolesTableAdapter.Connection;
                 }
+                if (((this._user_listTableAdapter != null) 
+                            && (this._user_listTableAdapter.Connection != null))) {
+                    return this._user_listTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -12711,6 +12754,9 @@ WHERE        (history.equipment_id = @equipment_id)";
                     count = (count + 1);
                 }
                 if ((this._rolesTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._user_listTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -12811,6 +12857,15 @@ WHERE        (history.equipment_id = @equipment_id)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._equipments_has_attributesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._user_listTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.user_list.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._user_listTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -12922,6 +12977,14 @@ WHERE        (history.equipment_id = @equipment_id)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._user_listTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.user_list.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._user_listTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._equipment_shortinfoTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.equipment_shortinfo.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -12961,6 +13024,14 @@ WHERE        (history.equipment_id = @equipment_id)";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._equipment_shortinfoTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._user_listTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.user_list.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._user_listTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13143,6 +13214,11 @@ WHERE        (history.equipment_id = @equipment_id)";
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
+            if (((this._user_listTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._user_listTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager не содержит сведений о подключении. Укажите для каждого адапт" +
@@ -13283,6 +13359,15 @@ WHERE        (history.equipment_id = @equipment_id)";
                         adaptersWithAcceptChangesDuringUpdate.Add(this._rolesTableAdapter.Adapter);
                     }
                 }
+                if ((this._user_listTableAdapter != null)) {
+                    revertConnections.Add(this._user_listTableAdapter, this._user_listTableAdapter.Connection);
+                    this._user_listTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(workConnection));
+                    this._user_listTableAdapter.Transaction = ((global::MySql.Data.MySqlClient.MySqlTransaction)(workTransaction));
+                    if (this._user_listTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._user_listTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._user_listTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -13388,6 +13473,10 @@ WHERE        (history.equipment_id = @equipment_id)";
                 if ((this._rolesTableAdapter != null)) {
                     this._rolesTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._rolesTableAdapter]));
                     this._rolesTableAdapter.Transaction = null;
+                }
+                if ((this._user_listTableAdapter != null)) {
+                    this._user_listTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._user_listTableAdapter]));
+                    this._user_listTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
