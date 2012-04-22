@@ -107,6 +107,12 @@
     <Compile Include="EditEquipment.Designer.cs">
       <DependentUpon>EditEquipment.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditUsercs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditUsercs.Designer.cs">
+      <DependentUpon>EditUsercs.cs</DependentUpon>
+    </Compile>
     <Compile Include="History.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditEquipment.resx">
       <DependentUpon>EditEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditUsercs.resx">
+      <DependentUpon>EditUsercs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="History.resx">
       <DependentUpon>History.cs</DependentUpon>

@@ -115,5 +115,10 @@ namespace lol2
             History h = new History(equipment_id);
             h.ShowDialog();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.userTable = new System.Windows.Forms.DataGridView();
-            this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roleidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rolenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userlistBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
             this.filterGroupBox = new System.Windows.Forms.GroupBox();
@@ -48,6 +44,10 @@
             this.editUserButton = new System.Windows.Forms.Button();
             this.deleteUserButton = new System.Windows.Forms.Button();
             this.addUserButton = new System.Windows.Forms.Button();
+            this.userid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roleid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rolename = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.userTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userlistBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
@@ -64,44 +64,16 @@
             this.userTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.userTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.userTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.useridDataGridViewTextBoxColumn,
-            this.roleidDataGridViewTextBoxColumn,
-            this.usernameDataGridViewTextBoxColumn,
-            this.rolenameDataGridViewTextBoxColumn});
+            this.userid,
+            this.roleid,
+            this.username,
+            this.rolename});
             this.userTable.DataSource = this.userlistBindingSource;
             this.userTable.Location = new System.Drawing.Point(38, 118);
             this.userTable.Name = "userTable";
             this.userTable.ReadOnly = true;
             this.userTable.Size = new System.Drawing.Size(543, 300);
             this.userTable.TabIndex = 0;
-            // 
-            // useridDataGridViewTextBoxColumn
-            // 
-            this.useridDataGridViewTextBoxColumn.DataPropertyName = "user_id";
-            this.useridDataGridViewTextBoxColumn.HeaderText = "user_id";
-            this.useridDataGridViewTextBoxColumn.Name = "useridDataGridViewTextBoxColumn";
-            this.useridDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // roleidDataGridViewTextBoxColumn
-            // 
-            this.roleidDataGridViewTextBoxColumn.DataPropertyName = "role_id";
-            this.roleidDataGridViewTextBoxColumn.HeaderText = "role_id";
-            this.roleidDataGridViewTextBoxColumn.Name = "roleidDataGridViewTextBoxColumn";
-            this.roleidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "user_name";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "user_name";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rolenameDataGridViewTextBoxColumn
-            // 
-            this.rolenameDataGridViewTextBoxColumn.DataPropertyName = "role_name";
-            this.rolenameDataGridViewTextBoxColumn.HeaderText = "role_name";
-            this.rolenameDataGridViewTextBoxColumn.Name = "rolenameDataGridViewTextBoxColumn";
-            this.rolenameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // userlistBindingSource
             // 
@@ -196,6 +168,7 @@
             this.editUserButton.TabIndex = 8;
             this.editUserButton.Text = "Редагувати профіль";
             this.editUserButton.UseVisualStyleBackColor = true;
+            this.editUserButton.Click += new System.EventHandler(this.editUserButton_Click);
             // 
             // deleteUserButton
             // 
@@ -218,6 +191,34 @@
             this.addUserButton.Text = "Додати профіль";
             this.addUserButton.UseVisualStyleBackColor = true;
             this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
+            // 
+            // userid
+            // 
+            this.userid.DataPropertyName = "user_id";
+            this.userid.HeaderText = "user_id";
+            this.userid.Name = "userid";
+            this.userid.ReadOnly = true;
+            // 
+            // roleid
+            // 
+            this.roleid.DataPropertyName = "role_id";
+            this.roleid.HeaderText = "role_id";
+            this.roleid.Name = "roleid";
+            this.roleid.ReadOnly = true;
+            // 
+            // username
+            // 
+            this.username.DataPropertyName = "user_name";
+            this.username.HeaderText = "user_name";
+            this.username.Name = "username";
+            this.username.ReadOnly = true;
+            // 
+            // rolename
+            // 
+            this.rolename.DataPropertyName = "role_name";
+            this.rolename.HeaderText = "role_name";
+            this.rolename.Name = "rolename";
+            this.rolename.ReadOnly = true;
             // 
             // AdminForm
             // 
@@ -254,14 +255,14 @@
         private tech_inspectorDataSet tech_inspectorDataSet;
         private System.Windows.Forms.BindingSource userlistBindingSource;
         private tech_inspectorDataSetTableAdapters.user_listTableAdapter user_listTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roleidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rolenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource rolesBindingSource;
         private tech_inspectorDataSetTableAdapters.rolesTableAdapter rolesTableAdapter;
         private System.Windows.Forms.Button editUserButton;
         private System.Windows.Forms.Button deleteUserButton;
         private System.Windows.Forms.Button addUserButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rolename;
     }
 }
