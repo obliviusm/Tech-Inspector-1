@@ -81,7 +81,7 @@ namespace lol2
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (planTable.SelectedCells.Count == 1 && planTable.SelectedCells[0].ColumnIndex!=0)
-                planTable.SelectedCells[0].Value = Clipboard.GetText();
+                planTable.SelectedCells[0].Value += Clipboard.GetText();
         }
 
         private void saveChangesToolStripMenuItem_Click(object sender, EventArgs e)

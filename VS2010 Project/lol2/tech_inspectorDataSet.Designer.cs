@@ -1709,6 +1709,8 @@ namespace lol2 {
             
             private global::System.Data.DataColumn columnprophylaxis_lesson_index;
             
+            private global::System.Data.DataColumn columnlast_prophylaxis;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public locationsDataTable() {
@@ -1784,6 +1786,14 @@ namespace lol2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn last_prophylaxisColumn {
+                get {
+                    return this.columnlast_prophylaxis;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1819,14 +1829,15 @@ namespace lol2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public locationsRow AddlocationsRow(string location_name, string responsible_admin, int prophylaxis_day_index, int prophylaxis_lesson_index) {
+            public locationsRow AddlocationsRow(string location_name, string responsible_admin, int prophylaxis_day_index, int prophylaxis_lesson_index, System.DateTime last_prophylaxis) {
                 locationsRow rowlocationsRow = ((locationsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         location_name,
                         responsible_admin,
                         prophylaxis_day_index,
-                        prophylaxis_lesson_index};
+                        prophylaxis_lesson_index,
+                        last_prophylaxis};
                 rowlocationsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlocationsRow);
                 return rowlocationsRow;
@@ -1861,6 +1872,7 @@ namespace lol2 {
                 this.columnresponsible_admin = base.Columns["responsible_admin"];
                 this.columnprophylaxis_day_index = base.Columns["prophylaxis_day_index"];
                 this.columnprophylaxis_lesson_index = base.Columns["prophylaxis_lesson_index"];
+                this.columnlast_prophylaxis = base.Columns["last_prophylaxis"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1876,6 +1888,8 @@ namespace lol2 {
                 base.Columns.Add(this.columnprophylaxis_day_index);
                 this.columnprophylaxis_lesson_index = new global::System.Data.DataColumn("prophylaxis_lesson_index", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprophylaxis_lesson_index);
+                this.columnlast_prophylaxis = new global::System.Data.DataColumn("last_prophylaxis", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlast_prophylaxis);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnlocation_name}, false));
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
@@ -1888,6 +1902,8 @@ namespace lol2 {
                 this.columnlocation_name.AllowDBNull = false;
                 this.columnlocation_name.Unique = true;
                 this.columnlocation_name.MaxLength = 32;
+                this.columnprophylaxis_day_index.AllowDBNull = false;
+                this.columnprophylaxis_lesson_index.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4690,12 +4706,7 @@ namespace lol2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int prophylaxis_day_index {
                 get {
-                    try {
-                        return ((int)(this[this.tablelocations.prophylaxis_day_indexColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'prophylaxis_day_index\' in table \'locations\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tablelocations.prophylaxis_day_indexColumn]));
                 }
                 set {
                     this[this.tablelocations.prophylaxis_day_indexColumn] = value;
@@ -4706,15 +4717,26 @@ namespace lol2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int prophylaxis_lesson_index {
                 get {
-                    try {
-                        return ((int)(this[this.tablelocations.prophylaxis_lesson_indexColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'prophylaxis_lesson_index\' in table \'locations\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tablelocations.prophylaxis_lesson_indexColumn]));
                 }
                 set {
                     this[this.tablelocations.prophylaxis_lesson_indexColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime last_prophylaxis {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablelocations.last_prophylaxisColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'last_prophylaxis\' in table \'locations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelocations.last_prophylaxisColumn] = value;
                 }
             }
             
@@ -4732,26 +4754,14 @@ namespace lol2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isprophylaxis_day_indexNull() {
-                return this.IsNull(this.tablelocations.prophylaxis_day_indexColumn);
+            public bool Islast_prophylaxisNull() {
+                return this.IsNull(this.tablelocations.last_prophylaxisColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setprophylaxis_day_indexNull() {
-                this[this.tablelocations.prophylaxis_day_indexColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isprophylaxis_lesson_indexNull() {
-                return this.IsNull(this.tablelocations.prophylaxis_lesson_indexColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setprophylaxis_lesson_indexNull() {
-                this[this.tablelocations.prophylaxis_lesson_indexColumn] = global::System.Convert.DBNull;
+            public void Setlast_prophylaxisNull() {
+                this[this.tablelocations.last_prophylaxisColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6690,7 +6700,7 @@ WHERE        (equipment_id = @Original_equipment_id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[3];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        equipment_id, type_id, location_id, state_id, price, purchase_date," +
@@ -6710,6 +6720,24 @@ WHERE        (equipment_id = @Original_equipment_id)";
             param.IsNullable = true;
             param.SourceColumn = "equipment_id";
             this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT        equipments.equipment_id, equipments.type_id, equipments.location_id, equipments.state_id, equipments.price, equipments.purchase_date, 
+                         equipments.placement_date, equipments.warranty_end_date, equipments.repairing, equipments.moved, equipments.temp_location, states.state_name, 
+                         locations.location_name, types.type_name
+FROM            equipments INNER JOIN
+                         states ON equipments.state_id = states.state_id INNER JOIN
+                         locations ON equipments.location_id = locations.location_id INNER JOIN
+                         types ON equipments.type_id = types.type_id
+WHERE        (equipments.location_id = @loc)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@loc";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "location_id";
+            this._commandCollection[2].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6748,6 +6776,32 @@ WHERE        (equipment_id = @Original_equipment_id)";
             }
             int returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByLoc(tech_inspectorDataSet.equipmentsDataTable dataTable, int loc) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(loc));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual tech_inspectorDataSet.equipmentsDataTable GetDataBy1(int loc) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(loc));
+            tech_inspectorDataSet.equipmentsDataTable dataTable = new tech_inspectorDataSet.equipmentsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7384,10 +7438,11 @@ WHERE        (equipment_id = @Original_equipment_id)";
             tableMapping.ColumnMappings.Add("responsible_admin", "responsible_admin");
             tableMapping.ColumnMappings.Add("prophylaxis_day_index", "prophylaxis_day_index");
             tableMapping.ColumnMappings.Add("prophylaxis_lesson_index", "prophylaxis_lesson_index");
+            tableMapping.ColumnMappings.Add("last_prophylaxis", "last_prophylaxis");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `locations` WHERE ((`location_id` = @Original_location_id) AND (`location_name` = @Original_location_name) AND ((@IsNull_responsible_admin = 1 AND `responsible_admin` IS NULL) OR (`responsible_admin` = @Original_responsible_admin)) AND ((@IsNull_prophylaxis_day_index = 1 AND `prophylaxis_day_index` IS NULL) OR (`prophylaxis_day_index` = @Original_prophylaxis_day_index)) AND ((@IsNull_prophylaxis_lesson_index = 1 AND `prophylaxis_lesson_index` IS NULL) OR (`prophylaxis_lesson_index` = @Original_prophylaxis_lesson_index)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `locations` WHERE ((`location_id` = @Original_location_id) AND (`location_name` = @Original_location_name) AND ((@IsNull_responsible_admin = 1 AND `responsible_admin` IS NULL) OR (`responsible_admin` = @Original_responsible_admin)) AND (`prophylaxis_day_index` = @Original_prophylaxis_day_index) AND (`prophylaxis_lesson_index` = @Original_prophylaxis_lesson_index) AND ((@IsNull_last_prophylaxis = 1 AND `last_prophylaxis` IS NULL) OR (`last_prophylaxis` = @Original_last_prophylaxis)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_location_id";
@@ -7423,30 +7478,12 @@ WHERE        (equipment_id = @Original_equipment_id)";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@IsNull_prophylaxis_day_index";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "prophylaxis_day_index";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_prophylaxis_day_index";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "prophylaxis_day_index";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@IsNull_prophylaxis_lesson_index";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "prophylaxis_lesson_index";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_prophylaxis_lesson_index";
@@ -7456,11 +7493,29 @@ WHERE        (equipment_id = @Original_equipment_id)";
             param.SourceColumn = "prophylaxis_lesson_index";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_last_prophylaxis";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "last_prophylaxis";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_last_prophylaxis";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
+            param.IsNullable = true;
+            param.SourceColumn = "last_prophylaxis";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO `locations` (`location_name`, `responsible_admin`, `prophylaxis_day_i" +
-                "ndex`, `prophylaxis_lesson_index`) VALUES (@location_name, @responsible_admin, @" +
-                "prophylaxis_day_index, @prophylaxis_lesson_index)";
+                "ndex`, `prophylaxis_lesson_index`, `last_prophylaxis`) VALUES (@location_name, @" +
+                "responsible_admin, @prophylaxis_day_index, @prophylaxis_lesson_index, @last_prop" +
+                "hylaxis)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@location_name";
@@ -7490,9 +7545,16 @@ WHERE        (equipment_id = @Original_equipment_id)";
             param.IsNullable = true;
             param.SourceColumn = "prophylaxis_lesson_index";
             this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@last_prophylaxis";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
+            param.IsNullable = true;
+            param.SourceColumn = "last_prophylaxis";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `locations` SET `location_name` = @location_name, `responsible_admin` = @responsible_admin, `prophylaxis_day_index` = @prophylaxis_day_index, `prophylaxis_lesson_index` = @prophylaxis_lesson_index WHERE ((`location_id` = @Original_location_id) AND (`location_name` = @Original_location_name) AND ((@IsNull_responsible_admin = 1 AND `responsible_admin` IS NULL) OR (`responsible_admin` = @Original_responsible_admin)) AND ((@IsNull_prophylaxis_day_index = 1 AND `prophylaxis_day_index` IS NULL) OR (`prophylaxis_day_index` = @Original_prophylaxis_day_index)) AND ((@IsNull_prophylaxis_lesson_index = 1 AND `prophylaxis_lesson_index` IS NULL) OR (`prophylaxis_lesson_index` = @Original_prophylaxis_lesson_index)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `locations` SET `location_name` = @location_name, `responsible_admin` = @responsible_admin, `prophylaxis_day_index` = @prophylaxis_day_index, `prophylaxis_lesson_index` = @prophylaxis_lesson_index, `last_prophylaxis` = @last_prophylaxis WHERE ((`location_id` = @Original_location_id) AND (`location_name` = @Original_location_name) AND ((@IsNull_responsible_admin = 1 AND `responsible_admin` IS NULL) OR (`responsible_admin` = @Original_responsible_admin)) AND (`prophylaxis_day_index` = @Original_prophylaxis_day_index) AND (`prophylaxis_lesson_index` = @Original_prophylaxis_lesson_index) AND ((@IsNull_last_prophylaxis = 1 AND `last_prophylaxis` IS NULL) OR (`last_prophylaxis` = @Original_last_prophylaxis)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@location_name";
@@ -7521,6 +7583,13 @@ WHERE        (equipment_id = @Original_equipment_id)";
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "prophylaxis_lesson_index";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@last_prophylaxis";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
+            param.IsNullable = true;
+            param.SourceColumn = "last_prophylaxis";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_location_id";
@@ -7556,15 +7625,6 @@ WHERE        (equipment_id = @Original_equipment_id)";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@IsNull_prophylaxis_day_index";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "prophylaxis_day_index";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_prophylaxis_day_index";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
@@ -7573,20 +7633,28 @@ WHERE        (equipment_id = @Original_equipment_id)";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@IsNull_prophylaxis_lesson_index";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "prophylaxis_lesson_index";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_prophylaxis_lesson_index";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "prophylaxis_lesson_index";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_last_prophylaxis";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "last_prophylaxis";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_last_prophylaxis";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
+            param.IsNullable = true;
+            param.SourceColumn = "last_prophylaxis";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -7605,7 +7673,7 @@ WHERE        (equipment_id = @Original_equipment_id)";
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        location_id, location_name, responsible_admin, prophylaxis_day_inde" +
-                "x, prophylaxis_lesson_index\r\nFROM            locations";
+                "x, prophylaxis_lesson_index, last_prophylaxis\r\nFROM            locations";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7666,7 +7734,7 @@ WHERE        (equipment_id = @Original_equipment_id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_location_id, string Original_location_name, string Original_responsible_admin, global::System.Nullable<int> Original_prophylaxis_day_index, global::System.Nullable<int> Original_prophylaxis_lesson_index) {
+        public virtual int Delete(int Original_location_id, string Original_location_name, string Original_responsible_admin, int Original_prophylaxis_day_index, int Original_prophylaxis_lesson_index, global::System.Nullable<global::System.DateTime> Original_last_prophylaxis) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_location_id));
             if ((Original_location_name == null)) {
                 throw new global::System.ArgumentNullException("Original_location_name");
@@ -7682,17 +7750,11 @@ WHERE        (equipment_id = @Original_equipment_id)";
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_responsible_admin));
             }
-            if ((Original_prophylaxis_day_index.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_prophylaxis_day_index.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            if ((Original_prophylaxis_lesson_index.HasValue == true)) {
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_prophylaxis_day_index));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_prophylaxis_lesson_index));
+            if ((Original_last_prophylaxis.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_prophylaxis_lesson_index.Value));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((System.DateTime)(Original_last_prophylaxis.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
@@ -7718,7 +7780,7 @@ WHERE        (equipment_id = @Original_equipment_id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string location_name, string responsible_admin, global::System.Nullable<int> prophylaxis_day_index, global::System.Nullable<int> prophylaxis_lesson_index) {
+        public virtual int Insert(string location_name, string responsible_admin, int prophylaxis_day_index, int prophylaxis_lesson_index, global::System.Nullable<global::System.DateTime> last_prophylaxis) {
             if ((location_name == null)) {
                 throw new global::System.ArgumentNullException("location_name");
             }
@@ -7731,17 +7793,13 @@ WHERE        (equipment_id = @Original_equipment_id)";
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(responsible_admin));
             }
-            if ((prophylaxis_day_index.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(prophylaxis_day_index.Value));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(prophylaxis_day_index));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(prophylaxis_lesson_index));
+            if ((last_prophylaxis.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(last_prophylaxis.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((prophylaxis_lesson_index.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(prophylaxis_lesson_index.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -7763,7 +7821,7 @@ WHERE        (equipment_id = @Original_equipment_id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string location_name, string responsible_admin, global::System.Nullable<int> prophylaxis_day_index, global::System.Nullable<int> prophylaxis_lesson_index, int Original_location_id, string Original_location_name, string Original_responsible_admin, global::System.Nullable<int> Original_prophylaxis_day_index, global::System.Nullable<int> Original_prophylaxis_lesson_index) {
+        public virtual int Update(string location_name, string responsible_admin, int prophylaxis_day_index, int prophylaxis_lesson_index, global::System.Nullable<global::System.DateTime> last_prophylaxis, int Original_location_id, string Original_location_name, string Original_responsible_admin, int Original_prophylaxis_day_index, int Original_prophylaxis_lesson_index, global::System.Nullable<global::System.DateTime> Original_last_prophylaxis) {
             if ((location_name == null)) {
                 throw new global::System.ArgumentNullException("location_name");
             }
@@ -7776,48 +7834,38 @@ WHERE        (equipment_id = @Original_equipment_id)";
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(responsible_admin));
             }
-            if ((prophylaxis_day_index.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(prophylaxis_day_index.Value));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(prophylaxis_day_index));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(prophylaxis_lesson_index));
+            if ((last_prophylaxis.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(last_prophylaxis.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((prophylaxis_lesson_index.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(prophylaxis_lesson_index.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_location_id));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_location_id));
             if ((Original_location_name == null)) {
                 throw new global::System.ArgumentNullException("Original_location_name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_location_name));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_location_name));
             }
             if ((Original_responsible_admin == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_responsible_admin));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_responsible_admin));
             }
-            if ((Original_prophylaxis_day_index.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_prophylaxis_day_index.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((Original_prophylaxis_lesson_index.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_prophylaxis_lesson_index.Value));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_prophylaxis_day_index));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_prophylaxis_lesson_index));
+            if ((Original_last_prophylaxis.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_last_prophylaxis.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 

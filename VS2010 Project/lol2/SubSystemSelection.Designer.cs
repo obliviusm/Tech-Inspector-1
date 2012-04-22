@@ -56,6 +56,10 @@
             this.accountingTab = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.scheduledTasksTab = new System.Windows.Forms.TabPage();
+            this.upcomingChecks = new System.Windows.Forms.GroupBox();
+            this.upcomingChecksLabel = new System.Windows.Forms.Label();
+            this.startCheckLabelWarn = new System.Windows.Forms.Label();
+            this.startCheckLabel = new System.Windows.Forms.Label();
             this.startCheckButton = new System.Windows.Forms.Button();
             this.adminRequiredLabel = new System.Windows.Forms.Label();
             this.preventionCalendarInfoLabel = new System.Windows.Forms.Label();
@@ -66,19 +70,15 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.startCheckLabel = new System.Windows.Forms.Label();
-            this.startCheckLabelWarn = new System.Windows.Forms.Label();
-            this.upcomingChecks = new System.Windows.Forms.GroupBox();
-            this.upcomingChecksLabel = new System.Windows.Forms.Label();
             this.subsystemsGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.subSystemTabs.SuspendLayout();
             this.accountingTab.SuspendLayout();
             this.scheduledTasksTab.SuspendLayout();
+            this.upcomingChecks.SuspendLayout();
             this.documentsTab.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.upcomingChecks.SuspendLayout();
             this.SuspendLayout();
             // 
             // accountingButton
@@ -419,6 +419,46 @@
             this.scheduledTasksTab.Text = "Планові задачі";
             this.scheduledTasksTab.UseVisualStyleBackColor = true;
             // 
+            // upcomingChecks
+            // 
+            this.upcomingChecks.Controls.Add(this.upcomingChecksLabel);
+            this.upcomingChecks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.upcomingChecks.Location = new System.Drawing.Point(7, 21);
+            this.upcomingChecks.Name = "upcomingChecks";
+            this.upcomingChecks.Size = new System.Drawing.Size(315, 361);
+            this.upcomingChecks.TabIndex = 11;
+            this.upcomingChecks.TabStop = false;
+            this.upcomingChecks.Text = "Профілактики, що мають пройти найближчим часом";
+            // 
+            // upcomingChecksLabel
+            // 
+            this.upcomingChecksLabel.AutoSize = true;
+            this.upcomingChecksLabel.ForeColor = System.Drawing.Color.DarkGreen;
+            this.upcomingChecksLabel.Location = new System.Drawing.Point(7, 42);
+            this.upcomingChecksLabel.Name = "upcomingChecksLabel";
+            this.upcomingChecksLabel.Size = new System.Drawing.Size(294, 15);
+            this.upcomingChecksLabel.TabIndex = 0;
+            this.upcomingChecksLabel.Text = "Найближчим часом профілактики не плануються";
+            // 
+            // startCheckLabelWarn
+            // 
+            this.startCheckLabelWarn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.startCheckLabelWarn.ForeColor = System.Drawing.Color.Red;
+            this.startCheckLabelWarn.Location = new System.Drawing.Point(489, 295);
+            this.startCheckLabelWarn.Name = "startCheckLabelWarn";
+            this.startCheckLabelWarn.Size = new System.Drawing.Size(154, 55);
+            this.startCheckLabelWarn.TabIndex = 10;
+            this.startCheckLabelWarn.Text = "Для використання цієї опції необхідні права адміністратора";
+            // 
+            // startCheckLabel
+            // 
+            this.startCheckLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.startCheckLabel.Location = new System.Drawing.Point(489, 201);
+            this.startCheckLabel.Name = "startCheckLabel";
+            this.startCheckLabel.Size = new System.Drawing.Size(156, 51);
+            this.startCheckLabel.TabIndex = 9;
+            this.startCheckLabel.Text = "Тут можна офрмити протокол при проведенні профілактики";
+            // 
             // startCheckButton
             // 
             this.startCheckButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("startCheckButton.BackgroundImage")));
@@ -428,7 +468,7 @@
             this.startCheckButton.Name = "startCheckButton";
             this.startCheckButton.Size = new System.Drawing.Size(155, 162);
             this.startCheckButton.TabIndex = 6;
-            this.startCheckButton.Text = "Розпочати перевірку";
+            this.startCheckButton.Text = "Профілактика";
             this.startCheckButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.startCheckButton.UseVisualStyleBackColor = true;
             this.startCheckButton.Click += new System.EventHandler(this.startCheckButton_Click);
@@ -540,46 +580,6 @@
             this.label14.TabIndex = 1;
             this.label14.Text = "Звіт по Обліку";
             // 
-            // startCheckLabel
-            // 
-            this.startCheckLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.startCheckLabel.Location = new System.Drawing.Point(489, 201);
-            this.startCheckLabel.Name = "startCheckLabel";
-            this.startCheckLabel.Size = new System.Drawing.Size(156, 51);
-            this.startCheckLabel.TabIndex = 9;
-            this.startCheckLabel.Text = "Тут можна офрмити протокол при проведенні профілактики";
-            // 
-            // startCheckLabelWarn
-            // 
-            this.startCheckLabelWarn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.startCheckLabelWarn.ForeColor = System.Drawing.Color.Red;
-            this.startCheckLabelWarn.Location = new System.Drawing.Point(489, 295);
-            this.startCheckLabelWarn.Name = "startCheckLabelWarn";
-            this.startCheckLabelWarn.Size = new System.Drawing.Size(154, 55);
-            this.startCheckLabelWarn.TabIndex = 10;
-            this.startCheckLabelWarn.Text = "Для використання цієї опції необхідні права адміністратора";
-            // 
-            // upcomingChecks
-            // 
-            this.upcomingChecks.Controls.Add(this.upcomingChecksLabel);
-            this.upcomingChecks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.upcomingChecks.Location = new System.Drawing.Point(7, 21);
-            this.upcomingChecks.Name = "upcomingChecks";
-            this.upcomingChecks.Size = new System.Drawing.Size(315, 361);
-            this.upcomingChecks.TabIndex = 11;
-            this.upcomingChecks.TabStop = false;
-            this.upcomingChecks.Text = "Профілактики, що мають пройти найближчим часом";
-            // 
-            // upcomingChecksLabel
-            // 
-            this.upcomingChecksLabel.AutoSize = true;
-            this.upcomingChecksLabel.ForeColor = System.Drawing.Color.DarkGreen;
-            this.upcomingChecksLabel.Location = new System.Drawing.Point(7, 42);
-            this.upcomingChecksLabel.Name = "upcomingChecksLabel";
-            this.upcomingChecksLabel.Size = new System.Drawing.Size(294, 15);
-            this.upcomingChecksLabel.TabIndex = 0;
-            this.upcomingChecksLabel.Text = "Найближчим часом профілактики не плануються";
-            // 
             // SubSystemSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,11 +601,11 @@
             this.subSystemTabs.ResumeLayout(false);
             this.accountingTab.ResumeLayout(false);
             this.scheduledTasksTab.ResumeLayout(false);
+            this.upcomingChecks.ResumeLayout(false);
+            this.upcomingChecks.PerformLayout();
             this.documentsTab.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.upcomingChecks.ResumeLayout(false);
-            this.upcomingChecks.PerformLayout();
             this.ResumeLayout(false);
 
         }

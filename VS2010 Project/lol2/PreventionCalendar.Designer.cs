@@ -58,6 +58,7 @@
             this.lesson_string = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prophylaxislessonindexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.last_prophylaxis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lockPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.planTable)).BeginInit();
@@ -231,8 +232,10 @@
             this.day_string,
             this.lesson_string,
             this.dataGridViewTextBoxColumn1,
-            this.prophylaxislessonindexDataGridViewTextBoxColumn});
+            this.prophylaxislessonindexDataGridViewTextBoxColumn,
+            this.last_prophylaxis});
             this.planTable.DataSource = this.locationsBindingSource;
+            this.planTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.planTable.Location = new System.Drawing.Point(1, 63);
             this.planTable.Name = "planTable";
             this.planTable.ReadOnly = true;
@@ -320,6 +323,13 @@
             this.prophylaxislessonindexDataGridViewTextBoxColumn.ReadOnly = true;
             this.prophylaxislessonindexDataGridViewTextBoxColumn.Visible = false;
             // 
+            // last_prophylaxis
+            // 
+            this.last_prophylaxis.DataPropertyName = "last_prophylaxis";
+            this.last_prophylaxis.HeaderText = "Остання профілактика";
+            this.last_prophylaxis.Name = "last_prophylaxis";
+            this.last_prophylaxis.ReadOnly = true;
+            // 
             // PreventionCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,5 +392,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn lesson_string;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn prophylaxislessonindexDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn last_prophylaxis;
     }
 }
