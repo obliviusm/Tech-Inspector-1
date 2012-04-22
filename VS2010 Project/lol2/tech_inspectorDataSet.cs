@@ -1,6 +1,7 @@
 ﻿
 namespace lol2.tech_inspectorDataSetTableAdapters {
 
+
 }
 
 namespace lol2 {

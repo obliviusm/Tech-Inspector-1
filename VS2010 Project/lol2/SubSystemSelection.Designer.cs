@@ -36,6 +36,7 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.subsystemsGroupBox = new System.Windows.Forms.GroupBox();
+            this.adminButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -70,7 +71,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.adminButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.subsystemsGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -178,6 +179,16 @@
             this.subsystemsGroupBox.TabIndex = 0;
             this.subsystemsGroupBox.TabStop = false;
             this.subsystemsGroupBox.Text = "Виберіть підсистему для роботи";
+            // 
+            // adminButton
+            // 
+            this.adminButton.Location = new System.Drawing.Point(815, 105);
+            this.adminButton.Name = "adminButton";
+            this.adminButton.Size = new System.Drawing.Size(142, 83);
+            this.adminButton.TabIndex = 6;
+            this.adminButton.Text = "Адмінка";
+            this.adminButton.UseVisualStyleBackColor = true;
+            this.adminButton.Click += new System.EventHandler(this.adminButton_Click);
             // 
             // groupBox1
             // 
@@ -386,6 +397,7 @@
             // accountingTab
             // 
             this.accountingTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.accountingTab.Controls.Add(this.textBox1);
             this.accountingTab.Controls.Add(this.groupBox3);
             this.accountingTab.Location = new System.Drawing.Point(4, 22);
             this.accountingTab.Name = "accountingTab";
@@ -582,15 +594,12 @@
             this.label14.TabIndex = 1;
             this.label14.Text = "Звіт по Обліку";
             // 
-            // adminButton
+            // textBox1
             // 
-            this.adminButton.Location = new System.Drawing.Point(815, 105);
-            this.adminButton.Name = "adminButton";
-            this.adminButton.Size = new System.Drawing.Size(142, 83);
-            this.adminButton.TabIndex = 6;
-            this.adminButton.Text = "Адмінка";
-            this.adminButton.UseVisualStyleBackColor = true;
-            this.adminButton.Click += new System.EventHandler(this.adminButton_Click);
+            this.textBox1.Location = new System.Drawing.Point(246, 69);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 3;
             // 
             // SubSystemSelection
             // 
@@ -612,6 +621,7 @@
             this.groupBox2.PerformLayout();
             this.subSystemTabs.ResumeLayout(false);
             this.accountingTab.ResumeLayout(false);
+            this.accountingTab.PerformLayout();
             this.scheduledTasksTab.ResumeLayout(false);
             this.upcomingChecks.ResumeLayout(false);
             this.upcomingChecks.PerformLayout();
@@ -666,6 +676,7 @@
         private System.Windows.Forms.GroupBox upcomingChecks;
         private System.Windows.Forms.Label upcomingChecksLabel;
         private System.Windows.Forms.Button adminButton;
+        private System.Windows.Forms.TextBox textBox1;
 
     }
 }

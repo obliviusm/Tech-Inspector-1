@@ -198,6 +198,7 @@
             this.userid.HeaderText = "user_id";
             this.userid.Name = "userid";
             this.userid.ReadOnly = true;
+            this.userid.Visible = false;
             // 
             // roleid
             // 
@@ -205,18 +206,19 @@
             this.roleid.HeaderText = "role_id";
             this.roleid.Name = "roleid";
             this.roleid.ReadOnly = true;
+            this.roleid.Visible = false;
             // 
             // username
             // 
             this.username.DataPropertyName = "user_name";
-            this.username.HeaderText = "user_name";
+            this.username.HeaderText = "Логін";
             this.username.Name = "username";
             this.username.ReadOnly = true;
             // 
             // rolename
             // 
             this.rolename.DataPropertyName = "role_name";
-            this.rolename.HeaderText = "role_name";
+            this.rolename.HeaderText = "Права";
             this.rolename.Name = "rolename";
             this.rolename.ReadOnly = true;
             // 

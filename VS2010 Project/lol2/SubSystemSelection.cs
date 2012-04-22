@@ -58,7 +58,7 @@ namespace lol2
 
         private void SubSystemSelection_Load(object sender, EventArgs e)
         {
-
+            textBox1.Text = Login.getUserId();
             //this.reportViewer1.RefreshReport();
         }
 
