@@ -121,18 +121,14 @@ namespace lol2
                             changedIds.Add((int)locationEquipmentsDataGridView["equipment_id", i].Value);
         }
 
-        private void SaveTempPDF()
+        private List<IElement> SaveTempPDF()
         {
-            string filePath = "../../Temp/report_" + locationComboBox.SelectedValue + "_" + startTime.Replace(':', '_').Replace(' ', '_')
-                + ".pdf";
-            Document document = new Document(PageSize.A4, 20, 20, 30, 65);
-            PdfWriter.GetInstance(document, new FileStream(filePath, FileMode.Create));
+            List<IElement> elements = new List<IElement>();
             BaseFont baseFont = BaseFont.CreateFont("../../Fonts/ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
             iTextSharp.text.Font fontNormal = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.NORMAL);
             iTextSharp.text.Font fontNormalRed = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.NORMAL, BaseColor.RED);
             iTextSharp.text.Font fontBold = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.BOLD);
             iTextSharp.text.Font fontBigBold = new iTextSharp.text.Font(baseFont, 14 , iTextSharp.text.Font.BOLD);
-            document.Open();
 
             Paragraph par = new Paragraph();
 
@@ -157,7 +153,7 @@ namespace lol2
             logo.SpacingAfter = 9f;
             logo.BorderWidthTop = 2f;
             logo.BorderColorTop = BaseColor.WHITE;
-            document.Add(logo);
+            elements.Add(logo);
 
             int visible=0;
             for (int i = 0; i < locationEquipmentsDataGridView.ColumnCount; i++)
@@ -182,18 +178,18 @@ namespace lol2
                     if (locationEquipmentsDataGridView[j, 0].Visible)
                     {
                         if (locationEquipmentsDataGridView[j, i].Value.ToString() != "")
-                            table.AddCell(new Phrase(locationEquipmentsDataGridView[j, i].Value.ToString(),currentFont));
-                        else table.AddCell("-");
+                            table.AddCell(new Phrase(locationEquipmentsDataGridView[j, i].Value.ToString(), currentFont));
+                        else table.AddCell(new Phrase("-", currentFont));
                     }
             }
 
-            document.Add(par);
-            document.Add(table);
+            elements.Add(par);
+            elements.Add(table);
 
-            document.Close();
+            return elements;
         }
 
-        private void SaveTempReport()
+        private void SaveTempReport(List<IElement> elements)
         {
             string filePath = "../../Temp/report_" + locationComboBox.SelectedValue + "_" + startTime.Replace(':', '_').Replace(' ', '_')
                 + ".html";
@@ -322,7 +318,7 @@ namespace lol2
 
             writer.RenderEndTag();
             writer.Close();
-            ProphylaxisReporting childReportingForm = new ProphylaxisReporting(Path.GetFullPath(filePath));
+            ProphylaxisReporting childReportingForm = new ProphylaxisReporting(Path.GetFullPath(filePath),elements);
             childReportingForm.ShowDialog();
             wasStarted = false;
             Close();
@@ -330,8 +326,7 @@ namespace lol2
 
         private void finishButton_Click(object sender, EventArgs e)
         {
-            SaveTempPDF();
-            SaveTempReport();
+            SaveTempReport(SaveTempPDF());
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -357,8 +352,7 @@ namespace lol2
 
         private void saveChangesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveTempPDF();
-            SaveTempReport();
+            SaveTempReport(SaveTempPDF());
         }
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)

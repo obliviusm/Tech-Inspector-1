@@ -18,12 +18,14 @@ namespace lol2
     {
         private string filePath;
         private bool saved = false;
+        private List<IElement> elements;
 
-        public ProphylaxisReporting(string filePath)
+        public ProphylaxisReporting(string filePath,List<IElement> elements)
         {
             InitializeComponent();
             this.filePath = filePath;
             webBrowser.Navigate(filePath);
+            this.elements = elements;
             pathTextBox.Text = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         }
 
@@ -49,81 +51,57 @@ namespace lol2
                     pathTextBox.Text += '\\';
                 string path = pathTextBox.Text + Path.GetFileName(filePath);
                 string pathPDF = pathTextBox.Text + Path.GetFileNameWithoutExtension(filePath) + ".pdf";
-                string pdfIn = Path.GetDirectoryName(filePath) + "\\" + Path.GetFileNameWithoutExtension(filePath) + ".pdf";
-                if (notesRichText.Text != "")
+                if (savePDFCheckBox.Checked)
                 {
-                    if (saveHTMLCheckBox.Checked)
-                    {
-                        TextWriter tWriter = new StreamWriter(path);
-                        TextReader reader = new StreamReader(filePath);
-                        HtmlTextWriter writer = new HtmlTextWriter(tWriter);
-                        string[] content = reader.ReadToEnd().Split('\n');
-                        for (int i = 0; i < content.Length - 1; i++)
-                            writer.Write(content[i]);
-                        writer.WriteBreak();
-                        writer.WriteBreak();
-                        writer.AddStyleAttribute(HtmlTextWriterStyle.FontWeight, "bold");
-                        writer.RenderBeginTag(HtmlTextWriterTag.Font);
-                        writer.WriteLine("Примітки :");
-                        writer.RenderEndTag();
-                        writer.WriteBreak();
-                        writer.Write(notesRichText.Text);
-                        writer.Close();
-                    }
-                    if (savePDFCheckBox.Checked)
-                    {
-                        MemoryStream ms = new MemoryStream();
-                        Document doc = new Document();
-                        PdfWriter writer = PdfWriter.GetInstance(doc, ms);
-                        doc.Open();
-                        BaseFont baseFont = BaseFont.CreateFont("../../Fonts/ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-                        iTextSharp.text.Font fontBold = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.BOLD);
-                        iTextSharp.text.Font fontNormal = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.NORMAL);
+                    Document document = new Document(PageSize.A4, 20, 20, 30, 65);
+                    PdfWriter.GetInstance(document, new FileStream(pathPDF, FileMode.Create));
+                    BaseFont baseFont = BaseFont.CreateFont("../../Fonts/ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                    iTextSharp.text.Font fontBold = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.BOLD);
+                    iTextSharp.text.Font fontNormal = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.NORMAL);
+                    document.Open();
 
+                    for (int i = 0; i < elements.Count; i++)
+                        document.Add(elements[i]);
+
+                    if (notesRichText.Text != "")
+                    {
                         Paragraph par = new Paragraph();
-                        par.Add(new Chunk("\n\n"));
-                        par.Add(new Chunk("Примітки :\n\n", fontBold));
+                        par.Add(new Chunk("\n"));
+                        par.Add(new Chunk("Примітки :\n", fontBold));
                         par.Add(new Chunk(notesRichText.Text, fontNormal));
-                        doc.Add(par);
-                        doc.Close();
-                        PdfCopyFields copy = new PdfCopyFields(new FileStream(pathPDF, FileMode.Create));
-                        copy.AddDocument(new PdfReader(new FileStream(pdfIn, FileMode.Open)));
-                        copy.AddDocument(new PdfReader(ms.GetBuffer()));
-                        copy.Close();
+                        document.Add(par);
                     }
+
+                    document.Close();
                 }
-                else
+                if (notesRichText.Text != "" && saveHTMLCheckBox.Checked)
                 {
-                    if (saveHTMLCheckBox.Checked)
+                    TextWriter tWriter = new StreamWriter(filePath, true);
+                    HtmlTextWriter writer = new HtmlTextWriter(tWriter);
+                    writer.WriteBreak();
+                    writer.WriteBreak();
+                    writer.AddStyleAttribute(HtmlTextWriterStyle.FontWeight, "bold");
+                    writer.RenderBeginTag(HtmlTextWriterTag.Font);
+                    writer.WriteLine("Примітки :");
+                    writer.RenderEndTag();
+                    writer.WriteBreak();
+                    writer.Write(notesRichText.Text);
+                    writer.Close();
+                }
+                if (saveHTMLCheckBox.Checked)
+                {
+                    try
                     {
-                        try
-                        {
-                            File.Copy(filePath, path);
-                        }
-                        catch (Exception e)
-                        {
-                            MessageBox.Show("Виникла системна помилка\n" + e.Message,
-                                "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        File.Copy(filePath, path);
                     }
-                    if (savePDFCheckBox.Checked)
+                    catch (Exception e)
                     {
-                        try
-                        {
-                            File.Copy(pdfIn, pathPDF);
-                        }
-                        catch (Exception e)
-                        {
-                            MessageBox.Show("Виникла системна помилка\n" + e.Message,
-                                "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Виникла системна помилка\n" + e.Message,
+                            "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (!saveHTMLCheckBox.Checked)
-                {
-                    File.Delete(path);
                     path = pathPDF;
-                }
                 if (MessageBox.Show("Звіт по профілактиці збережено.\nВідкрити теку розташування ?",
                     "Збережено", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     System.Diagnostics.Process.Start("explorer.exe", @"/select, " + @path);
