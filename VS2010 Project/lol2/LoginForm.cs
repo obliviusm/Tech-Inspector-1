@@ -11,6 +11,9 @@ namespace lol2
 {
     public partial class LoginForm : Form
     {
+        private Font normalFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Regular))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        private Font silverFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
         public LoginForm()
         {
             InitializeComponent();
@@ -54,6 +57,38 @@ namespace lol2
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+        }
+
+        private void userNameTextBox_Click(object sender, EventArgs e)
+        {
+            if (userNameTextBox.Tag == "noPas")
+            {
+                userNameTextBox.Tag = "enteringPas";
+                userNameTextBox.Text = "";
+                this.userNameTextBox.Font = normalFont;
+                this.userNameTextBox.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+
+        private void userNameTextBox_Leave(object sender, EventArgs e)
+        {
+            if (userNameTextBox.Text == "")
+            {
+                userNameTextBox.Text = "Введіть...";
+                userNameTextBox.Tag = "noPas";
+                this.userNameTextBox.Font = silverFont;
+                this.userNameTextBox.ForeColor = System.Drawing.Color.Silver;
+            }
+        }
+
+        private void userNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (userNameTextBox.Tag == "noPas")
+            {
+                userNameTextBox.Tag = "enteringPas";
+                this.userNameTextBox.Font = normalFont;
+                this.userNameTextBox.ForeColor = System.Drawing.Color.Black;
+            }
         }
     }
 }

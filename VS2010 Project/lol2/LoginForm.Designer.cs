@@ -72,6 +72,11 @@
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(195, 20);
             this.userNameTextBox.TabIndex = 2;
+            this.userNameTextBox.Tag = "noPas";
+            this.userNameTextBox.Text = "Введіть...";
+            this.userNameTextBox.Click += new System.EventHandler(this.userNameTextBox_Click);
+            this.userNameTextBox.TextChanged += new System.EventHandler(this.userNameTextBox_TextChanged);
+            this.userNameTextBox.Leave += new System.EventHandler(this.userNameTextBox_Leave);
             // 
             // passwordTextBox
             // 
