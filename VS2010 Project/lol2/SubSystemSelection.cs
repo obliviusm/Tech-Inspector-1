@@ -118,5 +118,13 @@ namespace lol2
         {
 
         }
+
+        private void equipmentByDateButton_Click(object sender, EventArgs e)
+        {
+            EquipmentByDate childFormAdminForm = new EquipmentByDate();
+            childFormAdminForm.FormClosed += new FormClosedEventHandler(childForm_FormClosed);
+            childFormAdminForm.Show();
+            Hide();
+        }
     }
 }

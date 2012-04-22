@@ -113,6 +113,12 @@
     <Compile Include="EditUsercs.Designer.cs">
       <DependentUpon>EditUsercs.cs</DependentUpon>
     </Compile>
+    <Compile Include="EquipmentByDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EquipmentByDate.Designer.cs">
+      <DependentUpon>EquipmentByDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="History.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditUsercs.resx">
       <DependentUpon>EditUsercs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EquipmentByDate.resx">
+      <DependentUpon>EquipmentByDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="History.resx">
       <DependentUpon>History.cs</DependentUpon>
