@@ -58,8 +58,23 @@ namespace lol2
 
         private void SubSystemSelection_Load(object sender, EventArgs e)
         {
-            textBox1.Text = Login.getUserId();
+            SetPrivileges();
+            //textBox1.Text = Login.getUserId();
             //this.reportViewer1.RefreshReport();
+        }
+
+        public void SetPrivileges()
+        {
+            if (Login.getRoleId() == 1)
+            {
+                adminButton.Visible = true;
+                planningButton.Enabled = true;
+            }
+            else
+            {
+                adminButton.Visible = false;
+                planningButton.Enabled = false;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -97,6 +112,11 @@ namespace lol2
             childFormAdminForm.FormClosed += new FormClosedEventHandler(childForm_FormClosed);
             childFormAdminForm.Show();
             Hide();
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

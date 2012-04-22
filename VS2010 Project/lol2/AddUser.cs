@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Security.Cryptography;
 
 namespace lol2
 {
@@ -47,7 +46,7 @@ namespace lol2
                     DataRow userDataRow = tech_inspectorDataSet.users.NewRow();
                     userDataRow[tech_inspectorDataSet.users.user_nameColumn] = userNameTextBox.Text;
                     userDataRow[tech_inspectorDataSet.users.role_idColumn] = rolesComboBox.SelectedIndex + 1;
-                    userDataRow[tech_inspectorDataSet.users.passwordColumn] = EncodePass( passwordTextBox.Text );
+                    userDataRow[tech_inspectorDataSet.users.passwordColumn] = Login.EncodePass( passwordTextBox.Text );
                     usersBindingSource.EndEdit();
                     tech_inspectorDataSet.users.Rows.Add(userDataRow);
                     int q = usersTableAdapter.Update(tech_inspectorDataSet.users);
@@ -96,18 +95,6 @@ namespace lol2
                 verifyPasswordLabel.ForeColor = System.Drawing.Color.Red;
                 pass_excepted = false;
             }
-        }
-        public static string EncodePass(string passwd)
-        {
-            byte[] bytes = Encoding.Unicode.GetBytes(passwd);
-            MD5CryptoServiceProvider CSP = new MD5CryptoServiceProvider();
-            byte[] byteHash = CSP.ComputeHash(bytes);
-            string hash = string.Empty;
-            foreach (byte b in byteHash)
-            {
-                hash += string.Format("{0:x2}", b);
-            }
-            return hash;
         }
         
     }

@@ -14,7 +14,6 @@ namespace lol2
         public LoginForm()
         {
             InitializeComponent();
-            //Login.user_role = 1;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -24,15 +23,16 @@ namespace lol2
         private void SaveUser()
         {
             usersTableAdapter.FillByLoginAndPass(this.tech_inspectorDataSet.users,
-                userNameTextBox.Text, passwordTextBox.Text);
+                userNameTextBox.Text, Login.EncodePass(passwordTextBox.Text));
             if (tech_inspectorDataSet.users.Rows.Count > 0)
             {
+                //зберегти увійшовшого
                 Login.set(tech_inspectorDataSet.users[0]);
-
+                
                 MessageBox.Show("Ви ввійшли як: " + Login.getUserName() +
                 "\nПрава доступу: " + Login.getRoleName(), "Повідомлення", 
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                //перейти в головну форму
                 SubSystemSelection childForm = new SubSystemSelection();
                 childForm.FormClosed += new FormClosedEventHandler(childForm_FormClosed);
                 childForm.Show();

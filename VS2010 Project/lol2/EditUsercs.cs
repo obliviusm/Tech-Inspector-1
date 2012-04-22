@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Security.Cryptography;
 
 namespace lol2
 {
@@ -81,7 +80,7 @@ namespace lol2
         }
         public void VerifyOldPassword()
         {
-            if (EncodePass(oldPassTextBox.Text) == tech_inspectorDataSet.users[0].password)
+            if (Login.EncodePass(oldPassTextBox.Text) == tech_inspectorDataSet.users[0].password)
             {
                 old_pass_excepted = true;
                 verifyOldPassLabel.Text = "Пароль вірний";
@@ -94,18 +93,6 @@ namespace lol2
                 verifyOldPassLabel.ForeColor = System.Drawing.Color.Red;
             }
 
-        }
-        public static string EncodePass(string passwd)
-        {
-            byte[] bytes = Encoding.Unicode.GetBytes(passwd);
-            MD5CryptoServiceProvider CSP = new MD5CryptoServiceProvider();
-            byte[] byteHash = CSP.ComputeHash(bytes);
-            string hash = string.Empty;
-            foreach (byte b in byteHash)
-            {
-                hash += string.Format("{0:x2}", b);
-            }
-            return hash;
         }
 
         private void passwordTextBox_Leave(object sender, EventArgs e)

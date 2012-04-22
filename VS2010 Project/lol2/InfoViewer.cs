@@ -104,9 +104,33 @@ namespace lol2
                 det_info.Show();
             }
         }
-
+        public void SetPrivileges()
+        {
+            if (Login.getRoleId() == 1)
+            {
+                editInfoButton.Enabled = true;
+                addDeviceButton.Enabled = true;
+                deleteDeviceButton.Enabled = true;
+                menuStrip1.Enabled = true;
+            }
+            else if (Login.getRoleId() == 2)
+            {
+                editInfoButton.Enabled = true;
+                addDeviceButton.Enabled = true;
+                deleteDeviceButton.Enabled = true;
+                menuStrip1.Enabled = false;
+            }
+            else 
+            {
+                editInfoButton.Enabled = false;
+                addDeviceButton.Enabled = false;
+                deleteDeviceButton.Enabled = false;
+                menuStrip1.Enabled = false;
+            }
+        }
         private void InfoViewer_Load(object sender, EventArgs e)
         {
+            SetPrivileges();
             this.statesTableAdapter.Fill(this.tech_inspectorDataSet.states);
             this.locationsTableAdapter.Fill(this.tech_inspectorDataSet.locations);
             this.typesTableAdapter.Fill(this.tech_inspectorDataSet.types);

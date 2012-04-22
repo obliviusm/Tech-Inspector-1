@@ -55,6 +55,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.subSystemTabs = new System.Windows.Forms.TabControl();
             this.accountingTab = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.scheduledTasksTab = new System.Windows.Forms.TabPage();
             this.upcomingChecks = new System.Windows.Forms.GroupBox();
@@ -71,7 +72,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.subsystemsGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -152,12 +152,13 @@
             this.searchButton.Text = "Інф. пошук";
             this.searchButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(815, 26);
+            this.button1.Location = new System.Drawing.Point(815, 27);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 83);
+            this.button1.Size = new System.Drawing.Size(148, 161);
             this.button1.TabIndex = 5;
             this.button1.Text = "Вихід до меню логіну";
             this.button1.UseVisualStyleBackColor = true;
@@ -182,11 +183,14 @@
             // 
             // adminButton
             // 
-            this.adminButton.Location = new System.Drawing.Point(815, 105);
+            this.adminButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("adminButton.BackgroundImage")));
+            this.adminButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.adminButton.Location = new System.Drawing.Point(816, 27);
             this.adminButton.Name = "adminButton";
-            this.adminButton.Size = new System.Drawing.Size(142, 83);
+            this.adminButton.Size = new System.Drawing.Size(148, 162);
             this.adminButton.TabIndex = 6;
             this.adminButton.Text = "Адмінка";
+            this.adminButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.adminButton.UseVisualStyleBackColor = true;
             this.adminButton.Click += new System.EventHandler(this.adminButton_Click);
             // 
@@ -407,6 +411,13 @@
             this.accountingTab.Text = "Облік";
             this.accountingTab.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(246, 69);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 3;
+            // 
             // groupBox3
             // 
             this.groupBox3.Location = new System.Drawing.Point(30, 50);
@@ -593,13 +604,6 @@
             this.label14.Size = new System.Drawing.Size(78, 13);
             this.label14.TabIndex = 1;
             this.label14.Text = "Звіт по Обліку";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(246, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
             // 
             // SubSystemSelection
             // 
