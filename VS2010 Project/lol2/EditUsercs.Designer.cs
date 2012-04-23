@@ -75,7 +75,7 @@
             // 
             // rolesComboBox
             // 
-            this.rolesComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.rolesBindingSource, "role_id", true));
+            this.rolesComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.usersBindingSource, "role_id", true));
             this.rolesComboBox.DataSource = this.rolesBindingSource;
             this.rolesComboBox.DisplayMember = "role_name";
             this.rolesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
