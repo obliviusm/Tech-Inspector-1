@@ -49,7 +49,7 @@ namespace lol2
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (pass_excepted == false )
             {
-                MessageBox.Show("Перевірте пароль", "Помилка",
+                MessageBox.Show("Паролі не співпадають", "Помилка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else

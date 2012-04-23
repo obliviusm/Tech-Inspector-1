@@ -55,14 +55,14 @@
             // 
             this.verifyPasswordLabel.AutoSize = true;
             this.verifyPasswordLabel.ForeColor = System.Drawing.Color.Green;
-            this.verifyPasswordLabel.Location = new System.Drawing.Point(145, 92);
+            this.verifyPasswordLabel.Location = new System.Drawing.Point(144, 71);
             this.verifyPasswordLabel.Name = "verifyPasswordLabel";
             this.verifyPasswordLabel.Size = new System.Drawing.Size(0, 13);
             this.verifyPasswordLabel.TabIndex = 23;
             // 
             // addUserButton
             // 
-            this.addUserButton.Location = new System.Drawing.Point(153, 157);
+            this.addUserButton.Location = new System.Drawing.Point(153, 185);
             this.addUserButton.Name = "addUserButton";
             this.addUserButton.Size = new System.Drawing.Size(163, 24);
             this.addUserButton.TabIndex = 22;
@@ -169,7 +169,7 @@
             this.passwordGroupBox.Controls.Add(this.repeatPasswordTextBox);
             this.passwordGroupBox.Location = new System.Drawing.Point(12, 76);
             this.passwordGroupBox.Name = "passwordGroupBox";
-            this.passwordGroupBox.Size = new System.Drawing.Size(311, 75);
+            this.passwordGroupBox.Size = new System.Drawing.Size(311, 94);
             this.passwordGroupBox.TabIndex = 24;
             this.passwordGroupBox.TabStop = false;
             this.passwordGroupBox.Text = "Змінити пароль";
@@ -186,7 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 197);
+            this.ClientSize = new System.Drawing.Size(335, 227);
             this.Controls.Add(this.passwordGroupBox);
             this.Controls.Add(this.addUserButton);
             this.Controls.Add(this.userNameTextBox);
@@ -194,9 +194,7 @@
             this.Controls.Add(this.rolesComboBox);
             this.Controls.Add(this.roleLabel);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(350, 235);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(350, 235);
             this.Name = "EditUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редагувати профіль";
