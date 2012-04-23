@@ -56,11 +56,10 @@ namespace lol2
             else
             {
                 if (pass_excepted == true && old_pass_excepted == true)
-                    tech_inspectorDataSet.users[0].password = passwordTextBox.Text;
+                    tech_inspectorDataSet.users[0].password =
+                        GeneralContentManager.EncodePass(passwordTextBox.Text);
                 try
                 {
-                    tech_inspectorDataSet.users[0].password =
-                        GeneralContentManager.EncodePass( passwordTextBox.Text );
                     usersBindingSource.EndEdit();
                     usersTableAdapter.Update(tech_inspectorDataSet.users);
                     tech_inspectorDataSet.users.AcceptChanges();
