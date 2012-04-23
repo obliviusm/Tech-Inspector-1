@@ -50,8 +50,10 @@
             this.addUserButton = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteUserStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.closeWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,8 +65,6 @@
             this.допомогаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.версіяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.розробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteUserStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.userTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userlistBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
@@ -247,6 +247,8 @@
             this.правкаToolStripMenuItem,
             this.проПрограмуToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.MaximumSize = new System.Drawing.Size(474, 24);
+            this.menuStrip.MinimumSize = new System.Drawing.Size(474, 24);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(474, 24);
             this.menuStrip.TabIndex = 9;
@@ -266,6 +268,14 @@
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
+            // refreshStripMenuItem
+            // 
+            this.refreshStripMenuItem.Name = "refreshStripMenuItem";
+            this.refreshStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.refreshStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.refreshStripMenuItem.Text = "Обновити";
+            this.refreshStripMenuItem.Click += new System.EventHandler(this.refreshStripMenuItem_Click);
+            // 
             // editUserToolStripMenuItem
             // 
             this.editUserToolStripMenuItem.Name = "editUserToolStripMenuItem";
@@ -281,6 +291,14 @@
             this.addUserToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.addUserToolStripMenuItem.Text = "Додати профіль";
             this.addUserToolStripMenuItem.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
+            // 
+            // deleteUserStripMenuItem
+            // 
+            this.deleteUserStripMenuItem.Name = "deleteUserStripMenuItem";
+            this.deleteUserStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.deleteUserStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.deleteUserStripMenuItem.Text = "Видалити профіль";
+            this.deleteUserStripMenuItem.Click += new System.EventHandler(this.deleteUserStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -365,22 +383,6 @@
             this.розробникиToolStripMenuItem.Name = "розробникиToolStripMenuItem";
             this.розробникиToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.розробникиToolStripMenuItem.Text = "Розробники";
-            // 
-            // deleteUserStripMenuItem
-            // 
-            this.deleteUserStripMenuItem.Name = "deleteUserStripMenuItem";
-            this.deleteUserStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.deleteUserStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.deleteUserStripMenuItem.Text = "Видалити профіль";
-            this.deleteUserStripMenuItem.Click += new System.EventHandler(this.deleteUserStripMenuItem_Click);
-            // 
-            // refreshStripMenuItem
-            // 
-            this.refreshStripMenuItem.Name = "refreshStripMenuItem";
-            this.refreshStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.refreshStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.refreshStripMenuItem.Text = "Обновити";
-            this.refreshStripMenuItem.Click += new System.EventHandler(this.refreshStripMenuItem_Click);
             // 
             // AdminForm
             // 

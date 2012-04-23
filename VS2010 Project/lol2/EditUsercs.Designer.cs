@@ -32,25 +32,22 @@
             this.verifyPasswordLabel = new System.Windows.Forms.Label();
             this.addUserButton = new System.Windows.Forms.Button();
             this.rolesComboBox = new System.Windows.Forms.ComboBox();
-            this.rolesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
+            this.rolesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.roleLabel = new System.Windows.Forms.Label();
             this.repeatPasswordTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.repeatPasswordLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.userNameTextBox = new System.Windows.Forms.TextBox();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userNameLabel = new System.Windows.Forms.Label();
             this.passwordGroupBox = new System.Windows.Forms.GroupBox();
-            this.verifyOldPassLabel = new System.Windows.Forms.Label();
-            this.oldPassLabel = new System.Windows.Forms.Label();
-            this.oldPassTextBox = new System.Windows.Forms.TextBox();
             this.rolesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.rolesTableAdapter();
             this.usersTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.usersTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.rolesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolesBindingSource)).BeginInit();
             this.passwordGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,14 +55,14 @@
             // 
             this.verifyPasswordLabel.AutoSize = true;
             this.verifyPasswordLabel.ForeColor = System.Drawing.Color.Green;
-            this.verifyPasswordLabel.Location = new System.Drawing.Point(145, 138);
+            this.verifyPasswordLabel.Location = new System.Drawing.Point(145, 92);
             this.verifyPasswordLabel.Name = "verifyPasswordLabel";
             this.verifyPasswordLabel.Size = new System.Drawing.Size(0, 13);
             this.verifyPasswordLabel.TabIndex = 23;
             // 
             // addUserButton
             // 
-            this.addUserButton.Location = new System.Drawing.Point(99, 269);
+            this.addUserButton.Location = new System.Drawing.Point(99, 219);
             this.addUserButton.Name = "addUserButton";
             this.addUserButton.Size = new System.Drawing.Size(149, 37);
             this.addUserButton.TabIndex = 22;
@@ -80,26 +77,31 @@
             this.rolesComboBox.DisplayMember = "role_name";
             this.rolesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rolesComboBox.FormattingEnabled = true;
-            this.rolesComboBox.Location = new System.Drawing.Point(153, 230);
+            this.rolesComboBox.Location = new System.Drawing.Point(153, 180);
             this.rolesComboBox.Name = "rolesComboBox";
             this.rolesComboBox.Size = new System.Drawing.Size(163, 21);
             this.rolesComboBox.TabIndex = 21;
             this.rolesComboBox.ValueMember = "role_id";
             // 
-            // rolesBindingSource
+            // usersBindingSource
             // 
-            this.rolesBindingSource.DataMember = "roles";
-            this.rolesBindingSource.DataSource = this.tech_inspectorDataSet;
+            this.usersBindingSource.DataMember = "users";
+            this.usersBindingSource.DataSource = this.tech_inspectorDataSet;
             // 
             // tech_inspectorDataSet
             // 
             this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
             this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // rolesBindingSource
+            // 
+            this.rolesBindingSource.DataMember = "roles";
+            this.rolesBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
             // roleLabel
             // 
             this.roleLabel.AutoSize = true;
-            this.roleLabel.Location = new System.Drawing.Point(17, 230);
+            this.roleLabel.Location = new System.Drawing.Point(17, 180);
             this.roleLabel.Name = "roleLabel";
             this.roleLabel.Size = new System.Drawing.Size(42, 13);
             this.roleLabel.TabIndex = 20;
@@ -107,7 +109,7 @@
             // 
             // repeatPasswordTextBox
             // 
-            this.repeatPasswordTextBox.Location = new System.Drawing.Point(141, 108);
+            this.repeatPasswordTextBox.Location = new System.Drawing.Point(141, 62);
             this.repeatPasswordTextBox.Name = "repeatPasswordTextBox";
             this.repeatPasswordTextBox.PasswordChar = '*';
             this.repeatPasswordTextBox.Size = new System.Drawing.Size(163, 20);
@@ -116,7 +118,7 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(141, 71);
+            this.passwordTextBox.Location = new System.Drawing.Point(141, 25);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(163, 20);
@@ -126,7 +128,7 @@
             // repeatPasswordLabel
             // 
             this.repeatPasswordLabel.AutoSize = true;
-            this.repeatPasswordLabel.Location = new System.Drawing.Point(5, 111);
+            this.repeatPasswordLabel.Location = new System.Drawing.Point(5, 65);
             this.repeatPasswordLabel.Name = "repeatPasswordLabel";
             this.repeatPasswordLabel.Size = new System.Drawing.Size(132, 13);
             this.repeatPasswordLabel.TabIndex = 15;
@@ -135,7 +137,7 @@
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(5, 74);
+            this.passwordLabel.Location = new System.Drawing.Point(5, 28);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(81, 13);
             this.passwordLabel.TabIndex = 14;
@@ -149,11 +151,6 @@
             this.userNameTextBox.Size = new System.Drawing.Size(163, 20);
             this.userNameTextBox.TabIndex = 13;
             // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "users";
-            this.usersBindingSource.DataSource = this.tech_inspectorDataSet;
-            // 
             // userNameLabel
             // 
             this.userNameLabel.AutoSize = true;
@@ -165,9 +162,6 @@
             // 
             // passwordGroupBox
             // 
-            this.passwordGroupBox.Controls.Add(this.verifyOldPassLabel);
-            this.passwordGroupBox.Controls.Add(this.oldPassLabel);
-            this.passwordGroupBox.Controls.Add(this.oldPassTextBox);
             this.passwordGroupBox.Controls.Add(this.passwordLabel);
             this.passwordGroupBox.Controls.Add(this.verifyPasswordLabel);
             this.passwordGroupBox.Controls.Add(this.repeatPasswordLabel);
@@ -175,37 +169,10 @@
             this.passwordGroupBox.Controls.Add(this.repeatPasswordTextBox);
             this.passwordGroupBox.Location = new System.Drawing.Point(12, 49);
             this.passwordGroupBox.Name = "passwordGroupBox";
-            this.passwordGroupBox.Size = new System.Drawing.Size(333, 167);
+            this.passwordGroupBox.Size = new System.Drawing.Size(319, 113);
             this.passwordGroupBox.TabIndex = 24;
             this.passwordGroupBox.TabStop = false;
             this.passwordGroupBox.Text = "Змінити пароль";
-            // 
-            // verifyOldPassLabel
-            // 
-            this.verifyOldPassLabel.AutoSize = true;
-            this.verifyOldPassLabel.ForeColor = System.Drawing.Color.Green;
-            this.verifyOldPassLabel.Location = new System.Drawing.Point(145, 49);
-            this.verifyOldPassLabel.Name = "verifyOldPassLabel";
-            this.verifyOldPassLabel.Size = new System.Drawing.Size(0, 13);
-            this.verifyOldPassLabel.TabIndex = 26;
-            // 
-            // oldPassLabel
-            // 
-            this.oldPassLabel.AutoSize = true;
-            this.oldPassLabel.Location = new System.Drawing.Point(5, 25);
-            this.oldPassLabel.Name = "oldPassLabel";
-            this.oldPassLabel.Size = new System.Drawing.Size(85, 13);
-            this.oldPassLabel.TabIndex = 24;
-            this.oldPassLabel.Text = "Старий пароль:";
-            // 
-            // oldPassTextBox
-            // 
-            this.oldPassTextBox.Location = new System.Drawing.Point(141, 22);
-            this.oldPassTextBox.Name = "oldPassTextBox";
-            this.oldPassTextBox.PasswordChar = '*';
-            this.oldPassTextBox.Size = new System.Drawing.Size(163, 20);
-            this.oldPassTextBox.TabIndex = 25;
-            this.oldPassTextBox.Leave += new System.EventHandler(this.oldPassTextBox_Leave);
             // 
             // rolesTableAdapter
             // 
@@ -219,7 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 328);
+            this.ClientSize = new System.Drawing.Size(353, 280);
             this.Controls.Add(this.passwordGroupBox);
             this.Controls.Add(this.addUserButton);
             this.Controls.Add(this.userNameTextBox);
@@ -227,14 +194,16 @@
             this.Controls.Add(this.rolesComboBox);
             this.Controls.Add(this.roleLabel);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(369, 318);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(369, 318);
             this.Name = "EditUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редагувати профіль";
             this.Load += new System.EventHandler(this.EditUsercs_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.rolesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolesBindingSource)).EndInit();
             this.passwordGroupBox.ResumeLayout(false);
             this.passwordGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -255,13 +224,10 @@
         private System.Windows.Forms.TextBox userNameTextBox;
         private System.Windows.Forms.Label userNameLabel;
         private System.Windows.Forms.GroupBox passwordGroupBox;
-        private System.Windows.Forms.Label oldPassLabel;
-        private System.Windows.Forms.TextBox oldPassTextBox;
         private tech_inspectorDataSet tech_inspectorDataSet;
         private System.Windows.Forms.BindingSource rolesBindingSource;
         private tech_inspectorDataSetTableAdapters.rolesTableAdapter rolesTableAdapter;
         private System.Windows.Forms.BindingSource usersBindingSource;
         private tech_inspectorDataSetTableAdapters.usersTableAdapter usersTableAdapter;
-        private System.Windows.Forms.Label verifyOldPassLabel;
     }
 }

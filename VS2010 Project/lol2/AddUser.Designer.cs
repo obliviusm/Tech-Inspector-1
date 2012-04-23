@@ -191,7 +191,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 297);
+            this.ClientSize = new System.Drawing.Size(302, 291);
             this.Controls.Add(this.verifyPasswordLabel);
             this.Controls.Add(this.addUserButton);
             this.Controls.Add(this.rolesComboBox);
@@ -205,7 +205,9 @@
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.userNameLabel);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(318, 329);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(318, 329);
             this.Name = "AddUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Додати профіль";

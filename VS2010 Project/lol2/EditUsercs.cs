@@ -12,8 +12,7 @@ namespace lol2
     public partial class EditUser : Form
     {
         public int user_id;
-        public bool pass_excepted = false;
-        public bool old_pass_excepted = false;
+        public bool pass_excepted = true;
         public EditUser(int id)
         {
             InitializeComponent();
@@ -32,7 +31,6 @@ namespace lol2
             this.usersTableAdapter.FillBy(this.tech_inspectorDataSet.users, user_id);
 
             //заповнюємо поля
-            //userNameTextBox.Text = tech_inspectorDataSet.users[0].user_name;
             rolesComboBox.SelectedValue = tech_inspectorDataSet.users[0].role_id;
         }
         private string EmptyFields()
@@ -43,19 +41,21 @@ namespace lol2
         }
         private void addUserButton_Click(object sender, EventArgs e)
         {
+            VerifyPassword();
+
             string emptyFields = EmptyFields();
             if (emptyFields.Length > 2)
                 MessageBox.Show("Наступні обов'язкові поля не були заповнені :" + emptyFields, "Помилка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if ((pass_excepted == false && old_pass_excepted == true) ||
-                (pass_excepted == true && old_pass_excepted == false))
+            else if (pass_excepted == false )
             {
                 MessageBox.Show("Перевірте пароль", "Помилка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if (pass_excepted == true && old_pass_excepted == true)
+                if (pass_excepted == true && passwordTextBox.Text != "" 
+                    && repeatPasswordTextBox.Text != "")
                     tech_inspectorDataSet.users[0].password =
                         GeneralContentManager.EncodePass(passwordTextBox.Text);
                 try
@@ -73,27 +73,6 @@ namespace lol2
             }
         }
 
-        private void oldPassTextBox_Leave(object sender, EventArgs e)
-        {
-            if ( oldPassTextBox.Text != "")
-                VerifyOldPassword();
-        }
-        public void VerifyOldPassword()
-        {
-            if (GeneralContentManager.EncodePass(oldPassTextBox.Text) == tech_inspectorDataSet.users[0].password)
-            {
-                old_pass_excepted = true;
-                verifyOldPassLabel.Text = "Пароль вірний";
-                verifyOldPassLabel.ForeColor = System.Drawing.Color.Green;
-            }
-            else
-            {
-                old_pass_excepted = false;
-                verifyOldPassLabel.Text = "Пароль невірний";
-                verifyOldPassLabel.ForeColor = System.Drawing.Color.Red;
-            }
-
-        }
 
         private void passwordTextBox_Leave(object sender, EventArgs e)
         {
