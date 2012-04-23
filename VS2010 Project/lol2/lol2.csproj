@@ -137,7 +137,7 @@
     <Compile Include="InfoViewer.Designer.cs">
       <DependentUpon>InfoViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs" />
+    <Compile Include="GeneralContentManager.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

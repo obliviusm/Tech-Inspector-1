@@ -55,6 +55,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.subSystemTabs = new System.Windows.Forms.TabControl();
             this.accountingTab = new System.Windows.Forms.TabPage();
+            this.equipmentByDateButton = new System.Windows.Forms.Button();
             this.scheduledTasksTab = new System.Windows.Forms.TabPage();
             this.upcomingChecks = new System.Windows.Forms.GroupBox();
             this.upcomingChecksLabel = new System.Windows.Forms.Label();
@@ -70,7 +71,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.equipmentByDateButton = new System.Windows.Forms.Button();
             this.subsystemsGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -188,7 +188,7 @@
             this.adminButton.Name = "adminButton";
             this.adminButton.Size = new System.Drawing.Size(148, 162);
             this.adminButton.TabIndex = 6;
-            this.adminButton.Text = "Адмінка";
+            this.adminButton.Text = "Адміністрування";
             this.adminButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.adminButton.UseVisualStyleBackColor = true;
             this.adminButton.Click += new System.EventHandler(this.adminButton_Click);
@@ -409,6 +409,20 @@
             this.accountingTab.Text = "Облік";
             this.accountingTab.UseVisualStyleBackColor = true;
             // 
+            // equipmentByDateButton
+            // 
+            this.equipmentByDateButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("equipmentByDateButton.BackgroundImage")));
+            this.equipmentByDateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.equipmentByDateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.equipmentByDateButton.Location = new System.Drawing.Point(6, 17);
+            this.equipmentByDateButton.Name = "equipmentByDateButton";
+            this.equipmentByDateButton.Size = new System.Drawing.Size(173, 276);
+            this.equipmentByDateButton.TabIndex = 7;
+            this.equipmentByDateButton.Text = "Облік нових надходжень обладнання та комплектуючих на кафедру";
+            this.equipmentByDateButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.equipmentByDateButton.UseVisualStyleBackColor = true;
+            this.equipmentByDateButton.Click += new System.EventHandler(this.equipmentByDateButton_Click);
+            // 
             // scheduledTasksTab
             // 
             this.scheduledTasksTab.Controls.Add(this.upcomingChecks);
@@ -586,20 +600,6 @@
             this.label14.Size = new System.Drawing.Size(78, 13);
             this.label14.TabIndex = 1;
             this.label14.Text = "Звіт по Обліку";
-            // 
-            // equipmentByDateButton
-            // 
-            this.equipmentByDateButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("equipmentByDateButton.BackgroundImage")));
-            this.equipmentByDateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.equipmentByDateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.equipmentByDateButton.Location = new System.Drawing.Point(6, 17);
-            this.equipmentByDateButton.Name = "equipmentByDateButton";
-            this.equipmentByDateButton.Size = new System.Drawing.Size(173, 276);
-            this.equipmentByDateButton.TabIndex = 7;
-            this.equipmentByDateButton.Text = "Облік нових надходжень обладнання та комплектуючих на кафедру";
-            this.equipmentByDateButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.equipmentByDateButton.UseVisualStyleBackColor = true;
-            this.equipmentByDateButton.Click += new System.EventHandler(this.equipmentByDateButton_Click);
             // 
             // SubSystemSelection
             // 

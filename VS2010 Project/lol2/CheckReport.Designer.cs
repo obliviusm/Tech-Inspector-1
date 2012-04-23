@@ -187,18 +187,21 @@
             this.допомогаToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
             this.допомогаToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.допомогаToolStripMenuItem.Text = "Допомога";
+            this.допомогаToolStripMenuItem.Click += new System.EventHandler(this.допомогаToolStripMenuItem_Click);
             // 
             // версіяToolStripMenuItem
             // 
             this.версіяToolStripMenuItem.Name = "версіяToolStripMenuItem";
             this.версіяToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.версіяToolStripMenuItem.Text = "Версія";
+            this.версіяToolStripMenuItem.Click += new System.EventHandler(this.версіяToolStripMenuItem_Click);
             // 
             // розробникиToolStripMenuItem
             // 
             this.розробникиToolStripMenuItem.Name = "розробникиToolStripMenuItem";
             this.розробникиToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.розробникиToolStripMenuItem.Text = "Розробники";
+            this.розробникиToolStripMenuItem.Click += new System.EventHandler(this.розробникиToolStripMenuItem_Click);
             // 
             // generalInformationGroupBox
             // 
@@ -275,9 +278,9 @@
             // 
             this.locationEquipmentsDataGridView.AllowUserToAddRows = false;
             this.locationEquipmentsDataGridView.AllowUserToDeleteRows = false;
-            this.locationEquipmentsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.locationEquipmentsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.locationEquipmentsDataGridView.AutoGenerateColumns = false;
             this.locationEquipmentsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.locationEquipmentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -419,7 +422,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 561);
+            this.ClientSize = new System.Drawing.Size(848, 562);
             this.Controls.Add(this.finishButton);
             this.Controls.Add(this.editAllButton);
             this.Controls.Add(this.locationEquipmentsDataGridView);

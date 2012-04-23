@@ -54,7 +54,7 @@
             // userNameLabel
             // 
             this.userNameLabel.AutoSize = true;
-            this.userNameLabel.Location = new System.Drawing.Point(12, 57);
+            this.userNameLabel.Location = new System.Drawing.Point(12, 31);
             this.userNameLabel.Name = "userNameLabel";
             this.userNameLabel.Size = new System.Drawing.Size(37, 13);
             this.userNameLabel.TabIndex = 0;
@@ -62,7 +62,7 @@
             // 
             // userNameTextBox
             // 
-            this.userNameTextBox.Location = new System.Drawing.Point(119, 54);
+            this.userNameTextBox.Location = new System.Drawing.Point(119, 28);
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(163, 20);
             this.userNameTextBox.TabIndex = 1;
@@ -70,7 +70,7 @@
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(12, 123);
+            this.passwordLabel.Location = new System.Drawing.Point(12, 83);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(48, 13);
             this.passwordLabel.TabIndex = 2;
@@ -79,7 +79,7 @@
             // repeatPasswordLabel
             // 
             this.repeatPasswordLabel.AutoSize = true;
-            this.repeatPasswordLabel.Location = new System.Drawing.Point(12, 188);
+            this.repeatPasswordLabel.Location = new System.Drawing.Point(11, 140);
             this.repeatPasswordLabel.Name = "repeatPasswordLabel";
             this.repeatPasswordLabel.Size = new System.Drawing.Size(99, 13);
             this.repeatPasswordLabel.TabIndex = 3;
@@ -87,7 +87,7 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(119, 120);
+            this.passwordTextBox.Location = new System.Drawing.Point(119, 80);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(163, 20);
@@ -96,7 +96,7 @@
             // 
             // repeatPasswordTextBox
             // 
-            this.repeatPasswordTextBox.Location = new System.Drawing.Point(119, 185);
+            this.repeatPasswordTextBox.Location = new System.Drawing.Point(118, 137);
             this.repeatPasswordTextBox.Name = "repeatPasswordTextBox";
             this.repeatPasswordTextBox.PasswordChar = '*';
             this.repeatPasswordTextBox.Size = new System.Drawing.Size(163, 20);
@@ -107,7 +107,7 @@
             // 
             this.userNameInfoLabel.AutoSize = true;
             this.userNameInfoLabel.ForeColor = System.Drawing.Color.Maroon;
-            this.userNameInfoLabel.Location = new System.Drawing.Point(116, 77);
+            this.userNameInfoLabel.Location = new System.Drawing.Point(9, 51);
             this.userNameInfoLabel.Name = "userNameInfoLabel";
             this.userNameInfoLabel.Size = new System.Drawing.Size(273, 26);
             this.userNameInfoLabel.TabIndex = 6;
@@ -118,7 +118,7 @@
             // 
             this.passwordInfoLabel.AutoSize = true;
             this.passwordInfoLabel.ForeColor = System.Drawing.Color.Maroon;
-            this.passwordInfoLabel.Location = new System.Drawing.Point(116, 143);
+            this.passwordInfoLabel.Location = new System.Drawing.Point(9, 103);
             this.passwordInfoLabel.Name = "passwordInfoLabel";
             this.passwordInfoLabel.Size = new System.Drawing.Size(272, 26);
             this.passwordInfoLabel.TabIndex = 7;
@@ -130,7 +130,7 @@
             this.rolesComboBox.DisplayMember = "role_name";
             this.rolesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rolesComboBox.FormattingEnabled = true;
-            this.rolesComboBox.Location = new System.Drawing.Point(119, 236);
+            this.rolesComboBox.Location = new System.Drawing.Point(118, 187);
             this.rolesComboBox.Name = "rolesComboBox";
             this.rolesComboBox.Size = new System.Drawing.Size(163, 21);
             this.rolesComboBox.TabIndex = 9;
@@ -149,7 +149,7 @@
             // roleLabel
             // 
             this.roleLabel.AutoSize = true;
-            this.roleLabel.Location = new System.Drawing.Point(12, 244);
+            this.roleLabel.Location = new System.Drawing.Point(11, 190);
             this.roleLabel.Name = "roleLabel";
             this.roleLabel.Size = new System.Drawing.Size(42, 13);
             this.roleLabel.TabIndex = 8;
@@ -161,7 +161,7 @@
             // 
             // addUserButton
             // 
-            this.addUserButton.Location = new System.Drawing.Point(258, 316);
+            this.addUserButton.Location = new System.Drawing.Point(77, 230);
             this.addUserButton.Name = "addUserButton";
             this.addUserButton.Size = new System.Drawing.Size(149, 37);
             this.addUserButton.TabIndex = 10;
@@ -182,7 +182,7 @@
             // 
             this.verifyPasswordLabel.AutoSize = true;
             this.verifyPasswordLabel.ForeColor = System.Drawing.Color.Green;
-            this.verifyPasswordLabel.Location = new System.Drawing.Point(122, 214);
+            this.verifyPasswordLabel.Location = new System.Drawing.Point(121, 166);
             this.verifyPasswordLabel.Name = "verifyPasswordLabel";
             this.verifyPasswordLabel.Size = new System.Drawing.Size(0, 13);
             this.verifyPasswordLabel.TabIndex = 11;
@@ -191,7 +191,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 376);
+            this.ClientSize = new System.Drawing.Size(309, 297);
             this.Controls.Add(this.verifyPasswordLabel);
             this.Controls.Add(this.addUserButton);
             this.Controls.Add(this.rolesComboBox);
@@ -204,8 +204,11 @@
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.userNameLabel);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddUser";
-            this.Text = "AddUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Додати профіль";
             this.Load += new System.EventHandler(this.AddUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rolesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tech_inspectorDataSet)).EndInit();

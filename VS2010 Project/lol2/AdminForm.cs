@@ -30,7 +30,7 @@ namespace lol2
             
         }
 
-        private void refreshButton_Click(object sender, EventArgs e)
+        private void refresh()
         {
             string filter_str = "";
             // фільруємо по правах
@@ -44,39 +44,7 @@ namespace lol2
 
             userlistBindingSource.Filter = filter_str;
         }
-
-        private void addUserButton_Click(object sender, EventArgs e)
-        {
-            AddUser childFormAddUser = new AddUser();
-            childFormAddUser.ShowDialog();
-            this.user_listTableAdapter.Fill(this.tech_inspectorDataSet.user_list);
-        }
-
-        private void deleteUserButton_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Ви дійсно бажаєте видалити виділені профілі з БД ?", "Увага",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
-                DialogResult.Yes)
-            {
-                List<int> delrows = new List<int>();
-                for (int i = 0; i < userTable.SelectedCells.Count; ++i)
-                {
-                    int index = userTable.SelectedCells[i].RowIndex;
-                    if (!delrows.Contains(index))
-                        delrows.Add(index);
-                }
-                for (int i = 0; i < delrows.Count; ++i)
-                {
-                    int id = (int)userTable.Rows[delrows[i]].Cells["userid"].Value;
-                    tech_inspectorDataSet.user_list.FindByuser_id(id).Delete();
-                    int q = this.user_listTableAdapter.Update(this.tech_inspectorDataSet.user_list);
-                    MessageBox.Show("Видалено записів: " + q, "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    tech_inspectorDataSet.equipment_shortinfo.AcceptChanges();
-                }
-            }
-        }
-
-        private void editUserButton_Click(object sender, EventArgs e)
+        private void editUser()
         {
             List<int> showrows = new List<int>();
             for (int i = 0; i < userTable.SelectedCells.Count; ++i)
@@ -92,6 +60,106 @@ namespace lol2
                 edit_form.ShowDialog();
             }
             this.user_listTableAdapter.Fill(this.tech_inspectorDataSet.user_list);
+        }
+        private void addUser()
+        {
+            AddUser childFormAddUser = new AddUser();
+            childFormAddUser.ShowDialog();
+            this.user_listTableAdapter.Fill(this.tech_inspectorDataSet.user_list);
+        }
+        private void deleteUser()
+        {
+            if (MessageBox.Show("Ви дійсно бажаєте видалити виділені профілі з БД ?", "Увага",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                    DialogResult.Yes)
+            {
+                List<int> delrows = new List<int>();
+                for (int i = 0; i < userTable.SelectedCells.Count; ++i)
+                {
+                    int index = userTable.SelectedCells[i].RowIndex;
+                    if (!delrows.Contains(index))
+                        delrows.Add(index);
+                }
+                for (int i = 0; i < delrows.Count; ++i)
+                {
+                    int id = (int)userTable.Rows[delrows[i]].Cells["userid"].Value;
+                    this.user_listTableAdapter.DeleteByUserId(id);
+                    this.user_listTableAdapter.Update(this.tech_inspectorDataSet.user_list);
+                }
+                this.user_listTableAdapter.Fill(this.tech_inspectorDataSet.user_list);
+                MessageBox.Show("Видалено записів: " + delrows.Count, "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tech_inspectorDataSet.equipment_shortinfo.AcceptChanges();
+            }
+        }
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            refresh();   
+        }
+
+        private void addUserButton_Click(object sender, EventArgs e)
+        {
+            addUser();
+        }
+
+        private void deleteUserButton_Click(object sender, EventArgs e)
+        {
+            deleteUser();
+        }
+
+        private void editUserButton_Click(object sender, EventArgs e)
+        {
+            editUser();
+        }
+
+        private void refreshStripMenuItem_Click(object sender, EventArgs e)
+        {
+            refresh();
+        }
+
+        private void editUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editUser();
+        }
+
+        private void addUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addUser();
+        }
+
+        private void deleteUserStripMenuItem_Click(object sender, EventArgs e)
+        {
+            deleteUser();
+        }
+
+        private void closeWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ActiveControl != null && ActiveControl.Text != "")
+                Clipboard.SetText(ActiveControl.Text);
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ActiveControl != null && ActiveControl.Text != "")
+            {
+                Clipboard.SetText(ActiveControl.Text);
+                ActiveControl.Text = "";
+            }
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ActiveControl != null && Clipboard.GetText() != null)
+                ActiveControl.Text += Clipboard.GetText();
         }
 
     }

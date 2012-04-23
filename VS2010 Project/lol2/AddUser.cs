@@ -46,7 +46,7 @@ namespace lol2
                     DataRow userDataRow = tech_inspectorDataSet.users.NewRow();
                     userDataRow[tech_inspectorDataSet.users.user_nameColumn] = userNameTextBox.Text;
                     userDataRow[tech_inspectorDataSet.users.role_idColumn] = rolesComboBox.SelectedIndex + 1;
-                    userDataRow[tech_inspectorDataSet.users.passwordColumn] = Login.EncodePass( passwordTextBox.Text );
+                    userDataRow[tech_inspectorDataSet.users.passwordColumn] = GeneralContentManager.EncodePass( passwordTextBox.Text );
                     usersBindingSource.EndEdit();
                     tech_inspectorDataSet.users.Rows.Add(userDataRow);
                     int q = usersTableAdapter.Update(tech_inspectorDataSet.users);

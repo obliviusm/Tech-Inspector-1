@@ -366,5 +366,20 @@ namespace lol2
                 "Попередження", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                 e.Cancel = true;
         }
+
+        private void допомогаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void версіяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void розробникиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

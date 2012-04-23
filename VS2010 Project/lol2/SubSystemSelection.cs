@@ -65,7 +65,7 @@ namespace lol2
 
         public void SetPrivileges()
         {
-            if (Login.getRoleId() == 1)
+            if (GeneralContentManager.getRoleId() == 1)
             {
                 adminButton.Visible = true;
                 planningButton.Enabled = true;

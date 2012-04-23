@@ -2,6 +2,9 @@
 namespace lol2.tech_inspectorDataSetTableAdapters {
 
 
+    partial class user_listTableAdapter
+    {
+    }
 }
 
 namespace lol2 {

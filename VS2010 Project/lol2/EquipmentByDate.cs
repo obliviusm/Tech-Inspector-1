@@ -17,14 +17,14 @@ namespace lol2
         }
         public void SetPrivileges()
         {
-            if (Login.getRoleId() == 1)
+            if (GeneralContentManager.getRoleId() == 1)
             {
                 editInfoButton.Enabled = true;
                 addDeviceButton.Enabled = true;
                 deleteDeviceButton.Enabled = true;
                 menuStrip1.Enabled = true;
             }
-            else if (Login.getRoleId() == 2)
+            else if (GeneralContentManager.getRoleId() == 2)
             {
                 editInfoButton.Enabled = true;
                 addDeviceButton.Enabled = true;

@@ -26,14 +26,14 @@ namespace lol2
         private void SaveUser()
         {
             usersTableAdapter.FillByLoginAndPass(this.tech_inspectorDataSet.users,
-                userNameTextBox.Text, Login.EncodePass(passwordTextBox.Text));
+                userNameTextBox.Text, GeneralContentManager.EncodePass(passwordTextBox.Text));
             if (tech_inspectorDataSet.users.Rows.Count > 0)
             {
                 //зберегти увійшовшого
-                Login.set(tech_inspectorDataSet.users[0]);
+                GeneralContentManager.set(tech_inspectorDataSet.users[0]);
                 
-                MessageBox.Show("Ви ввійшли як: " + Login.getUserName() +
-                "\nПрава доступу: " + Login.getRoleName(), "Повідомлення", 
+                MessageBox.Show("Ви ввійшли як: " + GeneralContentManager.getUserName() +
+                "\nПрава доступу: " + GeneralContentManager.getRoleName(), "Повідомлення", 
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //перейти в головну форму
                 SubSystemSelection childForm = new SubSystemSelection();
@@ -88,6 +88,41 @@ namespace lol2
                 userNameTextBox.Tag = "enteringPas";
                 this.userNameTextBox.Font = normalFont;
                 this.userNameTextBox.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+
+        private void passwordTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (passwordTextBox.Tag == "noPas")
+            {
+                passwordTextBox.Tag = "enteringPas";
+                this.passwordTextBox.Font = normalFont;
+                this.passwordTextBox.ForeColor = System.Drawing.Color.Black;
+                passwordTextBox.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void passwordTextBox_Click(object sender, EventArgs e)
+        {
+            if (passwordTextBox.Tag == "noPas")
+            {
+                passwordTextBox.Tag = "enteringPas";
+                passwordTextBox.Text = "";
+                this.passwordTextBox.Font = normalFont;
+                this.passwordTextBox.ForeColor = System.Drawing.Color.Black;
+                passwordTextBox.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void passwordTextBox_Leave(object sender, EventArgs e)
+        {
+            if (passwordTextBox.Text == "")
+            {
+                passwordTextBox.Text = "Введіть...";
+                passwordTextBox.Tag = "noPas";
+                this.passwordTextBox.Font = silverFont;
+                this.passwordTextBox.ForeColor = System.Drawing.Color.Silver;
+                passwordTextBox.UseSystemPasswordChar = false;
             }
         }
     }
