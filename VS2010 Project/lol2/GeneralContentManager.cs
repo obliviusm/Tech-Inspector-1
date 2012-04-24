@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace lol2
 {
-    class GeneralContentManager
+    public static class GeneralContentManager
     {
+        public static string RootFolder = Path.GetFullPath("../../");
+        public static Dictionary<string, string> GlobalSettings = new Dictionary<string, string>();
+
         public static System.Data.DataRow user;
         public static System.Data.DataRow get()
         {
@@ -51,6 +55,51 @@ namespace lol2
                 hash += string.Format("{0:x2}", b);
             }
             return hash;
+        }
+
+        public static void LoadGlobalSettings()
+        {
+            try
+            {
+                TextReader reader = new StreamReader(RootFolder + "DATA/settings.ini", Encoding.UTF8);
+                string currentSetting = reader.ReadLine();
+                while (currentSetting != null)
+                {
+                    try
+                    {
+                        string[] keyVal;
+                        keyVal = currentSetting.Split('=');
+                        GlobalSettings.Add(keyVal[0], keyVal[1]);
+                        currentSetting = reader.ReadLine();
+                    }
+                    catch (Exception e)
+                    {
+                        currentSetting = reader.ReadLine();
+                    }
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            { }
+        }
+
+        public static void SaveGlobalSettings()
+        {
+            try
+            {
+                TextWriter writer = new StreamWriter(RootFolder + "DATA/settings.ini", false, Encoding.UTF8);
+                foreach (string key in GlobalSettings.Keys)
+                    writer.WriteLine(key + "=" + GlobalSettings[key]);
+                writer.Close();
+            }
+            catch (Exception e)
+            { }
+        }
+
+        public static void ClearTempFolder()
+        {
+            foreach (string filePath in Directory.GetFiles(RootFolder + "Temp/"))
+                File.Delete(filePath);
         }
     }
 }

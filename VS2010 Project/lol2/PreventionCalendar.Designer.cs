@@ -48,9 +48,6 @@
             this.lockPictureBox = new System.Windows.Forms.PictureBox();
             this.saveChanges = new System.Windows.Forms.Button();
             this.planTable = new System.Windows.Forms.DataGridView();
-            this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
-            this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             this.locationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.responsibleadminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +56,9 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prophylaxislessonindexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.last_prophylaxis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
+            this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lockPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.planTable)).BeginInit();
@@ -144,7 +144,7 @@
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
             this.copyToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.copyToolStripMenuItem.Text = "Копіювати";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
@@ -152,7 +152,7 @@
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.cutToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+X";
             this.cutToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.cutToolStripMenuItem.Text = "Вирізати";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
@@ -160,7 +160,7 @@
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.pasteToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+V";
             this.pasteToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.pasteToolStripMenuItem.Text = "Вставити";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
@@ -241,20 +241,8 @@
             this.planTable.ReadOnly = true;
             this.planTable.Size = new System.Drawing.Size(884, 549);
             this.planTable.TabIndex = 0;
-            // 
-            // locationsBindingSource
-            // 
-            this.locationsBindingSource.DataMember = "locations";
-            this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
-            // 
-            // tech_inspectorDataSet
-            // 
-            this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
-            this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // locationsTableAdapter
-            // 
-            this.locationsTableAdapter.ClearBeforeFill = true;
+            this.planTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.planTable_CellEndEdit);
+            this.planTable.Sorted += new System.EventHandler(this.planTable_Sorted);
             // 
             // locationidDataGridViewTextBoxColumn
             // 
@@ -329,6 +317,20 @@
             this.last_prophylaxis.HeaderText = "Остання профілактика";
             this.last_prophylaxis.Name = "last_prophylaxis";
             this.last_prophylaxis.ReadOnly = true;
+            // 
+            // locationsBindingSource
+            // 
+            this.locationsBindingSource.DataMember = "locations";
+            this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // tech_inspectorDataSet
+            // 
+            this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
+            this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // locationsTableAdapter
+            // 
+            this.locationsTableAdapter.ClearBeforeFill = true;
             // 
             // PreventionCalendar
             // 

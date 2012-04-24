@@ -53,6 +53,8 @@ namespace lol2
                     return;
                 }
                 startTime = DateTime.Now.ToString("HH:mm:ss  dd MMMM yyyy");
+                startToolStripMenuItem.Enabled = false;
+                saveChangesToolStripMenuItem.Enabled = true;
                 editAllButton.Enabled = true;
                 finishButton.Enabled = true;
                 responsibleTextBox.Enabled = false;
@@ -124,7 +126,7 @@ namespace lol2
         private List<IElement> SaveTempPDF()
         {
             List<IElement> elements = new List<IElement>();
-            BaseFont baseFont = BaseFont.CreateFont("../../Fonts/ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            BaseFont baseFont = BaseFont.CreateFont(GeneralContentManager.RootFolder + "Fonts/ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
             iTextSharp.text.Font fontNormal = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.NORMAL);
             iTextSharp.text.Font fontNormalRed = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.NORMAL, BaseColor.RED);
             iTextSharp.text.Font fontBold = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.BOLD);
@@ -145,7 +147,7 @@ namespace lol2
             par.Add(new Chunk(changedIds.Count.ToString()+"\n\n", fontNormal));
             par.Add(new Chunk("Зміни в стані обладнання\n\n", fontBigBold));
 
-            Image logo = Image.GetInstance("../../DATA/images/seal.gif");
+            Image logo = Image.GetInstance(GeneralContentManager.RootFolder + "DATA/images/seal.gif");
             par.Alignment = Element.ALIGN_JUSTIFIED;
             logo.ScaleToFit(120f, 150f);
             logo.Alignment = Image.TEXTWRAP | Image.ALIGN_RIGHT;
@@ -191,7 +193,7 @@ namespace lol2
 
         private void SaveTempReport(List<IElement> elements)
         {
-            string filePath = "../../Temp/report_" + locationComboBox.SelectedValue + "_" + startTime.Replace(':', '_').Replace(' ', '_')
+            string filePath = GeneralContentManager.RootFolder + "Temp/report_" + locationComboBox.SelectedValue + "_" + startTime.Replace(':', '_').Replace(' ', '_')
                 + ".html";
             Text = filePath;
             TextWriter tWriter = new StreamWriter(filePath, false, Encoding.UTF8);
@@ -331,23 +333,17 @@ namespace lol2
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ActiveControl != null && ActiveControl.Text!="")
-                Clipboard.SetText(ActiveControl.Text);
+            SendKeys.Send("^c");
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ActiveControl != null && ActiveControl.Text != "")
-            {
-                Clipboard.SetText(ActiveControl.Text);
-                ActiveControl.Text = "";
-            }
+            SendKeys.Send("^x");
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ActiveControl != null && Clipboard.GetText() != null)
-                ActiveControl.Text += Clipboard.GetText();
+            SendKeys.Send("^v");
         }
 
         private void saveChangesToolStripMenuItem_Click(object sender, EventArgs e)

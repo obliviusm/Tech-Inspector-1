@@ -65,23 +65,17 @@ namespace lol2
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (planTable.SelectedCells.Count == 1)
-                Clipboard.SetText(planTable.SelectedCells[0].Value.ToString());
+            SendKeys.Send("^c");
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (planTable.SelectedCells.Count == 1)
-            {
-                Clipboard.SetText(planTable.SelectedCells[0].Value.ToString());
-                planTable.SelectedCells[0].Value = "";
-            }
+            SendKeys.Send("^x");
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (planTable.SelectedCells.Count == 1 && planTable.SelectedCells[0].ColumnIndex!=0)
-                planTable.SelectedCells[0].Value += Clipboard.GetText();
+            SendKeys.Send("^v");
         }
 
         private void saveChangesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,6 +104,19 @@ namespace lol2
             // TODO: This line of code loads data into the 'tech_inspectorDataSet.days_of_the_week' table. You can move, or remove it, as needed.
             this.locationsTableAdapter.Fill(this.tech_inspectorDataSet.locations);
             StringColLoader();
+        }
+
+        private void planTable_Sorted(object sender, EventArgs e)
+        {
+            StringColLoader();
+        }
+
+        private void planTable_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+                planTable[5, e.RowIndex].Value = (planTable["day_string", e.RowIndex] as DataGridViewComboBoxCell).Items.IndexOf(planTable["day_string", e.RowIndex].Value);
+            if (e.ColumnIndex == 4)
+                planTable[6, e.RowIndex].Value = (planTable["lesson_string", e.RowIndex] as DataGridViewComboBoxCell).Items.IndexOf(planTable["lesson_string", e.RowIndex].Value);
         }
     }
 }

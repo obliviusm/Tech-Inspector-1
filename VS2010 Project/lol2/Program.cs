@@ -13,10 +13,12 @@ namespace lol2
         [STAThread]
         static void Main()
         {
-            
+            GeneralContentManager.LoadGlobalSettings();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
+            GeneralContentManager.ClearTempFolder();
+            GeneralContentManager.SaveGlobalSettings();
         }
     }
 }
