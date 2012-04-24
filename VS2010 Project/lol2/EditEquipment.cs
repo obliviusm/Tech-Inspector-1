@@ -36,14 +36,22 @@ namespace lol2
 
         private void saveChangesButton_Click(object sender, EventArgs e)
         {
-            attributeslistBindingSource.EndEdit();
-            attributes_listTableAdapter.Update(tech_inspectorDataSet.attributes_list);
-            tech_inspectorDataSet.attributes_list.AcceptChanges();
-            equipmentsBindingSource.EndEdit();
-            equipmentsTableAdapter.Update(tech_inspectorDataSet.equipments);
-            tech_inspectorDataSet.equipments.AcceptChanges();
-            MessageBox.Show("Зміни успішно внесено!", "Повідомлення", MessageBoxButtons.OK,MessageBoxIcon.Information);
-            Close();
+            try
+            {
+                attributeslistBindingSource.EndEdit();
+                attributes_listTableAdapter.Update(tech_inspectorDataSet.attributes_list);
+                tech_inspectorDataSet.attributes_list.AcceptChanges();
+                equipmentsBindingSource.EndEdit();
+                equipmentsTableAdapter.Update(tech_inspectorDataSet.equipments);
+                tech_inspectorDataSet.equipments.AcceptChanges();
+                MessageBox.Show("Зміни успішно внесено!", "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException)
+            {
+                MessageBox.Show("Обладнання з таким інвентарним номером вже існує", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+            }
+
         }
 
         private void addLogButton_Click(object sender, EventArgs e)

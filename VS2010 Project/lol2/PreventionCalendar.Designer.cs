@@ -43,22 +43,19 @@
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.допомогаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.версіяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.розробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lockPictureBox = new System.Windows.Forms.PictureBox();
             this.saveChanges = new System.Windows.Forms.Button();
             this.planTable = new System.Windows.Forms.DataGridView();
-            this.locationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.responsibleadminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.day_string = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.lesson_string = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prophylaxislessonindexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.last_prophylaxis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tech_inspectorDataSet = new lol2.tech_inspectorDataSet();
             this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
+            this.locationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.responsibleadminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.day_index_DataGridViewColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.lesson_idDataGridViewColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.lastprophylaxisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lockPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.planTable)).BeginInit();
@@ -169,7 +166,6 @@
             // 
             this.проПрограмуToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.допомогаToolStripMenuItem,
-            this.версіяToolStripMenuItem,
             this.розробникиToolStripMenuItem});
             this.проПрограмуToolStripMenuItem.Name = "проПрограмуToolStripMenuItem";
             this.проПрограмуToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
@@ -182,17 +178,12 @@
             this.допомогаToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.допомогаToolStripMenuItem.Text = "Допомога";
             // 
-            // версіяToolStripMenuItem
-            // 
-            this.версіяToolStripMenuItem.Name = "версіяToolStripMenuItem";
-            this.версіяToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.версіяToolStripMenuItem.Text = "Версія";
-            // 
             // розробникиToolStripMenuItem
             // 
             this.розробникиToolStripMenuItem.Name = "розробникиToolStripMenuItem";
             this.розробникиToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.розробникиToolStripMenuItem.Text = "Розробники";
+            this.розробникиToolStripMenuItem.Text = "Про програму";
+            this.розробникиToolStripMenuItem.Click += new System.EventHandler(this.розробникиToolStripMenuItem_Click);
             // 
             // lockPictureBox
             // 
@@ -219,9 +210,9 @@
             this.planTable.AllowUserToAddRows = false;
             this.planTable.AllowUserToDeleteRows = false;
             this.planTable.AllowUserToOrderColumns = true;
-            this.planTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.planTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.planTable.AutoGenerateColumns = false;
             this.planTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.planTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -229,11 +220,9 @@
             this.locationidDataGridViewTextBoxColumn,
             this.locationnameDataGridViewTextBoxColumn,
             this.responsibleadminDataGridViewTextBoxColumn,
-            this.day_string,
-            this.lesson_string,
-            this.dataGridViewTextBoxColumn1,
-            this.prophylaxislessonindexDataGridViewTextBoxColumn,
-            this.last_prophylaxis});
+            this.day_index_DataGridViewColumn,
+            this.lesson_idDataGridViewColumn,
+            this.lastprophylaxisDataGridViewTextBoxColumn});
             this.planTable.DataSource = this.locationsBindingSource;
             this.planTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.planTable.Location = new System.Drawing.Point(1, 63);
@@ -241,8 +230,20 @@
             this.planTable.ReadOnly = true;
             this.planTable.Size = new System.Drawing.Size(884, 549);
             this.planTable.TabIndex = 0;
-            this.planTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.planTable_CellEndEdit);
-            this.planTable.Sorted += new System.EventHandler(this.planTable_Sorted);
+            // 
+            // locationsBindingSource
+            // 
+            this.locationsBindingSource.DataMember = "locations";
+            this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
+            // 
+            // tech_inspectorDataSet
+            // 
+            this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
+            this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // locationsTableAdapter
+            // 
+            this.locationsTableAdapter.ClearBeforeFill = true;
             // 
             // locationidDataGridViewTextBoxColumn
             // 
@@ -266,71 +267,30 @@
             this.responsibleadminDataGridViewTextBoxColumn.Name = "responsibleadminDataGridViewTextBoxColumn";
             this.responsibleadminDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // day_string
+            // day_index_DataGridViewColumn
             // 
-            this.day_string.HeaderText = "День";
-            this.day_string.Items.AddRange(new object[] {
-            "Понеділок",
-            "Вівторок",
-            "Середа",
-            "Четвер",
-            "П\'ятниця",
-            "Субота",
-            "Неділя",
-            "Не визначено"});
-            this.day_string.Name = "day_string";
-            this.day_string.ReadOnly = true;
+            this.day_index_DataGridViewColumn.DataPropertyName = "prophylaxis_day_index";
+            this.day_index_DataGridViewColumn.HeaderText = "День профілактики";
+            this.day_index_DataGridViewColumn.Name = "day_index_DataGridViewColumn";
+            this.day_index_DataGridViewColumn.ReadOnly = true;
+            this.day_index_DataGridViewColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.day_index_DataGridViewColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // lesson_string
+            // lesson_idDataGridViewColumn
             // 
-            this.lesson_string.HeaderText = "Пара";
-            this.lesson_string.Items.AddRange(new object[] {
-            "Не визначено",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6"});
-            this.lesson_string.Name = "lesson_string";
-            this.lesson_string.ReadOnly = true;
+            this.lesson_idDataGridViewColumn.DataPropertyName = "prophylaxis_lesson_index";
+            this.lesson_idDataGridViewColumn.HeaderText = "Пара";
+            this.lesson_idDataGridViewColumn.Name = "lesson_idDataGridViewColumn";
+            this.lesson_idDataGridViewColumn.ReadOnly = true;
+            this.lesson_idDataGridViewColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.lesson_idDataGridViewColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // dataGridViewTextBoxColumn1
+            // lastprophylaxisDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "prophylaxis_day_index";
-            this.dataGridViewTextBoxColumn1.HeaderText = "prophylaxis_day_index";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // prophylaxislessonindexDataGridViewTextBoxColumn
-            // 
-            this.prophylaxislessonindexDataGridViewTextBoxColumn.DataPropertyName = "prophylaxis_lesson_index";
-            this.prophylaxislessonindexDataGridViewTextBoxColumn.HeaderText = "prophylaxis_lesson_index";
-            this.prophylaxislessonindexDataGridViewTextBoxColumn.Name = "prophylaxislessonindexDataGridViewTextBoxColumn";
-            this.prophylaxislessonindexDataGridViewTextBoxColumn.ReadOnly = true;
-            this.prophylaxislessonindexDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // last_prophylaxis
-            // 
-            this.last_prophylaxis.DataPropertyName = "last_prophylaxis";
-            this.last_prophylaxis.HeaderText = "Остання профілактика";
-            this.last_prophylaxis.Name = "last_prophylaxis";
-            this.last_prophylaxis.ReadOnly = true;
-            // 
-            // locationsBindingSource
-            // 
-            this.locationsBindingSource.DataMember = "locations";
-            this.locationsBindingSource.DataSource = this.tech_inspectorDataSet;
-            // 
-            // tech_inspectorDataSet
-            // 
-            this.tech_inspectorDataSet.DataSetName = "tech_inspectorDataSet";
-            this.tech_inspectorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // locationsTableAdapter
-            // 
-            this.locationsTableAdapter.ClearBeforeFill = true;
+            this.lastprophylaxisDataGridViewTextBoxColumn.DataPropertyName = "last_prophylaxis";
+            this.lastprophylaxisDataGridViewTextBoxColumn.HeaderText = "Дата останньої профілактики";
+            this.lastprophylaxisDataGridViewTextBoxColumn.Name = "lastprophylaxisDataGridViewTextBoxColumn";
+            this.lastprophylaxisDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // PreventionCalendar
             // 
@@ -368,7 +328,6 @@
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem версіяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem розробникиToolStripMenuItem;
         private System.Windows.Forms.PictureBox lockPictureBox;
         private System.Windows.Forms.Button saveChanges;
@@ -383,17 +342,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn prophylaxisdateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prophylaxislessonindex1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView planTable;
-        private tech_inspectorDataSet tech_inspectorDataSet;
         private System.Windows.Forms.DataGridViewTextBoxColumn prophylaxisdayindexDataGridViewTextBoxColumn;
+        private tech_inspectorDataSet tech_inspectorDataSet;
         private System.Windows.Forms.BindingSource locationsBindingSource;
         private tech_inspectorDataSetTableAdapters.locationsTableAdapter locationsTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn locationidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn locationnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn responsibleadminDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn day_string;
-        private System.Windows.Forms.DataGridViewComboBoxColumn lesson_string;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prophylaxislessonindexDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn last_prophylaxis;
+        private System.Windows.Forms.DataGridViewComboBoxColumn day_index_DataGridViewColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn lesson_idDataGridViewColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastprophylaxisDataGridViewTextBoxColumn;
     }
 }

@@ -78,6 +78,9 @@
             this.userTable.AllowUserToAddRows = false;
             this.userTable.AllowUserToDeleteRows = false;
             this.userTable.AllowUserToOrderColumns = true;
+            this.userTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.userTable.AutoGenerateColumns = false;
             this.userTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.userTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -87,10 +90,10 @@
             this.username,
             this.rolename});
             this.userTable.DataSource = this.userlistBindingSource;
-            this.userTable.Location = new System.Drawing.Point(12, 126);
+            this.userTable.Location = new System.Drawing.Point(12, 105);
             this.userTable.Name = "userTable";
             this.userTable.ReadOnly = true;
-            this.userTable.Size = new System.Drawing.Size(441, 357);
+            this.userTable.Size = new System.Drawing.Size(441, 349);
             this.userTable.TabIndex = 0;
             // 
             // userid
@@ -140,7 +143,7 @@
             this.filterGroupBox.Controls.Add(this.roleLabel);
             this.filterGroupBox.Controls.Add(this.userNameTextBox);
             this.filterGroupBox.Controls.Add(this.userNameLabel);
-            this.filterGroupBox.Location = new System.Drawing.Point(12, 37);
+            this.filterGroupBox.Location = new System.Drawing.Point(12, 27);
             this.filterGroupBox.Name = "filterGroupBox";
             this.filterGroupBox.Size = new System.Drawing.Size(441, 72);
             this.filterGroupBox.TabIndex = 1;
@@ -149,9 +152,9 @@
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(265, 23);
+            this.refreshButton.Location = new System.Drawing.Point(225, 16);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(143, 33);
+            this.refreshButton.Size = new System.Drawing.Size(210, 47);
             this.refreshButton.TabIndex = 4;
             this.refreshButton.Text = "Обновити";
             this.refreshButton.UseVisualStyleBackColor = true;
@@ -163,7 +166,7 @@
             this.rolesComboBox.DisplayMember = "role_name";
             this.rolesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rolesComboBox.FormattingEnabled = true;
-            this.rolesComboBox.Location = new System.Drawing.Point(60, 45);
+            this.rolesComboBox.Location = new System.Drawing.Point(60, 42);
             this.rolesComboBox.Name = "rolesComboBox";
             this.rolesComboBox.Size = new System.Drawing.Size(159, 21);
             this.rolesComboBox.TabIndex = 3;
@@ -177,7 +180,7 @@
             // roleLabel
             // 
             this.roleLabel.AutoSize = true;
-            this.roleLabel.Location = new System.Drawing.Point(8, 48);
+            this.roleLabel.Location = new System.Drawing.Point(17, 45);
             this.roleLabel.Name = "roleLabel";
             this.roleLabel.Size = new System.Drawing.Size(42, 13);
             this.roleLabel.TabIndex = 2;
@@ -193,7 +196,7 @@
             // userNameLabel
             // 
             this.userNameLabel.AutoSize = true;
-            this.userNameLabel.Location = new System.Drawing.Point(8, 23);
+            this.userNameLabel.Location = new System.Drawing.Point(17, 19);
             this.userNameLabel.Name = "userNameLabel";
             this.userNameLabel.Size = new System.Drawing.Size(37, 13);
             this.userNameLabel.TabIndex = 0;
@@ -209,8 +212,9 @@
             // 
             // editUserButton
             // 
-            this.editUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.editUserButton.Location = new System.Drawing.Point(12, 507);
+            this.editUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.editUserButton.Location = new System.Drawing.Point(12, 460);
             this.editUserButton.Name = "editUserButton";
             this.editUserButton.Size = new System.Drawing.Size(143, 33);
             this.editUserButton.TabIndex = 8;
@@ -220,8 +224,9 @@
             // 
             // deleteUserButton
             // 
-            this.deleteUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.deleteUserButton.Location = new System.Drawing.Point(310, 507);
+            this.deleteUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteUserButton.Location = new System.Drawing.Point(310, 460);
             this.deleteUserButton.Name = "deleteUserButton";
             this.deleteUserButton.Size = new System.Drawing.Size(143, 33);
             this.deleteUserButton.TabIndex = 7;
@@ -231,8 +236,9 @@
             // 
             // addUserButton
             // 
-            this.addUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addUserButton.Location = new System.Drawing.Point(161, 507);
+            this.addUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.addUserButton.Location = new System.Drawing.Point(161, 460);
             this.addUserButton.Name = "addUserButton";
             this.addUserButton.Size = new System.Drawing.Size(143, 33);
             this.addUserButton.TabIndex = 6;
@@ -388,7 +394,7 @@
             // 
             this.AcceptButton = this.refreshButton;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(474, 552);
+            this.ClientSize = new System.Drawing.Size(466, 498);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.editUserButton);
             this.Controls.Add(this.deleteUserButton);

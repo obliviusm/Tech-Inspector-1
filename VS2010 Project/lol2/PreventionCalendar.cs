@@ -17,17 +17,13 @@ namespace lol2
     {
         private void SaveChanges()
         {
-            for (int i = 0; i < planTable.RowCount; i++)
-            {
-                planTable[5, i].Value = (planTable["day_string", i] as DataGridViewComboBoxCell).Items.IndexOf(planTable["day_string", i].Value);
-                planTable[6, i].Value = (planTable["lesson_string", i] as DataGridViewComboBoxCell).Items.IndexOf(planTable["lesson_string", i].Value);
-            }
             locationsBindingSource.EndEdit();
             int q = locationsTableAdapter.Update(tech_inspectorDataSet.locations);
             tech_inspectorDataSet.locations.AcceptChanges();
             if (q > 0)
+            {
                 MessageBox.Show("Зміни збережено", "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            StringColLoader();
+            }
         }
 
         public PreventionCalendar()
@@ -38,7 +34,8 @@ namespace lol2
         private void blockInput_CheckedChanged(object sender, EventArgs e)
         {
             planTable.ReadOnly = blockInput.Checked;
-            planTable.Columns[1].ReadOnly = true;
+            locationidDataGridViewTextBoxColumn.ReadOnly = true;
+            lastprophylaxisDataGridViewTextBoxColumn.ReadOnly = true;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -88,35 +85,51 @@ namespace lol2
             Close();
         }
 
-        private void StringColLoader()
-        {
-            for (int i = 0; i < planTable.RowCount; i++)
-            {
-                planTable["day_string", i].Value = (planTable["day_string", i] as DataGridViewComboBoxCell).Items[(int)planTable[5, i].Value];
-                planTable["lesson_string", i].Value = (planTable["lesson_string", i] as DataGridViewComboBoxCell).Items[(int)planTable[6, i].Value];
-            }
-        }
-
         private void PreventionCalendar_Load(object sender, EventArgs e)
         {
+            DataTable daysDataTable = new DataTable();
+            DataColumn day_id = new DataColumn("day_id", typeof(int));
+            DataColumn day_name_id = new DataColumn("day_name_id", typeof(String));
+            daysDataTable.Columns.Add(day_id);
+            daysDataTable.Columns.Add(day_name_id);
+            daysDataTable.Rows.Add(new object[] { 0, "Не вибраний"});
+            daysDataTable.Rows.Add(new object[] { 1, "Понеділок" });
+            daysDataTable.Rows.Add(new object[] { 2, "Вівторок" });
+            daysDataTable.Rows.Add(new object[] { 3, "Середа" });
+            daysDataTable.Rows.Add(new object[] { 4, "Четвер" });
+            daysDataTable.Rows.Add(new object[] { 5, "П'ятниця" });
+            daysDataTable.Rows.Add(new object[] { 6, "Субота" });
+            daysDataTable.Rows.Add(new object[] { 7, "Неділя" });
+
+            this.day_index_DataGridViewColumn.DataSource = daysDataTable;
+            this.day_index_DataGridViewColumn.DisplayMember = "day_name_id";
+            this.day_index_DataGridViewColumn.ValueMember = "day_id";
+
+            DataTable lessonsDataTable = new DataTable();
+            DataColumn lesson_id = new DataColumn("lesson_id", typeof(int));
+            DataColumn lesson_name_id = new DataColumn("lesson_name_id", typeof(String));
+            lessonsDataTable.Columns.Add(lesson_id);
+            lessonsDataTable.Columns.Add(lesson_name_id);
+            lessonsDataTable.Rows.Add(new object[] { 0, "Не вибрано" });
+            lessonsDataTable.Rows.Add(new object[] { 1, "1" });
+            lessonsDataTable.Rows.Add(new object[] { 2, "2" });
+            lessonsDataTable.Rows.Add(new object[] { 3, "3" });
+            lessonsDataTable.Rows.Add(new object[] { 4, "4" });
+            lessonsDataTable.Rows.Add(new object[] { 5, "5" });
+            lessonsDataTable.Rows.Add(new object[] { 6, "6" });
+            lessonsDataTable.Rows.Add(new object[] { 7, "7" });
+
+            this.lesson_idDataGridViewColumn.DataSource = lessonsDataTable;
+            this.lesson_idDataGridViewColumn.DisplayMember = "lesson_name_id";
+            this.lesson_idDataGridViewColumn.ValueMember = "lesson_id";
+
             // TODO: This line of code loads data into the 'tech_inspectorDataSet.locations' table. You can move, or remove it, as needed.
             this.locationsTableAdapter.Fill(this.tech_inspectorDataSet.locations);
-            // TODO: This line of code loads data into the 'tech_inspectorDataSet.days_of_the_week' table. You can move, or remove it, as needed.
-            this.locationsTableAdapter.Fill(this.tech_inspectorDataSet.locations);
-            StringColLoader();
         }
 
-        private void planTable_Sorted(object sender, EventArgs e)
+        private void розробникиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StringColLoader();
-        }
-
-        private void planTable_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 3)
-                planTable[5, e.RowIndex].Value = (planTable["day_string", e.RowIndex] as DataGridViewComboBoxCell).Items.IndexOf(planTable["day_string", e.RowIndex].Value);
-            if (e.ColumnIndex == 4)
-                planTable[6, e.RowIndex].Value = (planTable["lesson_string", e.RowIndex] as DataGridViewComboBoxCell).Items.IndexOf(planTable["lesson_string", e.RowIndex].Value);
+            new AboutBox().ShowDialog();
         }
     }
 }

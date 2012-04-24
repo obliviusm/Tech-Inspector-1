@@ -26,8 +26,7 @@ namespace lol2
             // завантажує права в rolesComboBox
             rolesBindingSource.Sort = "role_name ASC";
             tech_inspectorDataSet.roles.Rows.Add(new object[] { 0, "Всі" });
-            rolesComboBox.SelectedValue = 0;
-            
+            rolesComboBox.SelectedValue = 0;            
         }
 
         private void refresh()
