@@ -239,7 +239,7 @@
             this.locationComboBox.Name = "locationComboBox";
             this.locationComboBox.Size = new System.Drawing.Size(189, 21);
             this.locationComboBox.TabIndex = 7;
-            this.locationComboBox.ValueMember = "location_name";
+            this.locationComboBox.ValueMember = "location_id";
             // 
             // locationsBindingSource
             // 
@@ -280,9 +280,9 @@
             // 
             this.locationEquipmentsDataGridView.AllowUserToAddRows = false;
             this.locationEquipmentsDataGridView.AllowUserToDeleteRows = false;
-            this.locationEquipmentsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.locationEquipmentsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.locationEquipmentsDataGridView.AutoGenerateColumns = false;
             this.locationEquipmentsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.locationEquipmentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

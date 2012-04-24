@@ -40,7 +40,7 @@ namespace lol2
 
         private void planningButton_Click(object sender, EventArgs e)
         {
-            subSystemTabs.SelectedTab = scheduledTasksTab;
+                    //subSystemTabs.SelectedTab = scheduledTasksTab;
             //CalendarPlan childFormCalendarPlan = new CalendarPlan();
             //childFormCalendarPlan.FormClosed+=new FormClosedEventHandler(childForm_FormClosed);
             //childFormCalendarPlan.Show();
@@ -49,7 +49,7 @@ namespace lol2
 
         private void reportingButton_Click(object sender, EventArgs e)
         {
-            subSystemTabs.SelectedTab = documentsTab;
+                    //subSystemTabs.SelectedTab = documentsTab;
             //DocumentControl childFormReportingForm = new DocumentControl();
             //childFormReportingForm.FormClosed+=new FormClosedEventHandler(childForm_FormClosed);
             //childFormReportingForm.Show();
@@ -67,13 +67,15 @@ namespace lol2
         {
             if (GeneralContentManager.getRoleId() == 1)
             {
-                adminButton.Visible = true;
-                planningButton.Enabled = true;
+                adminButton.Enabled = true;
+                preventionCalendar.Enabled = true;
+                startCheckButton.Enabled = true;
             }
             else
             {
-                adminButton.Visible = false;
-                planningButton.Enabled = false;
+                adminButton.Enabled = false;
+                preventionCalendar.Enabled = false;
+                startCheckButton.Enabled = false;
             }
         }
 

@@ -328,6 +328,9 @@ namespace lol2
 
         private void finishButton_Click(object sender, EventArgs e)
         {
+            tech_inspectorDataSet.locations.FindBylocation_id((int)locationComboBox.SelectedValue).last_prophylaxis = DateTime.Now;
+            locationsTableAdapter.Update(tech_inspectorDataSet.locations);
+            tech_inspectorDataSet.locations.AcceptChanges();
             SaveTempReport(SaveTempPDF());
         }
 

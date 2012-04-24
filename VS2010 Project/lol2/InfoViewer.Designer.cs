@@ -467,8 +467,10 @@
             this.Controls.Add(this.addDeviceButton);
             this.Controls.Add(this.infosDataGridView);
             this.Controls.Add(this.menuStrip1);
+            this.MinimumSize = new System.Drawing.Size(628, 547);
             this.Name = "InfoViewer";
             this.Text = "Облік наявних комп’ютерів і комплектуючих на кафедрі та їх технічного стану";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.InfoViewer_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
