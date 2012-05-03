@@ -71,6 +71,9 @@
             this.equipment_shortinfoTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.equipment_shortinfoTableAdapter();
             this.locationsTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.locationsTableAdapter();
             this.statesTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.statesTableAdapter();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.equipmentCountStatusLable = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentshortinfoBindingSource)).BeginInit();
@@ -79,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.typesBindingSource)).BeginInit();
             this.filterGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -148,7 +152,7 @@
             this.infosDataGridView.Location = new System.Drawing.Point(12, 117);
             this.infosDataGridView.Name = "infosDataGridView";
             this.infosDataGridView.ReadOnly = true;
-            this.infosDataGridView.Size = new System.Drawing.Size(589, 342);
+            this.infosDataGridView.Size = new System.Drawing.Size(589, 319);
             this.infosDataGridView.TabIndex = 2;
             // 
             // equipmentidDataGridViewTextBoxColumn
@@ -239,7 +243,7 @@
             // addDeviceButton
             // 
             this.addDeviceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addDeviceButton.Location = new System.Drawing.Point(310, 465);
+            this.addDeviceButton.Location = new System.Drawing.Point(310, 442);
             this.addDeviceButton.Name = "addDeviceButton";
             this.addDeviceButton.Size = new System.Drawing.Size(143, 33);
             this.addDeviceButton.TabIndex = 3;
@@ -250,7 +254,7 @@
             // deleteDeviceButton
             // 
             this.deleteDeviceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.deleteDeviceButton.Location = new System.Drawing.Point(459, 465);
+            this.deleteDeviceButton.Location = new System.Drawing.Point(459, 442);
             this.deleteDeviceButton.Name = "deleteDeviceButton";
             this.deleteDeviceButton.Size = new System.Drawing.Size(143, 33);
             this.deleteDeviceButton.TabIndex = 4;
@@ -261,7 +265,7 @@
             // editInfoButton
             // 
             this.editInfoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.editInfoButton.Location = new System.Drawing.Point(161, 465);
+            this.editInfoButton.Location = new System.Drawing.Point(161, 442);
             this.editInfoButton.Name = "editInfoButton";
             this.editInfoButton.Size = new System.Drawing.Size(143, 33);
             this.editInfoButton.TabIndex = 5;
@@ -272,7 +276,7 @@
             // detailedInfoButton
             // 
             this.detailedInfoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.detailedInfoButton.Location = new System.Drawing.Point(12, 465);
+            this.detailedInfoButton.Location = new System.Drawing.Point(12, 442);
             this.detailedInfoButton.Name = "detailedInfoButton";
             this.detailedInfoButton.Size = new System.Drawing.Size(143, 33);
             this.detailedInfoButton.TabIndex = 6;
@@ -455,11 +459,35 @@
             // 
             this.statesTableAdapter.ClearBeforeFill = true;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.equipmentCountStatusLable});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 487);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(612, 22);
+            this.statusStrip1.TabIndex = 27;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(132, 17);
+            this.toolStripStatusLabel1.Text = "Знайдено обладнання:";
+            // 
+            // equipmentCountStatusLable
+            // 
+            this.equipmentCountStatusLable.Name = "equipmentCountStatusLable";
+            this.equipmentCountStatusLable.Size = new System.Drawing.Size(13, 17);
+            this.equipmentCountStatusLable.Text = "0";
+            // 
             // InfoViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 509);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.filterGroupBox);
             this.Controls.Add(this.detailedInfoButton);
             this.Controls.Add(this.editInfoButton);
@@ -482,6 +510,8 @@
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,5 +565,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn locationidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stateidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel equipmentCountStatusLable;
     }
 }

@@ -145,6 +145,8 @@ namespace lol2
             locationComboBox.SelectedValue = 0;
             tech_inspectorDataSet.types.Rows.Add(new object[] { 0, "Всі" });
             typeSelectionComboBox.SelectedValue = 0;
+
+            equipmentCountStatusLable.Text = equipmentshortinfoBindingSource.Count.ToString();
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
@@ -192,6 +194,7 @@ namespace lol2
                 }
             }
             equipmentshortinfoBindingSource.Filter = filter_str;
+            equipmentCountStatusLable.Text = equipmentshortinfoBindingSource.Count.ToString();
         }
 
 
