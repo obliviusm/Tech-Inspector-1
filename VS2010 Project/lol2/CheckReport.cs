@@ -56,7 +56,7 @@ namespace lol2
                 if (responsibleTextBox.Text != "" && locationComboBox.SelectedValue != "")
                 {
                     //TODO
-                    this.equipmentsTableAdapter.FillByLoc(this.tech_inspectorDataSet.equipments, locationComboBox.SelectedIndex + 1);
+                    this.equipmentsTableAdapter.FillByLoc(this.tech_inspectorDataSet.equipments, (int)locationComboBox.SelectedValue);
                     if (locationEquipmentsDataGridView.RowCount < 1)
                     {
                         MessageBox.Show("В аудиторії немає обладнання", "Помилка",
