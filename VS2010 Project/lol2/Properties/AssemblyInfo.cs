@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Resources;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("lol2")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Tech Inspector")]
+[assembly: AssemblyDescription("Система обліку компютерного обладнання кафедри.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("lol2")]
+[assembly: AssemblyCompany("Ярмак Дмитро 0979029562@mail.ru,Масліков Віталій troilk@hotmail.com,Себало Михайло obliviusm@gmail.com")]
+[assembly: AssemblyProduct("Tech Inspector")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -34,3 +35,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguageAttribute("uk")]

@@ -9,51 +9,62 @@ using System.Windows.Forms;
 
 namespace lol2
 {
-    public partial class AddUser : Form
+    public partial class EditUser : Form
     {
-        public bool pass_excepted = false;
-        public AddUser()
+        public int user_id;
+        public bool pass_excepted = true;
+        public EditUser(int id)
         {
             InitializeComponent();
+            user_id = id;
         }
 
-        private void AddUser_Load(object sender, EventArgs e)
+        private void EditUsercs_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tech_inspectorDataSet1.users". При необходимости она может быть перемещена или удалена.
+           // this.usersTableAdapter.Fill(this.tech_inspectorDataSet.users);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tech_inspectorDataSet.users". При необходимости она может быть перемещена или удалена.
             this.usersTableAdapter.Fill(this.tech_inspectorDataSet.users);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tech_inspectorDataSet.roles". При необходимости она может быть перемещена или удалена.
             this.rolesTableAdapter.Fill(this.tech_inspectorDataSet.roles);
-            // сортує, обирає "користувач" в rolesComboBox
-            rolesBindingSource.Sort = "role_name DESC";
-            rolesComboBox.SelectedValue = rolesComboBox.Items.Count;
-        }
+            //дістаємо обраного юзера
+            this.usersTableAdapter.FillBy(this.tech_inspectorDataSet.users, user_id);
 
+            //заповнюємо поля
+            rolesComboBox.SelectedValue = tech_inspectorDataSet.users[0].role_id;
+        }
+        private string EmptyFields()
+        {
+            string result = "\n";
+            if (userNameTextBox.Text == "") result += "\tЛогін\n";
+            return result;
+        }
         private void addUserButton_Click(object sender, EventArgs e)
-        {     
+        {
+            VerifyPassword();
+
             string emptyFields = EmptyFields();
             if (emptyFields.Length > 2)
                 MessageBox.Show("Наступні обов'язкові поля не були заповнені :" + emptyFields, "Помилка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if (pass_excepted == false)
+            else if (pass_excepted == false )
             {
-                MessageBox.Show("Перевірте пароль", "Помилка",
+                MessageBox.Show("Паролі не співпадають", "Помилка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }else
+            }
+            else
             {
+                if (pass_excepted == true && passwordTextBox.Text != "" 
+                    && repeatPasswordTextBox.Text != "")
+                    tech_inspectorDataSet.users[0].password =
+                        GeneralContentManager.EncodePass(passwordTextBox.Text);
                 try
                 {
-                    //ЗБЕРІГАЄ юзера
-                    DataRow userDataRow = tech_inspectorDataSet.users.NewRow();
-                    userDataRow[tech_inspectorDataSet.users.user_nameColumn] = userNameTextBox.Text;
-                    userDataRow[tech_inspectorDataSet.users.role_idColumn] = rolesComboBox.SelectedIndex + 1;
-                    userDataRow[tech_inspectorDataSet.users.passwordColumn] = GeneralContentManager.EncodePass( passwordTextBox.Text );
                     usersBindingSource.EndEdit();
-                    tech_inspectorDataSet.users.Rows.Add(userDataRow);
-                    int q = usersTableAdapter.Update(tech_inspectorDataSet.users);
+                    usersTableAdapter.Update(tech_inspectorDataSet.users);
                     tech_inspectorDataSet.users.AcceptChanges();
-                    if (q > 0)
-                        MessageBox.Show("Зміни збережено", "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    MessageBox.Show("Зміни успішно внесено!", "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
                 }
                 catch (System.Data.ConstraintException)
                 {
@@ -61,18 +72,11 @@ namespace lol2
                 }
             }
         }
-        private string EmptyFields()
-        {
-            string result = "\n";
-            if (userNameTextBox.Text == "") result += "\tЛогін\n";
-            if (passwordTextBox.Text == "") result += "\tПароль\n";
-            if (rolesComboBox.Text == "") result += "\tТПрава\n";
-            return result;
-        }
+
 
         private void passwordTextBox_Leave(object sender, EventArgs e)
         {
-            if( passwordTextBox.Text != "" && repeatPasswordTextBox.Text != "")
+            if (passwordTextBox.Text != "" && repeatPasswordTextBox.Text != "")
                 VerifyPassword();
         }
 

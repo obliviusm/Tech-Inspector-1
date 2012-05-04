@@ -124,9 +124,53 @@ namespace lol2
             h.ShowDialog();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void instructionToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Help.ShowHelp(this,
+                    System.IO.Path.GetFullPath(Properties.Settings.Default.HelpPath));
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Виникла помилка\n" + err.Message, "Помилка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AboutBox().ShowDialog();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SendKeys.Send("^c");
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SendKeys.Send("^x");
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SendKeys.Send("^v");
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveChangesButton.PerformClick();
         }
     }
 }

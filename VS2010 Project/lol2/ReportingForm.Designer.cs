@@ -42,12 +42,10 @@
             this.файл1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.файл2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вихідToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копіюватиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вставToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вирізатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.інструментиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.версіяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.розробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,9 +63,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
-            this.видToolStripMenuItem,
             this.правкаToolStripMenuItem,
-            this.інструментиToolStripMenuItem,
             this.проПрограмуToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -87,7 +83,7 @@
             this.вихідToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.файлToolStripMenuItem.Text = "&Файл";
+            this.файлToolStripMenuItem.Text = "Файл";
             // 
             // новийФайлToolStripMenuItem
             // 
@@ -167,12 +163,6 @@
             this.вихідToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.вихідToolStripMenuItem.Text = "&Вихід";
             // 
-            // видToolStripMenuItem
-            // 
-            this.видToolStripMenuItem.Name = "видToolStripMenuItem";
-            this.видToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.видToolStripMenuItem.Text = "&Вид";
-            // 
             // правкаToolStripMenuItem
             // 
             this.правкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -200,12 +190,6 @@
             this.вирізатиToolStripMenuItem.Name = "вирізатиToolStripMenuItem";
             this.вирізатиToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.вирізатиToolStripMenuItem.Text = "&Вирізати";
-            // 
-            // інструментиToolStripMenuItem
-            // 
-            this.інструментиToolStripMenuItem.Name = "інструментиToolStripMenuItem";
-            this.інструментиToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
-            this.інструментиToolStripMenuItem.Text = "&Інструменти";
             // 
             // проПрограмуToolStripMenuItem
             // 
@@ -280,9 +264,9 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.webBrowser1.Location = new System.Drawing.Point(13, 147);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
@@ -325,12 +309,10 @@
         private System.Windows.Forms.ToolStripMenuItem файл1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem файл2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вихідToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem видToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem правкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem копіюватиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вставToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вирізатиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem інструментиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem версіяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem розробникиToolStripMenuItem;

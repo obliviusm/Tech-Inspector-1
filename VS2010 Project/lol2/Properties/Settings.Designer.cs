@@ -33,5 +33,41 @@ namespace lol2.Properties {
                 return ((string)(this["tech_inspectorConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Fonts")]
+        public string FontsFolder {
+            get {
+                return ((string)(this["FontsFolder"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HelpFiles/Help.chm")]
+        public string HelpPath {
+            get {
+                return ((string)(this["HelpPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Temp")]
+        public string TempFolder {
+            get {
+                return ((string)(this["TempFolder"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data")]
+        public string DataFolder {
+            get {
+                return ((string)(this["DataFolder"]));
+            }
+        }
     }
 }

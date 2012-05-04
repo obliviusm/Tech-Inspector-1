@@ -73,6 +73,7 @@
             this.Controls.Add(this.addParameterButton);
             this.Controls.Add(this.parameterTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MinimumSize = new System.Drawing.Size(428, 65);
             this.Name = "AddingString";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);

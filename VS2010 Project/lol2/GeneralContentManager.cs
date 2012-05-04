@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
+using System.Drawing;
 
 namespace lol2
 {
     public static class GeneralContentManager
     {
-        public static string RootFolder = Path.GetFullPath("../../");
         public static Dictionary<string, string> GlobalSettings = new Dictionary<string, string>();
+        public static Icon defaultIcon;
 
         public static System.Data.DataRow user;
         public static System.Data.DataRow get()
@@ -61,7 +62,13 @@ namespace lol2
         {
             try
             {
-                TextReader reader = new StreamReader(RootFolder + "DATA/settings.ini", Encoding.UTF8);
+                defaultIcon = new Icon(Path.GetFullPath(Properties.Settings.Default.DataFolder + "\\favicon.ico"));
+            }
+            catch (Exception e)
+            { }
+            try
+            {
+                TextReader reader = new StreamReader(Path.GetFullPath(Properties.Settings.Default.DataFolder + "/settings.ini"), Encoding.UTF8);
                 string currentSetting = reader.ReadLine();
                 while (currentSetting != null)
                 {
@@ -87,7 +94,7 @@ namespace lol2
         {
             try
             {
-                TextWriter writer = new StreamWriter(RootFolder + "DATA/settings.ini", false, Encoding.UTF8);
+                TextWriter writer = new StreamWriter(Path.GetFullPath(Properties.Settings.Default.DataFolder + "/settings.ini"), false, Encoding.UTF8);
                 foreach (string key in GlobalSettings.Keys)
                     writer.WriteLine(key + "=" + GlobalSettings[key]);
                 writer.Close();
@@ -98,8 +105,13 @@ namespace lol2
 
         public static void ClearTempFolder()
         {
-            foreach (string filePath in Directory.GetFiles(RootFolder + "Temp/"))
-                File.Delete(filePath);
+            try
+            {
+                foreach (string filePath in Directory.GetFiles(Path.GetFullPath(Properties.Settings.Default.TempFolder) + "/"))
+                    File.Delete(filePath);
+            }
+            catch (Exception e)
+            { }
         }
     }
 }

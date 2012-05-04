@@ -10,5 +10,17 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=localhost;User Id=root;password=1111;Persist Security Info=True;database=tech_inspector</Value>
     </Setting>
+    <Setting Name="FontsFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Fonts</Value>
+    </Setting>
+    <Setting Name="HelpPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">HelpFiles/Help.chm</Value>
+    </Setting>
+    <Setting Name="TempFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Temp</Value>
+    </Setting>
+    <Setting Name="DataFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

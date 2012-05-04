@@ -90,7 +90,9 @@ namespace lol2
         private void preventionCalendar_Click(object sender, EventArgs e)
         {
             PreventionCalendar childFormPreventionCalendar = new PreventionCalendar();
+            Hide();
             childFormPreventionCalendar.ShowDialog();
+            Show();
         }
 
         private void startCheckButton_Click(object sender, EventArgs e)
@@ -100,7 +102,9 @@ namespace lol2
             runningSubForms.Add("CheckReport");
             CheckReport childFormCheckReport = new CheckReport();
             childFormCheckReport.FormClosed += new FormClosedEventHandler(childFormCheckReport_FormClosed);
-            childFormCheckReport.Show();
+            Hide();
+            childFormCheckReport.ShowDialog();
+            Show();
         }
 
         void childFormCheckReport_FormClosed(object sender, FormClosedEventArgs e)

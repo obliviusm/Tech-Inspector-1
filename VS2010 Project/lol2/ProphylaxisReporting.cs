@@ -56,7 +56,6 @@ namespace lol2
                 if (GeneralContentManager.GlobalSettings.ContainsKey("ProphylaxisReportPath"))
                     GeneralContentManager.GlobalSettings["ProphylaxisReportPath"] = pathTextBox.Text;
                 else GeneralContentManager.GlobalSettings.Add("ProphylaxisReportPath", pathTextBox.Text);
-                Text = pathTextBox.Text.Length.ToString();
                 if (pathTextBox.Text[pathTextBox.Text.Length - 1] != '\\')
                     pathTextBox.Text += '\\';
                 string path = pathTextBox.Text + Path.GetFileName(filePath);
@@ -67,7 +66,7 @@ namespace lol2
                     {
                         Document document = new Document(PageSize.A4, 20, 20, 30, 65);
                         PdfWriter.GetInstance(document, new FileStream(pathPDF, FileMode.Create));
-                        BaseFont baseFont = BaseFont.CreateFont(GeneralContentManager.RootFolder + "Fonts/ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                        BaseFont baseFont = BaseFont.CreateFont(Properties.Settings.Default.FontsFolder + "/ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
                         iTextSharp.text.Font fontBold = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.BOLD);
                         iTextSharp.text.Font fontNormal = new iTextSharp.text.Font(baseFont, 8, iTextSharp.text.Font.NORMAL);
                         document.Open();
@@ -185,6 +184,25 @@ namespace lol2
             if ((!savedHTML && !savedPDF) && MessageBox.Show("Ви не зберігли звіт.\nЯкщо ви вийдете то вже не зможете повернутися в це вікно.\nВийти ?", "Попередження",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                 e.Cancel = true;
+        }
+
+        private void instructionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Help.ShowHelp(this,
+                    System.IO.Path.GetFullPath(Properties.Settings.Default.HelpPath));
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Виникла помилка\n" + err.Message, "Помилка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AboutBox().ShowDialog();
         }
     }
 }
