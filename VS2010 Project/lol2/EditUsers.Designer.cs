@@ -303,6 +303,7 @@
             this.Controls.Add(this.rolesComboBox);
             this.Controls.Add(this.roleLabel);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(351, 266);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(351, 266);
             this.Name = "EditUser";

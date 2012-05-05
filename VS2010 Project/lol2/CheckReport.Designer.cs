@@ -294,7 +294,7 @@
             this.locationEquipmentsDataGridView.Location = new System.Drawing.Point(12, 122);
             this.locationEquipmentsDataGridView.Name = "locationEquipmentsDataGridView";
             this.locationEquipmentsDataGridView.ReadOnly = true;
-            this.locationEquipmentsDataGridView.Size = new System.Drawing.Size(824, 427);
+            this.locationEquipmentsDataGridView.Size = new System.Drawing.Size(824, 426);
             this.locationEquipmentsDataGridView.TabIndex = 5;
             this.locationEquipmentsDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.locationEquipmentsDataGridView_CellMouseDoubleClick);
             // 
@@ -416,16 +416,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 562);
+            this.ClientSize = new System.Drawing.Size(848, 561);
             this.Controls.Add(this.finishButton);
             this.Controls.Add(this.editAllButton);
             this.Controls.Add(this.locationEquipmentsDataGridView);
             this.Controls.Add(this.generalInformationGroupBox);
             this.Controls.Add(this.menuStrip1);
-            this.MinimumSize = new System.Drawing.Size(750, 600);
+            this.MinimumSize = new System.Drawing.Size(864, 600);
             this.Name = "CheckReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Протокол по профілактиці";
+            this.Text = "Проведення профілактики";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CheckReport_FormClosing);
             this.Load += new System.EventHandler(this.CheckReport_Load);

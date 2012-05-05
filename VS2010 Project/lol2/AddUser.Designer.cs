@@ -326,6 +326,7 @@
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.userNameLabel);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(513, 286);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(513, 286);
             this.Name = "AddUser";

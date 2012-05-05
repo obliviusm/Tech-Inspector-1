@@ -19,7 +19,7 @@ namespace lol2
             InitializeComponent();
         }
      
-        private void новийФайлToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             addDeviceButton_Click(addDeviceButton, new EventArgs());
         }
@@ -29,7 +29,7 @@ namespace lol2
             Application.Exit();
         }
 
-        private void редагуванняШаблонівToolStripMenuItem_Click(object sender, EventArgs e)
+        private void editTemplatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DeviceTemplateEditor childFormDeviceTemplateEditor = new DeviceTemplateEditor();
             childFormDeviceTemplateEditor.ShowDialog();
@@ -111,14 +111,18 @@ namespace lol2
                 editInfoButton.Enabled = true;
                 addDeviceButton.Enabled = true;
                 deleteDeviceButton.Enabled = true;
-                menuStrip1.Enabled = true;
+                //menuStrip1.Enabled = true;
+                addToolStripMenuItem.Enabled = true;
+                editTemplateToolStripMenuItem.Enabled = true;
             }
             else if (GeneralContentManager.getRoleId() == 2)
             {
                 editInfoButton.Enabled = true;
                 addDeviceButton.Enabled = true;
                 deleteDeviceButton.Enabled = true;
-                menuStrip1.Enabled = false;
+                //menuStrip1.Enabled = false;
+                addToolStripMenuItem.Enabled = false;
+                editTemplateToolStripMenuItem.Enabled = false;
             }
             else 
             {

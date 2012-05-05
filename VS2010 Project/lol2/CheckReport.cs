@@ -351,6 +351,12 @@ namespace lol2
                         {
                             writer.RenderBeginTag(HtmlTextWriterTag.Td);
                             if (locationEquipmentsDataGridView[j, i].Value.ToString() != "")
+                                if (locationEquipmentsDataGridView[j, i].Value.ToString()=="True")
+                                    writer.Write("Так");
+                                else 
+                                    if (locationEquipmentsDataGridView[j, i].Value.ToString() == "False")
+                                        writer.Write("Ні");
+                                    else
                                 writer.Write(locationEquipmentsDataGridView[j, i].Value);
                             else writer.Write("-");
                             writer.RenderEndTag();

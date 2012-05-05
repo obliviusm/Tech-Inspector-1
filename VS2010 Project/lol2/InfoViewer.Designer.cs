@@ -124,7 +124,7 @@
             this.addToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.addToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.addToolStripMenuItem.Text = "Додати пристрій до бази";
-            this.addToolStripMenuItem.Click += new System.EventHandler(this.новийФайлToolStripMenuItem_Click);
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // editTemplateToolStripMenuItem
             // 
@@ -132,7 +132,7 @@
             this.editTemplateToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.editTemplateToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.editTemplateToolStripMenuItem.Text = "Редагувати типи обладнання";
-            this.editTemplateToolStripMenuItem.Click += new System.EventHandler(this.редагуванняШаблонівToolStripMenuItem_Click);
+            this.editTemplateToolStripMenuItem.Click += new System.EventHandler(this.editTemplatesToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
