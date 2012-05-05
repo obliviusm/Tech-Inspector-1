@@ -173,5 +173,10 @@ namespace lol2
         {
             new AboutBox().ShowDialog();
         }
+
+        private void userTable_DoubleClick(object sender, EventArgs e)
+        {
+            editUser();
+        }
     }
 }
