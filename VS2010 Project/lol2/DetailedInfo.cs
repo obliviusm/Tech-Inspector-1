@@ -73,5 +73,10 @@ namespace lol2
         {
             Application.Exit();
         }
+
+        private void historyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            historyButton.PerformClick();
+        }
     }
 }

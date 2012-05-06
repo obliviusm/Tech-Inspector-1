@@ -237,7 +237,7 @@ namespace lol2
         {
             try
             {
-                string filePath = Path.GetFullPath(Properties.Settings.Default.TempFolder) + "/report_" + locationComboBox.SelectedText + "_" + startTime.Replace(':', '_').Replace(' ', '_')
+                string filePath = Path.GetFullPath(Properties.Settings.Default.TempFolder) + "/report_" + locationComboBox.Text + "_" + startTime.Replace(':', '_').Replace(' ', '_')
                     + ".html";
                 TextWriter tWriter = new StreamWriter(filePath, false, Encoding.UTF8);
                 HtmlTextWriter writer = new HtmlTextWriter(tWriter);
@@ -249,7 +249,7 @@ namespace lol2
                 writer.AddStyleAttribute(HtmlTextWriterStyle.FontSize, "24");
                 writer.AddStyleAttribute(HtmlTextWriterStyle.FontWeight, "bold");
                 writer.RenderBeginTag(HtmlTextWriterTag.Font);
-                writer.WriteLine("Звіт по профілактиці в аудитоії " + locationComboBox.SelectedValue);
+                writer.WriteLine("Звіт по профілактиці в аудитоії " + locationComboBox.Text);
                 writer.WriteBreak();
                 writer.RenderEndTag();
 

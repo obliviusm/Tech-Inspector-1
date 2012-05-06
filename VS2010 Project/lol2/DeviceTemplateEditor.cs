@@ -158,5 +158,25 @@ namespace lol2
         {
             SendKeys.Send("^v");
         }
+
+        private void createNewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newTypeButton.PerformClick();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveChangesButton.PerformClick();
+        }
+
+        private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abortChangesButton.PerformClick();
+        }
+
+        private void видалитиТипToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeTypeButton.PerformClick();
+        }
     }
 }

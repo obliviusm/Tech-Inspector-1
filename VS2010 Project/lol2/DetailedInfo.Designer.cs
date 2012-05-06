@@ -43,7 +43,7 @@
             this.deviceTypeLabel = new System.Windows.Forms.Label();
             this.locationLabel = new System.Windows.Forms.Label();
             this.dateGroupBox = new System.Windows.Forms.GroupBox();
-            this.histotyButton = new System.Windows.Forms.Button();
+            this.historyButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.movedPlaceLabel = new System.Windows.Forms.Label();
             this.movedCheckBox = new System.Windows.Forms.CheckBox();
@@ -69,7 +69,9 @@
             this.attributes_listTableAdapter = new lol2.tech_inspectorDataSetTableAdapters.attributes_listTableAdapter();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -206,7 +208,7 @@
             // 
             // dateGroupBox
             // 
-            this.dateGroupBox.Controls.Add(this.histotyButton);
+            this.dateGroupBox.Controls.Add(this.historyButton);
             this.dateGroupBox.Controls.Add(this.textBox1);
             this.dateGroupBox.Controls.Add(this.movedPlaceLabel);
             this.dateGroupBox.Controls.Add(this.movedCheckBox);
@@ -225,15 +227,15 @@
             this.dateGroupBox.TabStop = false;
             this.dateGroupBox.Text = "Додаткова інформація";
             // 
-            // histotyButton
+            // historyButton
             // 
-            this.histotyButton.Location = new System.Drawing.Point(207, 150);
-            this.histotyButton.Name = "histotyButton";
-            this.histotyButton.Size = new System.Drawing.Size(150, 23);
-            this.histotyButton.TabIndex = 43;
-            this.histotyButton.Text = "Історія";
-            this.histotyButton.UseVisualStyleBackColor = true;
-            this.histotyButton.Click += new System.EventHandler(this.histotyButton_Click);
+            this.historyButton.Location = new System.Drawing.Point(207, 150);
+            this.historyButton.Name = "historyButton";
+            this.historyButton.Size = new System.Drawing.Size(150, 23);
+            this.historyButton.TabIndex = 43;
+            this.historyButton.Text = "Історія";
+            this.historyButton.UseVisualStyleBackColor = true;
+            this.historyButton.Click += new System.EventHandler(this.histotyButton_Click);
             // 
             // textBox1
             // 
@@ -455,25 +457,40 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.historyToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.closeToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.fileToolStripMenuItem.Text = "Файл";
             // 
+            // historyToolStripMenuItem
+            // 
+            this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
+            this.historyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.historyToolStripMenuItem.Text = "Відкрити історію";
+            this.historyToolStripMenuItem.Click += new System.EventHandler(this.historyToolStripMenuItem_Click);
+            // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.closeToolStripMenuItem.Text = "Закрити вікно";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(206, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.exitToolStripMenuItem.Text = "Вихід";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -586,7 +603,7 @@
         private System.Windows.Forms.Label movedPlaceLabel;
         private System.Windows.Forms.CheckBox movedCheckBox;
         private System.Windows.Forms.CheckBox repairingCheckBox;
-        private System.Windows.Forms.Button histotyButton;
+        private System.Windows.Forms.Button historyButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
@@ -596,6 +613,8 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instructionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
 
     }
 }

@@ -144,5 +144,10 @@ namespace lol2
         {
             Application.Exit();
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addUserButton.PerformClick();
+        }
     }
 }

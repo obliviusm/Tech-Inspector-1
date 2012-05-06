@@ -172,5 +172,10 @@ namespace lol2
         {
             saveChangesButton.PerformClick();
         }
+
+        private void historyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showHistoryButton.PerformClick();
+        }
     }
 }
